@@ -1,0 +1,12 @@
+{
+  "packageDirectories": [
+    {
+      "path": "force-app",
+      "default": true
+    }
+  ],
+  "name": "Real-Estate-App",
+  "namespace": "",
+  "sfdcLoginUrl": "https://britenet28-dev-ed.my.salesforce.com/",
+  "sourceApiVersion": "55.0"
+}
