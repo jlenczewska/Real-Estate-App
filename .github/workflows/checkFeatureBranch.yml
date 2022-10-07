@@ -1,0 +1,13 @@
+name: Check-Feature-Branch
+
+on:
+    push:
+        branches:
+            - feature
+
+jobs:
+    deploy:
+        runs-on: windows-latest
+        steps:
+            - name: 'deploy'
+              run: echo "::set-output name=test::hello"
