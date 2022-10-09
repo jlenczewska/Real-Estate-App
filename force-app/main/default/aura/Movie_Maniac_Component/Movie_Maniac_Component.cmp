@@ -1,0 +1,30 @@
+<aura:component description="Movie_Maniac_Component" implements="force:appHostable" controller="MM_Movie_Maniac_ComponentController">
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}" />
+
+    <aura:handler name="displayMovieDetailsEvent" event="c:displayMovieDetailsEvent"
+                  action="{!c.onMovieDetailsSet}"/>
+
+    <aura:handler name="MM_displayActorsDetailsEvent" event="c:MM_displayActorsDetailsEvent"
+                  action="{!c.onActorDetailsSet}"/>
+
+    <aura:attribute name="whatComponentToDisplay" type="String" default="movieList"/>
+    <aura:attribute name="MovieIdToFetch" type="Integer"/>
+    <aura:attribute name="ActorIdToFetch" type="Integer"/>
+    <aura:attribute name="movieGenres" type="List" access="public"/>
+    <aura:attribute name="movieGenresValues" type="List" access="public"/>
+
+    <aura:if isTrue="{!v.whatComponentToDisplay == 'movieList'}">
+        <c:MM_MovieCards movieGenresValues="{!v.movieGenresValues}" movieGenres="{!v.movieGenres}"></c:MM_MovieCards>
+        <!--        //aktorzy-->
+        <!--        <aura:set attribute="else">-->
+        <!--            //spiner-->
+        <!--        </aura:set>-->
+    </aura:if>
+    <aura:if isTrue="{!v.whatComponentToDisplay == 'movieDetails'}">
+        <c:MM_MovieDetailContainer  movieGenres="{!v.movieGenres}" movieId="{!v.MovieIdToFetch}"></c:MM_MovieDetailContainer>
+    </aura:if>
+    <aura:if isTrue="{!v.whatComponentToDisplay == 'actorDetails'}">
+        <c:MM_MovieActorDetails actorId="{!v.ActorIdToFetch}"></c:MM_MovieActorDetails>
+    </aura:if>
+
+</aura:component>

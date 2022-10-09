@@ -1,0 +1,687 @@
+<apex:page id="HP_RESTCrudSearch" lightningStyleSheets="true" controller="HP_RESTCrudSearchController"
+           docType="html-5.0">
+
+    <style type="text/css">
+        body .bPageBlock, body #bodyCell .bResource .secondaryPalette, body .secondaryPalette.bPageBlock, body .individualPalette .secondaryPalette.bPageBlock, body .bodyDiv .genericTable, body .genericPageBlockTable, body .bodyDiv .bSubBlock, body .bComponentBlock .bPageBlock, body .bMyDashboard .bPageBlock, body.rlHoverFrame .bPageBlock, body.subjectSelectionPopup div.choicesBox, body.lookupTab .secondaryPalette.bPageBlock, body.popupTab .secondaryPalette.bPageBlock, body.UserTagStatsPage .secondaryPalette.bPageBlock {
+        background-color: transparent;
+        border-bottom: 1px solid transparent;
+        border-left: 1px solid transparent;
+        border-right: 1px solid transparent;
+        }
+
+        .Custom15Tab .listViewport .subNav .linkBar, .Custom15Tab .mComponent .cHeader, .Custom15Tab .genericTable, .Custom15Tab .bSubBlock, .Custom15Tab .bPageBlock {
+            border-top: 3px solid transparent;
+        }
+
+        input[type="text"],input[type="number"],input[type="date"],input[type="email"]{
+             width: 200px !important;
+        }
+
+        div#HP_RESTCrudSearch\:searchDoctorsForm\:j_id3{
+             background: rgb(83 188 239 / 11%);
+        }
+
+        div#modal-content-id-1 .bPageBlock{
+            display: flex;
+            justify-content: center;
+        }
+
+        .slds-grid.slds-gutters .slds-col{
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .message tr td:nth-child(1){
+            width: 40px;
+        }
+
+        .message {
+            height: 50px;
+            display: flex;
+            border: none;
+        }
+
+        .message.infoM3{
+            background: #3491e75c;
+        }
+
+        .message.warningM3{
+            background: #ffc51c73;
+        }
+
+        .message.errorM3, .message.errorM4{
+            background: #ff1c1c82;
+        }
+
+        .slds-backdrop.slds-backdrop_open{
+             backdrop-filter: blur(2px);
+        }
+
+        div#HP_RESTCrudSearch\:searchDoctorsForm\:j_id3\:j_id4\:j_id6 td{
+            padding-left: 0;
+        }
+
+        div#HP_RESTCrudSearch\:searchDoctorsForm\:j_id3\:j_id4\:j_id6 th{
+            padding-left: 30px;
+        }
+
+    </style>
+
+    <apex:slds />
+    <div class="slds-scope">
+        <apex:form id="searchDoctorsForm">
+            <apex:outputPanel id="mainContainer" layout="block">
+                <apex:pageBlock rendered="true">
+                    <apex:pageBlockSection columns="3">
+                        <br/>
+                        <apex:pageBlockSection columns="2">
+
+                            <apex:inputText value="{!doctor.first_name}" required="false" styleClass="slds-input"
+                                            label="{! $Label.HP_First_Name}"/>
+                            <apex:inputText value="{!doctor.email1}" label="{! $Label.HP_Email}"
+                                            styleClass="slds-input"/>
+                            <apex:inputText value="{!doctor.last_name}" required="false" styleClass="slds-input"
+                                            label="{! $Label.HP_Last_Name}"/>
+                            <apex:inputText value="{!doctor.country1}" label="{! $Label.HP_Country}"
+                                            styleClass="slds-input"/>
+                        </apex:pageBlockSection>
+
+                    </apex:pageBlockSection>
+
+                    <br/>
+                    <div class="slds-grid slds-grid_align-center">
+                        <apex:commandButton value="{! $Label.HP_Search}" action="{!searchDoctors}"
+                                            styleClass="slds-button slds-button_neutral"/>
+                        <apex:commandButton value="{! $Label.HP_Clear}" id="clearFormButton" onClick="clearForm()"
+                                            reRender="none" styleClass="slds-button slds-button_neutral"/>
+                        <apex:actionFunction name="clearResults" action="{! clearResults}"/>
+
+                    </div>
+                    <br/>
+                    <div class="slds-grid slds-grid_align-center">
+                        <apex:commandButton value="{! $Label.HP_Add_Doctor}" onClick="addNewDoctorJS()"
+                                            reRender="mainContainer" styleClass="slds-button slds-button_neutral"/>
+                    </div>
+                    <br/>
+
+                    <apex:pageMessages ></apex:pageMessages>
+
+                </apex:pageBlock>
+
+                <apex:pageBlock >
+                    <apex:outputtext value="{!$Label.HP_Number_of_doctors_found}">
+                        <apex:param value="{!numberOfRecords}">
+                        </apex:param>
+                    </apex:outputtext>
+                    <br/><br/>
+
+                    <apex:variable value="{!1}" var="rowNumber"/>
+                    <apex:variable var="rowLimit"
+                                   value="{!if ((offsetNumber + doctorsPerPageOptionsValue)< numberOfRecords, offsetNumber + doctorsPerPageOptionsValue, numberOfRecords) }"/>
+
+                    <apex:pageBlockTable value="{!doctorList}" var="doc"
+                                         styleClass="slds-table slds-table_cell-buffer slds-table_bordered">
+
+                        <apex:column headerValue="{! $Label.HP_Full_Name}">
+                            <apex:outputText value="{!doc.first_name} {!doc.last_name}"
+                                             rendered="{!if(rowNumber<=rowLimit, if(rowNumber>offsetNumber,true, false), false)}"></apex:outputText>
+                        </apex:column>
+
+                        <apex:column headerValue="{! $Label.HP_Email}">
+                            <apex:outputText value="{!doc.email1}"
+                                             rendered="{!if(rowNumber<=rowLimit, if(rowNumber>offsetNumber,true, false), false)}"></apex:outputText>
+                        </apex:column>
+
+                        <apex:column headerValue="{! $Label.HP_Full_Address}">
+                            <apex:outputText value="{!doc.street} {!doc.postal_code} {!doc.city} {!doc.country1} "
+                                             rendered="{!if(rowNumber<=rowLimit, if(rowNumber>offsetNumber,true, false), false)}"></apex:outputText>
+                        </apex:column>
+
+                        <apex:column headerValue="{! $Label.HP_Phone}" >
+                            <apex:outputText value="{!doc.phone}"
+                                             rendered="{!if(rowNumber<=rowLimit, if(rowNumber>offsetNumber,true, false), false)}"></apex:outputText>
+
+                        </apex:column>
+
+                        <apex:column headerValue="{! $Label.HP_Speciality}">
+                            <apex:outputText value="{!doc.speciality}"
+                                             rendered="{!if(rowNumber<=rowLimit, if(rowNumber>offsetNumber,true, false), false)}"></apex:outputText>
+                        </apex:column>
+
+                        <apex:column headerValue="{! $Label.HP_Date_of_Birth}">
+                            <apex:outputText value="{0,date,dd'.'MM'.'yyyy}"
+                                             rendered="{!if(rowNumber<=rowLimit, if(rowNumber>offsetNumber,true, false), false)}">
+                                <apex:param value="{! doc.date_of_birth}"/>
+                            </apex:outputText>
+                        </apex:column>
+
+                        <apex:column headerValue="{! $Label.HP_Start_of_Career}">
+                            <apex:outputText value="{0,date,dd'.'MM'.'yyyy}"
+                                             rendered="{!if(rowNumber<=rowLimit, if(rowNumber>offsetNumber,true, false), false)}">
+                                <apex:param value="{! doc.start_of_career}"/>
+                            </apex:outputText>
+                        </apex:column>
+
+                        <apex:column >
+                            <apex:commandLink onclick="deleteDoctorJS('{!doc.Id}' )" value="{!$Label.HP_delete}"
+                                              reRender="none"
+                                              rendered="{!if(rowNumber<=rowLimit, if(rowNumber>offsetNumber,true, false), false)}">
+                            </apex:commandLink>
+                        </apex:column>
+
+
+                        <apex:column >
+                            <apex:commandLink onclick="updateDoctorJS('{!doc.Id}')" value="{!$Label.HP_Update}"
+                                              rerender="mainContainer" status="AddStatus"
+                                              rendered="{!if(rowNumber<=rowLimit, if(rowNumber>offsetNumber,true, false), false)}">
+                            </apex:commandLink>
+                        </apex:column>
+
+                        <apex:column style="display: none">
+                            <apex:variable var="rowNumber" value="{!rowNumber + 1}"/>
+                        </apex:column>
+
+                    </apex:pageBlockTable>
+
+                    <apex:actionFunction action="{!deleteDoctor}" name="deleteDoctor" rerender="mainContainer" oncomplete="updateTableLook()">
+                        <apex:param id="deleteDoctorId" name="deleteDoctorId" assignTo="{!deleteDoctorId}"
+                                    value="{!deleteDoctorId}"/>
+                    </apex:actionFunction>
+
+                    <apex:actionFunction action="{!loadDoctorToUpdate}" name="loadDoctorToUpdate"
+                                         rerender="updateDoctorForm" oncomplete="updateTableLook()">
+                        <apex:param id="updateDoctorId" name="updateDoctorId" assignTo="{!updateDoctorId}"
+                                    value="{!updateDoctorId}"/>
+
+                    </apex:actionFunction>
+
+                    <apex:outputPanel rendered="{! if(numberOfRecords == 0 ,true,false) }">
+                        <h1><br/>{!$Label.HP_NoRecordsFound}</h1>
+                    </apex:outputPanel>
+
+                    <apex:pageBlock >
+                        <apex:pageblockButtons location="bottom">
+                            <apex:outputLabel value="{!$Label.HP_Records_per_page} "/>
+                            <apex:commandButton value="10" action="{!changeRecordPerPageTo10}"
+                                                styleClass="slds-button slds-button_brand"/>
+                            <apex:commandButton value="20" action="{!changeRecordPerPageTo20}"
+                                                styleClass="slds-button slds-button_brand"/>
+                            <apex:commandButton value="50" action="{!changeRecordPerPageTo50}"
+                                                styleClass="slds-button slds-button_brand"/>
+                        </apex:pageblockButtons>
+
+                        <apex:pageblockButtons location="bottom">
+                            <apex:commandButton value="{! $Label.HP_First}" action="{!firstPage}"
+                                                disabled="{!offsetNumber<doctorsPerPageOptionsValue}"
+                                                styleClass="slds-button slds-button_brand"/>
+                            <apex:commandButton value="{!$Label.HP_Previous}" action="{!previousPage}"
+                                                disabled="{!offsetNumber<doctorsPerPageOptionsValue}"
+                                                styleClass="slds-button slds-button_brand"/>
+                            <apex:commandButton value="{!$Label.HP_Next}" action="{!nextPage}"
+                                                disabled="{!offsetNumber>=numberOfRecords-doctorsPerPageOptionsValue}"
+                                                styleClass="slds-button slds-button_brand"/>
+                            <apex:commandButton value="{!$Label.HP_Last}" action="{!lastPage}"
+                                                disabled="{!offsetNumber>=numberOfRecords-doctorsPerPageOptionsValue}"
+                                                styleClass="slds-button slds-button_brand"/>
+                        </apex:pageblockButtons>
+                    </apex:pageBlock>
+                </apex:pageBlock>
+                <apex:outputText value="{!$Label.HP_Showing_no_records_of}">
+
+                    <apex:param value="{!if ((numberOfRecords == 0),0,(offsetNumber+1)) }"/>
+                    <apex:param value="{!if ((offsetNumber + doctorsPerPageOptionsValue)< numberOfRecords, offsetNumber + doctorsPerPageOptionsValue, offsetNumber + mod(numberOfRecords,doctorsPerPageOptionsValue)) }"/>
+                    <apex:param value="{!numberOfRecords}"/>
+
+                </apex:outputText>
+            </apex:outputPanel>
+        </apex:form>
+
+        <div id="addNewDoctor" style="display:none">
+            <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-hidden="true"
+                     aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                <div class="slds-modal__container">
+                    <header class="slds-modal__header">
+                        <h2 id="modal-heading-01"
+                            class="slds-text-heading_medium slds-hyphenate">{! $Label.HP_Add_Doctor }</h2>
+                    </header>
+                    <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+
+                        <apex:pageBlock >
+                            <apex:form id="addDoctorForm">
+
+                                <div class="slds-grid slds-gutters">
+
+                                    <div class="slds-col">
+
+                                        <div class="slds-form-element">
+                                            <label class="slds-form-element__label"
+                                                   for="first_name1">
+                                                <abbr class="slds-required" title="required">* </abbr>
+                                                {!$Label.HP_First_Name}</label>
+                                            <div class="slds-form-element__control">
+                                                <apex:inputText id="first_name1" required="true"
+                                                                styleClass="slds-input"
+                                                                value="{!doctorToAdd.first_name}"/>
+                                            </div>
+                                        </div>
+
+                                        <div class="slds-form-element">
+                                            <label class="slds-form-element__label"
+                                                   for="email1"><abbr class="slds-required"
+                                                                      title="required">* </abbr>{!$Label.HP_Email}
+                                            </label>
+                                            <div class="slds-form-element__control">
+                                                <apex:input type="email" id="email1" required="true"
+                                                            styleClass="slds-input"
+                                                            value="{!doctorToAdd.email1}"/>
+                                            </div>
+                                        </div>
+
+                                        <div class="slds-form-element">
+                                            <label class="slds-form-element__label"
+                                                   for="phone1">{!$Label.HP_Phone}</label>
+                                            <div class="slds-form-element__control">
+                                                <apex:input type="text" id="phone1" required="false"
+                                                            styleClass="slds-input"
+                                                            value="{!doctorToAdd.phone}"/>
+                                            </div>
+                                        </div>
+
+                                        <div class="slds-form-element">
+                                            <label class="slds-form-element__label"
+                                                   for="city1">{!$Label.HP_City}</label>
+                                            <div class="slds-form-element__control">
+                                                <apex:inputText id="city1" required="false" styleClass="slds-input"
+                                                                value="{!doctorToAdd.city}"/>
+                                            </div>
+                                        </div>
+
+                                        <div class="slds-form-element">
+                                            <label class="slds-form-element__label"
+                                                   for="country1">{!$Label.HP_Country}</label>
+                                            <div class="slds-form-element__control">
+                                                <apex:inputText id="country1" required="false"
+                                                                styleClass="slds-input"
+                                                                value="{!doctorToAdd.country1}"/>
+                                            </div>
+                                        </div>
+
+                                        <div class="slds-form-element">
+                                            <label class="slds-form-element__label" for="Date_of_Birth1">
+                                                {!$Label.HP_Date_of_Birth}</label>
+                                            <div class="slds-form-element__control">
+                                                <apex:input type="date" id="Date_of_Birth1" required="false"
+                                                            styleClass="slds-input"
+                                                            value="{!doctorToAdd.date_of_birth}"
+                                                            html-min="1880-01-01" html-max="2050-12-31"
+                                                />
+                                            </div>
+                                        </div>
+
+                                        <div class="slds-form-element">
+                                            <label class="slds-form-element__label" for="start_of_career1">
+                                                {!$Label.HP_Start_of_Career}</label>
+                                            <div class="slds-form-element__control">
+                                                <apex:input type="date" id="start_of_career1" required="false"
+                                                            styleClass="slds-input"
+                                                            value="{!doctorToAdd.start_of_career}"
+                                                            html-min="1880-01-01" html-max="2050-12-31"/>
+                                            </div>
+                                        </div>
+
+                                    </div>
+
+                                    <div class="slds-col">
+
+                                        <div class="slds-form-element">
+                                            <label class="slds-form-element__label"
+                                                   for="last_name1">
+                                                <abbr class="slds-required" title="required">* </abbr>
+                                                {!$Label.HP_Last_name}</label>
+                                            <div class="slds-form-element__control">
+                                                <apex:inputText id="last_name1" required="true"
+                                                                styleClass="slds-input"
+                                                                value="{!doctorToAdd.last_name}"/>
+                                            </div>
+                                        </div>
+
+                                        <div class="slds-form-element">
+                                            <label class="slds-form-element__label"
+                                                   for="license_number1">
+                                                <abbr class="slds-required" title="required">* </abbr>
+                                                {!$Label.HP_License_Number}</label>
+                                            <div class="slds-form-element__control">
+                                                <apex:inputText id="license_number1" required="true"
+                                                                styleClass="slds-input"
+                                                                value="{!doctorToAdd.license_number}"/>
+                                            </div>
+                                        </div>
+
+                                        <div class="slds-form-element">
+                                            <label class="slds-form-element__label"
+                                                   for="speciality1">{!$Label.HP_Speciality}</label>
+                                            <div class="slds-form-element__control">
+                                                <apex:inputText id="speciality1" required="false"
+                                                                styleClass="slds-input"
+                                                                value="{!doctorToAdd.speciality}"/>
+                                            </div>
+                                        </div>
+
+                                        <div class="slds-form-element">
+                                            <label class="slds-form-element__label"
+                                                   for="postal_code1">{!$Label.HP_Postal_Code}</label>
+                                            <div class="slds-form-element__control">
+                                                <apex:inputText id="postal_code1" required="false"
+                                                                styleClass="slds-input"
+                                                                value="{!doctorToAdd.postal_code}"/>
+                                            </div>
+                                        </div>
+
+                                        <div class="slds-form-element">
+                                            <label class="slds-form-element__label"
+                                                   for="street1">{!$Label.HP_Street}</label>
+                                            <div class="slds-form-element__control">
+                                                <apex:inputText id="street1" required="false" styleClass="slds-input"
+                                                                value="{!doctorToAdd.street}"/>
+                                            </div>
+                                        </div>
+
+                                        <div class="slds-form-element">
+                                            <label class="slds-form-element__label" for="nationality1">
+                                                {!$Label.HP_Nationality}</label>
+                                            <div class="slds-form-element__control">
+                                                <apex:inputText id="nationality1" required="false"
+                                                                styleClass="slds-input"
+                                                                value="{!doctorToAdd.nationality}"/>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <br/>
+                                <div class="slds-grid slds-grid_align-center">
+                                    <apex:commandButton value="{!$Label.HP_Add_Doctor}" action="{!addNewDoctor}"
+                                                        styleClass="slds-button slds-button_neutral"/>
+
+                                    <button class="slds-button slds-button_neutral"
+                                            onclick="closeModalAddDoctor();updateTableLook(); return false;"> {! $Label.HP_Close}
+                                    </button>
+                                </div>
+                            </apex:form>
+                        </apex:pageBlock>
+
+                    </div>
+
+                </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open"></div>
+        </div>
+
+        <div id="updateUserModal" style="display:none">
+
+            <section role="dialog" tabindex="-1" aria-labelledby="modal-heading-01" aria-hidden="true"
+                     aria-describedby="modal-content-id-1" class="slds-modal slds-fade-in-open">
+                <div class="slds-modal__container">
+
+                    <header class="slds-modal__header">
+
+                        <h2 id="modal-heading-01"
+                            class="slds-text-heading_medium slds-hyphenate">{! $Label.HP_Update_Doctor }</h2>
+                    </header>
+                    <div class="slds-modal__content slds-p-around_medium" id="modal-content-id-1">
+
+                        <apex:pageBlock >
+
+                            <apex:actionStatus id="AddStatus">
+                                <apex:facet name="start">
+                                    <apex:outputPanel >
+                                        <img src="https://britenet28-dev-ed.file.force.com/servlet/servlet.ImageServer?id=0157Q000001NJ75&oid=00D7Q000008MVEQ&lastMod=1661690021000"
+                                             width="100" loading="lazy"/>
+
+                                    </apex:outputPanel>
+                                </apex:facet>
+
+                                <apex:facet name="stop">
+
+                                    <apex:form id="updateDoctorForm">
+
+                                        <div class="slds-grid slds-gutters">
+
+                                            <div class="slds-col">
+
+                                                <div class="slds-form-element">
+                                                    <label class="slds-form-element__label"
+                                                           for="first_name1">
+                                                        <abbr class="slds-required" title="required">* </abbr>
+                                                        {!$Label.HP_First_Name}</label>
+                                                    <div class="slds-form-element__control">
+                                                        <apex:inputText id="first_name1" required="true"
+                                                                        styleClass="slds-input"
+                                                                        value="{!doctorToUpdate.first_name}"/>
+                                                    </div>
+                                                </div>
+
+                                                <div class="slds-form-element">
+                                                    <label class="slds-form-element__label"
+                                                           for="email1"><abbr class="slds-required"
+                                                                              title="required">* </abbr>{!$Label.HP_Email}
+                                                    </label>
+                                                    <div class="slds-form-element__control">
+                                                        <apex:input type="email" id="email1" required="true"
+                                                                    styleClass="slds-input"
+                                                                    value="{!doctorToUpdate.email1}"/>
+                                                    </div>
+                                                </div>
+
+                                                <div class="slds-form-element">
+                                                    <label class="slds-form-element__label"
+                                                           for="phone1">{!$Label.HP_Phone}</label>
+                                                    <div class="slds-form-element__control">
+                                                        <apex:input type="text" id="phone1" required="false"
+                                                                    styleClass="slds-input"
+                                                                    value="{!doctorToUpdate.phone}"/>
+                                                    </div>
+                                                </div>
+
+                                                <div class="slds-form-element">
+                                                    <label class="slds-form-element__label"
+                                                           for="city1">{!$Label.HP_City}</label>
+                                                    <div class="slds-form-element__control">
+                                                        <apex:inputText id="city1" required="false"
+                                                                        styleClass="slds-input"
+                                                                        value="{!doctorToUpdate.city}"/>
+                                                    </div>
+                                                </div>
+
+                                                <div class="slds-form-element">
+                                                    <label class="slds-form-element__label"
+                                                           for="country1">{!$Label.HP_Country}</label>
+                                                    <div class="slds-form-element__control">
+                                                        <apex:inputText id="country1" required="false"
+                                                                        styleClass="slds-input"
+                                                                        value="{!doctorToUpdate.country1}"/>
+                                                    </div>
+                                                </div>
+
+                                                <div class="slds-form-element">
+                                                    <label class="slds-form-element__label" for="Date_of_Birth1">
+                                                        {!$Label.HP_Date_of_Birth}</label>
+                                                    <div class="slds-form-element__control">
+                                                        <apex:input type="date" id="Date_of_Birth1" required="false"
+                                                                    styleClass="slds-input"
+                                                                    value="{!doctorToUpdate.date_of_birth}"
+                                                                    html-min="1880-01-01" html-max="2050-12-31"/>
+                                                    </div>
+                                                </div>
+
+                                                <div class="slds-form-element">
+                                                    <label class="slds-form-element__label" for="start_of_career1">
+                                                        {!$Label.HP_Start_of_Career}</label>
+                                                    <div class="slds-form-element__control">
+                                                        <apex:input type="date" id="start_of_career1" required="false"
+                                                                    styleClass="slds-input"
+                                                                    value="{!doctorToUpdate.start_of_career}"
+                                                                    html-min="1880-01-01" html-max="2050-12-31"/>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <div class="slds-col">
+
+                                                <div class="slds-form-element">
+                                                    <label class="slds-form-element__label"
+                                                           for="last_name1">
+                                                        <abbr class="slds-required" title="required">* </abbr>
+                                                        {!$Label.HP_Last_name}</label>
+                                                    <div class="slds-form-element__control">
+                                                        <apex:inputText id="last_name1" required="true"
+                                                                        styleClass="slds-input"
+                                                                        value="{!doctorToUpdate.last_name}"/>
+                                                    </div>
+                                                </div>
+
+                                                <div class="slds-form-element">
+                                                    <label class="slds-form-element__label"
+                                                           for="license_number1">
+                                                        <abbr class="slds-required" title="required">* </abbr>
+                                                        {!$Label.HP_License_Number}</label>
+                                                    <div class="slds-form-element__control">
+                                                        <apex:inputText id="license_number1" required="true"
+                                                                        styleClass="slds-input"
+                                                                        value="{!doctorToUpdate.license_number}"/>
+                                                    </div>
+                                                </div>
+
+                                                <div class="slds-form-element">
+                                                    <label class="slds-form-element__label"
+                                                           for="speciality1">{!$Label.HP_Speciality}</label>
+                                                    <div class="slds-form-element__control">
+                                                        <apex:inputText id="speciality1" required="false"
+                                                                        styleClass="slds-input"
+                                                                        value="{!doctorToUpdate.speciality}"/>
+                                                    </div>
+                                                </div>
+
+                                                <div class="slds-form-element">
+                                                    <label class="slds-form-element__label"
+                                                           for="postal_code1">{!$Label.HP_Postal_Code}</label>
+                                                    <div class="slds-form-element__control">
+                                                        <apex:inputText id="postal_code1" required="false"
+                                                                        styleClass="slds-input"
+                                                                        value="{!doctorToUpdate.postal_code}"/>
+                                                    </div>
+                                                </div>
+
+                                                <div class="slds-form-element">
+                                                    <label class="slds-form-element__label"
+                                                           for="street1">{!$Label.HP_Street}</label>
+                                                    <div class="slds-form-element__control">
+                                                        <apex:inputText id="street1" required="false"
+                                                                        styleClass="slds-input"
+                                                                        value="{!doctorToUpdate.street}"/>
+                                                    </div>
+                                                </div>
+
+                                                <div class="slds-form-element">
+                                                    <label class="slds-form-element__label" for="nationality1">
+                                                        {!$Label.HP_Nationality}</label>
+                                                    <div class="slds-form-element__control">
+                                                        <apex:inputText id="nationality1" required="false"
+                                                                        styleClass="slds-input"
+                                                                        value="{!doctorToUpdate.nationality}"/>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+
+                                        <br/>
+                                        <div class="slds-grid slds-grid_align-center">
+                                            <apex:commandButton value="{!$Label.HP_Update}" action="{!updateDoctor}"
+                                                                styleClass="slds-button slds-button_neutral"/>
+
+                                            <button class="slds-button slds-button_neutral"
+                                                    onclick="closeModalUpdate();updateTableLook(); return false;"> {! $Label.HP_Close}
+                                            </button>
+
+                                        </div>
+
+
+                                    </apex:form>
+
+                                </apex:facet>
+                            </apex:actionStatus>
+
+                        </apex:pageBlock>
+
+                    </div>
+
+                </div>
+            </section>
+            <div class="slds-backdrop slds-backdrop_open"></div>
+
+        </div>
+    </div>
+
+    <script type="text/javascript">
+
+    function clearForm(){
+        document.querySelector('[name="HP_RESTCrudSearch:searchDoctorsForm:j_id3:j_id4:j_id6:j_id7"]').value = '';
+        document.querySelector('[name="HP_RESTCrudSearch:searchDoctorsForm:j_id3:j_id4:j_id6:j_id8"]').value = '';
+        document.querySelector('[name="HP_RESTCrudSearch:searchDoctorsForm:j_id3:j_id4:j_id6:j_id9"]').value = '';
+        document.querySelector('[name="HP_RESTCrudSearch:searchDoctorsForm:j_id3:j_id4:j_id6:j_id10"]').value = '';
+
+        clearResults();
+    }
+
+    var modalUdpdateUser = document.getElementById('updateUserModal');
+    var modalAddDoctor = document.getElementById('addNewDoctor');
+
+    function deleteDoctorJS(userID){
+            window.$Label = window.$Label || {};
+            $Label.HP_Are_you_sure_you_want_to_delete_the_doctor = '{!JSENCODE($Label.HP_Are_you_sure_you_want_to_delete_the_doctor)}';
+            confirmBoxAnswear = confirm($Label.HP_Are_you_sure_you_want_to_delete_the_doctor)
+            if(confirmBoxAnswear){
+             deleteDoctor(userID);
+            }
+    }
+
+    function updateDoctorJS(doctorId){
+        loadDoctorToUpdate(doctorId);
+        modalUdpdateUser.style.display = "flex";
+        updateTableLook();
+    }
+
+    function closeModalUpdate(){
+        modalUdpdateUser.style.display = "none";
+        updateTableLook();
+    }
+
+    function addNewDoctorJS(userID){
+        modalAddDoctor.style.display = "flex";
+        updateTableLook();
+    }
+
+    function closeModalAddDoctor(){
+        modalAddDoctor.style.display = "none";
+        updateTableLook();
+    }
+
+    function updateTableLook (){
+       var doctorsInfoData = document.getElementsByClassName('slds-table_bordered')[0];
+       var doctorsInfoDataRows = doctorsInfoData.childNodes[2].childNodes;
+
+        for(let i=0; i<doctorsInfoDataRows.length; i++){
+            if(doctorsInfoDataRows[i].clientHeight < 15){
+               doctorsInfoDataRows[i].style.display = "none";
+            }
+        }
+    }
+
+     (function(window) {
+     updateTableLook()
+    })(window);
+
+    </script>
+</apex:page>

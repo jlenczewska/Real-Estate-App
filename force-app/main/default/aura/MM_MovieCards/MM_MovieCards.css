@@ -1,0 +1,132 @@
+.THIS{
+     font-family: 'Raleway', sans-serif;
+}
+
+ .THIS.moviesContainerCards article.slds-card.cMM_MovieCard:first-child{
+     margin-top: 16px;
+}
+ .THIS .moviesContainerCards{
+     display: grid;
+     grid-template-columns: 1fr 1fr;
+     grid-gap: 20px;
+     padding: 0 20px;
+}
+ .THIS .moviesContainerCards article.slds-card.cMM_MovieCard:first-child{
+     margin-top: 16px;
+}
+ .THIS .buttonActive{
+    border: none;
+    padding: 0px 30px;
+    font-size: 16px;
+    background: #000000;
+    height: 40px;
+    border-radius: 5px;
+    color: gainsboro;
+}
+
+.THIS .buttonActive{
+    border: none;
+    padding: 0px 30px;
+    font-size: 16px;
+    background: #000000;
+    height: 40px;
+    border-radius: 5px;
+    color: gainsboro;
+}
+
+.THIS .buttonActive:hover{
+    background: #000000;
+}
+
+ .THIS .buttonActive:disabled, .THIS .buttonActive[disabled]{
+     border: none;
+     padding: 0px 30px;
+     font-size: 16px;
+     background: #d2d2d2;
+     height: 40px;
+     border-radius: 5px;
+     color: #363636;
+}
+ .THIS .buttonContainer{
+     display: flex;
+     justify-content: center;
+     gap: 20px;
+     margin: 20px 0;
+}
+
+.THIS .actorsContainerCards{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-evenly;
+}
+
+.THIS.actorsContainerCards{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: space-around;
+}
+
+.THIS .searchBar{
+    width: 300px;
+    display: flex;
+    height: 40px;
+}
+
+.THIS .searchBar input{
+    width: 300px;
+    display: flex;
+    height: 40px;
+}
+
+.THIS .searchContainer{
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    gap: 20px;
+    margin: 1rem 0;
+}
+
+.THIS .searchContainer select{
+  height: 40px;
+}
+
+.THIS .searchButton{
+        border: none;
+        padding: 0 30px;
+        font-size: 14px;
+        background: #000000;
+        height: 40px;
+        border-radius: 5px;
+        color: gainsboro;
+        margin-right: 20px;
+}
+
+.THIS #brandBand_2{
+       width: 328px;
+}
+
+.THIS .slds-form-element__control.slds-grow{
+width: 328px;
+}
+
+.THIS .slds-tabs_default__item.slds-is-active {
+    background: #fef2eb !important;
+}
+
+.THIS .slds-tabs_default__item.slds-active:after,
+ .THIS .slds-tabs_default__item.slds-is-active:after,
+  .THIS .slds-tabs--default__item.slds-active:after,
+  .THIS  .slds-tabs--default__item.slds-is-active:after{
+    background-color: #f77f3a !important;
+}
+
+.THIS .slds-tabs_default__item:hover:after,
+.THIS  .slds-tabs--default__item:hover:after{
+background-color: #f77f3a !important;
+}
+
+.THIS ul.slds-tabs_default__nav{
+    padding-left: 20px
+}

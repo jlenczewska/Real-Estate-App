@@ -1,0 +1,133 @@
+.THIS .slds-card+.slds-card {
+          margin: 1rem 0;
+      }
+
+      .THIS.slds-card+.slds-card {
+                margin: 1rem 0;
+            }
+
+.THIS .star-rating {
+	 font-size: 0;
+	 white-space: nowrap;
+	 display: inline-block;
+	width: 160px;
+        height: 32px;
+	 overflow: hidden;
+	 position: relative;
+	 background: url(/resource/stargray);
+	 background-size: contain;
+         margin-left: 20px;
+         margin-top: 20px;
+}
+
+ .THIS .star-rating i {
+	 opacity: 0;
+	 position: absolute;
+	 left: 0;
+	 top: 0;
+	 height: 100%;
+	 width: 20%;
+	 z-index: 1;
+	 background: url(/resource/starorange);
+	 background-size: contain;
+}
+ .THIS .star-rating input {
+	 -moz-appearance: none;
+	 -webkit-appearance: none;
+	 opacity: 0;
+	 display: inline-block;
+	 width: 20%;
+	 height: 100%;
+	 margin: 0;
+	 padding: 0;
+	 z-index: 2;
+	 position: relative;
+	 cursor: pointer;
+
+}
+ .THIS .star-rating input:hover + i, .THIS .star-rating input:checked + i {
+	 opacity: 1;
+}
+ .THIS .star-rating i ~ i {
+	 width: 40%;
+}
+ .THIS .star-rating i ~ i ~ i {
+	 width: 60%;
+}
+.THIS .star-rating i ~ i ~ i ~ i {
+	 width: 80%;
+}
+ .THIS .star-rating i ~ i ~ i ~ i ~ i {
+	 width: 100%;
+}
+ .THIS .choice {
+	 position: fixed;
+	 top: 0;
+	 left: 0;
+	 right: 0;
+	 text-align: center;
+	 padding: 20px;
+	 display: block;
+}
+ .THIS ::after,.THIS ::before {
+	 height: 100%;
+	 padding: 0;
+	 margin: 0;
+	 box-sizing: border-box;
+	 text-align: center;
+	 vertical-align: middle;
+}
+
+ .THIS .star-rating i {
+	 background: url(/resource/starorange);
+	 background-size: contain;
+}
+
+.THIS .topContainer {
+    display: flex;
+    justify-content: space-between;
+}
+
+ .THIS .singleComment{
+     background: #ebebeb;
+         padding: 10px;
+         margin: 10px;
+ }
+
+ .THIS .commentStars{
+         display: flex;
+         align-items: center;
+ }
+
+ .THIS .commentStars img{
+        width: 20px;
+        margin-right: 4px;
+ }
+
+ .THIS .bottomContainer{
+    display: flex;
+    display: flex;
+    justify-content: space-between;
+ }
+
+ .THIS .deleteButtonElement{
+        border: none;
+        background: rgb(247 127 58);
+        padding: 5px 10px;
+        border-radius: 19px;
+ }
+
+.THIS .formInput{
+    margin: 0 20px;
+}
+
+.THIS .formButton{
+    border: none;
+    padding: 0 30px;
+    font-size: 14px;
+    background: #000000;
+    height: 40px;
+    border-radius: 5px;
+    color: gainsboro;
+    margin: 10px 20px;
+}

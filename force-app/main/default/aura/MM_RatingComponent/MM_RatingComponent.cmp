@@ -1,0 +1,67 @@
+<aura:component description="MM_RatingComponent" controller="MM_AddReview">
+    <aura:registerEvent name="cmpEvent" type="c:MM_CheckForReviews"/>
+
+    <aura:attribute name="movieId" type="Integer" access="public"/>
+    <aura:attribute name="rating" type="Integer" access="public"/>
+    <aura:attribute name="comment" type="String" access="public"/>
+    <aura:attribute name="addedComment" type="Comment__c" access="public"/>
+    <aura:attribute name="allComments" type="List" access="public"/>
+    <aura:attribute name="activeLicense" type="String" access="public"/>
+    <aura:attribute name="userId" type="String" access="public"/>
+
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+
+    <div class="ratingContainer">
+        <aura:if isTrue="{!v.addedComment.CommentText__c == null}">
+            <span class="star-rating" onmousemove="{!c.changeStars}" onclick="{!c.saveStar}" aura:id="star-rating">
+              <input type="radio" name="rating" value="1" id="rating1"/><i></i>
+              <input type="radio" name="rating" value="2" id="rating2"/><i></i>
+              <input type="radio" name="rating" value="3" id="rating3"/><i></i>
+              <input type="radio" name="rating" value="4" id="rating4"/><i></i>
+              <input type="radio" name="rating" value="5" id="rating5"/><i></i>
+            </span>
+            <form>
+                <lightning:textarea name="input" label="" value="" aura:id="textArea" class="formInput"></lightning:textarea>
+                <button onclick="{!c.addReview}" class="formButton">{!$Label.c.MM_Add_comment}</button>
+            </form>
+        </aura:if>
+        <div>
+            <aura:iteration items="{!v.allComments}" var="comment">
+                <div class="singleComment">
+
+                    <div class="topContainer">
+                        <p style="font-size: 16px;font-weight: bold;">{!comment.DisplayedName__c}</p>
+                        <p>{!comment.DateOfReview__c}</p>
+                    </div>
+
+                    <div class="commentInfo">
+                        <p>{!comment.CommentText__c}</p>
+                    </div>
+
+                    <div class="bottomContainer">
+                        <div class="commentStars">
+                            <img loading="lazy"
+                                 src="{!$Resource.starorange}"/>
+                            <p>{!comment.NumberOfStars_c__c}</p>
+                        </div>
+                        <div class="deleteButton">
+                            <aura:if isTrue="{!v.activeLicense == 'System Administrator'}">
+                                <button data-id="{!comment.MovieID__c + ',' + comment.CommenterID__c}"  class="deleteButtonElement"
+                                        onclick="{!c.deleteMovie}">{!$Label.c.HP_delete}
+                                </button>
+
+                                <aura:set attribute="else">
+                                    <aura:if isTrue="{!comment.CommenterID__c == v.userId}">
+                                        <button data-id="{!comment.MovieID__c + ',' + comment.CommenterID__c}"
+                                                onclick="{!c.deleteMovie}" class="deleteButtonElement">DELETE
+                                        </button>
+                                    </aura:if>
+                                </aura:set>
+                            </aura:if>
+                        </div>
+                    </div>
+                </div>
+            </aura:iteration>
+        </div>
+    </div>
+</aura:component>

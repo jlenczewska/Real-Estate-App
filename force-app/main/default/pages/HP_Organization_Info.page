@@ -1,0 +1,127 @@
+<apex:page controller="HP_Organization_InfoController">
+
+    <style type="text/css">
+    div#j_id0\:j_id2\:j_id3{
+       display: flex;
+       justify-content: center;
+    }
+
+    div#j_id0\:j_id2\:j_id3 td.dataCol.first.last{
+       width: 300px;
+    }
+
+    div#j_id0\:j_id2\:j_id12 td.dataCol.first.last,
+    div#j_id0\:j_id2\:j_id17 td.dataCol.first.last
+    {
+       width: 100%
+    }
+
+    .headerRow{
+        height: 30px;
+
+        text-align: center;
+        line-height: 28px;
+    }
+
+    th.headerRow{
+       background: #b4c374 !important;
+       border: 2px solid black !important;
+    }
+
+    .btn{
+        background: #b4c3748a !important;
+        border-radius: 5px !important;
+        line-height: 32px;
+        padding: 0 30px !important;
+        cursor: pointer;
+        font-size: 15px;
+        text-transform: capitalize;
+       color: #fff !important;
+       border: none;
+    }
+
+
+    </style>
+
+    <apex:pageBlock title="Organization info">
+        <apex:outputPanel id="mainContainer" rendered="true" layout="block">
+            <apex:pageBlockSection >
+            </apex:pageBlockSection>
+            <apex:pageBlockSection title="Number of VF Pages">
+                <apex:pageBlockSectionItem >
+                    <apex:outputText value="{!$Label.HP_NumberOfVFPages	}">
+                        <apex:param value="{!nOVFPages}"/>
+                    </apex:outputText>
+                </apex:pageBlockSectionItem>
+            </apex:pageBlockSection>
+            <apex:pageBlockSection title="Number of Apex classes">
+                <apex:pageBlockSectionItem >
+                    <apex:outputText value="{!$Label.HP_NumberOfApexClasses	}">
+                        <apex:param value="{!nOApexClasses}"/>
+                    </apex:outputText>
+                </apex:pageBlockSectionItem>
+            </apex:pageBlockSection>
+            <apex:pageBlockSection title="Number of licenses available by type of license">
+                <apex:pageBlockTable value="{!licencesList}" var="lic">
+                    <apex:column value="{!lic.TotalLicenses}" headerValue="Total Licenses"/>
+                    <apex:column value="{!lic.UsedLicenses}" headerValue="Used Licenses"/>
+                    <apex:column value="{!lic.name}" headerValue="License Name"/>
+                </apex:pageBlockTable>
+            </apex:pageBlockSection>
+
+            <apex:pageBlockSection title="Table with all users">
+                <apex:form id="bottonsDeleteForm">
+                    <apex:pageBlockTable value="{!userList}" var="user">
+                        <apex:column value="{!user.Username}" headerValue="User Name"/>
+                        <apex:column value="{!user.Email}" headerValue="Email"/>
+                        <apex:column value="{!user.IsActive}" headerValue="Active"/>
+                        <apex:column headerValue="Last Login Device">
+                            <apex:repeat value="{!deviceMap}" var="val">
+                                <apex:outputText value="{! if(val == user.id, deviceMap[val], '' ) }"/>
+                            </apex:repeat>
+                        </apex:column>
+                        <apex:column headerValue="View">
+                            <apex:outputLink target="_blank" value="/{!user.id}">View</apex:outputLink>
+                        </apex:column>
+                        <apex:column >
+
+                            <!-- <apex:commandButton action="{!deleteUser}" value="Delete" reRender="mainContainer">-->
+                            <apex:commandButton onclick="showPrompt()" value="Delete" reRender="mainContainer">
+                                <apex:param name="deleteUserId" assignTo="{!deleteUserId}" value="{!user.id}"/>
+                            </apex:commandButton>
+                        </apex:column>
+                    </apex:pageBlockTable>
+
+                    <apex:actionFunction action="{!deleteUser}" name="deleteUser">
+                        <apex:param name="saveStatus" assignTo="{!saveStatus}" value="123456"/>
+                    </apex:actionFunction>
+                </apex:form>
+
+            </apex:pageBlockSection>
+
+        </apex:outputPanel>
+        <br/><br/>
+        <apex:outputText value="{!$Label.HP_ApiSessionID}">
+            <apex:param value="{!$Api.Session_ID}"/>
+        </apex:outputText>
+
+    </apex:pageBlock>
+
+
+    <script>
+        function showPrompt(){
+            confirmBoxAnswear = confirm("Are you sure you want to deactivate the user?")
+            if(confirmBoxAnswear){
+              deleteUser();
+            }
+        }
+        function saveHandler(){
+            // This function will be called after execution of saveFields action in controller.
+        }
+
+
+
+
+    </script>
+
+</apex:page>

@@ -1,0 +1,6 @@
+<aura:event type="COMPONENT" description="displayMovieDetailsEvent">
+
+    <aura:attribute name="whatToShow" type="String" access="global" />
+    <aura:attribute name="MovieIdToFetch" type="Integer" access="global" />
+
+</aura:event>

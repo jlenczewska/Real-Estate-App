@@ -1,0 +1,103 @@
+<aura:component description="MM_MovieCards" controller="MM_MovieCardsController">
+    <aura:handler name="init" value="{!this}" action="{!c.doInit}"/>
+    <aura:attribute name="movieList" type="Object[]"/>
+    <aura:attribute name="actorList" type="Object[]"/>
+    <aura:attribute name="movieListBySearch" type="Object[]" default="[]"/>
+    <aura:attribute name="actorListBySearch" type="Object[]" default="[]"/>
+
+    <aura:attribute name="searchKeyword" type="String"/>
+    <aura:attribute name="searchKeywordActor" type="String"/>
+    <aura:attribute name="movieGenres" type="Map"/>
+    <aura:attribute name="movieGenresValues" type="List"/>
+    <aura:attribute name="noMoreMoviesFound" type="Boolean" default="false"/>
+    <aura:attribute name="movieGenreValue" type="String"/>
+    <aura:attribute name="searchOption" type="String" default="default"/>
+
+    <aura:attribute name="currPage" type="Integer" default="1"/>
+
+    <aura:attribute name="showSpinner" type="Boolean" default="true"/>
+    <aura:if isTrue="{!v.showSpinner}">
+        <div class="demo-only">
+            <div class="slds-spinner_container ">
+                <div role="status" class="slds-spinner slds-spinner_medium slds-spinner_brand">
+                    <span class="slds-assistive-text">Loading</span>
+                    <div class="slds-spinner__dot-a"></div>
+                    <div class="slds-spinner__dot-b"></div>
+                </div>
+            </div>
+        </div>
+    </aura:if>
+    <lightning:card>
+
+        <lightning:tabset selectedTabId="one">
+
+            <lightning:tab label="{!$Label.c.MM_Search_Movies}" id="one">
+
+                <div class="searchContainer">
+                    <lightning:input value="{!v.searchKeyword}"
+                                     placeholder="{!$Label.c.HP_Search}" class="searchBar"/>
+
+                    <div class="searchOptions">
+                        <button onclick="{!c.searchByTitle }" class="searchButton">{!$Label.c.MM_Search_By_Title}</button>
+                        <button onclick="{!c.searchByActor }" class="searchButton">{!$Label.c.MM_Search_By_Actor}</button>
+
+                        <lightning:select name="select1" onchange="{!c.searchByGenre }" aura:id="select1">
+                            <option value="default">{!$Label.c.MM_Choose_Movie_Genre}</option>
+                            <aura:iteration items="{!v.movieGenresValues}" indexVar="key" var="item">
+                                <option value="{!item}">{!item}</option>
+                            </aura:iteration>
+                        </lightning:select>
+                    </div>
+                </div>
+
+                <div class="moviesContainerCards">
+                    <aura:if isTrue="{!v.movieListBySearch.length > 0}">
+
+                        <aura:iteration items="{!v.movieListBySearch}" var="movie">
+                            <c:MM_MovieCard movieGenres="{!v.movieGenres}"
+                                            movieInfoChild="{!movie}"></c:MM_MovieCard>
+                        </aura:iteration>
+                        <aura:set attribute="else">
+                            <aura:iteration items="{!v.movieList}" var="movie">
+                                <c:MM_MovieCard movieGenres="{!v.movieGenres}"
+                                                movieInfoChild="{!movie}"></c:MM_MovieCard>
+                            </aura:iteration>
+                        </aura:set>
+                    </aura:if>
+
+                </div>
+
+                <aura:if isTrue="{!and(v.searchOption != 'searchByTitleActor', v.searchOption != 'searchByActor', v.searchOption != 'searchByTitle') }">
+
+                        <div class="buttonContainer">
+                            <button onclick="{!c.prevPage}" disabled="{!v.currPage == 1}" class="buttonActive">Previous page
+                            </button>
+                            <button onclick="{!c.nextPage}" class="buttonActive">Next page</button>
+                        </div>
+                </aura:if>
+
+            </lightning:tab>
+            <lightning:tab label="{!$Label.c.MM_Search_Actors}" id="two">
+
+                <div class="searchContainer">
+                    <lightning:input value="{!v.searchKeywordActor}" placeholder="Search" class="searchBar"/>
+                        <button onclick="{!c.searchByTitleActor}" class="searchButton">Search For Actors</button>
+                </div>
+
+                <div class="actorsContainerCards">
+
+                    <aura:if isTrue="{!v.actorListBySearch.length > 0}">
+                        <aura:iteration items="{!v.actorListBySearch}" var="actor">
+                            <c:MM_MovieDetailsActor actor="{!actor}"></c:MM_MovieDetailsActor>
+                        </aura:iteration>
+                        <aura:set attribute="else">
+                            <aura:iteration items="{!v.actorList}" var="actor">
+                                <c:MM_MovieDetailsActor actor="{!actor}"></c:MM_MovieDetailsActor>
+                            </aura:iteration>
+                        </aura:set>
+                    </aura:if>
+                </div>
+            </lightning:tab>
+        </lightning:tabset>
+    </lightning:card>
+</aura:component>

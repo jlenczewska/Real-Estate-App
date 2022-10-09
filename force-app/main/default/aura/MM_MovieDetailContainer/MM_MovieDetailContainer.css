@@ -1,0 +1,167 @@
+.THIS .hero {
+     height: 342px;
+     margin: 0;
+     position: relative;
+     overflow: hidden;
+     z-index: 1;
+     border-top-left-radius: 5px;
+     border-top-right-radius: 5px;
+     background-size: cover;
+     -webkit-clip-path: polygon(0 0, 100% 0, 100% 90%, 0 100%);
+     clip-path: polygon(0 0, 102% 0, 100% 90%, 0 100%);
+     position: relative;
+}
+ .THIS .container {
+     margin: 0 auto;
+     width: 100%;
+     height: 640px;
+     background: #F0F0ED;
+     border-radius: 5px;
+     position: relative;
+}
+ .THIS .details {
+     padding: 190px 0 0 350px;
+}
+ .THIS .cover {
+     position: absolute;
+     top: 160px;
+     left: 40px;
+     z-index: 2;
+     width: 250px;
+}
+ .THIS .details .title1 {
+     color: white;
+     font-size: 44px;
+     margin-bottom: 13px;
+     position: relative;
+}
+ .THIS .title1 {
+     color: white;
+     font-size: 44px;
+     margin-bottom: 13px;
+     position: relative;
+     text-shadow: 0 0 20px black;
+     font-weight: bold;
+}
+ .THIS .title1 span {
+     position: absolute;
+     top: 3px;
+     margin-left: 12px;
+     background: #C4AF3D;
+     border-radius: 5px;
+     color: #544C21;
+     font-size: 14px;
+     padding: 0px 4px;
+}
+ .THIS .details .title2 {
+     color: #ffffff;
+     font-size: 23px;
+     margin-bottom: 15px;
+     text-shadow: 0 0 20px black;
+     font-weight: 600;
+}
+ .THIS .tag {
+     background: white;
+     border-radius: 10px;
+     padding: 3px 8px;
+     font-size: 14px;
+     margin-right: 4px;
+     line-height: 35px;
+     cursor: pointer;
+}
+ .THIS .tag:hover {
+     background: #ddd;
+}
+ .THIS .column1 {
+     padding-left: 50px;
+     padding-top: 200px;
+     width: 220px;
+     float: left;
+     text-align: center;
+}
+ .THIS .column2 {
+     padding-left: 41px;
+     padding-top: 15px;
+     margin-left: 80px;
+     width: 75%;
+     float: left;
+}
+
+ .THIS .column2 p{
+    text-align: justify;
+ }
+
+ .THIS .description {
+     bottom: 0px;
+     height: 200px;
+     font-size: 16px;
+     line-height: 26px;
+     color: #B1B0AC;
+}
+ .THIS .slds-card__header{
+     padding: 0 !important;
+     margin: 0 !important;
+}
+ .THIS .slds-card__body{
+     margin: 0 !important;
+}
+ .THIS .actorsContainer {
+     display: grid;
+     grid-template-columns: 1fr 1fr 1fr 1fr 1fr 1fr;
+     width: 100%;
+     justify-items: center;
+     height: 350px;
+     overflow: overlay;
+     gap: 30px;
+     padding: 30px 0;
+}
+ .THIS .ratingCont{
+     background: #d6d6d6;
+     position: absolute;
+     right: 0;
+     top: 0;
+     padding: 10px;
+     font-size: 16px;
+     border: 2px solid #ffffff;
+     display: flex;
+     align-items: center;
+}
+ .THIS .ratingCont img{
+     width: 25px;
+     margin-right: 5px
+}
+ .THIS .ratingCont span{
+     font-size: 12px;
+     margin-left: 5px;
+}
+ .THIS .genreList{
+     list-style: none;
+     display: flex;
+     gap: 20px;
+     flex-direction: row;
+     margin-bottom: 15px;
+}
+ .THIS .genreList li {
+     background: #f77f3a;
+     padding: 3px 10px;
+     color: white;
+     border-radius: 15px;
+}
+ .THIS .genreList .movieDuration {
+     background:#3a76f7
+}
+ .THIS h1{
+     font-size: 24px;
+     font-weight: 600;
+     margin-top: 15px;
+     position: relative;
+     margin-left: 45px;
+}
+ .THIS h1:before{
+     height: 100%;
+     width: 40px;
+     content: '';
+     position: absolute;
+     background: #f77f3a;
+     left: -45px;
+}

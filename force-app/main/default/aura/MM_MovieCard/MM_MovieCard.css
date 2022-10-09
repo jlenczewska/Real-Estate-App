@@ -1,0 +1,166 @@
+.THIS{
+     font-family: 'Raleway', sans-serif;
+}
+ .THIS .card{
+     position: relative;
+     height: 21.25rem;
+     background-color: rgb(10, 10, 10);
+     cursor: pointer;
+}
+ .THIS .card__poster{
+     box-shadow: inset -8px 0 12px 2px black;
+     width: 227px;
+     height: 100%;
+     background-size: contain;
+     background-repeat: no-repeat;
+     position: absolute;
+     left: 0;
+     top: 0;
+}
+ .THIS .slds-card__body{
+     position: relative;
+}
+ .THIS .card__inner {
+     position: relative;
+     z-index: 2;
+     height: 100%;
+}
+ .THIS .card__body {
+     position: absolute;
+     top: 20px;
+         width: 100%;
+}
+ .THIS .card__slug::-webkit-scrollbar {
+     width: 8px;
+     background: #4e4e4e;
+     border-radius: 30px;
+}
+ .THIS .card__slug::-webkit-scrollbar-thumb {
+     background: #bfbfbf;
+     width: 3px;
+     border-radius: 30px;
+}
+
+ .THIS .card__title::-webkit-scrollbar-thumb {
+                        background: #bfbfbf;
+                        width: 3px;
+                        border-radius: 30px;
+                   }
+ .THIS .card__title::-webkit-scrollbar {
+     width: 8px;
+     background: #4e4e4e;
+     border-radius: 30px;
+}
+ .THIS .card__info {
+     position: relative;
+     padding-right: 1.25rem;
+     float: right;
+     width: 65%;
+}
+ .THIS .card__info, .THIS .card__footer {
+     color: #d4d4d4;
+}
+ .THIS .card__title {
+         margin-bottom: 1rem;
+         font-size: 1.1rem;
+         font-weight: 600;
+         text-transform: uppercase;
+         max-height: 72px;
+         overflow-y: overlay;
+         padding-right: 12px;
+}
+ .THIS .card__slug {
+     margin-bottom: 1.25rem;
+     color: rgba(255, 255, 255, 0.95);
+     font-size: 14px;
+     max-height: 130px;
+     overflow-y: overlay;
+     padding-right: 10px;
+     text-align: justify;
+}
+ .THIS .card__btn {
+     display: inline-block;
+     padding: 0.65rem 1.5rem;
+     font-size: 1rem;
+     font-weight: 600;
+     letter-spacing: 0.0625rem;
+     text-transform: uppercase;
+     color: #fff;
+     background: #c62828;
+     border: 0;
+     border-radius: 2.1875rem;
+     box-shadow: 0 10px 20px rgb(0 0 0 / 19%), 0 6px 6px rgb(0 0 0 / 23%);
+     transition: all 0.2s cubic-bezier(0.4, 0, 1, 1);
+}
+ .THIS footer {
+     position: absolute;
+     bottom: 0;
+     padding-top: 1rem;
+     padding-right: 1.25rem;
+     padding-bottom: 1rem;
+     width: 100%;
+}
+ .THIS .list--info {
+     padding-left: 1rem;
+     float: right;
+     justify-content: space-between;
+     width: 65%;
+}
+ .THIS .list {
+     display: flex;
+}
+ .THIS ul {
+     padding: 0;
+     margin: 0;
+     list-style-type: none;
+}
+ .THIS .list--info li {
+     font-size: 0.95rem;
+}
+
+ .THIS .slds-card__header.slds-grid{
+     margin: 0;
+     padding: 0;
+}
+ .THIS .slds-card__body{
+     margin: 0;
+}
+ .THIS article.slds-card.cMM_MovieCard{
+     height: 350px;
+}
+
+.THIS .genreList li:nth-child(2):before{
+    content:'|';
+    padding: 0 3px;
+}
+
+.THIS .genreList li:nth-child(3):before{
+    content:'|';
+    padding: 0 3px;
+}
+
+.THIS .genreList li:nth-child(4):before{
+    content:'|';
+    padding: 0 3px;
+}
+
+.THIS .genreList li:nth-child(5):before{
+    content:'|';
+    padding: 0 3px;
+}
+
+.THIS .genreList li:nth-child(6):before{
+    content:'|';
+    padding: 0 3px;
+}
+
+.THIS .genreList li:nth-child(7):before{
+    content:'|';
+    padding: 0 3px;
+}
+
+.THIS .genreList {
+     display: flex;
+     flex-direction: row;
+     justify-content: flex-end;
+}
