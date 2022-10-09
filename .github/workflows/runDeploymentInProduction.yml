@@ -3,14 +3,11 @@ name: Check-Feature-Branch
 on:
     push:
         branches:
-            - 'RE-[0-9]+'
-            - 'feature/**'
+            - develop
               
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
   build:
-    # The type of runner that the job will run on
+    if: github.event.pull_request.merged == 'true'
     runs-on: ubuntu-latest
     steps:
         - name: Checkout
@@ -30,11 +27,4 @@ jobs:
           run: sfdx force:auth:jwt:grant --clientid=${{ secrets.CONSUMER_KEY }} --username=${{ secrets.USERNAME }} --jwtkeyfile server.key --setdefaultdevhubusername
         
         - name: 'Deploy'
-<<<<<<< HEAD
-          run: sfdx force:source:deploy -u 'julia.lenczewska@britenet.com.pl.prod' -p 'force-app/main/default' --checkonly --testlevel RunLocalTests --json
-=======
           run: sfdx force:source:deploy -u 'julia.lenczewska@britenet.com.pl.prod' -p 'force-app/main/default' --checkonly --testlevel RunLocalTests
->>>>>>> 8f009a354976490d42ddd5b11575628bda15c5a2
-              # with:
-              #   checkonly: true
-                       
