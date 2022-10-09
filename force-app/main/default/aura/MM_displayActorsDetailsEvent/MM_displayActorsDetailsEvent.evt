@@ -1,6 +1,0 @@
-<aura:event type="COMPONENT" description="MM_displayActorsDetailsEvent">
-
-    <aura:attribute name="whatToShow" type="String" access="global" />
-    <aura:attribute name="ActorIdToFetch" type="Integer" access="global" />
-
-</aura:event>
