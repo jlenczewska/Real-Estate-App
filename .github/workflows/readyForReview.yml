@@ -2,8 +2,13 @@ name: Feature Branch Ready For Review
 
 on: 
   pull_request:
-    branches: [feature]
-    types: [ready_for_review]
+    branches:
+            - 'RE-[0-9]+'
+            - 'feature/**'
+            - feature
+    types: 
+            - 'review'
+            - '*review*'
     
 jobs:
   merge-master-back-to-dev:
