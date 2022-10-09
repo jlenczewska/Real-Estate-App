@@ -7,6 +7,6 @@
   ],
   "name": "Real-Estate-App",
   "namespace": "",
-  "sfdcLoginUrl": "https://britenet28-dev-ed.my.salesforce.com/",
+  "sfdcLoginUrl": "https://login.salesforce.com",
   "sourceApiVersion": "55.0"
 }
