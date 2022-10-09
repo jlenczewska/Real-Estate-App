@@ -27,7 +27,7 @@ jobs:
           run: openssl enc -nosalt -aes-256-cbc -d -in assets/server.key.enc -out server.key -base64 -K ${{secrets.DECRYPTION_KEY}} -iv ${{secrets.DECRYPTION_IV}}
 
         - name: 'Authorize'
-          run: sfdx force:auth:jwt:grant --clientid=${{ secrets.CONSUMER_KEY }} --username=${{ secrets.USERNAME }} --jwtkeyfile server.key
+          run: sfdx force:auth:jwt:grant --clientid 3MVG9QV5z8XnLDvzkuftGKB79_1dSSbOyBwO8BKytfi9Cm1nzCYE.5ZLVTZ1n_Ab79s_sxW2e.0p5nafYWllI --jwtkeyfile /Users/julia.lenczewska/keyscertifications/server.key --username julia.lenczewska@britenet.com.pl.prod
         
         - name: 'Deploy'
           run: sfdx force:source:deploy -u 'julia.lenczewska@britenet.com.pl.prod' -p 'force-app/main/default' --checkonly --testlevel RunLocalTests
