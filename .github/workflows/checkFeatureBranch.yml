@@ -3,7 +3,7 @@ name: Check-Feature-Branch
 on:
     push:
         branches:
-            - feature
+            - 'RELEASE feature/RE-[1-9]+'
               
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
