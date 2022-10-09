@@ -10,4 +10,4 @@ jobs:
         runs-on: windows-latest
         steps:
             - name: 'deploy'
-              run: echo "::set-output name=test::hello"
+              checkonly: true
