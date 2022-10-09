@@ -6,9 +6,9 @@ on:
             - 'RE-[0-9]+'
             - 'feature/**'
             - feature
-    types: 
-            - 'review'
-            - '*review*'
+    # types: 
+    #         - 'review'
+    #         - '*review*'
     
 jobs:
   merge-master-back-to-dev:
