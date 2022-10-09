@@ -1,0 +1,35 @@
+name: Check-Feature-Branch
+
+on:
+    push:
+        branches:
+            - feature
+              
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  # This workflow contains a single job called "build"
+  build:
+    # The type of runner that the job will run on
+    runs-on: ubuntu-latest
+    steps:
+        - name: Checkout
+          uses: actions/checkout@v3
+
+        - name: Install Salesforce CLI
+          run: |
+              wget https://developer.salesforce.com/media/salesforce-cli/sfdx-linux-amd64.tar.xz
+              mkdir sfdx-cli
+              tar xJf sfdx-linux-amd64.tar.xz -C sfdx-cli --strip-components 1
+              ./sfdx-cli/install
+            
+        - name: 'Decrypt file'
+          run: openssl enc -nosalt -aes-256-cbc -d -in assets/server.key.enc -out server.key -base64 -K ${{secrets.DECRYPTION_KEY}} -iv ${{secrets.DECRYPTION_IV}}
+
+        - name: 'Authorize'
+          run: sfdx force:auth:jwt:grant --clientid=${{ secrets.CONSUMER_KEY }} --username=${{ secrets.USERNAME }} --jwtkeyfile server.key --setdefaultdevhubusername
+        
+        - name: 'Deploy'
+          run: sfdx force:source:deploy -u 'julia.lenczewska@britenet.com.pl.prod' -p 'force-app/main/default' --checkonly --testlevel RunLocalTests --json
+              # with:
+              #   checkonly: true
+                       
