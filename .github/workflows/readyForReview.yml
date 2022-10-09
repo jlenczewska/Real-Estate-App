@@ -3,11 +3,10 @@ name: Feature Branch Ready For Review
 on:
  pull_request:
    branches: [ develop, feature ]
+  
     
 jobs:
-  merge-master-back-to-dev:
-    if: github.event.pull_request.merged == true
-    timeout-minutes: 2
+  merge-feature-to-develop:
     runs-on: ubuntu-latest
     steps:
     - uses: actions/checkout@v2
