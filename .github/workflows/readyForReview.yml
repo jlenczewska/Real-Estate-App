@@ -1,12 +1,13 @@
 name: Feature Branch Ready For Review
 
 on:
- push:
-   branches: [ develop, feature ]
+ pull_request:
+   branches: [ develop ]
   
     
 jobs:
-  merge-feature-to-develop:
+  build:
+    name: build
     runs-on: ubuntu-latest
     steps:
     
