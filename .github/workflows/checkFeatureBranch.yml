@@ -32,6 +32,5 @@ jobs:
         
         - name: 'Deploy'
           run: sfdx force:source:deploy -u 'julia.lenczewska@britenet.com.pl.prod' -p 'force-app/main/default' --checkonly --testlevel RunLocalTests
-              # with:
-              #   checkonly: true
+
                        
