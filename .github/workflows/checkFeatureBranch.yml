@@ -4,10 +4,15 @@ on:
     push:
         branches:
             - feature
-
+              
 jobs:
     deploy:
         runs-on: windows-latest
         steps:
-            - name: 'deploy'
+          - name: Checkout
+            uses: actions/checkout@v3
+        
+          - name: 'deploy'
+            with:
               checkonly: true
+                       
