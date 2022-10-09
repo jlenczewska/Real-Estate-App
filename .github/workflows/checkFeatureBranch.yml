@@ -30,11 +30,4 @@ jobs:
           run: sfdx force:auth:jwt:grant --clientid=${{ secrets.CONSUMER_KEY }} --username=${{ secrets.USERNAME }} --jwtkeyfile server.key --setdefaultdevhubusername
         
         - name: 'Deploy'
-<<<<<<< HEAD
           run: sfdx force:source:deploy -u 'julia.lenczewska@britenet.com.pl.prod' -p 'force-app/main/default' --checkonly --testlevel RunLocalTests --json
-=======
-          run: sfdx force:source:deploy -u 'julia.lenczewska@britenet.com.pl.prod' -p 'force-app/main/default' --checkonly --testlevel RunLocalTests
->>>>>>> 8f009a354976490d42ddd5b11575628bda15c5a2
-              # with:
-              #   checkonly: true
-                       
