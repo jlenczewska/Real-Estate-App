@@ -1,4 +1,4 @@
-name: Check-Feature-Branch
+name: Run Deployment In Production
 
 on:
     push:
