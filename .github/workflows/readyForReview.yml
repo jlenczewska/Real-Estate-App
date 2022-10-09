@@ -6,6 +6,7 @@ on:
             - 'RE-[0-9]+'
             - 'feature/**'
             - feature
+            - develop
     # types: 
     #         - 'review'
     #         - '*review*'
