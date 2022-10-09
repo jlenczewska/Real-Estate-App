@@ -1,7 +1,7 @@
 name: Feature Branch Ready For Review
 
 on:
- pull_request:
+ push:
    branches: [ develop, feature ]
   
     
@@ -9,7 +9,37 @@ jobs:
   merge-feature-to-develop:
     runs-on: ubuntu-latest
     steps:
+    
+    - name: Checkout
     - uses: actions/checkout@v2
+    
+    - name: Set Git config
+      run: |
+          git config --local user.email "julia.lenczewska@britenet.com.pl"
+          git config --local user.name "jlenczewska"
+          
+    - name: Merge master back to dev
+      run: |
+          git fetch --unshallow
+          git checkout feature
+          git pull
+          git merge --no-ff develop -m "Auto-merge feature to develop"
+          git push
+name: Feature Branch Ready For Review
+
+on:
+ push:
+   branches: [ develop, feature ]
+  
+    
+jobs:
+  merge-feature-to-develop:
+    runs-on: ubuntu-latest
+    steps:
+    
+    - name: Checkout
+    - uses: actions/checkout@v2
+    
     - name: Set Git config
       run: |
           git config --local user.email "julia.lenczewska@britenet.com.pl"
