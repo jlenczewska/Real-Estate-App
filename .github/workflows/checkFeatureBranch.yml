@@ -33,4 +33,4 @@ jobs:
       run: 'echo ${{ secrets.SFDX_AUTH_URL}} > SFDX_QA'
 
     - name: 'Authenticate against dev hub'
-      run: 'sfdx auth:sfdxurl:store -f SFDX_QA -s -a LRQA
+      run: sfdx auth:sfdxurl:store -f SFDX_QA -s -a LRQA
