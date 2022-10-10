@@ -1,11 +1,8 @@
-name: Feature Branch Ready For Review
-
 on:
     pull_request:
       branches: [ develop ]
       paths:
         - 'force-app/**' 
-  
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -22,7 +19,7 @@ jobs:
     - name: Merge feature to dev
       run: |
           git fetch --unshallow
-          git checkout feature
+          git checkout ${{ github.head_ref }}
           git pull
-          git merge --no-ff develop -m "Auto-merge feature to develop"
+          git merge --no-ff develop -m "Auto-merge ${{ github.head_ref }} to develop"
           git push
