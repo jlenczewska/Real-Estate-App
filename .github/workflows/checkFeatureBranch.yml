@@ -1,4 +1,4 @@
-name: Check-Feature-Branch
+name: Check Feature Branch
 
 on:
     push:
