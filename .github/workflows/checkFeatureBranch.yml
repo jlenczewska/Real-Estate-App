@@ -5,31 +5,33 @@ on:
         branches:
             - 'RE-[0-9]+'
             - 'feature/**'
+        paths:
+          - 'force-app/**'
               
 # A workflow run is made up of one or more jobs that can run sequentially or in parallel
 jobs:
-  # This workflow contains a single job called "build"
   build:
-    # The type of runner that the job will run on
     runs-on: ubuntu-latest
     steps:
-        - name: Checkout
-          uses: actions/checkout@v3
+    - uses: actions/checkout@v2
+      with:
+        ref: ${{ github.ref }}
+        fetch-depth: 0
+      if: github.event.action == 'opened' || github.event.action == 'synchronize' || github.event_name == 'pull_request'
+    - uses: actions/setup-node@v1
+      with:
+        node-version: '>=14'
+        check-latest: true
+   
+    - name: Install Salesforce CLI
+      run: |
+        wget https://developer.salesforce.com/media/salesforce-cli/sfdx-linux-amd64.tar.xz
+        mkdir sfdx-cli
+        tar xJf sfdx-linux-amd64.tar.xz -C sfdx-cli --strip-components 1
+        ./sfdx-cli/install
+    - name: 'Populate auth file with SFDX_URL secret'
+      shell: bash
+      run: 'echo ${{ secrets.SFDX_AUTH_URL}} > SFDX_QA'
 
-        - name: Install Salesforce CLI
-          run: |
-              wget https://developer.salesforce.com/media/salesforce-cli/sfdx-linux-amd64.tar.xz
-              mkdir sfdx-cli
-              tar xJf sfdx-linux-amd64.tar.xz -C sfdx-cli --strip-components 1
-              ./sfdx-cli/install
-            
-        - name: 'Decrypt file'
-          run: openssl enc -nosalt -aes-256-cbc -d -in assets/server.key.enc -out server.key -base64 -K ${{secrets.DECRYPTION_KEY}} -iv ${{secrets.DECRYPTION_IV}}
-
-        - name: 'Authorize'
-          run: sfdx force:auth:jwt:grant --clientid=${{ secrets.CONSUMER_KEY }} --username=${{ secrets.USERNAME }} --jwtkeyfile server.key --setdefaultdevhubusername
-        
-        - name: 'Deploy'
-          run: sfdx force:source:deploy -u 'julia.lenczewska@britenet.com.pl.prod' -p 'force-app/main/default' --checkonly --testlevel RunLocalTests
-
-                       
+    - name: 'Authenticate against dev hub'
+      run: 'sfdx auth:sfdxurl:store -f SFDX_QA -s -a LRQA
