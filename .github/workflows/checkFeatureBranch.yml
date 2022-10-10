@@ -1,8 +1,10 @@
 name: Check-Feature-Branch
 
 on:
-    pull_request:
-        branches: [develop]
+    push:
+        branches:
+            - 'RE-[0-9]+'
+            - 'feature/**'
         paths:
           - 'force-app/**'
               
