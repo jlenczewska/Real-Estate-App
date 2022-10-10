@@ -18,8 +18,8 @@ jobs:
           
     - name: Merge feature to dev
       run: |
-          git fetch --unshallow
-          git checkout ${{ github.head_ref }}
+          git fetch
+          git checkout develop
+          git merge ${{ github.head_ref }}
           git pull
-          git merge --no-ff develop -m "Auto-merge ${{ github.head_ref }} to develop"
           git push
