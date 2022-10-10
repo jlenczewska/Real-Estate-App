@@ -4,9 +4,9 @@ name: Pull request to development branch.
 # Definition when the workflow should run
 on:
   pull_request:
-    branches: [ master ]
-    paths:
-      - 'force-app/**'
+    branches:  
+      - master 
+      
 jobs:
   if_merged:
     if: github.event.pull_request.merged == true
