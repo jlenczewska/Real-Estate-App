@@ -2,7 +2,7 @@ name: Feature Branch Ready For Review
 
 on:
     pull_request:
-      branches: [ development ]
+      branches: [ develop ]
       paths:
         - 'force-app/**'
   
