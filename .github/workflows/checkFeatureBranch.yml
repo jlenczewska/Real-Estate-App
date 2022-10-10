@@ -31,5 +31,8 @@ jobs:
       shell: bash
       run: 'echo ${{ secrets.SFDX_AUTH_URL}} > SFDX_QA'
 
-    - name: 'Authenticate against'
+    - name: 'Authorize'
       run: sfdx auth:sfdxurl:store -f SFDX_QA -s -a production
+            
+    - name: 'Deploy'
+      run: sfdx force:source:deploy -u '${{ secrets.PROD_NAME}}' -p 'force-app/main/default' --checkonly --testlevel RunLocalTests 
