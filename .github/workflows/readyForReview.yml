@@ -1,6 +1,11 @@
 name: Feature Branch Ready For Review
 
 on:
+    pull_request:
+      branches: [ development ]
+      paths:
+        - 'force-app/**'
+        
 #   pull_request:
 #     branches:
 #       - 'RE-[0-9]+'
@@ -8,10 +13,6 @@ on:
 #       - develop
 #     types:
 #       - ready_for_review
-      
-  push:
-    branches:
-      - develop
   
 jobs:
   build:
