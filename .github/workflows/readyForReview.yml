@@ -2,7 +2,10 @@ name: Feature Branch Ready For Review
 
 on:
   pull_request:
-    branches: [develop]
+    branches:
+      - 'RE-[0-9]+'
+      - 'feature/**'
+      - develop
 
   
 jobs:
