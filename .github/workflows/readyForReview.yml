@@ -1,13 +1,17 @@
 name: Feature Branch Ready For Review
 
 on:
-  pull_request:
+#   pull_request:
+#     branches:
+#       - 'RE-[0-9]+'
+#       - 'feature/**'
+#       - develop
+#     types:
+#       - ready_for_review
+      
+  push:
     branches:
-      - 'RE-[0-9]+'
-      - 'feature/**'
       - develop
-    types:
-      - ready_for_review
   
 jobs:
   build:
