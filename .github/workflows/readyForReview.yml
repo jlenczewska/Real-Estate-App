@@ -19,8 +19,8 @@ jobs:
     - name: Merge feature to dev
       run: |
           git fetch origin
-          git checkout develop
-          git merge ${{ github.head_ref }}
+          git checkout origin/develop
+          git merge origin/${{ github.head_ref }}
           git pull
           git push
           
