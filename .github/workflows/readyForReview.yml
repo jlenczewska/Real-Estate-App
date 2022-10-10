@@ -18,9 +18,9 @@ jobs:
           
     - name: Merge feature to dev
       run: |
-          git fetch origin
-          git checkout origin/develop
-          git merge origin/${{ github.head_ref }}
+          git checkout develop
+          git remote add origin https://github.com/jlenczewska/Real-Estate-App.git
+          git push -u origin develop
           git pull
-          git push
+          git merge ${{ github.head_ref }}
           
