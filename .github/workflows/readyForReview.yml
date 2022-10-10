@@ -1,8 +1,10 @@
 name: Feature Branch Ready For Review
 
 on:
- pull_request:
-   branches: [ develop ]
+  pull_request:
+    branches: [develop]
+    types:
+      - ready_for_review
   
 jobs:
   build:
