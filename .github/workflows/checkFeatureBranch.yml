@@ -1,11 +1,12 @@
 name: Check Feature Branch
 
+# Definition when the workflow should run
 on:
     push:
-        branches:
+      branches:
             - 'feature/**'
-        
-# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+      paths:
+        - 'force-app/**'
 jobs:
   build:
     runs-on: ubuntu-latest
@@ -26,12 +27,13 @@ jobs:
         mkdir sfdx-cli
         tar xJf sfdx-linux-amd64.tar.xz -C sfdx-cli --strip-components 1
         ./sfdx-cli/install
-    - name: 'Populate auth file with SFDX_URL secret'
+            
+    - name: 'Populate auth file with SFDX_AUTH_URL secret'
       shell: bash
       run: 'echo ${{ secrets.SFDX_AUTH_URL}} > SFDX_QA'
-
-    - name: 'Authorize'
+      
+    - name: 'Authenticate to Production Org'
       run: sfdx auth:sfdxurl:store -f SFDX_QA -s -a production
-            
-    - name: 'Deploy'
-      run: sfdx force:source:deploy -x manifest/package.xml
+      
+    - name: 'Run checkonly deploy'
+      run: sfdx force:source:deploy -x manifest/package.xml --testlevel RunLocalTests --json --checkonly
