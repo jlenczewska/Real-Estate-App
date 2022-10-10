@@ -4,7 +4,7 @@ name: Check Feature Branch
 on:
     push:
       branches:
-            - 'feature/**'
+        - 'feature/**'
       paths:
         - 'force-app/**'
 jobs:
