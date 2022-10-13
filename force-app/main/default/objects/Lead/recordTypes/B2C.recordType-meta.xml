@@ -208,6 +208,13 @@
         </values>
     </picklistValues>
     <picklistValues>
+        <picklist>Product_Of_Interest__c</picklist>
+        <values>
+            <fullName>flats and apartements</fullName>
+            <default>false</default>
+        </values>
+    </picklistValues>
+    <picklistValues>
         <picklist>Rating</picklist>
         <values>
             <fullName>Cold</fullName>
