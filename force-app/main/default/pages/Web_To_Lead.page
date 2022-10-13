@@ -53,7 +53,7 @@
     </div>
     <br/>
 
-    <button id="submitButton" onclick="validateInputs()">Submit</input>
+    <button id="submitButton" onclick="validateInputs()">Submit</button>
 
   </form>
 
