@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<GlobalValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <customValue>
+        <fullName>new</fullName>
+        <default>false</default>
+        <label>new</label>
+    </customValue>
+    <customValue>
+        <fullName>nurturing</fullName>
+        <default>false</default>
+        <label>nurturing</label>
+    </customValue>
+    <customValue>
+        <fullName>working</fullName>
+        <default>false</default>
+        <label>working</label>
+    </customValue>
+    <customValue>
+        <fullName>disqualified</fullName>
+        <default>false</default>
+        <label>disqualified</label>
+    </customValue>
+    <customValue>
+        <fullName>qualified</fullName>
+        <default>false</default>
+        <label>qualified</label>
+    </customValue>
+    <masterLabel>B2C</masterLabel>
+    <sorted>false</sorted>
+</GlobalValueSet>
