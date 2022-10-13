@@ -1,0 +1,223 @@
+<apex:page>
+
+  <style type="text/css">
+    .main-container {
+      max-width: 400px;
+      margin: 0 auto;
+      width: 95%;
+    }
+
+    .inner-container {
+      position: relative;
+      margin-top: 10vh;
+      min-height: 65vh;
+      left: -30%;
+    }
+
+    h1 {
+      font-weight: normal;
+      font-size: 8vh;
+    }
+
+    form {
+      padding: 2em;
+      background: white;
+      position: relative;
+      left: 34%;
+      width: 90vw;
+      max-width: 450px;
+    }
+
+    input,
+    label {
+      display: block;
+    }
+
+    input,
+    button {
+      width: 100%;
+      padding: 0.5em;
+      font-size: 1.2em;
+      box-sizing: border-box;
+      background: transparent;
+      border: none;
+      outline: none;
+      border-bottom: solid 1px black;
+      margin: 0.5em 0 1em;
+      color: gray;
+      font-family: Montserrat, sans-serif;
+      transition: background 0.3s ease-in;
+    }
+
+    input:hover {
+      background: rgba(255, 255, 255, .2);
+    }
+
+    .button {
+      background: mediumspringgreen;
+      border: none;
+      color: white;
+      margin-top: 2em;
+      position: relative;
+      padding: 1em;
+      font-family: 'Montserrat', sans-serif;
+      -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+      -webkit-tap-highlight-color: transparent;
+      /* For some Androids */
+    }
+
+    .button:hover,
+    .button:focus {
+      background-color: #00e18a;
+    }
+
+    .button:active {
+      -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    }
+
+    .error {
+      border-bottom: solid 2px gold;
+    }
+
+    .error-message {
+      color: gold;
+      position: absolute;
+      margin-top: -0.5em;
+      display: block;
+    }
+
+    /* Css for ripples */
+
+    .ripple {
+      overflow: hidden;
+    }
+
+    .ripple-effect {
+      position: absolute;
+      width: 10px;
+      height: 300px;
+      background: white;
+      -webkit-animation: ripple-animation 1.2s;
+    }
+
+    @keyframes ripple-animation {
+      from {
+        -webkit-transform: scale(1);
+        opacity: 0.4;
+      }
+      to {
+        -webkit-transform: scale(100);
+        opacity: 0;
+      }
+    }
+  </style>
+
+
+  <META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=UTF-8" />
+
+  <div class="main-container">
+    <div class="inner-container">
+      <form action="https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8" method="POST" id="form">
+
+        <input type="hidden" name="oid" value="00D7Q000008MVEQ" />
+        <input type="hidden" name="retURL" value="https://britenet-9a-dev-ed.develop.my.salesforce-sites.com/" />
+        <input type="hidden" name="recordType" id="recordType" value="XXXXXXXXXXXXXXX" />
+
+        <label for="first_name">First Name</label>
+        <input id="first_name" maxlength="40" name="first_name" size="20" type="text" required="required" />
+        <br/>
+
+        <label for="last_name">Last Name</label>
+        <input id="last_name" maxlength="80" name="last_name" size="20" type="text" required="required" />
+        <br/>
+
+        <label for="email">Email</label>
+        <input id="email" maxlength="80" name="email" size="20" type="email" required="required" />
+        <br/>
+
+        <label for="phone">Phone</label>
+        <input id="phone" maxlength="40" name="phone" size="20" type="number" required="required" />
+        <br/> Product Of Interest:
+        <select id="00N7Q00000J5gwH" name="00N7Q00000J5gwH" title="Product Of Interest">
+          <option value="Flats And Apartements" selected="selected">Flats And Apartements</option>
+          <option value="Business Premises">Business Premises</option>
+        </select>
+        <br/>
+
+        <div class="companyContainer" id="companyContainer">
+          <label for="company">Company</label>
+          <input id="company" maxlength="40" name="company" size="20" type="text" />
+        </div>
+        <br/>
+
+        <button id="submitButton" onclick="validateInputs()">Submit</button>
+
+      </form>
+    </div>
+  </div>
+  <script>
+
+    (function () {
+      document.getElementById("companyContainer").style.display = "none";
+    })();
+
+    const selectElement = document.getElementById("00N7Q00000J5gwH");
+
+    selectElement.addEventListener('change', (event) => {
+      if (event.target.value == 'Business Premises') {
+        document.getElementById("company").value = "";
+        document.getElementById("companyContainer").style.display = "block";
+        document.getElementById("recordType").value = '0127Q000001fzuZQAQ';
+        document.getElementById("company").required = true;
+      }
+      else if (event.target.value == 'Flats And Apartements') {
+        document.getElementById("companyContainer").style.display = "none";
+        document.getElementById("recordType").value = '0127Q000001fzueQAA';
+        document.getElementById("company").value = "-";
+        document.getElementById("company").required = false;
+      }
+    });
+
+    function validateInputs() {
+      let first_name_value = document.getElementById("first_name").value;
+      let last_name_value = document.getElementById("last_name").value;
+      let email_value = document.getElementById("email").value;
+      let phone_value = document.getElementById("phone").value;
+      let company_value = document.getElementById("company").value;
+      let flag = false;
+
+      if (!first_name_value.replace(/\s/g, '').length) {
+        document.getElementById("first_name").value = "";
+        flag = true;
+      }
+      if (!last_name_value.replace(/\s/g, '').length) {
+        document.getElementById("last_name").value = "";
+        flag = true;
+      }
+
+      if (!email_value.replace(/\s/g, '').length) {
+        document.getElementById("email").value = "";
+        flag = true;
+      }
+
+      if (!phone_value.replace(/\s/g, '').length) {
+        document.getElementById("phone").value = "";
+        flag = true;
+      }
+      if (!company_value.replace(/\s/g, '').length) {
+        document.getElementById("company").value = "";
+        flag = true;
+      }
+
+      if (!flag) {
+        submitForm();
+      }
+    }
+
+    function submitForm() {
+      document.getElementById("form").submit();
+    }
+
+  </script>
+
+</apex:page>
