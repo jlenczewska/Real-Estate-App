@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<StandardValueSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <sorted>false</sorted>
+    <standardValue>
+        <fullName>Web_to_lead</fullName>
+        <default>false</default>
+        <label>Web To Lead</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Outbound</fullName>
+        <default>false</default>
+        <label>Outbound</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Customer_Portal</fullName>
+        <default>false</default>
+        <label>Customer Portal</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Direct_Contact</fullName>
+        <default>false</default>
+        <label>Direct Contact (Inbound)</label>
+    </standardValue>
+    <standardValue>
+        <fullName>Partner</fullName>
+        <default>false</default>
+        <label>Partner</label>
+    </standardValue>
+</StandardValueSet>
