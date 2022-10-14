@@ -93,19 +93,22 @@
       margin-top: 65px;
     }
 
-    td.noSidebarCell{
+    td.noSidebarCell {
       background-color: #b3e5fc;
       padding: 2rem 0;
     }
 
-    select{
+    select {
       padding: 8px;
     }
 
-    table#bodyTable{
+    table#bodyTable {
       padding-bottom: 0;
     }
 
+    #lead_source {
+      display: none;
+    }
   </style>
 
   <META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=UTF-8" />
@@ -117,8 +120,12 @@
 
       <input type="hidden" name="oid" value="00D7Q000008MVEQ" />
       <input type="hidden" name="retURL" value="https://britenet-9a-dev-ed.develop.my.salesforce-sites.com/" />
-      <input type="hidden" name="recordType" id="recordType" value="XXXXXXXXXXXXXXX" />
+      <input type="hidden" name="recordType" id="recordType" value="0127Q000001fzue" />
       <input type="hidden" id="lead_source" maxlength="80" name="lead_source" size="20" />
+
+      <select id="lead_source" name="lead_source">
+        <option value="Web_to_lead" selected="selected">Web To Lead</option>
+      </select>
 
       <label for="first_name">First Name</label>
       <input id="first_name" maxlength="40" name="first_name" size="20" type="text" required="required" />
@@ -156,6 +163,7 @@
     (function () {
       document.getElementById("companyContainer").style.display = "none";
       document.getElementById("lead_source").value = "Web To Lead";
+      document.getElementById("recordType").value = '0127Q000001fzue';
     })();
 
     const selectElement = document.getElementById("00N7Q00000J5gwH");
@@ -164,12 +172,12 @@
       if (event.target.value == 'Business Premises') {
         document.getElementById("company").value = "";
         document.getElementById("companyContainer").style.display = "block";
-        document.getElementById("recordType").value = '0127Q000001fzuZQAQ';
+        document.getElementById("recordType").value = '0127Q000001fzuZ';
         document.getElementById("company").required = true;
       }
       else if (event.target.value == 'Flats And Apartements') {
         document.getElementById("companyContainer").style.display = "none";
-        document.getElementById("recordType").value = '0127Q000001fzueQAA';
+        document.getElementById("recordType").value = '0127Q000001fzue';
         document.getElementById("company").value = "-";
         document.getElementById("company").required = false;
       }
