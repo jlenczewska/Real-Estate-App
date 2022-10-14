@@ -118,6 +118,7 @@
       <input type="hidden" name="oid" value="00D7Q000008MVEQ" />
       <input type="hidden" name="retURL" value="https://britenet-9a-dev-ed.develop.my.salesforce-sites.com/" />
       <input type="hidden" name="recordType" id="recordType" value="XXXXXXXXXXXXXXX" />
+      <input type="hidden" id="lead_source" maxlength="80" name="lead_source" size="20" />
 
       <label for="first_name">First Name</label>
       <input id="first_name" maxlength="40" name="first_name" size="20" type="text" required="required" />
@@ -154,6 +155,7 @@
 
     (function () {
       document.getElementById("companyContainer").style.display = "none";
+      document.getElementById("lead_source").value = "Web To Lead";
     })();
 
     const selectElement = document.getElementById("00N7Q00000J5gwH");
