@@ -58,8 +58,6 @@
     #submitButton:hover,
     #submitButton:focus {
       background: #1ba3df;
-      transition: all 0.2s linear;
-      transform: scale(1.1);
       cursor: pointer;
     }
 
