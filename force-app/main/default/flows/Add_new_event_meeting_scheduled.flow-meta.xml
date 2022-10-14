@@ -82,7 +82,7 @@
             </value>
         </inputParameters>
     </actionCalls>
-    <apiVersion>56.0</apiVersion>
+    <apiVersion>50.0</apiVersion>
     <assignments>
         <name>Set_Meeting_subject_value</name>
         <label>Set_Meeting_subject_value</label>
