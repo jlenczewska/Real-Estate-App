@@ -7,13 +7,6 @@
       width: 95%;
     }
 
-    .inner-container {
-      position: relative;
-      margin-top: 10vh;
-      min-height: 65vh;
-      left: -30%;
-    }
-
     h1 {
       font-weight: normal;
       font-size: 8vh;
@@ -22,10 +15,9 @@
     form {
       padding: 2em;
       background: white;
-      position: relative;
-      left: 34%;
       width: 90vw;
       max-width: 450px;
+      position: relative;
     }
 
     input,
@@ -34,7 +26,8 @@
     }
 
     input,
-    button {
+    button,
+    #submitButton {
       width: 100%;
       padding: 0.5em;
       font-size: 1.2em;
@@ -43,18 +36,15 @@
       border: none;
       outline: none;
       border-bottom: solid 1px black;
-      margin: 0.5em 0 1em;
+      margin: 0.4em 0 0.7em;
       color: gray;
       font-family: Montserrat, sans-serif;
       transition: background 0.3s ease-in;
     }
 
-    input:hover {
-      background: rgba(255, 255, 255, .2);
-    }
-
-    .button {
-      background: mediumspringgreen;
+    .button,
+    #submitButton {
+      background: #00b0ff;
       border: none;
       color: white;
       margin-top: 2em;
@@ -63,15 +53,17 @@
       font-family: 'Montserrat', sans-serif;
       -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
       -webkit-tap-highlight-color: transparent;
-      /* For some Androids */
     }
 
-    .button:hover,
-    .button:focus {
-      background-color: #00e18a;
+    #submitButton:hover,
+    #submitButton:focus {
+      background: #1ba3df;
+      transition: all 0.2s linear;
+      transform: scale(1.1);
+      cursor: pointer;
     }
 
-    .button:active {
+    #submitButton:active {
       -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
     }
 
@@ -86,74 +78,79 @@
       display: block;
     }
 
-    /* Css for ripples */
-
-    .ripple {
-      overflow: hidden;
-    }
-
-    .ripple-effect {
+    .ribbon {
+      background-color: #00b0ff;
+      color: white;
+      font-family: 'Montserrat', sans-serif;
+      font-size: 12px;
+      text-transform: uppercase;
+      padding: 14px 0 10px 49px;
+      letter-spacing: 1px;
+      margin-left: -52px;
+      width: 400px;
       position: absolute;
-      width: 10px;
-      height: 300px;
-      background: white;
-      -webkit-animation: ripple-animation 1.2s;
     }
 
-    @keyframes ripple-animation {
-      from {
-        -webkit-transform: scale(1);
-        opacity: 0.4;
-      }
-      to {
-        -webkit-transform: scale(100);
-        opacity: 0;
-      }
+    label[for=first_name] {
+      margin-top: 65px;
     }
+
+    td.noSidebarCell{
+      background-color: #b3e5fc;
+      padding: 2rem 0;
+    }
+
+    select{
+      padding: 8px;
+    }
+
+    table#bodyTable{
+      padding-bottom: 0;
+    }
+
   </style>
-
 
   <META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=UTF-8" />
 
   <div class="main-container">
-    <div class="inner-container">
-      <form action="https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8" method="POST" id="form">
+    <form action="https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8" method="POST" id="form">
 
-        <input type="hidden" name="oid" value="00D7Q000008MVEQ" />
-        <input type="hidden" name="retURL" value="https://britenet-9a-dev-ed.develop.my.salesforce-sites.com/" />
-        <input type="hidden" name="recordType" id="recordType" value="XXXXXXXXXXXXXXX" />
+      <h1 class="ribbon">Contact us</h1>
 
-        <label for="first_name">First Name</label>
-        <input id="first_name" maxlength="40" name="first_name" size="20" type="text" required="required" />
-        <br/>
+      <input type="hidden" name="oid" value="00D7Q000008MVEQ" />
+      <input type="hidden" name="retURL" value="https://britenet-9a-dev-ed.develop.my.salesforce-sites.com/" />
+      <input type="hidden" name="recordType" id="recordType" value="XXXXXXXXXXXXXXX" />
 
-        <label for="last_name">Last Name</label>
-        <input id="last_name" maxlength="80" name="last_name" size="20" type="text" required="required" />
-        <br/>
+      <label for="first_name">First Name</label>
+      <input id="first_name" maxlength="40" name="first_name" size="20" type="text" required="required" />
+      <br/>
 
-        <label for="email">Email</label>
-        <input id="email" maxlength="80" name="email" size="20" type="email" required="required" />
-        <br/>
+      <label for="last_name">Last Name</label>
+      <input id="last_name" maxlength="80" name="last_name" size="20" type="text" required="required" />
+      <br/>
 
-        <label for="phone">Phone</label>
-        <input id="phone" maxlength="40" name="phone" size="20" type="number" required="required" />
-        <br/> Product Of Interest:
-        <select id="00N7Q00000J5gwH" name="00N7Q00000J5gwH" title="Product Of Interest">
-          <option value="Flats And Apartements" selected="selected">Flats And Apartements</option>
-          <option value="Business Premises">Business Premises</option>
-        </select>
-        <br/>
+      <label for="email">Email</label>
+      <input id="email" maxlength="80" name="email" size="20" type="email" required="required" />
+      <br/>
 
-        <div class="companyContainer" id="companyContainer">
-          <label for="company">Company</label>
-          <input id="company" maxlength="40" name="company" size="20" type="text" />
-        </div>
-        <br/>
+      <label for="phone">Phone</label>
+      <input id="phone" maxlength="40" name="phone" size="20" type="number" required="required" />
+      <br/> Product Of Interest:
+      <select id="00N7Q00000J5gwH" name="00N7Q00000J5gwH" title="Product Of Interest">
+        <option value="Flats And Apartements" selected="selected">Flats And Apartements</option>
+        <option value="Business Premises">Business Premises</option>
+      </select>
+      <br/>
+      <br/>
 
-        <button id="submitButton" onclick="validateInputs()">Submit</button>
+      <div class="companyContainer" id="companyContainer">
+        <label for="company">Company</label>
+        <input id="company" maxlength="40" name="company" size="20" type="text" />
+      </div>
 
-      </form>
-    </div>
+      <button id="submitButton" onclick="validateInputs()">Submit</button>
+
+    </form>
   </div>
   <script>
 
