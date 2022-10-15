@@ -4,8 +4,8 @@
         <description>Scheduled Meeting Event</description>
         <name>Scheduled_Meeting_Event</name>
         <label>Scheduled Meeting Event</label>
-        <locationX>775</locationX>
-        <locationY>1078</locationY>
+        <locationX>182</locationX>
+        <locationY>998</locationY>
         <actionName>NewEvent</actionName>
         <actionType>quickAction</actionType>
         <connector>
@@ -52,8 +52,8 @@
     <actionCalls>
         <name>Send_invitation_to_lead</name>
         <label>Send invitation to lead</label>
-        <locationX>769</locationX>
-        <locationY>1582</locationY>
+        <locationX>50</locationX>
+        <locationY>1358</locationY>
         <actionName>emailSimple</actionName>
         <actionType>emailSimple</actionType>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
@@ -82,12 +82,12 @@
             </value>
         </inputParameters>
     </actionCalls>
-    <apiVersion>50.0</apiVersion>
+    <apiVersion>56.0</apiVersion>
     <assignments>
         <name>Set_Meeting_subject_value</name>
         <label>Set_Meeting_subject_value</label>
-        <locationX>776</locationX>
-        <locationY>566</locationY>
+        <locationX>182</locationX>
+        <locationY>518</locationY>
         <assignmentItems>
             <assignToReference>Meeting_subject</assignToReference>
             <operator>Assign</operator>
@@ -102,8 +102,8 @@
     <assignments>
         <name>setCurrentLead</name>
         <label>setCurrentLead</label>
-        <locationX>776</locationX>
-        <locationY>326</locationY>
+        <locationX>182</locationX>
+        <locationY>278</locationY>
         <assignmentItems>
             <assignToReference>currentLead</assignToReference>
             <operator>Assign</operator>
@@ -118,8 +118,8 @@
     <decisions>
         <name>Sendinvitationtolead1</name>
         <label>Send invitation to lead</label>
-        <locationX>763</locationX>
-        <locationY>1429</locationY>
+        <locationX>182</locationX>
+        <locationY>1238</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>Checkbox_value</name>
@@ -148,7 +148,7 @@
     <processMetadataValues>
         <name>CanvasMode</name>
         <value>
-            <stringValue>FREE_FORM_CANVAS</stringValue>
+            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
         </value>
     </processMetadataValues>
     <processMetadataValues>
@@ -161,8 +161,8 @@
     <recordLookups>
         <name>Get_Account</name>
         <label>Get Account Details</label>
-        <locationX>778</locationX>
-        <locationY>949</locationY>
+        <locationX>182</locationX>
+        <locationY>878</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Scheduled_Meeting_Event</targetReference>
@@ -182,8 +182,8 @@
     <recordLookups>
         <name>getCurrentLead</name>
         <label>getCurrentLead</label>
-        <locationX>776</locationX>
-        <locationY>206</locationY>
+        <locationX>182</locationX>
+        <locationY>158</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>setCurrentLead</targetReference>
@@ -203,8 +203,8 @@
     <recordUpdates>
         <name>Set_scheduled_meeting_status</name>
         <label>Set scheduled meeting status</label>
-        <locationX>777</locationX>
-        <locationY>1224</locationY>
+        <locationX>182</locationX>
+        <locationY>1118</locationY>
         <connector>
             <targetReference>Sendinvitationtolead1</targetReference>
         </connector>
@@ -228,8 +228,8 @@
     <screens>
         <name>General_Info</name>
         <label>General Info</label>
-        <locationX>776</locationX>
-        <locationY>446</locationY>
+        <locationX>182</locationX>
+        <locationY>398</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>true</allowPause>
@@ -300,8 +300,8 @@
         <description>Place and Time</description>
         <name>Place_and_time</name>
         <label>Place and time</label>
-        <locationX>776</locationX>
-        <locationY>686</locationY>
+        <locationX>182</locationX>
+        <locationY>638</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>true</allowPause>
@@ -359,8 +359,8 @@
         <description>Summary</description>
         <name>Summary</name>
         <label>Summary</label>
-        <locationX>776</locationX>
-        <locationY>806</locationY>
+        <locationX>182</locationX>
+        <locationY>758</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>true</allowPause>
@@ -419,8 +419,8 @@
         <showHeader>false</showHeader>
     </screens>
     <start>
-        <locationX>650</locationX>
-        <locationY>48</locationY>
+        <locationX>56</locationX>
+        <locationY>0</locationY>
         <connector>
             <targetReference>getCurrentLead</targetReference>
         </connector>
