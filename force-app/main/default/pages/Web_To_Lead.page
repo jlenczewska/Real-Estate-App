@@ -1,169 +1,68 @@
 <apex:page>
 
-  <style type="text/css">
-    .main-container {
-      max-width: 400px;
-      margin: 0 auto;
-      width: 95%;
-    }
-
-    h1 {
-      font-weight: normal;
-      font-size: 8vh;
-    }
-
-    form {
-      padding: 2em;
-      background: white;
-      width: 90vw;
-      max-width: 450px;
-      position: relative;
-    }
-
-    input,
-    label {
-      display: block;
-    }
-
-    input,
-    button,
-    #submitButton {
-      width: 100%;
-      padding: 0.5em;
-      font-size: 1.2em;
-      box-sizing: border-box;
-      background: transparent;
-      border: none;
-      outline: none;
-      border-bottom: solid 1px black;
-      margin: 0.4em 0 0.7em;
-      color: gray;
-      font-family: Montserrat, sans-serif;
-      transition: background 0.3s ease-in;
-    }
-
-    .button,
-    #submitButton {
-      background: #00b0ff;
-      border: none;
-      color: white;
-      margin-top: 2em;
-      position: relative;
-      padding: 1em;
-      font-family: 'Montserrat', sans-serif;
-      -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-      -webkit-tap-highlight-color: transparent;
-    }
-
-    #submitButton:hover,
-    #submitButton:focus {
-      background: #1ba3df;
-      cursor: pointer;
-    }
-
-    #submitButton:active {
-      -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
-    }
-
-    .error {
-      border-bottom: solid 2px gold;
-    }
-
-    .error-message {
-      color: gold;
-      position: absolute;
-      margin-top: -0.5em;
-      display: block;
-    }
-
-    .ribbon {
-      background-color: #00b0ff;
-      color: white;
-      font-family: 'Montserrat', sans-serif;
-      font-size: 12px;
-      text-transform: uppercase;
-      padding: 14px 0 10px 49px;
-      letter-spacing: 1px;
-      margin-left: -52px;
-      width: 400px;
-      position: absolute;
-    }
-
-    label[for=first_name] {
-      margin-top: 65px;
-    }
-
-    td.noSidebarCell {
-      background-color: #b3e5fc;
-      padding: 2rem 0;
-    }
-
-    select {
-      padding: 8px;
-    }
-
-    table#bodyTable {
-      padding-bottom: 0;
-    }
-
-    #lead_source {
-      display: none;
-    }
-  </style>
+  <!--  ----------------------------------------------------------------------  -->
+  <!--  NOTE: Please add the following <META> element to your page <HEAD>.      -->
+  <!--  If necessary, please modify the charset parameter to specify the        -->
+  <!--  character set of your HTML page.                                        -->
+  <!--  ----------------------------------------------------------------------  -->
 
   <META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=UTF-8" />
 
-  <div class="main-container">
-    <form action="https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8" method="POST" id="form">
+  <!--  ----------------------------------------------------------------------  -->
+  <!--  NOTE: Please add the following <FORM> element to your page.             -->
+  <!--  ----------------------------------------------------------------------  -->
 
-      <h1 class="ribbon">Contact us</h1>
+  <form action="https://webto.salesforce.com/servlet/servlet.WebToLead?encoding=UTF-8" method="POST">
 
-      <input type="hidden" name="oid" value="00D7Q000008MVEQ" />
-      <input type="hidden" name="retURL" value="https://britenet-9a-dev-ed.develop.my.salesforce-sites.com/" />
-      <input type="hidden" name="recordType" id="recordType" value="0127Q000001fzue" />
-      <input type="hidden" id="lead_source" maxlength="80" name="lead_source" size="20" />
+    <input type="hidden" name="oid" value="00D7Q000008MVEQ" />
+    <input type="hidden" name="retURL" value="https://britenet-9a-dev-ed.develop.my.salesforce-sites.com/" />
 
-      <select id="lead_source" name="lead_source">
-        <option value="Web_to_lead" selected="selected">Web To Lead</option>
-      </select>
+    <!--  ----------------------------------------------------------------------  -->
+    <!--  NOTE: These fields are optional debugging elements. Please uncomment    -->
+    <!--  these lines if you wish to test in debug mode.                          -->
+    <!--  <input type="hidden" name="debug" value=1>                              -->
+    <!--  <input type="hidden" name="debugEmail"                                  -->
+    <!--  value="julia.lenczewska@britenet.com.pl">                               -->
+    <!--  ----------------------------------------------------------------------  -->
 
-      <label for="first_name">First Name</label>
-      <input id="first_name" maxlength="40" name="first_name" size="20" type="text" required="required" />
-      <br/>
+    <input type="hidden" name="recordType" id="recordType" value="XXXXXXXXXXXXXXX" />
 
-      <label for="last_name">Last Name</label>
-      <input id="last_name" maxlength="80" name="last_name" size="20" type="text" required="required" />
-      <br/>
+    <label for="first_name">First Name</label>
+    <input id="first_name" maxlength="40" name="first_name" size="20" type="text" required="required"/>
+    <br/>
 
-      <label for="email">Email</label>
-      <input id="email" maxlength="80" name="email" size="20" type="email" required="required" />
-      <br/>
+    <label for="last_name">Last Name</label>
+    <input id="last_name" maxlength="80" name="last_name" size="20" type="text" required="required"/>
+    <br/>
 
-      <label for="phone">Phone</label>
-      <input id="phone" maxlength="40" name="phone" size="20" type="number" required="required" />
-      <br/> Product Of Interest:
-      <select id="00N7Q00000J5gwH" name="00N7Q00000J5gwH" title="Product Of Interest">
-        <option value="Flats And Apartements" selected="selected">Flats And Apartements</option>
-        <option value="Business Premises">Business Premises</option>
-      </select>
-      <br/>
-      <br/>
+    <label for="email">Email</label>
+    <input id="email" maxlength="80" name="email" size="20" type="email" required="required"/>
+    <br/>
 
-      <div class="companyContainer" id="companyContainer">
-        <label for="company">Company</label>
-        <input id="company" maxlength="40" name="company" size="20" type="text" />
-      </div>
+    <label for="phone">Phone</label>
+    <input id="phone" maxlength="40" name="phone" size="20" type="number" required="required"/>
+    <br/> Product Of Interest:
+    <select id="00N7Q00000J5gwH" name="00N7Q00000J5gwH" title="Product Of Interest">
+      <option value="Flats And Apartements" selected="selected">Flats And Apartements</option>
+      <option value="Business Premises">Business Premises</option>
+    </select>
+    <br/>
 
-      <button id="submitButton" onclick="validateInputs()">Submit</button>
+    <div class="companyContainer" id="companyContainer">
+      <label for="company">Company</label>
+      <input id="company" maxlength="40" name="company" size="20" type="text" />
+    </div>
+    <br/>
 
-    </form>
-  </div>
+    <button id="submitButton" onclick="validateInputs()">Submit</input>
+
+  </form>
+
   <script>
 
     (function () {
       document.getElementById("companyContainer").style.display = "none";
-      document.getElementById("lead_source").value = "Web To Lead";
-      document.getElementById("recordType").value = '0127Q000001fzue';
+
     })();
 
     const selectElement = document.getElementById("00N7Q00000J5gwH");
@@ -172,56 +71,6 @@
       if (event.target.value == 'Business Premises') {
         document.getElementById("company").value = "";
         document.getElementById("companyContainer").style.display = "block";
-        document.getElementById("recordType").value = '0127Q000001fzuZ';
-        document.getElementById("company").required = true;
-      }
-      else if (event.target.value == 'Flats And Apartements') {
-        document.getElementById("companyContainer").style.display = "none";
-        document.getElementById("recordType").value = '0127Q000001fzue';
-        document.getElementById("company").value = "-";
-        document.getElementById("company").required = false;
-      }
-    });
-
-    function validateInputs() {
-      let first_name_value = document.getElementById("first_name").value;
-      let last_name_value = document.getElementById("last_name").value;
-      let email_value = document.getElementById("email").value;
-      let phone_value = document.getElementById("phone").value;
-      let company_value = document.getElementById("company").value;
-      let flag = false;
-
-      if (!first_name_value.replace(/\s/g, '').length) {
-        document.getElementById("first_name").value = "";
-        flag = true;
-      }
-      if (!last_name_value.replace(/\s/g, '').length) {
-        document.getElementById("last_name").value = "";
-        flag = true;
-      }
-
-      if (!email_value.replace(/\s/g, '').length) {
-        document.getElementById("email").value = "";
-        flag = true;
-      }
-
-      if (!phone_value.replace(/\s/g, '').length) {
-        document.getElementById("phone").value = "";
-        flag = true;
-      }
-      if (!company_value.replace(/\s/g, '').length) {
-        document.getElementById("company").value = "";
-        flag = true;
-      }
-
-      if (!flag) {
-        submitForm();
-      }
-    }
-
-    function submitForm() {
-      document.getElementById("form").submit();
-    }
 
   </script>
 
