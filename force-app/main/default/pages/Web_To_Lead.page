@@ -1,5 +1,9 @@
 <apex:page>
 
+  <head>
+    <title>Contact us!</title>
+  </head>
+
   <style type="text/css">
     .main-container {
       max-width: 400px;
