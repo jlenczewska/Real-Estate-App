@@ -1,0 +1,20 @@
+<apex:page>
+
+  <script>
+
+    (function () {
+      document.getElementById("companyContainer").style.display = "none";
+
+    })();
+
+    const selectElement = document.getElementById("00N7Q00000J5gwH");
+
+    selectElement.addEventListener('change', (event) => {
+      if (event.target.value == 'Business Premises') {
+        document.getElementById("company").value = "";
+        document.getElementById("companyContainer").style.display = "block";
+
+
+  </script>
+
+</apex:page>
