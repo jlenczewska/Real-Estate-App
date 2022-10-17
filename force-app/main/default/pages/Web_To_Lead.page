@@ -1,4 +1,4 @@
-<apex:page>
+<apex:page showQuickActionVfHeader="false" >
 
   <head>
     <title>Contact us!</title>
@@ -113,6 +113,11 @@
     #lead_source {
       display: none;
     }
+
+    body #AppBodyHeader{
+      display: none;
+    }
+
   </style>
 
   <META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=UTF-8" />
