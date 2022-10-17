@@ -144,7 +144,7 @@
       <br/>
 
       <label for="phone">Phone</label>
-      <input id="phone" maxlength="40" name="phone" size="20" type="number" required="required" />
+      <input id="phone" maxlength="40" name="phone" min="0" size="20" type="number" required="required" />
       <br/> Product Of Interest:
       <select id="00N7Q00000J5gwH" name="00N7Q00000J5gwH" title="Product Of Interest">
         <option value="Flats And Apartements" selected="selected">Flats And Apartements</option>
