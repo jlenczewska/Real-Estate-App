@@ -168,6 +168,8 @@
       document.getElementById("companyContainer").style.display = "none";
       document.getElementById("lead_source").value = "Web To Lead";
       document.getElementById("recordType").value = '0127Q000001fzue';
+      document.getElementById("company").value = "-";
+      document.getElementById("company").required = false;
     })();
 
     const selectElement = document.getElementById("00N7Q00000J5gwH");
