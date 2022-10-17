@@ -1,4 +1,4 @@
-<apex:page showQuickActionVfHeader="false" >
+<apex:page showQuickActionVfHeader="false">
 
   <head>
     <title>Contact us!</title>
@@ -9,6 +9,10 @@
       max-width: 400px;
       margin: 0 auto;
       width: 95%;
+    }
+
+    body {
+      overflow: hidden;
     }
 
     h1 {
@@ -99,7 +103,7 @@
 
     td.noSidebarCell {
       background-color: #b3e5fc;
-      padding: 2rem 0;
+      height: 100vh;
     }
 
     select {
@@ -114,10 +118,9 @@
       display: none;
     }
 
-    body #AppBodyHeader{
+    body #AppBodyHeader {
       display: none;
     }
-
   </style>
 
   <META HTTP-EQUIV="Content-type" CONTENT="text/html; charset=UTF-8" />
