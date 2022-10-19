@@ -4,8 +4,8 @@
         <description>Scheduled Meeting Event</description>
         <name>Scheduled_Meeting_Event</name>
         <label>Scheduled Meeting Event</label>
-        <locationX>182</locationX>
-        <locationY>998</locationY>
+        <locationX>669</locationX>
+        <locationY>1046</locationY>
         <actionName>NewEvent</actionName>
         <actionType>quickAction</actionType>
         <connector>
@@ -52,8 +52,8 @@
     <actionCalls>
         <name>Send_invitation_to_lead</name>
         <label>Send invitation to lead</label>
-        <locationX>50</locationX>
-        <locationY>1358</locationY>
+        <locationX>673</locationX>
+        <locationY>1636</locationY>
         <actionName>emailSimple</actionName>
         <actionType>emailSimple</actionType>
         <flowTransactionModel>CurrentTransaction</flowTransactionModel>
@@ -86,8 +86,8 @@
     <assignments>
         <name>Set_Meeting_subject_value</name>
         <label>Set_Meeting_subject_value</label>
-        <locationX>182</locationX>
-        <locationY>518</locationY>
+        <locationX>669</locationX>
+        <locationY>566</locationY>
         <assignmentItems>
             <assignToReference>Meeting_subject</assignToReference>
             <operator>Assign</operator>
@@ -102,8 +102,8 @@
     <assignments>
         <name>setCurrentLead</name>
         <label>setCurrentLead</label>
-        <locationX>182</locationX>
-        <locationY>278</locationY>
+        <locationX>669</locationX>
+        <locationY>326</locationY>
         <assignmentItems>
             <assignToReference>currentLead</assignToReference>
             <operator>Assign</operator>
@@ -118,8 +118,8 @@
     <decisions>
         <name>Sendinvitationtolead1</name>
         <label>Send invitation to lead</label>
-        <locationX>182</locationX>
-        <locationY>1238</locationY>
+        <locationX>662</locationX>
+        <locationY>1424</locationY>
         <defaultConnectorLabel>Default Outcome</defaultConnectorLabel>
         <rules>
             <name>Checkbox_value</name>
@@ -137,6 +137,19 @@
             <label>Checkbox value</label>
         </rules>
     </decisions>
+    <formulas>
+        <name>CheckIfAddressIsNotNull</name>
+        <dataType>String</dataType>
+        <expression>IF(( LEN({!Place_and_time_Address.street})&gt;0 &amp;&amp; LEN({!Place_and_time_Address.city})&gt;0 &amp;&amp; LEN({!Place_and_time_Address.postalCode})&gt;0 &amp;&amp; LEN({!Place_and_time_Address.province})&gt;0 &amp;&amp; LEN({!Place_and_time_Address.country})&gt;0)
+, 
+( {!Place_and_time_Address.street} + &apos; &apos;+ {!Place_and_time_Address.city} + &apos; &apos;+ {!Place_and_time_Address.postalCode} + &apos; &apos;+{!Place_and_time_Address.province} + &apos; &apos;+ {!Place_and_time_Address.country} ), &apos;-&apos;
+)</expression>
+    </formulas>
+    <formulas>
+        <name>CheckIfTimeExists</name>
+        <dataType>String</dataType>
+        <expression>IF( LEN( TEXT({!Place_and_Time_Date}) ) &gt; 0 , TEXT( {!Place_and_Time_Date}) ,&apos;-&apos;)</expression>
+    </formulas>
     <interviewLabel>Add new event meeting scheduled {!$Flow.CurrentDateTime}</interviewLabel>
     <label>Add new event meeting scheduled</label>
     <processMetadataValues>
@@ -148,7 +161,7 @@
     <processMetadataValues>
         <name>CanvasMode</name>
         <value>
-            <stringValue>AUTO_LAYOUT_CANVAS</stringValue>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
         </value>
     </processMetadataValues>
     <processMetadataValues>
@@ -161,8 +174,8 @@
     <recordLookups>
         <name>Get_Account</name>
         <label>Get Account Details</label>
-        <locationX>182</locationX>
-        <locationY>878</locationY>
+        <locationX>669</locationX>
+        <locationY>926</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Scheduled_Meeting_Event</targetReference>
@@ -182,8 +195,8 @@
     <recordLookups>
         <name>getCurrentLead</name>
         <label>getCurrentLead</label>
-        <locationX>182</locationX>
-        <locationY>158</locationY>
+        <locationX>669</locationX>
+        <locationY>206</locationY>
         <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>setCurrentLead</targetReference>
@@ -203,8 +216,8 @@
     <recordUpdates>
         <name>Set_scheduled_meeting_status</name>
         <label>Set scheduled meeting status</label>
-        <locationX>182</locationX>
-        <locationY>1118</locationY>
+        <locationX>670</locationX>
+        <locationY>1225</locationY>
         <connector>
             <targetReference>Sendinvitationtolead1</targetReference>
         </connector>
@@ -228,8 +241,8 @@
     <screens>
         <name>General_Info</name>
         <label>General Info</label>
-        <locationX>182</locationX>
-        <locationY>398</locationY>
+        <locationX>667</locationX>
+        <locationY>452</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>true</allowPause>
@@ -244,7 +257,7 @@
                 <fieldType>Region</fieldType>
                 <fields>
                     <name>Meeting_parties_label</name>
-                    <fieldText>&lt;p&gt;&lt;strong style=&quot;color: rgb(0, 0, 0); background-color: rgb(255, 255, 255); font-size: 14px;&quot;&gt;Meeting Parties&lt;/strong&gt;&lt;/p&gt;</fieldText>
+                    <fieldText>&lt;p&gt;&lt;strong style=&quot;font-size: 14px; background-color: rgb(255, 255, 255); color: rgb(0, 0, 0);&quot;&gt;{!$Label.RE_Meeting_Parties}&lt;/strong&gt;&lt;/p&gt;</fieldText>
                     <fieldType>DisplayText</fieldType>
                 </fields>
                 <fields>
@@ -269,17 +282,12 @@
                 <name>General_Info_Section2_Column1</name>
                 <fieldType>Region</fieldType>
                 <fields>
-                    <name>Meeting_subject_label</name>
-                    <fieldText>&lt;p&gt;&lt;strong style=&quot;font-size: 14px;&quot;&gt;Meeting Subject&lt;/strong&gt;&lt;/p&gt;</fieldText>
-                    <fieldType>DisplayText</fieldType>
-                </fields>
-                <fields>
                     <name>Meeting_subject_value</name>
                     <dataType>String</dataType>
                     <defaultValue>
                         <stringValue>KickOff Meeting</stringValue>
                     </defaultValue>
-                    <fieldText>required</fieldText>
+                    <fieldText>{!$Label.RE_Meeting_Subject}</fieldText>
                     <fieldType>InputField</fieldType>
                     <isRequired>true</isRequired>
                 </fields>
@@ -300,8 +308,8 @@
         <description>Place and Time</description>
         <name>Place_and_time</name>
         <label>Place and time</label>
-        <locationX>182</locationX>
-        <locationY>638</locationY>
+        <locationX>669</locationX>
+        <locationY>686</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>true</allowPause>
@@ -310,7 +318,7 @@
         </connector>
         <fields>
             <name>Place_and_Time_label</name>
-            <fieldText>&lt;p&gt;&lt;strong style=&quot;font-size: 14px;&quot;&gt;Place and Time&lt;/strong&gt;&lt;/p&gt;</fieldText>
+            <fieldText>&lt;p&gt;&lt;strong style=&quot;font-size: 14px;&quot;&gt;{!$Label.RE_Place_and_Time}&lt;/strong&gt;&lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
         </fields>
         <fields>
@@ -318,7 +326,7 @@
             <dataType>DateTime</dataType>
             <fieldText>Choose day and time of the meeting</fieldText>
             <fieldType>InputField</fieldType>
-            <isRequired>false</isRequired>
+            <isRequired>true</isRequired>
         </fields>
         <fields>
             <name>Place_and_time_Address</name>
@@ -327,25 +335,31 @@
             <inputParameters>
                 <name>city</name>
                 <value>
-                    <elementReference>currentLead.City</elementReference>
+                    <elementReference>$Organization.City</elementReference>
                 </value>
             </inputParameters>
             <inputParameters>
                 <name>country</name>
                 <value>
-                    <elementReference>currentLead.Country</elementReference>
+                    <elementReference>$Organization.Country</elementReference>
                 </value>
             </inputParameters>
             <inputParameters>
                 <name>postalCode</name>
                 <value>
-                    <elementReference>currentLead.PostalCode</elementReference>
+                    <elementReference>$Organization.PostalCode</elementReference>
                 </value>
             </inputParameters>
             <inputParameters>
                 <name>province</name>
                 <value>
-                    <elementReference>currentLead.State</elementReference>
+                    <elementReference>$Organization.State</elementReference>
+                </value>
+            </inputParameters>
+            <inputParameters>
+                <name>street</name>
+                <value>
+                    <elementReference>$Organization.Street</elementReference>
                 </value>
             </inputParameters>
             <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
@@ -359,8 +373,8 @@
         <description>Summary</description>
         <name>Summary</name>
         <label>Summary</label>
-        <locationX>182</locationX>
-        <locationY>758</locationY>
+        <locationX>669</locationX>
+        <locationY>808</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <allowPause>true</allowPause>
@@ -369,7 +383,7 @@
         </connector>
         <fields>
             <name>Summary_title</name>
-            <fieldText>&lt;p&gt;&lt;strong style=&quot;font-size: 14px;&quot;&gt;Summary&lt;/strong&gt;&lt;/p&gt;</fieldText>
+            <fieldText>&lt;p&gt;&lt;strong style=&quot;font-size: 14px;&quot;&gt;{!$Label.RE_Summary}&lt;/strong&gt;&lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
         </fields>
         <fields>
@@ -380,27 +394,30 @@
                 <fieldType>Region</fieldType>
                 <fields>
                     <name>General_info_summary</name>
-                    <fieldText>&lt;p&gt;&lt;strong&gt;Meeting Parties&lt;/strong&gt;: {!currentLead.FirstName} {!currentLead.LastName} with {!$User.FirstName} {!$User.LastName}&lt;/p&gt;</fieldText>
+                    <fieldText>&lt;p&gt;&lt;strong&gt;{!$Label.RE_Meeting_Parties}&lt;/strong&gt;: {!currentLead.FirstName} {!currentLead.LastName} with {!$User.FirstName} {!$User.LastName}&lt;/p&gt;</fieldText>
                     <fieldType>DisplayText</fieldType>
                 </fields>
                 <fields>
                     <name>Summary_subject</name>
-                    <fieldText>&lt;p&gt;&lt;strong&gt;Meeting Subject&lt;/strong&gt;: {!Meeting_subject_value}&lt;/p&gt;</fieldText>
+                    <fieldText>&lt;p&gt;&lt;strong&gt;{!$Label.RE_Meeting_Subject}&lt;/strong&gt;: {!Meeting_subject_value}&lt;/p&gt;</fieldText>
                     <fieldType>DisplayText</fieldType>
                 </fields>
                 <fields>
                     <name>Summary_Place</name>
-                    <fieldText>&lt;p&gt;&lt;strong&gt;Place&lt;/strong&gt;: {!Place_and_time_Address.street} &lt;span style=&quot;background-color: rgb(255, 255, 255); color: rgb(68, 68, 68);&quot;&gt;{!Place_and_time_Address.city} {!Place_and_time_Address.postalCode}   {!Place_and_time_Address.province} {!Place_and_time_Address.country}  &lt;/span&gt;&lt;/p&gt;</fieldText>
+                    <fieldText>&lt;p&gt;&lt;span class=&quot;ql-cursor&quot;&gt;﻿&lt;/span&gt;&lt;strong&gt;{!$Label.RE_Place}&lt;/strong&gt;: &lt;span style=&quot;color: rgb(68, 68, 68); background-color: rgb(255, 255, 255);&quot;&gt;{!CheckIfAddressIsNotNull}&lt;/span&gt;&lt;/p&gt;</fieldText>
                     <fieldType>DisplayText</fieldType>
                 </fields>
                 <fields>
                     <name>Summary_Time</name>
-                    <fieldText>&lt;p&gt;&lt;strong&gt;Date And Time&lt;/strong&gt;: &lt;span style=&quot;color: rgb(68, 68, 68); background-color: rgb(255, 255, 255);&quot;&gt;{!Place_and_Time_Date}&lt;/span&gt;&lt;/p&gt;</fieldText>
+                    <fieldText>&lt;p&gt;&lt;span class=&quot;ql-cursor&quot;&gt;﻿&lt;/span&gt;&lt;strong&gt;{!$Label.RE_Date_And_Time}&lt;/strong&gt;: &lt;span style=&quot;color: rgb(68, 68, 68); background-color: rgb(255, 255, 255);&quot;&gt;{!CheckIfTimeExists}&lt;/span&gt;&lt;/p&gt;</fieldText>
                     <fieldType>DisplayText</fieldType>
                 </fields>
                 <fields>
                     <name>Sendinvitationtolead</name>
                     <dataType>Boolean</dataType>
+                    <defaultValue>
+                        <booleanValue>true</booleanValue>
+                    </defaultValue>
                     <fieldText>Send invitation to lead</fieldText>
                     <fieldType>InputField</fieldType>
                     <isRequired>true</isRequired>
@@ -419,8 +436,8 @@
         <showHeader>false</showHeader>
     </screens>
     <start>
-        <locationX>56</locationX>
-        <locationY>0</locationY>
+        <locationX>543</locationX>
+        <locationY>48</locationY>
         <connector>
             <targetReference>getCurrentLead</targetReference>
         </connector>
@@ -428,14 +445,469 @@
     <status>Active</status>
     <textTemplates>
         <name>body</name>
-        <isViewedAsPlainText>false</isViewedAsPlainText>
-        <text>&lt;pre class=&quot;ql-syntax&quot; spellcheck=&quot;false&quot;&gt;Hello
-You have one upcoming meeting with {!$User.FirstName} {!$User.LastName}.
-Meeting subject: {!Meeting_subject_value}
-Day and time: {!Place_and_Time_Date}
-Place: {!Place_and_time_Address.street} {!Place_and_time_Address.city} {!Place_and_time_Address.country}
-Regards
-&lt;/pre&gt;&lt;p&gt;&lt;br&gt;&lt;/p&gt;</text>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot; &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;
+&lt;head&gt;
+&lt;meta http-equiv=&quot;Content-type&quot; content=&quot;text/html; charset=utf-8&quot; /&gt;
+&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1, maximum-scale=1&quot; /&gt;
+&lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot; /&gt;
+&lt;meta name=&quot;format-detection&quot; content=&quot;date=no&quot; /&gt;
+&lt;meta name=&quot;format-detection&quot; content=&quot;address=no&quot; /&gt;
+&lt;meta name=&quot;format-detection&quot; content=&quot;telephone=no&quot; /&gt;
+&lt;title&gt;Email Template&lt;/title&gt;
+&lt;style type=&quot;text/css&quot; media=&quot;screen&quot;&gt;body{padding:0!important;margin:0!important;display:block!important;min-width:100%!important;width:100%!important;background:#fff;-webkit-text-size-adjust:none}a{color:#dacab5;text-decoration:none}p{padding:0!important;margin:0!important}img{-ms-interpolation-mode:bicubic}@media only screen and (max-device-width:480px),only screen and (max-width:480px){div[class=&apos;mobile-br-1&apos;]{height:1px!important}div[class=&apos;mobile-br-1-b&apos;]{height:1px!important;background:#ffffff!important;display:block!important}div[class=&apos;mobile-br-5&apos;]{height:5px!important}div[class=&apos;mobile-br-10&apos;]{height:10px!important}div[class=&apos;mobile-br-15&apos;]{height:15px!important}div[class=&apos;mobile-br-20&apos;]{height:20px!important}div[class=&apos;mobile-br-30&apos;]{height:30px!important}th[class=&apos;m-td&apos;],td[class=&apos;m-td&apos;],div[class=&apos;hide-for-mobile&apos;],span[class=&apos;hide-for-mobile&apos;]{display:none!important;width:0!important;height:0!important;font-size:0!important;line-height:0!important;min-height:0!important}span[class=&apos;mobile-block&apos;]{display:block!important}div[class=&apos;img-m-center&apos;]{text-align:center!important}div[class=&apos;h2-white-m-center&apos;],div[class=&apos;text-white-m-center&apos;],div[class=&apos;text-white-r-m-center&apos;],div[class=&apos;h2-m-center&apos;],div[class=&apos;text-m-center&apos;],div[class=&apos;text-r-m-center&apos;],td[class=&apos;text-top&apos;],div[class=&apos;text-top&apos;],div[class=&apos;h6-m-center&apos;],div[class=&apos;text-m-center&apos;],div[class=&apos;text-top-date&apos;],div[class=&apos;text-white-top&apos;],td[class=&apos;text-white-top&apos;],td[class=&apos;text-white-top-r&apos;],div[class=&apos;text-white-top-r&apos;]{text-align:center!important}div[class=&apos;fluid-img&apos;] img,td[class=&apos;fluid-img&apos;] img{width:100%!important;max-width:100%!important;height:auto!important}table[class=&apos;mobile-shell&apos;]{width:100%!important;min-width:100%!important}table[class=&apos;center&apos;]{margin:0 auto}th[class=&apos;column-rtl&apos;],th[class=&apos;column-rtl2&apos;],th[class=&apos;column-top&apos;],th[class=&apos;column&apos;]{float:left!important;width:100%!important;display:block!important}td[class=&apos;td&apos;]{width:100%!important;min-width:100%!important}td[class=&apos;content-spacing&apos;]{width:15px!important}td[class=&apos;content-spacing2&apos;]{width:10px!important}}&lt;/style&gt;
+&lt;/head&gt;
+&lt;body class=&quot;body&quot; style=&quot;padding:0!important;margin:0!important;display:block!important;min-width:100%!important;width:100%!important;background:#fff;-webkit-text-size-adjust:none&quot;&gt;
+&lt;table width=&quot;100%&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; bgcolor=&quot;#ffffff&quot;&gt;
+&lt;tr&gt;
+&lt;td align=&quot;center&quot; valign=&quot;top&quot;&gt;
+&lt;table width=&quot;100%&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; bgcolor=&quot;#dacab5&quot;&gt;
+&lt;tr&gt;
+&lt;td class=&quot;content-spacing&quot; style=&quot;font-size:0;line-height:0;text-align:left&quot; width=&quot;1&quot;&gt;&lt;/td&gt;
+&lt;td align=&quot;center&quot;&gt;
+&lt;table width=&quot;100%&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; class=&quot;spacer&quot; style=&quot;font-size:0;line-height:0;text-align:center;width:100%;min-width:100%&quot;&gt;
+&lt;tr&gt;
+&lt;td height=&quot;20&quot; class=&quot;spacer&quot; style=&quot;font-size:0;line-height:0;text-align:center;width:100%;min-width:100%&quot;&gt;&amp;nbsp;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;table width=&quot;100%&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; class=&quot;spacer&quot; style=&quot;font-size:0;line-height:0;text-align:center;width:100%;min-width:100%&quot;&gt;
+&lt;tr&gt;
+&lt;td height=&quot;20&quot; class=&quot;spacer&quot; style=&quot;font-size:0;line-height:0;text-align:center;width:100%;min-width:100%&quot;&gt;&amp;nbsp;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;table width=&quot;650&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; class=&quot;mobile-shell&quot;&gt;
+&lt;tr&gt;
+&lt;td class=&quot;td&quot; style=&quot;width:650px;min-width:650px;font-size:0;line-height:0;padding:0;margin:0;font-weight:normal;Margin:0&quot;&gt;
+&lt;table width=&quot;100%&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; bgcolor=&quot;#dacab5&quot;&gt;
+&lt;tr&gt;
+&lt;td class=&quot;content-spacing&quot; style=&quot;font-size:0;line-height:0;text-align:left&quot; width=&quot;1&quot;&gt;&lt;/td&gt;
+&lt;td&gt;
+&lt;table width=&quot;100%&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt;
+&lt;tr&gt;
+&lt;th class=&quot;column&quot; style=&quot;font-size:0;line-height:0;padding:0;margin:0;font-weight:normal;Margin:0&quot; width=&quot;300&quot;&gt;
+&lt;table width=&quot;100%&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt;
+&lt;tr&gt;
+&lt;td class=&quot;text-white-top&quot; style=&quot;color:#fff;font-family:Arial,sans-serif;font-size:11px;line-height:15px;text-align:left;text-transform:uppercase&quot;&gt;
+&lt;div style=&quot;font-size:0;line-height:0&quot; class=&quot;mobile-br-20&quot;&gt;&lt;/div&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;/th&gt;
+&lt;th class=&quot;column&quot; style=&quot;font-size:0;line-height:0;padding:0;margin:0;font-weight:normal;Margin:0&quot;&gt;
+&lt;table width=&quot;100%&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt;
+&lt;tr&gt;
+&lt;td align=&quot;right&quot;&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;/td&gt;
+&lt;td class=&quot;content-spacing&quot; style=&quot;font-size:0;line-height:0;text-align:left&quot; width=&quot;1&quot;&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;table width=&quot;100%&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt;
+&lt;tr&gt;
+&lt;td class=&quot;content-spacing&quot; style=&quot;font-size:0;line-height:0;text-align:left&quot; width=&quot;1&quot;&gt;&lt;/td&gt;
+&lt;td&gt;
+&lt;table width=&quot;100%&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; class=&quot;spacer&quot; style=&quot;font-size:0;line-height:0;text-align:center;width:100%;min-width:100%&quot;&gt;
+&lt;tr&gt;
+&lt;td height=&quot;30&quot; class=&quot;spacer&quot; style=&quot;font-size:0;line-height:0;text-align:center;width:100%;min-width:100%&quot;&gt;&amp;nbsp;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;div class=&quot;hide-for-mobile&quot;&gt;
+&lt;table width=&quot;100%&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; class=&quot;spacer&quot; style=&quot;font-size:0;line-height:0;text-align:center;width:100%;min-width:100%&quot;&gt;
+&lt;tr&gt;
+&lt;td height=&quot;10&quot; class=&quot;spacer&quot; style=&quot;font-size:0;line-height:0;text-align:center;width:100%;min-width:100%&quot;&gt;&amp;nbsp;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;table width=&quot;100%&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt;
+&lt;tr&gt;
+&lt;th class=&quot;column&quot; style=&quot;font-size:0;line-height:0;padding:0;margin:0;font-weight:normal;Margin:0&quot; width=&quot;300&quot;&gt;
+&lt;table width=&quot;100%&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt;
+&lt;tr&gt;
+&lt;td&gt;
+&lt;div class=&quot;img&quot; style=&quot;font-size:0;line-height:0;text-align:left&quot;&gt;
+&lt;div class=&quot;img-m-center&quot; style=&quot;font-size:0;line-height:0&quot;&gt;
+&lt;img src=&quot;https://britenet28-dev-ed.file.force.com/servlet/servlet.ImageServer?id=0157Q000001Q5Hu&amp;oid=00D7Q000008MVEQ&amp;lastMod=1666097114000&quot; border=&quot;0&quot; width=&quot;200&quot; height=&quot;50&quot; alt=&quot;&quot; /&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;div style=&quot;font-size:0;line-height:0&quot; class=&quot;mobile-br-20&quot;&gt;&lt;/div&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;/th&gt;
+&lt;th class=&quot;column&quot; style=&quot;font-size:0;line-height:0;padding:0;margin:0;font-weight:normal;Margin:0&quot;&gt;
+&lt;table width=&quot;100%&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt;
+&lt;tr&gt;
+&lt;td align=&quot;right&quot; class=&quot;text-white-top-r&quot; style=&quot;color:#fff;font-family:Arial,sans-serif;font-size:11px;line-height:15px;text-align:right;text-transform:uppercase&quot;&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;table width=&quot;100%&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; class=&quot;spacer&quot; style=&quot;font-size:0;line-height:0;text-align:center;width:100%;min-width:100%&quot;&gt;
+&lt;tr&gt;
+&lt;td height=&quot;40&quot; class=&quot;spacer&quot; style=&quot;font-size:0;line-height:0;text-align:center;width:100%;min-width:100%&quot;&gt;&amp;nbsp;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;/td&gt;
+&lt;td class=&quot;content-spacing&quot; style=&quot;font-size:0;line-height:0;text-align:left&quot; width=&quot;1&quot;&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;/td&gt;
+&lt;td class=&quot;content-spacing&quot; style=&quot;font-size:0;line-height:0;text-align:left&quot; width=&quot;1&quot;&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;table width=&quot;100%&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; bgcolor=&quot;#e6e6e6&quot;&gt;
+&lt;tr&gt;
+&lt;td valign=&quot;top&quot; class=&quot;m-td&quot; style=&quot;font-size:0;line-height:0;text-align:left&quot;&gt;
+&lt;table width=&quot;100%&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; bgcolor=&quot;#dacab5&quot; class=&quot;border&quot; style=&quot;font-size:0;line-height:0;text-align:center;width:100%;min-width:100%&quot;&gt;
+&lt;tr&gt;
+&lt;td bgcolor=&quot;#dacab5&quot; height=&quot;190&quot; class=&quot;border&quot; style=&quot;font-size:0;line-height:0;text-align:center;width:100%;min-width:100%&quot;&gt;&amp;nbsp;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;/td&gt;
+&lt;td valign=&quot;top&quot; class=&quot;m-td&quot; style=&quot;font-size:0;line-height:0;text-align:left&quot; width=&quot;1&quot;&gt;
+&lt;table width=&quot;100%&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; bgcolor=&quot;#dacab5&quot; class=&quot;border&quot; style=&quot;font-size:0;line-height:0;text-align:center;width:100%;min-width:100%&quot;&gt;
+&lt;tr&gt;
+&lt;td bgcolor=&quot;#dacab5&quot; height=&quot;190&quot; class=&quot;border&quot; style=&quot;font-size:0;line-height:0;text-align:center;width:100%;min-width:100%&quot;&gt;&amp;nbsp;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;/td&gt;
+&lt;td width=&quot;650&quot; align=&quot;center&quot;&gt;
+&lt;table width=&quot;650&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; class=&quot;mobile-shell&quot; bgcolor=&quot;#f6f6f6&quot;&gt;
+&lt;tr&gt;
+&lt;td class=&quot;td&quot; style=&quot;width:650px;min-width:650px;font-size:0;line-height:0;padding:0;margin:0;font-weight:normal;Margin:0&quot;&gt;
+&lt;table width=&quot;100%&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt;
+&lt;tr&gt;
+&lt;td class=&quot;img&quot; style=&quot;font-size:0;line-height:0;text-align:left&quot; width=&quot;10&quot;&gt;&lt;/td&gt;
+&lt;td&gt;
+&lt;table width=&quot;100%&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; class=&quot;spacer&quot; style=&quot;font-size:0;line-height:0;text-align:center;width:100%;min-width:100%&quot;&gt;
+&lt;tr&gt;
+&lt;td height=&quot;10&quot; class=&quot;spacer&quot; style=&quot;font-size:0;line-height:0;text-align:center;width:100%;min-width:100%&quot;&gt;&amp;nbsp;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;div class=&quot;fluid-img&quot; style=&quot;font-size:0;line-height:0;text-align:left&quot;&gt;
+&lt;div class=&quot;img-center&quot; style=&quot;font-size:0;line-height:0;text-align:center&quot;&gt;
+&lt;img src=&quot;https://britenet28-dev-ed.file.force.com/servlet/servlet.ImageServer?id=0157Q000001Q5I4&amp;oid=00D7Q000008MVEQ&amp;lastMod=1666097166000&quot; border=&quot;0&quot; width=&quot;630&quot; height=&quot;360&quot; alt=&quot;&quot; /&gt;
+&lt;/div&gt;
+&lt;/div&gt;
+&lt;table width=&quot;100%&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; class=&quot;spacer&quot; style=&quot;font-size:0;line-height:0;text-align:center;width:100%;min-width:100%&quot;&gt;
+&lt;tr&gt;
+&lt;td height=&quot;10&quot; class=&quot;spacer&quot; style=&quot;font-size:0;line-height:0;text-align:center;width:100%;min-width:100%&quot;&gt;&amp;nbsp;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;/td&gt;
+&lt;td class=&quot;img&quot; style=&quot;font-size:0;line-height:0;text-align:left&quot; width=&quot;10&quot;&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;table width=&quot;650&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; class=&quot;mobile-shell&quot;&gt;
+&lt;tr&gt;
+&lt;td&gt;
+&lt;table width=&quot;100%&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; bgcolor=&quot;#e6e6e6&quot;&gt;
+&lt;tr&gt;
+&lt;td class=&quot;content-spacing&quot; style=&quot;font-size:0;line-height:0;text-align:left&quot; width=&quot;30&quot;&gt;&lt;/td&gt;
+&lt;td&gt;
+&lt;table width=&quot;100%&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; class=&quot;spacer&quot; style=&quot;font-size:0;line-height:0;text-align:center;width:100%;min-width:100%&quot;&gt;
+&lt;tr&gt;
+&lt;td height=&quot;20&quot; class=&quot;spacer&quot; style=&quot;font-size:0;line-height:0;text-align:center;width:100%;min-width:100%&quot;&gt;&amp;nbsp;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;div class=&quot;h3-grey-center&quot; style=&quot;color:#666;font-family:Arial,sans-serif;font-size:26px;line-height:34px;text-align:center&quot;&gt;Hello {!currentLead.FirstName} {!currentLead.LastName} &lt;span class=&quot;hide-for-mobile&quot;&gt;&lt;br /&gt;&lt;/span&gt;You have one upcoming meeting&lt;/div&gt;
+&lt;table width=&quot;100%&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; class=&quot;spacer&quot; style=&quot;font-size:0;line-height:0;text-align:center;width:100%;min-width:100%&quot;&gt;
+&lt;tr&gt;
+&lt;td height=&quot;20&quot; class=&quot;spacer&quot; style=&quot;font-size:0;line-height:0;text-align:center;width:100%;min-width:100%&quot;&gt;&amp;nbsp;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;/td&gt;
+&lt;td class=&quot;content-spacing&quot; style=&quot;font-size:0;line-height:0;text-align:left&quot; width=&quot;30&quot;&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;/td&gt;
+&lt;td class=&quot;m-td&quot; style=&quot;font-size:0;line-height:0;text-align:left&quot; valign=&quot;top&quot; width=&quot;1&quot;&gt;
+&lt;table width=&quot;100%&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; bgcolor=&quot;#dacab5&quot; class=&quot;border&quot; style=&quot;font-size:0;line-height:0;text-align:center;width:100%;min-width:100%&quot;&gt;
+&lt;tr&gt;
+&lt;td bgcolor=&quot;#dacab5&quot; height=&quot;190&quot; class=&quot;border&quot; style=&quot;font-size:0;line-height:0;text-align:center;width:100%;min-width:100%&quot;&gt;&amp;nbsp;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;/td&gt;
+&lt;td valign=&quot;top&quot; class=&quot;m-td&quot; style=&quot;font-size:0;line-height:0;text-align:left&quot;&gt;
+&lt;table width=&quot;100%&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; bgcolor=&quot;#dacab5&quot; class=&quot;border&quot; style=&quot;font-size:0;line-height:0;text-align:center;width:100%;min-width:100%&quot;&gt;
+&lt;tr&gt;
+&lt;td bgcolor=&quot;#dacab5&quot; height=&quot;190&quot; class=&quot;border&quot; style=&quot;font-size:0;line-height:0;text-align:center;width:100%;min-width:100%&quot;&gt;&amp;nbsp;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;table width=&quot;100%&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; bgcolor=&quot;#e6e6e6&quot;&gt;
+&lt;tr&gt;
+&lt;td class=&quot;content-spacing&quot; style=&quot;font-size:0;line-height:0;text-align:left&quot; width=&quot;1&quot;&gt;&lt;/td&gt;
+&lt;td align=&quot;center&quot;&gt;
+&lt;table width=&quot;650&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; class=&quot;mobile-shell&quot; bgcolor=&quot;#e6e6e6&quot;&gt;
+&lt;tr&gt;
+&lt;td class=&quot;td&quot; style=&quot;width:650px;min-width:650px;font-size:0;line-height:0;padding:0;margin:0;font-weight:normal;Margin:0&quot;&gt;
+&lt;table width=&quot;100%&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; class=&quot;spacer&quot; style=&quot;font-size:0;line-height:0;text-align:center;width:100%;min-width:100%&quot;&gt;&lt;tr&gt;&lt;td height=&quot;32&quot; class=&quot;spacer&quot; style=&quot;font-size:0;line-height:0;text-align:center;width:100%;min-width:100%&quot;&gt;&amp;nbsp;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;div class=&quot;hide-for-mobile&quot;&gt;&lt;div class=&quot;img-center&quot; style=&quot;font-size:0;line-height:0;text-align:center&quot;&gt;&lt;img src=&quot;https://britenet28-dev-ed.file.force.com/servlet/servlet.ImageServer?id=0157Q000001Q5Ix&amp;oid=00D7Q000008MVEQ&amp;lastMod=1666097206000&quot; border=&quot;0&quot; width=&quot;14&quot; height=&quot;14&quot; alt=&quot;&quot; /&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;table width=&quot;100%&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; style=&quot;direction:rtl&quot; dir=&quot;rtl&quot;&gt;
+&lt;tr&gt;
+&lt;th class=&quot;column-rtl&quot; style=&quot;font-size:0;line-height:0;padding:0;margin:0;font-weight:normal;vertical-align:top;direction:ltr;Margin:0&quot; dir=&quot;ltr&quot; width=&quot;325&quot;&gt;
+&lt;table width=&quot;100%&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt;
+&lt;tr&gt;
+&lt;td&gt;
+&lt;div class=&quot;hide-for-mobile&quot;&gt;
+&lt;table width=&quot;100%&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; class=&quot;spacer&quot; style=&quot;font-size:0;line-height:0;text-align:center;width:100%;min-width:100%&quot;&gt;&lt;tr&gt;&lt;td height=&quot;60&quot; class=&quot;spacer&quot; style=&quot;font-size:0;line-height:0;text-align:center;width:100%;min-width:100%&quot;&gt;&amp;nbsp;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;
+&lt;/div&gt;
+&lt;table width=&quot;100%&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt;
+&lt;tr&gt;
+&lt;td class=&quot;m-td&quot; style=&quot;font-size:0;line-height:0;text-align:left&quot; width=&quot;148&quot;&gt;&lt;img src=&quot;https://britenet28-dev-ed.file.force.com/servlet/servlet.ImageServer?id=0157Q000001Q5RK&amp;oid=00D7Q000008MVEQ&amp;lastMod=1666097630000&quot; border=&quot;0&quot; width=&quot;110&quot; height=&quot;7&quot; alt=&quot;&quot; /&gt;&lt;/td&gt;
+&lt;td class=&quot;img&quot; style=&quot;font-size:0;line-height:0;text-align:left&quot;&gt;&lt;div class=&quot;img-m-center&quot; style=&quot;font-size:0;line-height:0&quot;&gt;&lt;img src=&quot;https://britenet28-dev-ed.file.force.com/servlet/servlet.ImageServer?id=0157Q000001Q5RU&amp;oid=00D7Q000008MVEQ&amp;lastMod=1666097674000&quot; border=&quot;0&quot; width=&quot;101&quot; height=&quot;99&quot; alt=&quot;&quot; /&gt;&lt;/div&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;/th&gt;
+&lt;th class=&quot;column&quot; style=&quot;font-size:0;line-height:0;padding:0;margin:0;font-weight:normal;Margin:0&quot; width=&quot;1&quot; bgcolor=&quot;#b2b2b2&quot;&gt;&lt;/th&gt;
+&lt;th class=&quot;column-rtl&quot; style=&quot;font-size:0;line-height:0;padding:0;margin:0;font-weight:normal;vertical-align:top;direction:ltr;Margin:0&quot; dir=&quot;ltr&quot; width=&quot;324&quot;&gt;
+&lt;table width=&quot;100%&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt;
+&lt;tr&gt;
+&lt;td&gt;
+&lt;div class=&quot;hide-for-mobile&quot;&gt;
+&lt;table width=&quot;100%&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; class=&quot;spacer&quot; style=&quot;font-size:0;line-height:0;text-align:center;width:100%;min-width:100%&quot;&gt;
+&lt;tr&gt;
+&lt;td height=&quot;40&quot; class=&quot;spacer&quot; style=&quot;font-size:0;line-height:0;text-align:center;width:100%;min-width:100%&quot;&gt;&amp;nbsp;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;table width=&quot;100%&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; class=&quot;spacer&quot; style=&quot;font-size:0;line-height:0;text-align:center;width:100%;min-width:100%&quot;&gt;
+&lt;tr&gt;
+&lt;td height=&quot;20&quot; class=&quot;spacer&quot; style=&quot;font-size:0;line-height:0;text-align:center;width:100%;min-width:100%&quot;&gt;&amp;nbsp;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;table width=&quot;100%&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt;
+&lt;tr&gt;
+&lt;td class=&quot;content-spacing&quot; style=&quot;font-size:0;line-height:0;text-align:left&quot; width=&quot;30&quot;&gt;&lt;/td&gt;
+&lt;td&gt;
+&lt;div class=&quot;h6-m-center&quot; style=&quot;color:#777;font-family:Arial,sans-serif;font-size:16px;line-height:22px;text-align:left;font-weight:bold&quot;&gt;Meeting parties&lt;/div&gt;
+&lt;table width=&quot;100%&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; class=&quot;spacer&quot; style=&quot;font-size:0;line-height:0;text-align:center;width:100%;min-width:100%&quot;&gt;
+&lt;tr&gt;
+&lt;td height=&quot;4&quot; class=&quot;spacer&quot; style=&quot;font-size:0;line-height:0;text-align:center;width:100%;min-width:100%&quot;&gt;&amp;nbsp;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;div class=&quot;text-m-center&quot; style=&quot;color:#777;font-family:Arial,sans-serif;font-size:14px;line-height:20px;text-align:left&quot;&gt;Meeting with &lt;b&gt;{!$User.FirstName} {!$User.LastName}&lt;/b&gt;&lt;/div&gt;
+&lt;/td&gt;
+&lt;td class=&quot;content-spacing&quot; style=&quot;font-size:0;line-height:0;text-align:left&quot; width=&quot;58&quot;&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;table width=&quot;100%&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt;
+&lt;tr&gt;
+&lt;th class=&quot;column-top&quot; style=&quot;font-size:0;line-height:0;padding:0;margin:0;font-weight:normal;vertical-align:top;Margin:0&quot; dir=&quot;ltr&quot; width=&quot;324&quot;&gt;
+&lt;table width=&quot;100%&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt;
+&lt;tr&gt;
+&lt;td&gt;
+&lt;table width=&quot;100%&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; class=&quot;spacer&quot; style=&quot;font-size:0;line-height:0;text-align:center;width:100%;min-width:100%&quot;&gt;
+&lt;tr&gt;
+&lt;td height=&quot;60&quot; class=&quot;spacer&quot; style=&quot;font-size:0;line-height:0;text-align:center;width:100%;min-width:100%&quot;&gt;&amp;nbsp;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;table width=&quot;100%&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt;
+&lt;tr&gt;
+&lt;td class=&quot;img-right&quot; style=&quot;font-size:0;line-height:0;text-align:right&quot;&gt;
+&lt;div class=&quot;img-m-center&quot; style=&quot;font-size:0;line-height:0&quot;&gt;
+&lt;img src=&quot;https://britenet28-dev-ed.file.force.com/servlet/servlet.ImageServer?id=0157Q000001Q5RZ&amp;oid=00D7Q000008MVEQ&amp;lastMod=1666097688000&quot; border=&quot;0&quot; width=&quot;121&quot; height=&quot;99&quot; alt=&quot;&quot; /&gt;
+&lt;/div&gt;
+&lt;/td&gt;
+&lt;td class=&quot;m-td&quot; style=&quot;font-size:0;line-height:0;text-align:left&quot; width=&quot;148&quot;&gt;
+&lt;div class=&quot;img-right&quot; style=&quot;font-size:0;line-height:0;text-align:right&quot;&gt;
+&lt;img src=&quot;https://britenet28-dev-ed.file.force.com/servlet/servlet.ImageServer?id=0157Q000001Q5RP&amp;oid=00D7Q000008MVEQ&amp;lastMod=1666097656000&quot; border=&quot;0&quot; width=&quot;110&quot; height=&quot;7&quot; alt=&quot;&quot; /&gt;
+&lt;/div&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;/th&gt;
+&lt;th class=&quot;m-td&quot; style=&quot;font-size:0;line-height:0;text-align:left&quot; width=&quot;1&quot; bgcolor=&quot;#b2b2b2&quot;&gt;&lt;/th&gt;
+&lt;th class=&quot;column-top&quot; style=&quot;font-size:0;line-height:0;padding:0;margin:0;font-weight:normal;vertical-align:top;Margin:0&quot; width=&quot;325&quot;&gt;
+&lt;table width=&quot;100%&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt;
+&lt;tr&gt;
+&lt;td&gt;
+&lt;div class=&quot;hide-for-mobile&quot;&gt;
+&lt;table width=&quot;100%&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; class=&quot;spacer&quot; style=&quot;font-size:0;line-height:0;text-align:center;width:100%;min-width:100%&quot;&gt;
+&lt;tr&gt;
+&lt;td height=&quot;40&quot; class=&quot;spacer&quot; style=&quot;font-size:0;line-height:0;text-align:center;width:100%;min-width:100%&quot;&gt;&amp;nbsp;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;table width=&quot;100%&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; class=&quot;spacer&quot; style=&quot;font-size:0;line-height:0;text-align:center;width:100%;min-width:100%&quot;&gt;
+&lt;tr&gt;
+&lt;td height=&quot;20&quot; class=&quot;spacer&quot; style=&quot;font-size:0;line-height:0;text-align:center;width:100%;min-width:100%&quot;&gt;&amp;nbsp;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;table width=&quot;100%&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt;
+&lt;tr&gt;
+&lt;td class=&quot;content-spacing&quot; style=&quot;font-size:0;line-height:0;text-align:left&quot; width=&quot;58&quot;&gt;&lt;/td&gt;
+&lt;td&gt;
+&lt;div class=&quot;h6-m-center&quot; style=&quot;color:#777;font-family:Arial,sans-serif;font-size:16px;line-height:22px;text-align:left;font-weight:bold&quot;&gt;Meeting subject&lt;/div&gt;
+&lt;table width=&quot;100%&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; class=&quot;spacer&quot; style=&quot;font-size:0;line-height:0;text-align:center;width:100%;min-width:100%&quot;&gt;
+&lt;tr&gt;
+&lt;td height=&quot;4&quot; class=&quot;spacer&quot; style=&quot;font-size:0;line-height:0;text-align:center;width:100%;min-width:100%&quot;&gt;&amp;nbsp;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;div class=&quot;text-m-center&quot; style=&quot;color:#777;font-family:Arial,sans-serif;font-size:14px;line-height:20px;text-align:left&quot;&gt;{!Meeting_subject_value}&lt;/div&gt;
+&lt;/td&gt;
+&lt;td class=&quot;content-spacing&quot; style=&quot;font-size:0;line-height:0;text-align:left&quot; width=&quot;30&quot;&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;table width=&quot;100%&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; style=&quot;direction:rtl&quot; dir=&quot;rtl&quot;&gt;
+&lt;tr&gt;
+&lt;th class=&quot;column-rtl&quot; style=&quot;font-size:0;line-height:0;padding:0;margin:0;font-weight:normal;vertical-align:top;direction:ltr;Margin:0&quot; dir=&quot;ltr&quot; width=&quot;325&quot;&gt;
+&lt;table width=&quot;100%&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt;
+&lt;tr&gt;
+&lt;td&gt;
+&lt;table width=&quot;100%&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; class=&quot;spacer&quot; style=&quot;font-size:0;line-height:0;text-align:center;width:100%;min-width:100%&quot;&gt;
+&lt;tr&gt;
+&lt;td height=&quot;60&quot; class=&quot;spacer&quot; style=&quot;font-size:0;line-height:0;text-align:center;width:100%;min-width:100%&quot;&gt;&amp;nbsp;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;table width=&quot;100%&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt;
+&lt;tr&gt;
+&lt;td class=&quot;m-td&quot; style=&quot;font-size:0;line-height:0;text-align:left&quot; width=&quot;148&quot;&gt;
+&lt;img src=&quot;https://britenet28-dev-ed.file.force.com/servlet/servlet.ImageServer?id=0157Q000001Q5RK&amp;oid=00D7Q000008MVEQ&amp;lastMod=1666097630000&quot; border=&quot;0&quot; width=&quot;110&quot; height=&quot;7&quot; alt=&quot;&quot; /&gt;
+&lt;/td&gt;
+&lt;td class=&quot;img&quot; style=&quot;font-size:0;line-height:0;text-align:left&quot;&gt;
+&lt;div class=&quot;img-m-center&quot; style=&quot;font-size:0;line-height:0&quot;&gt;
+&lt;img src=&quot;https://britenet28-dev-ed.file.force.com/servlet/servlet.ImageServer?id=0157Q000001Q5Re&amp;oid=00D7Q000008MVEQ&amp;lastMod=1666097704000&quot; border=&quot;0&quot; width=&quot;114&quot; height=&quot;105&quot; alt=&quot;&quot; /&gt;
+&lt;/div&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;div class=&quot;hide-for-mobile&quot;&gt;
+&lt;table width=&quot;100%&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; class=&quot;spacer&quot; style=&quot;font-size:0;line-height:0;text-align:center;width:100%;min-width:100%&quot;&gt;
+&lt;tr&gt;
+&lt;td height=&quot;40&quot; class=&quot;spacer&quot; style=&quot;font-size:0;line-height:0;text-align:center;width:100%;min-width:100%&quot;&gt;&amp;nbsp;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;/th&gt;
+&lt;th class=&quot;m-td&quot; style=&quot;font-size:0;line-height:0;text-align:left&quot; width=&quot;1&quot; bgcolor=&quot;#b2b2b2&quot;&gt;&lt;/th&gt;
+&lt;th class=&quot;column-rtl&quot; style=&quot;font-size:0;line-height:0;padding:0;margin:0;font-weight:normal;vertical-align:top;direction:ltr;Margin:0&quot; dir=&quot;ltr&quot; width=&quot;324&quot;&gt;
+&lt;table width=&quot;100%&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt;
+&lt;tr&gt;
+&lt;td&gt;
+&lt;table width=&quot;100%&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; class=&quot;spacer&quot; style=&quot;font-size:0;line-height:0;text-align:center;width:100%;min-width:100%&quot;&gt;
+&lt;tr&gt;
+&lt;td height=&quot;20&quot; class=&quot;spacer&quot; style=&quot;font-size:0;line-height:0;text-align:center;width:100%;min-width:100%&quot;&gt;&amp;nbsp;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;div class=&quot;hide-for-mobile&quot;&gt;
+&lt;table width=&quot;100%&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; class=&quot;spacer&quot; style=&quot;font-size:0;line-height:0;text-align:center;width:100%;min-width:100%&quot;&gt;
+&lt;tr&gt;
+&lt;td height=&quot;40&quot; class=&quot;spacer&quot; style=&quot;font-size:0;line-height:0;text-align:center;width:100%;min-width:100%&quot;&gt;&amp;nbsp;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;table width=&quot;100%&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot;&gt;
+&lt;tr&gt;
+&lt;td class=&quot;content-spacing&quot; style=&quot;font-size:0;line-height:0;text-align:left&quot; width=&quot;30&quot;&gt;&lt;/td&gt;
+&lt;td&gt;
+&lt;div class=&quot;h6-m-center&quot; style=&quot;color:#777;font-family:Arial,sans-serif;font-size:16px;line-height:22px;text-align:left;font-weight:bold&quot;&gt;Place and time&lt;/div&gt;
+&lt;table width=&quot;100%&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; class=&quot;spacer&quot; style=&quot;font-size:0;line-height:0;text-align:center;width:100%;min-width:100%&quot;&gt;
+&lt;tr&gt;
+&lt;td height=&quot;4&quot; class=&quot;spacer&quot; style=&quot;font-size:0;line-height:0;text-align:center;width:100%;min-width:100%&quot;&gt;&amp;nbsp;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;div class=&quot;text-m-center&quot; style=&quot;color:#777;font-family:Arial,sans-serif;font-size:14px;line-height:20px;text-align:left&quot;&gt;&lt;b&gt;Place&lt;/b&gt;: {!Place_and_time_Address.street} {!Place_and_time_Address.city} {!Place_and_time_Address.country}&lt;br/&gt;
+&lt;b&gt; Time&lt;/b&gt;: {!Place_and_Time_Date}&lt;/div&gt;
+&lt;table width=&quot;100%&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; class=&quot;spacer&quot; style=&quot;font-size:0;line-height:0;text-align:center;width:100%;min-width:100%&quot;&gt;
+&lt;tr&gt;
+&lt;td height=&quot;40&quot; class=&quot;spacer&quot; style=&quot;font-size:0;line-height:0;text-align:center;width:100%;min-width:100%&quot;&gt;&amp;nbsp;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;/td&gt;
+&lt;td class=&quot;content-spacing&quot; style=&quot;font-size:0;line-height:0;text-align:left&quot; width=&quot;58&quot;&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;/th&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;div class=&quot;hide-for-mobile&quot;&gt;
+&lt;div class=&quot;img-center&quot; style=&quot;font-size:0;line-height:0;text-align:center&quot;&gt;
+&lt;img src=&quot;https://britenet28-dev-ed.file.force.com/servlet/servlet.ImageServer?id=0157Q000001Q5Ix&amp;oid=00D7Q000008MVEQ&amp;lastMod=1666097206000&quot; border=&quot;0&quot; width=&quot;14&quot; height=&quot;14&quot; alt=&quot;&quot; /&gt;
+&lt;/div&gt;
+&lt;table width=&quot;100%&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; class=&quot;spacer&quot; style=&quot;font-size:0;line-height:0;text-align:center;width:100%;min-width:100%&quot;&gt;
+&lt;tr&gt;
+&lt;td height=&quot;40&quot; class=&quot;spacer&quot; style=&quot;font-size:0;line-height:0;text-align:center;width:100%;min-width:100%&quot;&gt;&amp;nbsp;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;/div&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;/td&gt;
+&lt;td class=&quot;content-spacing&quot; style=&quot;font-size:0;line-height:0;text-align:left&quot; width=&quot;1&quot;&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;table width=&quot;100%&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; bgcolor=&quot;black&quot;&gt;
+&lt;td align=&quot;center&quot;&gt;
+&lt;table width=&quot;100%&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; class=&quot;spacer&quot; style=&quot;font-size:0;line-height:0;text-align:center;width:100%;min-width:100%&quot;&gt;
+&lt;br /&gt;&lt;br /&gt;
+&lt;div class=&quot;text-footer-c&quot; style=&quot;color:#707070;font-family:Tahoma,Arial,sans-serif;font-size:14px;line-height:22px;text-align:center&quot;&gt;
+&lt;p style=&quot;padding-top: 22px !important;&quot;&gt;If you have any questions, please contact your Agent.&lt;/p&gt;
+&lt;/div&gt;
+&lt;table width=&quot;100%&quot; border=&quot;0&quot; cellspacing=&quot;0&quot; cellpadding=&quot;0&quot; class=&quot;spacer&quot; style=&quot;font-size:0;line-height:0;text-align:center;width:100%;min-width:100%&quot;&gt;
+&lt;tr&gt;
+&lt;td height=&quot;30&quot; class=&quot;spacer&quot; style=&quot;font-size:0;line-height:0;text-align:center;width:100%;min-width:100%&quot;&gt;&amp;nbsp;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;/td&gt;
+&lt;td class=&quot;content-spacing&quot; style=&quot;font-size:0;line-height:0;text-align:left&quot; width=&quot;30&quot;&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;div style=&quot;font-size:0;line-height:0&quot; class=&quot;mobile-br-15&quot;&gt;&lt;/div&gt;
+&lt;/td&gt;
+&lt;td class=&quot;content-spacing&quot; style=&quot;font-size:0;line-height:0;text-align:left&quot; width=&quot;1&quot;&gt;&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;/td&gt;
+&lt;/tr&gt;
+&lt;/table&gt;
+&lt;/body&gt;
+&lt;/html&gt;</text>
     </textTemplates>
     <variables>
         <name>CreateEvent</name>
@@ -461,6 +933,60 @@ Regards
         <isOutput>false</isOutput>
         <value>
             <dateTimeValue>2022-03-06T00:00:00.000Z</dateTimeValue>
+        </value>
+    </variables>
+    <variables>
+        <name>Email_Meeting_Address</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+    </variables>
+    <variables>
+        <name>Email_Meeting_Parties</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <value>
+            <elementReference>meeting_parties_people</elementReference>
+        </value>
+    </variables>
+    <variables>
+        <name>Email_Meeting_Subject</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+        <value>
+            <elementReference>Meeting_subject_value</elementReference>
+        </value>
+    </variables>
+    <variables>
+        <name>Email_Meeting_Time</name>
+        <dataType>DateTime</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+        <value>
+            <elementReference>time_of_meeting</elementReference>
+        </value>
+    </variables>
+    <variables>
+        <name>Email_Subject</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>Email_Subject1</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>false</isInput>
+        <isOutput>true</isOutput>
+        <value>
+            <elementReference>Meeting_subject_value</elementReference>
         </value>
     </variables>
     <variables>
