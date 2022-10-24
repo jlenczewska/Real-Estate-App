@@ -11,15 +11,4 @@
             <allInternalUsers></allInternalUsers>
         </sharedFrom>
     </sharingOwnerRules>
-    <sharingOwnerRules>
-        <fullName>Head_Of_Sales_sharing_rule_Opp</fullName>
-        <accessLevel>Read</accessLevel>
-        <label>Head Of Sales sharing rule Opp</label>
-        <sharedTo>
-            <role>Head_Of_Sales</role>
-        </sharedTo>
-        <sharedFrom>
-            <allInternalUsers></allInternalUsers>
-        </sharedFrom>
-    </sharingOwnerRules>
 </SharingRules>
