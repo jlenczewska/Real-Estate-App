@@ -9,5 +9,5 @@
     </queueMembers>
     <queueSobject>
         <sobjectType>Lead</sobjectType>
-    </queueSobject>
+    </queueSobject> 
 </Queue>
