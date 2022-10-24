@@ -1,0 +1,1314 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Flow xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionCalls>
+        <name>Send_Email_2</name>
+        <label>Send Email 2</label>
+        <locationX>1051</locationX>
+        <locationY>501</locationY>
+        <actionName>emailSimple</actionName>
+        <actionType>emailSimple</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>emailBody</name>
+            <value>
+                <elementReference>Body2</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailAddresses</name>
+            <value>
+                <elementReference>$Record.Email</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>sendRichBody</name>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailSubject</name>
+            <value>
+                <stringValue>We have new offers that may interest you!</stringValue>
+            </value>
+        </inputParameters>
+    </actionCalls>
+    <actionCalls>
+        <name>Send_Email_When_Lead_Is_in_Nurturing</name>
+        <label>Send Email When Lead Is in Nurturing</label>
+        <locationX>679</locationX>
+        <locationY>484</locationY>
+        <actionName>emailSimple</actionName>
+        <actionType>emailSimple</actionType>
+        <flowTransactionModel>CurrentTransaction</flowTransactionModel>
+        <inputParameters>
+            <name>emailBody</name>
+            <value>
+                <elementReference>Body1</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailAddresses</name>
+            <value>
+                <elementReference>$Record.Email</elementReference>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>sendRichBody</name>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </inputParameters>
+        <inputParameters>
+            <name>emailSubject</name>
+            <value>
+                <stringValue>Do you need help choosing a place?</stringValue>
+            </value>
+        </inputParameters>
+    </actionCalls>
+    <apiVersion>56.0</apiVersion>
+    <interviewLabel>Flow When Lead is In Nurturing {!$Flow.CurrentDateTime}</interviewLabel>
+    <label>Flow When Lead is In Nurturing</label>
+    <processMetadataValues>
+        <name>BuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>CanvasMode</name>
+        <value>
+            <stringValue>FREE_FORM_CANVAS</stringValue>
+        </value>
+    </processMetadataValues>
+    <processMetadataValues>
+        <name>OriginBuilderType</name>
+        <value>
+            <stringValue>LightningFlowBuilder</stringValue>
+        </value>
+    </processMetadataValues>
+    <processType>AutoLaunchedFlow</processType>
+    <start>
+        <locationX>757</locationX>
+        <locationY>49</locationY>
+        <connector>
+            <targetReference>Send_Email_When_Lead_Is_in_Nurturing</targetReference>
+        </connector>
+        <doesRequireRecordChangedToMeetCriteria>true</doesRequireRecordChangedToMeetCriteria>
+        <filterLogic>and</filterLogic>
+        <filters>
+            <field>Status</field>
+            <operator>EqualTo</operator>
+            <value>
+                <stringValue>Nurturing</stringValue>
+            </value>
+        </filters>
+        <object>Lead</object>
+        <recordTriggerType>CreateAndUpdate</recordTriggerType>
+        <scheduledPaths>
+            <name>Path1</name>
+            <connector>
+                <targetReference>Send_Email_2</targetReference>
+            </connector>
+            <label>Path1</label>
+            <offsetNumber>2</offsetNumber>
+            <offsetUnit>Days</offsetUnit>
+            <timeSource>RecordTriggerEvent</timeSource>
+        </scheduledPaths>
+        <triggerType>RecordAfterSave</triggerType>
+    </start>
+    <status>Active</status>
+    <textTemplates>
+        <name>Body1</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional //EN&quot; &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot; xmlns:v=&quot;urn:schemas-microsoft-com:vml&quot; xmlns:o=&quot;urn:schemas-microsoft-com:office:office&quot;&gt;
+
+&lt;head&gt;
+    &lt;!--[if gte mso 9]&gt;
+&lt;xml&gt;
+  &lt;o:OfficeDocumentSettings&gt;
+    &lt;o:AllowPNG/&gt;
+    &lt;o:PixelsPerInch&gt;96&lt;/o:PixelsPerInch&gt;
+  &lt;/o:OfficeDocumentSettings&gt;
+&lt;/xml&gt;
+&lt;![endif]--&gt;
+    &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=UTF-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;meta name=&quot;x-apple-disable-message-reformatting&quot;&gt;
+    &lt;!--[if !mso]&gt;&lt;!--&gt;
+    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;
+    &lt;!--&lt;![endif]--&gt;
+    &lt;title&gt;&lt;/title&gt;
+
+    &lt;style type=&quot;text/css&quot;&gt;
+        @media only screen and (min-width: 620px) {
+            .u-row {
+                width: 600px !important;
+            }
+            .u-row .u-col {
+                vertical-align: top;
+            }
+
+            .u-row .u-col-33p33 {
+                width: 199.98px !important;
+            }
+
+            .u-row .u-col-100 {
+                width: 600px !important;
+            }
+
+        }
+
+        @media (max-width: 620px) {
+            .u-row-container {
+                max-width: 100% !important;
+                padding-left: 0px !important;
+                padding-right: 0px !important;
+            }
+            .u-row .u-col {
+                min-width: 320px !important;
+                max-width: 100% !important;
+                display: block !important;
+            }
+            .u-row {
+                width: calc(100% - 40px) !important;
+            }
+            .u-col {
+                width: 100% !important;
+            }
+            .u-col&gt;div {
+                margin: 0 auto;
+            }
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        table,
+        tr,
+        td {
+            vertical-align: top;
+            border-collapse: collapse;
+        }
+
+        p {
+            margin: 0;
+        }
+
+        .ie-container table,
+        .mso-container table {
+            table-layout: fixed;
+        }
+
+        * {
+            line-height: inherit;
+        }
+
+        a[x-apple-data-detectors=&apos;true&apos;] {
+            color: inherit !important;
+            text-decoration: none !important;
+        }
+
+        table,
+        td {
+            color: #000000;
+        }
+
+        #u_body a {
+            color: #0000ee;
+            text-decoration: underline;
+        }
+
+        @media (max-width: 480px) {
+            #u_content_image_1 .v-src-width {
+                width: auto !important;
+            }
+            #u_content_image_1 .v-src-max-width {
+                max-width: 34% !important;
+            }
+            #u_content_text_2 .v-container-padding-padding {
+                padding: 10px 10px 80px !important;
+            }
+            #u_content_image_2 .v-src-width {
+                width: auto !important;
+            }
+            #u_content_image_2 .v-src-max-width {
+                max-width: 60% !important;
+            }
+            #u_content_heading_1 .v-font-size {
+                font-size: 24px !important;
+            }
+            #u_content_text_17 .v-container-padding-padding {
+                padding: 10px 10px 60px !important;
+            }
+            #u_content_image_3 .v-src-width {
+                width: auto !important;
+            }
+            #u_content_image_3 .v-src-max-width {
+                max-width: 70% !important;
+            }
+            #u_content_text_6 .v-text-align {
+                text-align: center !important;
+            }
+            #u_content_image_6 .v-src-width {
+                width: auto !important;
+            }
+            #u_content_image_6 .v-src-max-width {
+                max-width: 40% !important;
+            }
+            #u_content_image_6 .v-text-align {
+                text-align: center !important;
+            }
+            #u_content_text_7 .v-text-align {
+                text-align: center !important;
+            }
+            #u_content_button_2 .v-container-padding-padding {
+                padding: 10px 10px 30px !important;
+            }
+            #u_content_button_2 .v-size-width {
+                width: 65% !important;
+            }
+            #u_content_button_2 .v-text-align {
+                text-align: center !important;
+            }
+            #u_content_image_7 .v-src-width {
+                width: auto !important;
+            }
+            #u_content_image_7 .v-src-max-width {
+                max-width: 70% !important;
+            }
+            #u_content_text_8 .v-text-align {
+                text-align: center !important;
+            }
+            #u_content_image_8 .v-src-width {
+                width: auto !important;
+            }
+            #u_content_image_8 .v-src-max-width {
+                max-width: 40% !important;
+            }
+            #u_content_image_8 .v-text-align {
+                text-align: center !important;
+            }
+            #u_content_text_9 .v-text-align {
+                text-align: center !important;
+            }
+            #u_content_button_3 .v-container-padding-padding {
+                padding: 10px 10px 30px !important;
+            }
+            #u_content_button_3 .v-size-width {
+                width: 65% !important;
+            }
+            #u_content_button_3 .v-text-align {
+                text-align: center !important;
+            }
+            #u_content_image_5 .v-src-width {
+                width: auto !important;
+            }
+            #u_content_image_5 .v-src-max-width {
+                max-width: 70% !important;
+            }
+            #u_content_text_3 .v-text-align {
+                text-align: center !important;
+            }
+            #u_content_image_4 .v-src-width {
+                width: auto !important;
+            }
+            #u_content_image_4 .v-src-max-width {
+                max-width: 40% !important;
+            }
+            #u_content_image_4 .v-text-align {
+                text-align: center !important;
+            }
+            #u_content_text_5 .v-text-align {
+                text-align: center !important;
+            }
+            #u_content_button_1 .v-size-width {
+                width: 65% !important;
+            }
+            #u_content_button_1 .v-text-align {
+                text-align: center !important;
+            }
+            #u_content_image_9 .v-src-width {
+                width: auto !important;
+            }
+            #u_content_image_9 .v-src-max-width {
+                max-width: 70% !important;
+            }
+            #u_content_text_10 .v-text-align {
+                text-align: center !important;
+            }
+            #u_content_image_10 .v-src-width {
+                width: auto !important;
+            }
+            #u_content_image_10 .v-src-max-width {
+                max-width: 40% !important;
+            }
+            #u_content_image_10 .v-text-align {
+                text-align: center !important;
+            }
+            #u_content_text_11 .v-text-align {
+                text-align: center !important;
+            }
+            #u_content_button_4 .v-container-padding-padding {
+                padding: 10px 10px 30px !important;
+            }
+            #u_content_button_4 .v-size-width {
+                width: 65% !important;
+            }
+            #u_content_button_4 .v-text-align {
+                text-align: center !important;
+            }
+            #u_content_image_11 .v-src-width {
+                width: auto !important;
+            }
+            #u_content_image_11 .v-src-max-width {
+                max-width: 70% !important;
+            }
+            #u_content_text_12 .v-text-align {
+                text-align: center !important;
+            }
+            #u_content_image_12 .v-src-width {
+                width: auto !important;
+            }
+            #u_content_image_12 .v-src-max-width {
+                max-width: 40% !important;
+            }
+            #u_content_image_12 .v-text-align {
+                text-align: center !important;
+            }
+            #u_content_text_13 .v-text-align {
+                text-align: center !important;
+            }
+            #u_content_button_5 .v-container-padding-padding {
+                padding: 10px 10px 30px !important;
+            }
+            #u_content_button_5 .v-size-width {
+                width: 65% !important;
+            }
+            #u_content_button_5 .v-text-align {
+                text-align: center !important;
+            }
+            #u_content_image_13 .v-src-width {
+                width: auto !important;
+            }
+            #u_content_image_13 .v-src-max-width {
+                max-width: 70% !important;
+            }
+            #u_content_text_14 .v-text-align {
+                text-align: center !important;
+            }
+            #u_content_image_14 .v-src-width {
+                width: auto !important;
+            }
+            #u_content_image_14 .v-src-max-width {
+                max-width: 40% !important;
+            }
+            #u_content_image_14 .v-text-align {
+                text-align: center !important;
+            }
+            #u_content_text_15 .v-text-align {
+                text-align: center !important;
+            }
+            #u_content_button_6 .v-size-width {
+                width: 65% !important;
+            }
+            #u_content_button_6 .v-text-align {
+                text-align: center !important;
+            }
+            #u_content_heading_2 .v-font-size {
+                font-size: 24px !important;
+            }
+            #u_content_text_1 .v-container-padding-padding {
+                padding: 10px 10px 30px !important;
+            }
+            #u_content_text_16 .v-container-padding-padding {
+                padding: 10px 10px 60px !important;
+            }
+        }
+    &lt;/style&gt;
+
+    &lt;!--[if !mso]&gt;&lt;!--&gt;
+    &lt;link href=&quot;https://fonts.googleapis.com/css?family=Open+Sans:400,700&amp;display=swap&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;&gt;
+    &lt;link href=&quot;https://fonts.googleapis.com/css2?family=Fredoka+One&amp;display=swap&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;&gt;
+    &lt;!--&lt;![endif]--&gt;
+
+&lt;/head&gt;
+
+&lt;body class=&quot;clean-body u_body&quot; style=&quot;margin: 0;padding: 0;-webkit-text-size-adjust: 100%;background-color: #ffffff;color: #000000&quot;&gt;
+    &lt;!--[if IE]&gt;&lt;div class=&quot;ie-container&quot;&gt;&lt;![endif]--&gt;
+    &lt;!--[if mso]&gt;&lt;div class=&quot;mso-container&quot;&gt;&lt;![endif]--&gt;
+    &lt;table id=&quot;u_body&quot; style=&quot;border-collapse: collapse;table-layout: fixed;border-spacing: 0;mso-table-lspace: 0pt;mso-table-rspace: 0pt;vertical-align: top;min-width: 320px;Margin: 0 auto;background-color: #ffffff;width:100%&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot;&gt;
+        &lt;tbody&gt;
+            &lt;tr style=&quot;vertical-align: top&quot;&gt;
+                &lt;td style=&quot;word-break: break-word;border-collapse: collapse !important;vertical-align: top&quot;&gt;
+                    &lt;!--[if (mso)|(IE)]&gt;&lt;table width=&quot;100%&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; border=&quot;0&quot;&gt;&lt;tr&gt;&lt;td align=&quot;center&quot; style=&quot;background-color: #ffffff;&quot;&gt;&lt;![endif]--&gt;
+
+
+                    &lt;div class=&quot;u-row-container&quot; style=&quot;padding: 0px;background-image: url(&apos;https://britenet28-dev-ed.file.force.com/servlet/servlet.ImageServer?id=0157Q000001Q97F&amp;oid=00D7Q000008MVEQ&amp;lastMod=1666276375000&apos;);background-repeat: no-repeat;background-position: center top;background-color: transparent;background-size: cover;&quot;&gt;
+                        &lt;div class=&quot;u-row&quot; style=&quot;Margin: 0 auto;min-width: 320px;max-width: 600px;overflow-wrap: break-word;word-wrap: break-word;word-break: break-word;background-color: transparent;&quot;&gt;
+                            &lt;div style=&quot;border-collapse: collapse;display: table;width: 100%;height: 100%;background-color: transparent;&quot;&gt;
+                                &lt;!--[if (mso)|(IE)]&gt;&lt;table width=&quot;100%&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; border=&quot;0&quot;&gt;&lt;tr&gt;&lt;td style=&quot;padding: 0px;background-image: url(&apos;https://britenet28-dev-ed.file.force.com/servlet/servlet.ImageServer?id=0157Q000001Q97F&amp;oid=00D7Q000008MVEQ&amp;lastMod=1666276375000&apos;);background-repeat: no-repeat;background-position: center top;background-color: transparent;&quot; align=&quot;center&quot;&gt;&lt;table cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; border=&quot;0&quot; style=&quot;width:600px;&quot;&gt;&lt;tr style=&quot;background-color: transparent;&quot;&gt;&lt;![endif]--&gt;
+
+                                &lt;!--[if (mso)|(IE)]&gt;&lt;td align=&quot;center&quot; width=&quot;600&quot; style=&quot;width: 600px;padding: 0px;border-top: 0px solid transparent;border-left: 0px solid transparent;border-right: 0px solid transparent;border-bottom: 0px solid transparent;&quot; valign=&quot;top&quot;&gt;&lt;![endif]--&gt;
+                                &lt;div class=&quot;u-col u-col-100&quot; style=&quot;max-width: 320px;min-width: 600px;display: table-cell;vertical-align: top;&quot;&gt;
+                                    &lt;div style=&quot;height: 100%;width: 100% !important;&quot;&gt;
+                                        &lt;!--[if (!mso)&amp;(!IE)]&gt;&lt;!--&gt;
+                                        &lt;div style=&quot;height: 100%; padding: 0px;border-top: 0px solid transparent;border-left: 0px solid transparent;border-right: 0px solid transparent;border-bottom: 0px solid transparent;&quot;&gt;
+                                            &lt;!--&lt;![endif]--&gt;
+
+                                            &lt;table id=&quot;u_content_image_1&quot; style=&quot;font-family:&apos;Open Sans&apos;,sans-serif;&quot; role=&quot;presentation&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; width=&quot;100%&quot; border=&quot;0&quot;&gt;
+                                                &lt;tbody&gt;
+                                                    &lt;tr&gt;
+                                                        &lt;td class=&quot;v-container-padding-padding&quot; style=&quot;overflow-wrap:break-word;word-break:break-word;padding:80px 10px 10px;font-family:&apos;Open Sans&apos;,sans-serif;&quot; align=&quot;left&quot;&gt;
+
+                                                            &lt;table width=&quot;100%&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; border=&quot;0&quot;&gt;
+                                                                &lt;tr&gt;
+                                                                    &lt;td class=&quot;v-text-align&quot; style=&quot;padding-right: 0px;padding-left: 0px;&quot; align=&quot;center&quot;&gt;
+
+                                                                        &lt;img align=&quot;center&quot; border=&quot;0&quot; src=&quot;https://britenet28-dev-ed.file.force.com/servlet/servlet.ImageServer?id=0157Q000001Q5Hu&amp;oid=00D7Q000008MVEQ&amp;lastMod=1666097114000&quot; alt=&quot;image&quot; title=&quot;image&quot; style=&quot;outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: inline-block !important;border: none;height: auto;float: none;width: 100%;max-width: 103px;&quot; width=&quot;103&quot; class=&quot;v-src-width v-src-max-width&quot; /&gt;
+
+                                                                    &lt;/td&gt;
+                                                                &lt;/tr&gt;
+                                                            &lt;/table&gt;
+
+                                                        &lt;/td&gt;
+                                                    &lt;/tr&gt;
+                                                &lt;/tbody&gt;
+                                            &lt;/table&gt;
+
+                                            &lt;table id=&quot;u_content_text_2&quot; style=&quot;font-family:&apos;Open Sans&apos;,sans-serif;&quot; role=&quot;presentation&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; width=&quot;100%&quot; border=&quot;0&quot;&gt;
+                                                &lt;tbody&gt;
+                                                    &lt;tr&gt;
+                                                        &lt;td class=&quot;v-container-padding-padding&quot; style=&quot;overflow-wrap:break-word;word-break:break-word;padding:10px 100px 80px;font-family:&apos;Open Sans&apos;,sans-serif;&quot; align=&quot;left&quot;&gt;
+                                                        &lt;/td&gt;
+                                                    &lt;/tr&gt;
+                                                &lt;/tbody&gt;
+                                            &lt;/table&gt;
+
+                                            &lt;!--[if (!mso)&amp;(!IE)]&gt;&lt;!--&gt;
+                                        &lt;/div&gt;
+                                        &lt;!--&lt;![endif]--&gt;
+                                    &lt;/div&gt;
+                                &lt;/div&gt;
+                                &lt;!--[if (mso)|(IE)]&gt;&lt;/td&gt;&lt;![endif]--&gt;
+                                &lt;!--[if (mso)|(IE)]&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;![endif]--&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+
+                    &lt;div class=&quot;u-row-container&quot; style=&quot;padding: 0px;background-color: #f5f4f4&quot;&gt;
+                        &lt;div class=&quot;u-row&quot; style=&quot;Margin: 0 auto;min-width: 320px;max-width: 600px;overflow-wrap: break-word;word-wrap: break-word;word-break: break-word;background-color: transparent;&quot;&gt;
+                            &lt;div style=&quot;border-collapse: collapse;display: table;width: 100%;height: 100%;background-color: transparent;&quot;&gt;
+                                &lt;!--[if (mso)|(IE)]&gt;&lt;table width=&quot;100%&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; border=&quot;0&quot;&gt;&lt;tr&gt;&lt;td style=&quot;padding: 0px;background-color: transparent;&quot; align=&quot;center&quot;&gt;&lt;table cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; border=&quot;0&quot; style=&quot;width:600px;&quot;&gt;&lt;tr style=&quot;background-color: transparent;&quot;&gt;&lt;![endif]--&gt;
+
+                                &lt;!--[if (mso)|(IE)]&gt;&lt;td align=&quot;center&quot; width=&quot;600&quot; style=&quot;width: 600px;padding: 0px;border-top: 0px solid transparent;border-left: 0px solid transparent;border-right: 0px solid transparent;border-bottom: 0px solid transparent;border-radius: 0px;-webkit-border-radius: 0px; -moz-border-radius: 0px;&quot; valign=&quot;top&quot;&gt;&lt;![endif]--&gt;
+                                &lt;div class=&quot;u-col u-col-100&quot; style=&quot;max-width: 320px;min-width: 600px;display: table-cell;vertical-align: top;&quot;&gt;
+                                    &lt;div style=&quot;height: 100%;width: 100% !important;border-radius: 0px;-webkit-border-radius: 0px; -moz-border-radius: 0px;&quot;&gt;
+                                        &lt;!--[if (!mso)&amp;(!IE)]&gt;&lt;!--&gt;
+                                        &lt;div style=&quot;height: 100%; padding: 0px;border-top: 0px solid transparent;border-left: 0px solid transparent;border-right: 0px solid transparent;border-bottom: 0px solid transparent;border-radius: 0px;-webkit-border-radius: 0px; -moz-border-radius: 0px;&quot;&gt;
+                                            &lt;!--&lt;![endif]--&gt;
+
+                                            &lt;table id=&quot;u_content_heading_1&quot; style=&quot;font-family:&apos;Open Sans&apos;,sans-serif;&quot; role=&quot;presentation&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; width=&quot;100%&quot; border=&quot;0&quot;&gt;
+                                                &lt;tbody&gt;
+                                                    &lt;tr&gt;
+                                                        &lt;td class=&quot;v-container-padding-padding&quot; style=&quot;overflow-wrap:break-word;word-break:break-word;padding:30px 10px 0px;font-family:&apos;Open Sans&apos;,sans-serif;&quot; align=&quot;left&quot;&gt;
+
+                                                            &lt;h1 class=&quot;v-text-align v-font-size&quot; style=&quot;margin: 0px; line-height: 140%; text-align: center; word-wrap: break-word; font-weight: normal; font-family: Fredoka One; font-size: 35px;&quot;&gt;
+                                                               Hello {!$Record.FirstName} {!$Record.LastName}
+                                                            &lt;/h1&gt;
+
+                                                        &lt;/td&gt;
+                                                    &lt;/tr&gt;
+                                                &lt;/tbody&gt;
+                                            &lt;/table&gt;
+
+                                            &lt;table id=&quot;u_content_text_17&quot; style=&quot;font-family:&apos;Open Sans&apos;,sans-serif;&quot; role=&quot;presentation&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; width=&quot;100%&quot; border=&quot;0&quot;&gt;
+                                                &lt;tbody&gt;
+                                                    &lt;tr&gt;
+                                                        &lt;td class=&quot;v-container-padding-padding&quot; style=&quot;overflow-wrap:break-word;word-break:break-word;padding:10px 50px 30px;font-family:&apos;Open Sans&apos;,sans-serif;&quot; align=&quot;left&quot;&gt;
+
+                                                            &lt;div class=&quot;v-text-align&quot; style=&quot;color: #000000; line-height: 140%; text-align: center; word-wrap: break-word;&quot;&gt;
+                                                                &lt;p style=&quot;font-size: 14px; line-height: 140%;&quot;&gt;
+
+Do you want to learn how to choose the best place to suit your needs?
+&lt;br/&gt;&lt;br/&gt;
+Maybe you need some advice? Don&apos;t worry, I&apos;m here to help you choose!
+&lt;br/&gt;&lt;br/&gt;
+
+I can call you soon if you want. Let me know what your schedule looks like!&lt;/p&gt;
+                                                            &lt;/div&gt;
+
+                                                        &lt;/td&gt;
+                                                    &lt;/tr&gt;
+                                                &lt;/tbody&gt;
+                                            &lt;/table&gt;
+
+                                            &lt;!--[if (!mso)&amp;(!IE)]&gt;&lt;!--&gt;
+                                        &lt;/div&gt;
+                                        &lt;!--&lt;![endif]--&gt;
+                                    &lt;/div&gt;
+                                &lt;/div&gt;
+                                &lt;!--[if (mso)|(IE)]&gt;&lt;/td&gt;&lt;![endif]--&gt;
+                                &lt;!--[if (mso)|(IE)]&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;![endif]--&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+
+                    &lt;div class=&quot;u-row-container&quot; style=&quot;padding: 0px;background-color: transparent&quot;&gt;
+                        &lt;div class=&quot;u-row&quot; style=&quot;Margin: 0 auto;min-width: 320px;max-width: 600px;overflow-wrap: break-word;word-wrap: break-word;word-break: break-word;background-color: transparent;&quot;&gt;
+                            &lt;div style=&quot;border-collapse: collapse;display: table;width: 100%;height: 100%;background-color: transparent;&quot;&gt;
+                                &lt;!--[if (mso)|(IE)]&gt;&lt;table width=&quot;100%&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; border=&quot;0&quot;&gt;&lt;tr&gt;&lt;td style=&quot;padding: 0px;background-color: transparent;&quot; align=&quot;center&quot;&gt;&lt;table cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; border=&quot;0&quot; style=&quot;width:600px;&quot;&gt;&lt;tr style=&quot;background-color: transparent;&quot;&gt;&lt;![endif]--&gt;
+
+                                &lt;!--[if (mso)|(IE)]&gt;&lt;td align=&quot;center&quot; width=&quot;200&quot; style=&quot;width: 200px;padding: 0px;border-top: 0px solid transparent;border-left: 0px solid transparent;border-right: 0px solid transparent;border-bottom: 0px solid transparent;border-radius: 0px;-webkit-border-radius: 0px; -moz-border-radius: 0px;&quot; valign=&quot;top&quot;&gt;&lt;![endif]--&gt;
+                                &lt;div class=&quot;u-col u-col-33p33&quot; style=&quot;max-width: 320px;min-width: 200px;display: table-cell;vertical-align: top;&quot;&gt;
+                                    &lt;div style=&quot;height: 100%;width: 100% !important;border-radius: 0px;-webkit-border-radius: 0px; -moz-border-radius: 0px;&quot;&gt;
+                                        &lt;!--[if (!mso)&amp;(!IE)]&gt;&lt;!--&gt;
+                                   
+                                        &lt;!--&lt;![endif]--&gt;
+                                    &lt;/div&gt;
+                                &lt;/div&gt;
+                                &lt;!--[if (mso)|(IE)]&gt;&lt;/td&gt;&lt;![endif]--&gt;
+                                &lt;!--[if (mso)|(IE)]&gt;&lt;td align=&quot;center&quot; width=&quot;200&quot; style=&quot;width: 200px;padding: 0px;border-top: 0px solid transparent;border-left: 0px solid transparent;border-right: 0px solid transparent;border-bottom: 0px solid transparent;border-radius: 0px;-webkit-border-radius: 0px; -moz-border-radius: 0px;&quot; valign=&quot;top&quot;&gt;&lt;![endif]--&gt;
+                              
+                                &lt;!--[if (mso)|(IE)]&gt;&lt;/td&gt;&lt;![endif]--&gt;
+                                &lt;!--[if (mso)|(IE)]&gt;&lt;td align=&quot;center&quot; width=&quot;200&quot; style=&quot;width: 200px;padding: 0px;border-top: 0px solid transparent;border-left: 0px solid transparent;border-right: 0px solid transparent;border-bottom: 0px solid transparent;border-radius: 0px;-webkit-border-radius: 0px; -moz-border-radius: 0px;&quot; valign=&quot;top&quot;&gt;&lt;![endif]--&gt;
+                             
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+
+
+
+                    &lt;div class=&quot;u-row-container&quot; style=&quot;padding: 0px;background-color: white&quot;&gt;
+                        &lt;div class=&quot;u-row&quot; style=&quot;Margin: 0 auto;min-width: 320px;max-width: 600px;overflow-wrap: break-word;word-wrap: break-word;word-break: break-word;background-color: transparent;&quot;&gt;
+                            &lt;div style=&quot;border-collapse: collapse;display: table;width: 100%;height: 100%;background-color: transparent;&quot;&gt;
+                                &lt;!--[if (mso)|(IE)]&gt;&lt;table width=&quot;100%&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; border=&quot;0&quot;&gt;&lt;tr&gt;&lt;td style=&quot;padding: 0px;background-color: white;&quot; align=&quot;center&quot;&gt;&lt;table cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; border=&quot;0&quot; style=&quot;width:600px;&quot;&gt;&lt;tr style=&quot;background-color: transparent;&quot;&gt;&lt;![endif]--&gt;
+
+                                &lt;!--[if (mso)|(IE)]&gt;&lt;td align=&quot;center&quot; width=&quot;600&quot; style=&quot;width: 600px;padding: 0px;border-top: 0px solid transparent;border-left: 0px solid transparent;border-right: 0px solid transparent;border-bottom: 0px solid transparent;border-radius: 0px;-webkit-border-radius: 0px; -moz-border-radius: 0px;&quot; valign=&quot;top&quot;&gt;&lt;![endif]--&gt;
+                                &lt;div class=&quot;u-col u-col-100&quot; style=&quot;max-width: 320px;min-width: 600px;display: table-cell;vertical-align: top;&quot;&gt;
+                                    &lt;div style=&quot;height: 100%;width: 100% !important;border-radius: 0px;-webkit-border-radius: 0px; -moz-border-radius: 0px;&quot;&gt;
+                                        &lt;!--[if (!mso)&amp;(!IE)]&gt;&lt;!--&gt;
+                                        &lt;div style=&quot;height: 100%; padding: 0px;border-top: 0px solid transparent;border-left: 0px solid transparent;border-right: 0px solid transparent;border-bottom: 0px solid transparent;border-radius: 0px;-webkit-border-radius: 0px; -moz-border-radius: 0px;&quot;&gt;
+                                            &lt;!--&lt;![endif]--&gt;
+
+                                            &lt;table id=&quot;u_content_heading_2&quot; style=&quot;font-family:&apos;Open Sans&apos;,sans-serif;&quot; role=&quot;presentation&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; width=&quot;100%&quot; border=&quot;0&quot;&gt;
+                                                &lt;tbody&gt;
+                                                    &lt;tr&gt;
+                                                        &lt;td class=&quot;v-container-padding-padding&quot; style=&quot;overflow-wrap:break-word;word-break:break-word;padding:30px 10px 0px;font-family:&apos;Open Sans&apos;,sans-serif;&quot; align=&quot;left&quot;&gt;
+
+                                                            &lt;h1 class=&quot;v-text-align v-font-size&quot; style=&quot;margin: 0px; line-height: 140%; text-align: center; word-wrap: break-word; font-weight: normal; font-family: Fredoka One; font-size: 35px;&quot;&gt;
+                                                                &lt;div&gt;See our premises&lt;/div&gt;
+                                                            &lt;/h1&gt;
+
+                                                        &lt;/td&gt;
+                                                    &lt;/tr&gt;
+                                                &lt;/tbody&gt;
+                                            &lt;/table&gt;
+
+                                            &lt;table id=&quot;u_content_text_1&quot; style=&quot;font-family:&apos;Open Sans&apos;,sans-serif;&quot; role=&quot;presentation&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; width=&quot;100%&quot; border=&quot;0&quot;&gt;
+                                                &lt;tbody&gt;
+                                                    &lt;tr&gt;
+                                                        &lt;td class=&quot;v-container-padding-padding&quot; style=&quot;overflow-wrap:break-word;word-break:break-word;padding:10px 50px 30px;font-family:&apos;Open Sans&apos;,sans-serif;&quot; align=&quot;left&quot;&gt;
+
+                                                            &lt;div class=&quot;v-text-align&quot; style=&quot;color: #000000; line-height: 140%; text-align: center; word-wrap: break-word;&quot;&gt;
+                                                                &lt;p style=&quot;font-size: 14px; line-height: 140%;&quot;&gt;
+Our company offers a wide range of flats and business premises.&lt;/p&gt;
+                                                            &lt;/div&gt;
+
+                                                        &lt;/td&gt;
+                                                    &lt;/tr&gt;
+                                                &lt;/tbody&gt;
+                                            &lt;/table&gt;
+
+                                            &lt;table style=&quot;font-family:&apos;Open Sans&apos;,sans-serif;&quot; role=&quot;presentation&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; width=&quot;100%&quot; border=&quot;0&quot;&gt;
+                                                &lt;tbody&gt;
+                                                    &lt;tr&gt;
+                                                        &lt;td class=&quot;v-container-padding-padding&quot; style=&quot;overflow-wrap:break-word;word-break:break-word;padding:10px 10px 60px;font-family:&apos;Open Sans&apos;,sans-serif;&quot; align=&quot;left&quot;&gt;
+
+                                                            &lt;table width=&quot;100%&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; border=&quot;0&quot;&gt;
+                                                                &lt;tr&gt;
+                                                                    &lt;td class=&quot;v-text-align&quot; style=&quot;padding-right: 0px;padding-left: 0px;&quot; align=&quot;center&quot;&gt;
+
+                                                                        &lt;img align=&quot;center&quot; border=&quot;0&quot; src=&quot;https://britenet28-dev-ed.file.force.com/servlet/servlet.ImageServer?id=0157Q000001Q97P&amp;oid=00D7Q000008MVEQ&amp;lastMod=1666276334000&quot; alt=&quot;image&quot; title=&quot;image&quot; style=&quot;outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: inline-block !important;border: none;height: auto;float: none;width: 100%;max-width: 580px;&quot; width=&quot;580&quot; class=&quot;v-src-width v-src-max-width&quot; /&gt;
+
+                                                                    &lt;/td&gt;
+                                                                &lt;/tr&gt;
+                                                            &lt;/table&gt;
+
+                                                        &lt;/td&gt;
+                                                    &lt;/tr&gt;
+                                                &lt;/tbody&gt;
+                                            &lt;/table&gt;
+
+                                            &lt;!--[if (!mso)&amp;(!IE)]&gt;&lt;!--&gt;
+                                        &lt;/div&gt;
+                                        &lt;!--&lt;![endif]--&gt;
+                                    &lt;/div&gt;
+                                &lt;/div&gt;
+                                &lt;!--[if (mso)|(IE)]&gt;&lt;/td&gt;&lt;![endif]--&gt;
+                                &lt;!--[if (mso)|(IE)]&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;![endif]--&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+
+
+
+                    &lt;div class=&quot;u-row-container&quot; style=&quot;padding: 0px;background-color: #f5f4f4&quot;&gt;
+                        &lt;div class=&quot;u-row&quot; style=&quot;Margin: 0 auto;min-width: 320px;max-width: 600px;overflow-wrap: break-word;word-wrap: break-word;word-break: break-word;background-color: transparent;&quot;&gt;
+                            &lt;div style=&quot;border-collapse: collapse;display: table;width: 100%;height: 100%;background-color: transparent;&quot;&gt;
+                                &lt;!--[if (mso)|(IE)]&gt;&lt;table width=&quot;100%&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; border=&quot;0&quot;&gt;&lt;tr&gt;&lt;td style=&quot;padding: 0px;background-color: transparent;&quot; align=&quot;center&quot;&gt;&lt;table cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; border=&quot;0&quot; style=&quot;width:600px;&quot;&gt;&lt;tr style=&quot;background-color: transparent;&quot;&gt;&lt;![endif]--&gt;
+
+                                &lt;!--[if (mso)|(IE)]&gt;&lt;td align=&quot;center&quot; width=&quot;600&quot; style=&quot;width: 600px;padding: 0px;border-top: 0px solid transparent;border-left: 0px solid transparent;border-right: 0px solid transparent;border-bottom: 0px solid transparent;border-radius: 0px;-webkit-border-radius: 0px; -moz-border-radius: 0px;&quot; valign=&quot;top&quot;&gt;&lt;![endif]--&gt;
+                                &lt;div class=&quot;u-col u-col-100&quot; style=&quot;max-width: 320px;min-width: 600px;display: table-cell;vertical-align: top;&quot;&gt;
+                                    &lt;div style=&quot;height: 100%;width: 100% !important;border-radius: 0px;-webkit-border-radius: 0px; -moz-border-radius: 0px;&quot;&gt;
+                                        &lt;!--[if (!mso)&amp;(!IE)]&gt;&lt;!--&gt;
+                                        &lt;div style=&quot;height: 100%; padding: 0px;border-top: 0px solid transparent;border-left: 0px solid transparent;border-right: 0px solid transparent;border-bottom: 0px solid transparent;border-radius: 0px;-webkit-border-radius: 0px; -moz-border-radius: 0px;&quot;&gt;
+                                            &lt;!--&lt;![endif]--&gt;
+
+                                            &lt;table id=&quot;u_content_text_16&quot; style=&quot;font-family:&apos;Open Sans&apos;,sans-serif;&quot; role=&quot;presentation&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; width=&quot;100%&quot; border=&quot;0&quot;&gt;
+                                                &lt;tbody&gt;
+                                                    &lt;tr&gt;
+                                                        &lt;td class=&quot;v-container-padding-padding&quot; style=&quot;overflow-wrap:break-word;word-break:break-word;padding:10px 50px 30px;font-family:&apos;Open Sans&apos;,sans-serif;&quot; align=&quot;left&quot;&gt;
+
+                                                            &lt;div class=&quot;v-text-align&quot; style=&quot;color: #000000; line-height: 140%; text-align: center; word-wrap: break-word;&quot;&gt;
+                                                                &lt;p style=&quot;font-size: 14px; line-height: 140%;&quot;&gt;&lt;br/&gt;
+In case of any doubts or questions, please call or write an e-mail.&lt;br/&gt;&lt;/p&gt;&lt;br/&gt;
+
+&lt;p style=&quot;font-size: 14px; line-height: 140%;&quot;&gt;
+                                                                   All the best
+&lt;/p&gt;
+                                                                &lt;p style=&quot;font-size: 14px; line-height: 140%;&quot;&gt;
+                                                                {!$User.FirstName} {!$User.LastName}&lt;/p&gt;
+                                                                     &lt;p style=&quot;font-size: 14px; line-height: 140%;&quot;&gt;
+                                                                    {!$User.Email}   &lt;/p&gt;
+                                                                     &lt;p style=&quot;font-size: 14px; line-height: 140%;&quot;&gt;
+                                                                     {!$User.Phone}  &lt;/p&gt;
+                                                               
+                                                            &lt;/div&gt;
+
+                                                        &lt;/td&gt;
+                                                    &lt;/tr&gt;
+                                                &lt;/tbody&gt;
+                                            &lt;/table&gt;
+                                        &lt;/div&gt;
+                                    &lt;/div&gt;
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/td&gt;
+            &lt;/tr&gt;
+        &lt;/tbody&gt;
+    &lt;/table&gt;
+&lt;/body&gt;
+&lt;/html&gt;</text>
+    </textTemplates>
+    <textTemplates>
+        <name>Body2</name>
+        <isViewedAsPlainText>true</isViewedAsPlainText>
+        <text>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional //EN&quot; &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot; xmlns:v=&quot;urn:schemas-microsoft-com:vml&quot; xmlns:o=&quot;urn:schemas-microsoft-com:office:office&quot;&gt;
+
+&lt;head&gt;
+    &lt;!--[if gte mso 9]&gt;
+&lt;xml&gt;
+  &lt;o:OfficeDocumentSettings&gt;
+    &lt;o:AllowPNG/&gt;
+    &lt;o:PixelsPerInch&gt;96&lt;/o:PixelsPerInch&gt;
+  &lt;/o:OfficeDocumentSettings&gt;
+&lt;/xml&gt;
+&lt;![endif]--&gt;
+    &lt;meta http-equiv=&quot;Content-Type&quot; content=&quot;text/html; charset=UTF-8&quot;&gt;
+    &lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1.0&quot;&gt;
+    &lt;meta name=&quot;x-apple-disable-message-reformatting&quot;&gt;
+    &lt;!--[if !mso]&gt;&lt;!--&gt;
+    &lt;meta http-equiv=&quot;X-UA-Compatible&quot; content=&quot;IE=edge&quot;&gt;
+    &lt;!--&lt;![endif]--&gt;
+    &lt;title&gt;&lt;/title&gt;
+
+    &lt;style type=&quot;text/css&quot;&gt;
+        @media only screen and (min-width: 620px) {
+            .u-row {
+                width: 600px !important;
+            }
+            .u-row .u-col {
+                vertical-align: top;
+            }
+
+            .u-row .u-col-33p33 {
+                width: 199.98px !important;
+            }
+
+            .u-row .u-col-100 {
+                width: 600px !important;
+            }
+
+        }
+
+        @media (max-width: 620px) {
+            .u-row-container {
+                max-width: 100% !important;
+                padding-left: 0px !important;
+                padding-right: 0px !important;
+            }
+            .u-row .u-col {
+                min-width: 320px !important;
+                max-width: 100% !important;
+                display: block !important;
+            }
+            .u-row {
+                width: calc(100% - 40px) !important;
+            }
+            .u-col {
+                width: 100% !important;
+            }
+            .u-col&gt;div {
+                margin: 0 auto;
+            }
+        }
+
+        body {
+            margin: 0;
+            padding: 0;
+        }
+
+        table,
+        tr,
+        td {
+            vertical-align: top;
+            border-collapse: collapse;
+        }
+
+        p {
+            margin: 0;
+        }
+
+        .ie-container table,
+        .mso-container table {
+            table-layout: fixed;
+        }
+
+        * {
+            line-height: inherit;
+        }
+
+        a[x-apple-data-detectors=&apos;true&apos;] {
+            color: inherit !important;
+            text-decoration: none !important;
+        }
+
+        table,
+        td {
+            color: #000000;
+        }
+
+        #u_body a {
+            color: #0000ee;
+            text-decoration: underline;
+        }
+
+        @media (max-width: 480px) {
+            #u_content_image_1 .v-src-width {
+                width: auto !important;
+            }
+            #u_content_image_1 .v-src-max-width {
+                max-width: 34% !important;
+            }
+            #u_content_text_2 .v-container-padding-padding {
+                padding: 10px 10px 80px !important;
+            }
+            #u_content_image_2 .v-src-width {
+                width: auto !important;
+            }
+            #u_content_image_2 .v-src-max-width {
+                max-width: 60% !important;
+            }
+            #u_content_heading_1 .v-font-size {
+                font-size: 24px !important;
+            }
+            #u_content_text_17 .v-container-padding-padding {
+                padding: 10px 10px 60px !important;
+            }
+            #u_content_image_3 .v-src-width {
+                width: auto !important;
+            }
+            #u_content_image_3 .v-src-max-width {
+                max-width: 70% !important;
+            }
+            #u_content_text_6 .v-text-align {
+                text-align: center !important;
+            }
+            #u_content_image_6 .v-src-width {
+                width: auto !important;
+            }
+            #u_content_image_6 .v-src-max-width {
+                max-width: 40% !important;
+            }
+            #u_content_image_6 .v-text-align {
+                text-align: center !important;
+            }
+            #u_content_text_7 .v-text-align {
+                text-align: center !important;
+            }
+            #u_content_button_2 .v-container-padding-padding {
+                padding: 10px 10px 30px !important;
+            }
+            #u_content_button_2 .v-size-width {
+                width: 65% !important;
+            }
+            #u_content_button_2 .v-text-align {
+                text-align: center !important;
+            }
+            #u_content_image_7 .v-src-width {
+                width: auto !important;
+            }
+            #u_content_image_7 .v-src-max-width {
+                max-width: 70% !important;
+            }
+            #u_content_text_8 .v-text-align {
+                text-align: center !important;
+            }
+            #u_content_image_8 .v-src-width {
+                width: auto !important;
+            }
+            #u_content_image_8 .v-src-max-width {
+                max-width: 40% !important;
+            }
+            #u_content_image_8 .v-text-align {
+                text-align: center !important;
+            }
+            #u_content_text_9 .v-text-align {
+                text-align: center !important;
+            }
+            #u_content_button_3 .v-container-padding-padding {
+                padding: 10px 10px 30px !important;
+            }
+            #u_content_button_3 .v-size-width {
+                width: 65% !important;
+            }
+            #u_content_button_3 .v-text-align {
+                text-align: center !important;
+            }
+            #u_content_image_5 .v-src-width {
+                width: auto !important;
+            }
+            #u_content_image_5 .v-src-max-width {
+                max-width: 70% !important;
+            }
+            #u_content_text_3 .v-text-align {
+                text-align: center !important;
+            }
+            #u_content_image_4 .v-src-width {
+                width: auto !important;
+            }
+            #u_content_image_4 .v-src-max-width {
+                max-width: 40% !important;
+            }
+            #u_content_image_4 .v-text-align {
+                text-align: center !important;
+            }
+            #u_content_text_5 .v-text-align {
+                text-align: center !important;
+            }
+            #u_content_button_1 .v-size-width {
+                width: 65% !important;
+            }
+            #u_content_button_1 .v-text-align {
+                text-align: center !important;
+            }
+            #u_content_image_9 .v-src-width {
+                width: auto !important;
+            }
+            #u_content_image_9 .v-src-max-width {
+                max-width: 70% !important;
+            }
+            #u_content_text_10 .v-text-align {
+                text-align: center !important;
+            }
+            #u_content_image_10 .v-src-width {
+                width: auto !important;
+            }
+            #u_content_image_10 .v-src-max-width {
+                max-width: 40% !important;
+            }
+            #u_content_image_10 .v-text-align {
+                text-align: center !important;
+            }
+            #u_content_text_11 .v-text-align {
+                text-align: center !important;
+            }
+            #u_content_button_4 .v-container-padding-padding {
+                padding: 10px 10px 30px !important;
+            }
+            #u_content_button_4 .v-size-width {
+                width: 65% !important;
+            }
+            #u_content_button_4 .v-text-align {
+                text-align: center !important;
+            }
+            #u_content_image_11 .v-src-width {
+                width: auto !important;
+            }
+            #u_content_image_11 .v-src-max-width {
+                max-width: 70% !important;
+            }
+            #u_content_text_12 .v-text-align {
+                text-align: center !important;
+            }
+            #u_content_image_12 .v-src-width {
+                width: auto !important;
+            }
+            #u_content_image_12 .v-src-max-width {
+                max-width: 40% !important;
+            }
+            #u_content_image_12 .v-text-align {
+                text-align: center !important;
+            }
+            #u_content_text_13 .v-text-align {
+                text-align: center !important;
+            }
+            #u_content_button_5 .v-container-padding-padding {
+                padding: 10px 10px 30px !important;
+            }
+            #u_content_button_5 .v-size-width {
+                width: 65% !important;
+            }
+            #u_content_button_5 .v-text-align {
+                text-align: center !important;
+            }
+            #u_content_image_13 .v-src-width {
+                width: auto !important;
+            }
+            #u_content_image_13 .v-src-max-width {
+                max-width: 70% !important;
+            }
+            #u_content_text_14 .v-text-align {
+                text-align: center !important;
+            }
+            #u_content_image_14 .v-src-width {
+                width: auto !important;
+            }
+            #u_content_image_14 .v-src-max-width {
+                max-width: 40% !important;
+            }
+            #u_content_image_14 .v-text-align {
+                text-align: center !important;
+            }
+            #u_content_text_15 .v-text-align {
+                text-align: center !important;
+            }
+            #u_content_button_6 .v-size-width {
+                width: 65% !important;
+            }
+            #u_content_button_6 .v-text-align {
+                text-align: center !important;
+            }
+            #u_content_heading_2 .v-font-size {
+                font-size: 24px !important;
+            }
+            #u_content_text_1 .v-container-padding-padding {
+                padding: 10px 10px 30px !important;
+            }
+            #u_content_text_16 .v-container-padding-padding {
+                padding: 10px 10px 60px !important;
+            }
+        }
+    &lt;/style&gt;
+
+    &lt;!--[if !mso]&gt;&lt;!--&gt;
+    &lt;link href=&quot;https://fonts.googleapis.com/css?family=Open+Sans:400,700&amp;display=swap&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;&gt;
+    &lt;link href=&quot;https://fonts.googleapis.com/css2?family=Fredoka+One&amp;display=swap&quot; rel=&quot;stylesheet&quot; type=&quot;text/css&quot;&gt;
+    &lt;!--&lt;![endif]--&gt;
+
+&lt;/head&gt;
+
+&lt;body class=&quot;clean-body u_body&quot; style=&quot;margin: 0;padding: 0;-webkit-text-size-adjust: 100%;background-color: #ffffff;color: #000000&quot;&gt;
+    &lt;!--[if IE]&gt;&lt;div class=&quot;ie-container&quot;&gt;&lt;![endif]--&gt;
+    &lt;!--[if mso]&gt;&lt;div class=&quot;mso-container&quot;&gt;&lt;![endif]--&gt;
+    &lt;table id=&quot;u_body&quot; style=&quot;border-collapse: collapse;table-layout: fixed;border-spacing: 0;mso-table-lspace: 0pt;mso-table-rspace: 0pt;vertical-align: top;min-width: 320px;Margin: 0 auto;background-color: #ffffff;width:100%&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot;&gt;
+        &lt;tbody&gt;
+            &lt;tr style=&quot;vertical-align: top&quot;&gt;
+                &lt;td style=&quot;word-break: break-word;border-collapse: collapse !important;vertical-align: top&quot;&gt;
+                    &lt;!--[if (mso)|(IE)]&gt;&lt;table width=&quot;100%&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; border=&quot;0&quot;&gt;&lt;tr&gt;&lt;td align=&quot;center&quot; style=&quot;background-color: #ffffff;&quot;&gt;&lt;![endif]--&gt;
+
+
+                    &lt;div class=&quot;u-row-container&quot; style=&quot;padding: 0px;background-image: url(&apos;https://britenet28-dev-ed.file.force.com/servlet/servlet.ImageServer?id=0157Q000001Q97e&amp;oid=00D7Q000008MVEQ&amp;lastMod=1666336852000&apos;);background-repeat: no-repeat;background-position: right;background-color: transparent;background-size: cover;&quot;&gt;
+                        &lt;div class=&quot;u-row&quot; style=&quot;Margin: 0 auto;min-width: 320px;max-width: 600px;overflow-wrap: break-word;word-wrap: break-word;word-break: break-word;background-color: transparent;&quot;&gt;
+                            &lt;div style=&quot;border-collapse: collapse;display: table;width: 100%;height: 100%;background-color: transparent;&quot;&gt;
+                                &lt;!--[if (mso)|(IE)]&gt;&lt;table width=&quot;100%&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; border=&quot;0&quot;&gt;&lt;tr&gt;&lt;td style=&quot;padding: 0px;background-image: url(&apos;https://britenet28-dev-ed.file.force.com/servlet/servlet.ImageServer?id=0157Q000001Q97F&amp;oid=00D7Q000008MVEQ&amp;lastMod=1666276375000&apos;);background-repeat: no-repeat;background-position: center top;background-color: transparent;&quot; align=&quot;center&quot;&gt;&lt;table cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; border=&quot;0&quot; style=&quot;width:600px;&quot;&gt;&lt;tr style=&quot;background-color: transparent;&quot;&gt;&lt;![endif]--&gt;
+
+                                &lt;!--[if (mso)|(IE)]&gt;&lt;td align=&quot;center&quot; width=&quot;600&quot; style=&quot;width: 600px;padding: 0px;border-top: 0px solid transparent;border-left: 0px solid transparent;border-right: 0px solid transparent;border-bottom: 0px solid transparent;&quot; valign=&quot;top&quot;&gt;&lt;![endif]--&gt;
+                                &lt;div class=&quot;u-col u-col-100&quot; style=&quot;max-width: 320px;min-width: 600px;display: table-cell;vertical-align: top;&quot;&gt;
+                                    &lt;div style=&quot;height: 100%;width: 100% !important;&quot;&gt;
+                                        &lt;!--[if (!mso)&amp;(!IE)]&gt;&lt;!--&gt;
+                                        &lt;div style=&quot;height: 100%; padding: 0px;border-top: 0px solid transparent;border-left: 0px solid transparent;border-right: 0px solid transparent;border-bottom: 0px solid transparent;&quot;&gt;
+                                            &lt;!--&lt;![endif]--&gt;
+
+                                            &lt;table id=&quot;u_content_image_1&quot; style=&quot;font-family:&apos;Open Sans&apos;,sans-serif;&quot; role=&quot;presentation&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; width=&quot;100%&quot; border=&quot;0&quot;&gt;
+                                                &lt;tbody&gt;
+                                                    &lt;tr&gt;
+                                                        &lt;td class=&quot;v-container-padding-padding&quot; style=&quot;overflow-wrap:break-word;word-break:break-word;padding:80px 10px 10px;font-family:&apos;Open Sans&apos;,sans-serif;&quot; align=&quot;left&quot;&gt;
+
+                                                            &lt;table width=&quot;100%&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; border=&quot;0&quot;&gt;
+                                                                &lt;tr&gt;
+                                                                    &lt;td class=&quot;v-text-align&quot; style=&quot;padding-right: 0px;padding-left: 0px;&quot; align=&quot;center&quot;&gt;
+
+                                                                        &lt;img align=&quot;center&quot; border=&quot;0&quot; src=&quot;https://britenet28-dev-ed.file.force.com/servlet/servlet.ImageServer?id=0157Q000001Q5Hu&amp;oid=00D7Q000008MVEQ&amp;lastMod=1666097114000&quot; alt=&quot;image&quot; title=&quot;image&quot; style=&quot;outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: inline-block !important;border: none;height: auto;float: none;width: 100%;max-width: 103px;&quot; width=&quot;103&quot; class=&quot;v-src-width v-src-max-width&quot; /&gt;
+
+                                                                    &lt;/td&gt;
+                                                                &lt;/tr&gt;
+                                                            &lt;/table&gt;
+
+                                                        &lt;/td&gt;
+                                                    &lt;/tr&gt;
+                                                &lt;/tbody&gt;
+                                            &lt;/table&gt;
+
+                                            &lt;table id=&quot;u_content_text_2&quot; style=&quot;font-family:&apos;Open Sans&apos;,sans-serif;&quot; role=&quot;presentation&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; width=&quot;100%&quot; border=&quot;0&quot;&gt;
+                                                &lt;tbody&gt;
+                                                    &lt;tr&gt;
+                                                        &lt;td class=&quot;v-container-padding-padding&quot; style=&quot;overflow-wrap:break-word;word-break:break-word;padding:10px 100px 80px;font-family:&apos;Open Sans&apos;,sans-serif;&quot; align=&quot;left&quot;&gt;
+                                                        &lt;/td&gt;
+                                                    &lt;/tr&gt;
+                                                &lt;/tbody&gt;
+                                            &lt;/table&gt;
+
+                                            &lt;!--[if (!mso)&amp;(!IE)]&gt;&lt;!--&gt;
+                                        &lt;/div&gt;
+                                        &lt;!--&lt;![endif]--&gt;
+                                    &lt;/div&gt;
+                                &lt;/div&gt;
+                                &lt;!--[if (mso)|(IE)]&gt;&lt;/td&gt;&lt;![endif]--&gt;
+                                &lt;!--[if (mso)|(IE)]&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;![endif]--&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+
+                    &lt;div class=&quot;u-row-container&quot; style=&quot;padding: 0px;background-color: #f5f4f4&quot;&gt;
+                        &lt;div class=&quot;u-row&quot; style=&quot;Margin: 0 auto;min-width: 320px;max-width: 600px;overflow-wrap: break-word;word-wrap: break-word;word-break: break-word;background-color: transparent;&quot;&gt;
+                            &lt;div style=&quot;border-collapse: collapse;display: table;width: 100%;height: 100%;background-color: transparent;&quot;&gt;
+                                &lt;!--[if (mso)|(IE)]&gt;&lt;table width=&quot;100%&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; border=&quot;0&quot;&gt;&lt;tr&gt;&lt;td style=&quot;padding: 0px;background-color: transparent;&quot; align=&quot;center&quot;&gt;&lt;table cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; border=&quot;0&quot; style=&quot;width:600px;&quot;&gt;&lt;tr style=&quot;background-color: transparent;&quot;&gt;&lt;![endif]--&gt;
+
+                                &lt;!--[if (mso)|(IE)]&gt;&lt;td align=&quot;center&quot; width=&quot;600&quot; style=&quot;width: 600px;padding: 0px;border-top: 0px solid transparent;border-left: 0px solid transparent;border-right: 0px solid transparent;border-bottom: 0px solid transparent;border-radius: 0px;-webkit-border-radius: 0px; -moz-border-radius: 0px;&quot; valign=&quot;top&quot;&gt;&lt;![endif]--&gt;
+                                &lt;div class=&quot;u-col u-col-100&quot; style=&quot;max-width: 320px;min-width: 600px;display: table-cell;vertical-align: top;&quot;&gt;
+                                    &lt;div style=&quot;height: 100%;width: 100% !important;border-radius: 0px;-webkit-border-radius: 0px; -moz-border-radius: 0px;&quot;&gt;
+                                        &lt;!--[if (!mso)&amp;(!IE)]&gt;&lt;!--&gt;
+                                        &lt;div style=&quot;height: 100%; padding: 0px;border-top: 0px solid transparent;border-left: 0px solid transparent;border-right: 0px solid transparent;border-bottom: 0px solid transparent;border-radius: 0px;-webkit-border-radius: 0px; -moz-border-radius: 0px;&quot;&gt;
+                                            &lt;!--&lt;![endif]--&gt;
+
+                                            &lt;table id=&quot;u_content_heading_1&quot; style=&quot;font-family:&apos;Open Sans&apos;,sans-serif;&quot; role=&quot;presentation&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; width=&quot;100%&quot; border=&quot;0&quot;&gt;
+                                                &lt;tbody&gt;
+                                                    &lt;tr&gt;
+                                                        &lt;td class=&quot;v-container-padding-padding&quot; style=&quot;overflow-wrap:break-word;word-break:break-word;padding:30px 10px 0px;font-family:&apos;Open Sans&apos;,sans-serif;&quot; align=&quot;left&quot;&gt;
+
+                                                            &lt;h1 class=&quot;v-text-align v-font-size&quot; style=&quot;margin: 0px; line-height: 140%; text-align: center; word-wrap: break-word; font-weight: normal; font-family: Fredoka One; font-size: 35px;&quot;&gt;
+                                                               Hello {!$Record.FirstName} {!$Record.LastName}
+                                                            &lt;/h1&gt;
+
+                                                        &lt;/td&gt;
+                                                    &lt;/tr&gt;
+                                                &lt;/tbody&gt;
+                                            &lt;/table&gt;
+
+                                            &lt;table id=&quot;u_content_text_17&quot; style=&quot;font-family:&apos;Open Sans&apos;,sans-serif;&quot; role=&quot;presentation&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; width=&quot;100%&quot; border=&quot;0&quot;&gt;
+                                                &lt;tbody&gt;
+                                                    &lt;tr&gt;
+                                                        &lt;td class=&quot;v-container-padding-padding&quot; style=&quot;overflow-wrap:break-word;word-break:break-word;padding:10px 50px 30px;font-family:&apos;Open Sans&apos;,sans-serif;&quot; align=&quot;left&quot;&gt;
+
+                                                            &lt;div class=&quot;v-text-align&quot; style=&quot;color: #000000; line-height: 140%; text-align: center; word-wrap: break-word;&quot;&gt;
+                                                                &lt;p style=&quot;font-size: 14px; line-height: 140%;&quot;&gt;
+
+I&apos;m just checking to see if you have time to review my previous email. 
+&lt;br/&gt;&lt;br/&gt;
+I encourage you to do so and to ask questions if you have any doubts or questions.
+&lt;br/&gt;&lt;br/&gt;
+We have new premises that may interest you. You can see them below.
+&lt;/p&gt;
+                                                            &lt;/div&gt;
+
+                                                        &lt;/td&gt;
+                                                    &lt;/tr&gt;
+                                                &lt;/tbody&gt;
+                                            &lt;/table&gt;
+
+                                            &lt;!--[if (!mso)&amp;(!IE)]&gt;&lt;!--&gt;
+                                        &lt;/div&gt;
+                                        &lt;!--&lt;![endif]--&gt;
+                                    &lt;/div&gt;
+                                &lt;/div&gt;
+                                &lt;!--[if (mso)|(IE)]&gt;&lt;/td&gt;&lt;![endif]--&gt;
+                                &lt;!--[if (mso)|(IE)]&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;![endif]--&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+
+                    &lt;div class=&quot;u-row-container&quot; style=&quot;padding: 0px;background-color: transparent&quot;&gt;
+                        &lt;div class=&quot;u-row&quot; style=&quot;Margin: 0 auto;min-width: 320px;max-width: 600px;overflow-wrap: break-word;word-wrap: break-word;word-break: break-word;background-color: transparent;&quot;&gt;
+                            &lt;div style=&quot;border-collapse: collapse;display: table;width: 100%;height: 100%;background-color: transparent;&quot;&gt;
+                                &lt;!--[if (mso)|(IE)]&gt;&lt;table width=&quot;100%&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; border=&quot;0&quot;&gt;&lt;tr&gt;&lt;td style=&quot;padding: 0px;background-color: transparent;&quot; align=&quot;center&quot;&gt;&lt;table cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; border=&quot;0&quot; style=&quot;width:600px;&quot;&gt;&lt;tr style=&quot;background-color: transparent;&quot;&gt;&lt;![endif]--&gt;
+
+                                &lt;!--[if (mso)|(IE)]&gt;&lt;td align=&quot;center&quot; width=&quot;200&quot; style=&quot;width: 200px;padding: 0px;border-top: 0px solid transparent;border-left: 0px solid transparent;border-right: 0px solid transparent;border-bottom: 0px solid transparent;border-radius: 0px;-webkit-border-radius: 0px; -moz-border-radius: 0px;&quot; valign=&quot;top&quot;&gt;&lt;![endif]--&gt;
+                                &lt;div class=&quot;u-col u-col-33p33&quot; style=&quot;max-width: 320px;min-width: 200px;display: table-cell;vertical-align: top;&quot;&gt;
+                                    &lt;div style=&quot;height: 100%;width: 100% !important;border-radius: 0px;-webkit-border-radius: 0px; -moz-border-radius: 0px;&quot;&gt;
+                                        &lt;!--[if (!mso)&amp;(!IE)]&gt;&lt;!--&gt;
+                                   
+                                        &lt;!--&lt;![endif]--&gt;
+                                    &lt;/div&gt;
+                                &lt;/div&gt;
+                                &lt;!--[if (mso)|(IE)]&gt;&lt;/td&gt;&lt;![endif]--&gt;
+                                &lt;!--[if (mso)|(IE)]&gt;&lt;td align=&quot;center&quot; width=&quot;200&quot; style=&quot;width: 200px;padding: 0px;border-top: 0px solid transparent;border-left: 0px solid transparent;border-right: 0px solid transparent;border-bottom: 0px solid transparent;border-radius: 0px;-webkit-border-radius: 0px; -moz-border-radius: 0px;&quot; valign=&quot;top&quot;&gt;&lt;![endif]--&gt;
+                              
+                                &lt;!--[if (mso)|(IE)]&gt;&lt;/td&gt;&lt;![endif]--&gt;
+                                &lt;!--[if (mso)|(IE)]&gt;&lt;td align=&quot;center&quot; width=&quot;200&quot; style=&quot;width: 200px;padding: 0px;border-top: 0px solid transparent;border-left: 0px solid transparent;border-right: 0px solid transparent;border-bottom: 0px solid transparent;border-radius: 0px;-webkit-border-radius: 0px; -moz-border-radius: 0px;&quot; valign=&quot;top&quot;&gt;&lt;![endif]--&gt;
+                             
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+
+
+
+                    &lt;div class=&quot;u-row-container&quot; style=&quot;padding: 0px;background-color: white&quot;&gt;
+                        &lt;div class=&quot;u-row&quot; style=&quot;Margin: 0 auto;min-width: 320px;max-width: 600px;overflow-wrap: break-word;word-wrap: break-word;word-break: break-word;background-color: transparent;&quot;&gt;
+                            &lt;div style=&quot;border-collapse: collapse;display: table;width: 100%;height: 100%;background-color: transparent;&quot;&gt;
+                                &lt;!--[if (mso)|(IE)]&gt;&lt;table width=&quot;100%&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; border=&quot;0&quot;&gt;&lt;tr&gt;&lt;td style=&quot;padding: 0px;background-color: white;&quot; align=&quot;center&quot;&gt;&lt;table cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; border=&quot;0&quot; style=&quot;width:600px;&quot;&gt;&lt;tr style=&quot;background-color: transparent;&quot;&gt;&lt;![endif]--&gt;
+
+                                &lt;!--[if (mso)|(IE)]&gt;&lt;td align=&quot;center&quot; width=&quot;600&quot; style=&quot;width: 600px;padding: 0px;border-top: 0px solid transparent;border-left: 0px solid transparent;border-right: 0px solid transparent;border-bottom: 0px solid transparent;border-radius: 0px;-webkit-border-radius: 0px; -moz-border-radius: 0px;&quot; valign=&quot;top&quot;&gt;&lt;![endif]--&gt;
+                                &lt;div class=&quot;u-col u-col-100&quot; style=&quot;max-width: 320px;min-width: 600px;display: table-cell;vertical-align: top;&quot;&gt;
+                                    &lt;div style=&quot;height: 100%;width: 100% !important;border-radius: 0px;-webkit-border-radius: 0px; -moz-border-radius: 0px;&quot;&gt;
+                                        &lt;!--[if (!mso)&amp;(!IE)]&gt;&lt;!--&gt;
+                                        &lt;div style=&quot;height: 100%; padding: 0px;border-top: 0px solid transparent;border-left: 0px solid transparent;border-right: 0px solid transparent;border-bottom: 0px solid transparent;border-radius: 0px;-webkit-border-radius: 0px; -moz-border-radius: 0px;&quot;&gt;
+                                            &lt;!--&lt;![endif]--&gt;
+
+                                            &lt;table id=&quot;u_content_heading_2&quot; style=&quot;font-family:&apos;Open Sans&apos;,sans-serif;&quot; role=&quot;presentation&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; width=&quot;100%&quot; border=&quot;0&quot;&gt;
+                                                &lt;tbody&gt;
+                                                    &lt;tr&gt;
+                                                        &lt;td class=&quot;v-container-padding-padding&quot; style=&quot;overflow-wrap:break-word;word-break:break-word;padding:30px 10px 0px;font-family:&apos;Open Sans&apos;,sans-serif;&quot; align=&quot;left&quot;&gt;
+
+                                                            &lt;h1 class=&quot;v-text-align v-font-size&quot; style=&quot;margin: 0px; line-height: 140%; text-align: center; word-wrap: break-word; font-weight: normal; font-family: Fredoka One; font-size: 35px;&quot;&gt;
+                                                                &lt;div&gt;Get inspired
+&lt;/div&gt;
+                                                            &lt;/h1&gt;
+
+                                                        &lt;/td&gt;
+                                                    &lt;/tr&gt;
+                                                &lt;/tbody&gt;
+                                            &lt;/table&gt;
+
+                                            &lt;table id=&quot;u_content_text_1&quot; style=&quot;font-family:&apos;Open Sans&apos;,sans-serif;&quot; role=&quot;presentation&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; width=&quot;100%&quot; border=&quot;0&quot;&gt;
+                                                &lt;tbody&gt;
+                                                    &lt;tr&gt;
+                                                        &lt;td class=&quot;v-container-padding-padding&quot; style=&quot;overflow-wrap:break-word;word-break:break-word;padding:10px 50px 30px;font-family:&apos;Open Sans&apos;,sans-serif;&quot; align=&quot;left&quot;&gt;
+
+                                                            &lt;div class=&quot;v-text-align&quot; style=&quot;color: #000000; line-height: 140%; text-align: center; word-wrap: break-word;&quot;&gt;
+                                                                &lt;p style=&quot;font-size: 14px; line-height: 140%;&quot;&gt;
+See our latest apartments and business premises.&lt;/p&gt;
+                                                            &lt;/div&gt;
+
+                                                        &lt;/td&gt;
+                                                    &lt;/tr&gt;
+                                                &lt;/tbody&gt;
+                                            &lt;/table&gt;
+
+                                            &lt;table style=&quot;font-family:&apos;Open Sans&apos;,sans-serif;&quot; role=&quot;presentation&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; width=&quot;100%&quot; border=&quot;0&quot;&gt;
+                                                &lt;tbody&gt;
+                                                    &lt;tr&gt;
+                                                        &lt;td class=&quot;v-container-padding-padding&quot; style=&quot;overflow-wrap:break-word;word-break:break-word;padding:10px 10px 60px;font-family:&apos;Open Sans&apos;,sans-serif;&quot; align=&quot;left&quot;&gt;
+
+                                                            &lt;table width=&quot;100%&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; border=&quot;0&quot;&gt;
+                                                                &lt;tr&gt;
+                                                                    &lt;td class=&quot;v-text-align&quot; style=&quot;padding-right: 0px;padding-left: 0px;&quot; align=&quot;center&quot;&gt;
+
+                                                                        &lt;img align=&quot;center&quot; border=&quot;0&quot; src=&quot;https://britenet28-dev-ed.file.force.com/servlet/servlet.ImageServer?id=0157Q000001Q97Z&amp;oid=00D7Q000008MVEQ&amp;lastMod=1666335470000&quot; alt=&quot;image&quot; title=&quot;image&quot; style=&quot;outline: none;text-decoration: none;-ms-interpolation-mode: bicubic;clear: both;display: inline-block !important;border: none;height: auto;float: none;width: 100%;max-width: 580px;&quot; width=&quot;580&quot; class=&quot;v-src-width v-src-max-width&quot; /&gt;
+
+                                                                    &lt;/td&gt;
+                                                                &lt;/tr&gt;
+                                                            &lt;/table&gt;
+
+                                                        &lt;/td&gt;
+                                                    &lt;/tr&gt;
+                                                &lt;/tbody&gt;
+                                            &lt;/table&gt;
+
+                                            &lt;!--[if (!mso)&amp;(!IE)]&gt;&lt;!--&gt;
+                                        &lt;/div&gt;
+                                        &lt;!--&lt;![endif]--&gt;
+                                    &lt;/div&gt;
+                                &lt;/div&gt;
+                                &lt;!--[if (mso)|(IE)]&gt;&lt;/td&gt;&lt;![endif]--&gt;
+                                &lt;!--[if (mso)|(IE)]&gt;&lt;/tr&gt;&lt;/table&gt;&lt;/td&gt;&lt;/tr&gt;&lt;/table&gt;&lt;![endif]--&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+
+
+
+                    &lt;div class=&quot;u-row-container&quot; style=&quot;padding: 0px;background-color: #f5f4f4&quot;&gt;
+                        &lt;div class=&quot;u-row&quot; style=&quot;Margin: 0 auto;min-width: 320px;max-width: 600px;overflow-wrap: break-word;word-wrap: break-word;word-break: break-word;background-color: transparent;&quot;&gt;
+                            &lt;div style=&quot;border-collapse: collapse;display: table;width: 100%;height: 100%;background-color: transparent;&quot;&gt;
+                                &lt;!--[if (mso)|(IE)]&gt;&lt;table width=&quot;100%&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; border=&quot;0&quot;&gt;&lt;tr&gt;&lt;td style=&quot;padding: 0px;background-color: transparent;&quot; align=&quot;center&quot;&gt;&lt;table cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; border=&quot;0&quot; style=&quot;width:600px;&quot;&gt;&lt;tr style=&quot;background-color: transparent;&quot;&gt;&lt;![endif]--&gt;
+
+                                &lt;!--[if (mso)|(IE)]&gt;&lt;td align=&quot;center&quot; width=&quot;600&quot; style=&quot;width: 600px;padding: 0px;border-top: 0px solid transparent;border-left: 0px solid transparent;border-right: 0px solid transparent;border-bottom: 0px solid transparent;border-radius: 0px;-webkit-border-radius: 0px; -moz-border-radius: 0px;&quot; valign=&quot;top&quot;&gt;&lt;![endif]--&gt;
+                                &lt;div class=&quot;u-col u-col-100&quot; style=&quot;max-width: 320px;min-width: 600px;display: table-cell;vertical-align: top;&quot;&gt;
+                                    &lt;div style=&quot;height: 100%;width: 100% !important;border-radius: 0px;-webkit-border-radius: 0px; -moz-border-radius: 0px;&quot;&gt;
+                                        &lt;!--[if (!mso)&amp;(!IE)]&gt;&lt;!--&gt;
+                                        &lt;div style=&quot;height: 100%; padding: 0px;border-top: 0px solid transparent;border-left: 0px solid transparent;border-right: 0px solid transparent;border-bottom: 0px solid transparent;border-radius: 0px;-webkit-border-radius: 0px; -moz-border-radius: 0px;&quot;&gt;
+                                            &lt;!--&lt;![endif]--&gt;
+
+                                            &lt;table id=&quot;u_content_text_16&quot; style=&quot;font-family:&apos;Open Sans&apos;,sans-serif;&quot; role=&quot;presentation&quot; cellpadding=&quot;0&quot; cellspacing=&quot;0&quot; width=&quot;100%&quot; border=&quot;0&quot;&gt;
+                                                &lt;tbody&gt;
+                                                    &lt;tr&gt;
+                                                        &lt;td class=&quot;v-container-padding-padding&quot; style=&quot;overflow-wrap:break-word;word-break:break-word;padding:10px 50px 30px;font-family:&apos;Open Sans&apos;,sans-serif;&quot; align=&quot;left&quot;&gt;
+
+                                                            &lt;div class=&quot;v-text-align&quot; style=&quot;color: #000000; line-height: 140%; text-align: center; word-wrap: break-word;&quot;&gt;
+                                                                &lt;p style=&quot;font-size: 14px; line-height: 140%;&quot;&gt;
+&lt;br/&gt;
+If you have any questions, please don’t hesitate to get in touch.
+&lt;br/&gt;&lt;/p&gt;&lt;br/&gt;
+
+&lt;p style=&quot;font-size: 14px; line-height: 140%;&quot;&gt;
+                                                                   All the best
+&lt;/p&gt;
+                                                                &lt;p style=&quot;font-size: 14px; line-height: 140%;&quot;&gt;
+                                                                {!$User.FirstName} {!$User.LastName}&lt;/p&gt;
+                                                                     &lt;p style=&quot;font-size: 14px; line-height: 140%;&quot;&gt;
+                                                                    {!$User.Email}   &lt;/p&gt;
+                                                                     &lt;p style=&quot;font-size: 14px; line-height: 140%;&quot;&gt;
+                                                                     {!$User.Phone}  &lt;/p&gt;
+                                                               
+                                                            &lt;/div&gt;
+
+                                                        &lt;/td&gt;
+                                                    &lt;/tr&gt;
+                                                &lt;/tbody&gt;
+                                            &lt;/table&gt;
+                                        &lt;/div&gt;
+                                    &lt;/div&gt;
+                                &lt;/div&gt;
+                            &lt;/div&gt;
+                        &lt;/div&gt;
+                    &lt;/div&gt;
+                &lt;/td&gt;
+            &lt;/tr&gt;
+        &lt;/tbody&gt;
+    &lt;/table&gt;
+&lt;/body&gt;
+&lt;/html&gt;</text>
+    </textTemplates>
+    <variables>
+        <name>recordId</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+    </variables>
+    <variables>
+        <name>recordId2</name>
+        <dataType>String</dataType>
+        <isCollection>false</isCollection>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+    </variables>
+</Flow>
