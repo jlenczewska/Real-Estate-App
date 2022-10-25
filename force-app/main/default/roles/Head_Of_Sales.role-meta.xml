@@ -4,6 +4,5 @@
     <contactAccessLevel>Edit</contactAccessLevel>
     <mayForecastManagerShare>false</mayForecastManagerShare>
     <name>Head Of Sales</name>
-    <opportunityAccessLevel>Read</opportunityAccessLevel>
     <parentRole>CEO</parentRole>
 </Role>
