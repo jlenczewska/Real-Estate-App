@@ -10,7 +10,7 @@ public class RE_saveImageAsMainImageTest {
 
     @isTest
     static void checkIfFunctionCreateCorrectUrl() {
-        Boolean result = RE_saveImageAsMainImage.saveImageAsDefault('01t7Q000003t05fQAA', '01t7Q000003t05fQAA');
+        Boolean result = RE_saveImageAsMainImage.getImageUrlAndSaveAsDefaultImage('01t7Q000003t05fQAA', '01t7Q000003t05fQAA');
 
         System.assertNotEquals(result, true);
     }
