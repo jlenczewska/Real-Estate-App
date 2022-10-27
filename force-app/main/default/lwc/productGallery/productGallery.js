@@ -5,7 +5,6 @@ import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 
 export default class ProductGallery extends LightningElement {
    
-    error;
     selected;
     selectedElementId;
     @api recordId;
