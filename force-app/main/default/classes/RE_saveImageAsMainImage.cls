@@ -5,7 +5,7 @@ public with sharing class RE_saveImageAsMainImage {
         Boolean result;
         try {
             Product2 product = [SELECT Picture__c FROM Product2 WHERE Id=:recordId];
-        product.Picture__c = url;
+            product.Picture__c = url;
             update product;
             result = true;
         } catch (Exception e) {
