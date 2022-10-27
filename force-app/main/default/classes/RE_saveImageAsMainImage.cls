@@ -1,4 +1,4 @@
-public with sharing class saveImageAsMainImage {
+public with sharing class RE_saveImageAsMainImage {
 
     private static Boolean saveImageAsDefault(String recordId, String url) {
         Product2 product = [SELECT Picture__c FROM Product2 WHERE Id=:recordId];
