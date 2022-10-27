@@ -1,6 +1,6 @@
 public with sharing class RE_saveImageAsMainImage {
 
-    private static Boolean saveImageAsDefault(String recordId, String url) {
+    static Boolean saveImageAsDefault(String recordId, String url) {
         Product2 product = [SELECT Picture__c FROM Product2 WHERE Id=:recordId];
         product.Picture__c = url;
 
@@ -18,7 +18,6 @@ public with sharing class RE_saveImageAsMainImage {
     public static Boolean getImageUrlAndSaveAsDefaultImage(String photoId, String recordId) {
 
     List<ContentVersion> filesVersions = [SELECT ContentDocumentId,VersionData FROM ContentVersion];
-    System.debug(filesVersions);
     String link = '';
 
     for (ContentVersion version : filesVersions) {

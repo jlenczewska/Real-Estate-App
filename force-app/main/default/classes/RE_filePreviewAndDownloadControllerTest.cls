@@ -1,5 +1,5 @@
 @isTest
-private class RE_filePreviewAndDownloadControllerTest {
+public class RE_filePreviewAndDownloadControllerTest {
 
     @isTest
     static void checkIfReturnsNotNullMap() {
