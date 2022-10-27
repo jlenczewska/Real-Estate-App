@@ -1,9 +1,9 @@
 @isTest
 public class RE_filePreviewAndDownloadControllerTest {
 
-    @isTest
+    @isTest(SeeAllData=true)
     static void checkIfReturnsNotNullMap() {
         Map<ID, String> resultMap= RE_filePreviewAndDownloadController.getRelatedFilesByRecordId('01t7Q000003t05fQAA');
-        System.assertNotEquals(resultMap.size(), 0);
+        System.assertEquals(resultMap.size(), 3);
     }
 }
