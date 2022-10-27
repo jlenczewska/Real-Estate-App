@@ -1,6 +1,6 @@
 import { LightningElement,wire,track,api } from 'lwc';
-import getRelatedFilesByRecordId from '@salesforce/apex/filePreviewAndDownloadController.getRelatedFilesByRecordId'
-import getImageUrlAndSaveAsDefaultImage from '@salesforce/apex/saveImageAsMainImage.getImageUrlAndSaveAsDefaultImage'
+import getRelatedFilesByRecordId from '@salesforce/apex/RE_filePreviewAndDownloadController.getRelatedFilesByRecordId'
+import getImageUrlAndSaveAsDefaultImage from '@salesforce/apex/RE_saveImageAsMainImage.getImageUrlAndSaveAsDefaultImage'
 import { ShowToastEvent } from 'lightning/platformShowToastEvent';
 
 export default class ProductGallery extends LightningElement {

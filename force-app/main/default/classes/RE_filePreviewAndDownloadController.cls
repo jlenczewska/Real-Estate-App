@@ -1,4 +1,4 @@
-public with sharing class filePreviewAndDownloadController {
+public with sharing class RE_filePreviewAndDownloadController {
     @AuraEnabled(cacheable=true)
         public static Map<ID, String> getRelatedFilesByRecordId(String recordId) {
             // Get record file IDs        
