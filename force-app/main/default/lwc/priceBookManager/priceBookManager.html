@@ -1,3 +1,32 @@
 <template>
-    pricebook
+  <div class="slds-p-around_medium lgc-bg">
+    <lightning-input type="text" label="Pricebook Name"></lightning-input>
+  </div>
+  <div class="slds-p-around_medium lgc-bg">
+    <lightning-input type="text" label="Enter some text"></lightning-input>
+  </div>
+  <div class="slds-p-around_medium lgc-bg">
+    <lightning-input type="date" label="Start day"></lightning-input>
+    <lightning-input type="date" label="Enter some text"></lightning-input>
+  </div>
+
+  <lightning-combobox
+    name="Premise Type"
+    label="Status"
+    value={value}
+    placeholder="Select Premise Type"
+    options={comboBoxOptions}
+  ></lightning-combobox>
+
+  <div style="height: 300px">
+    <lightning-datatable
+      key-field="id"
+      data={productsInfo}
+      show-row-number-column
+      row-number-offset="0"
+      suppress-bottom-bar
+      columns={columns}
+    >
+    </lightning-datatable>
+  </div>
 </template>

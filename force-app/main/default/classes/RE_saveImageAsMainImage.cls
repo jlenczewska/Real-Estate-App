@@ -1,19 +1,19 @@
 public with sharing class RE_saveImageAsMainImage {
 
     public static Boolean saveImageAsDefault(String recordId, String url) {
-        
+          
         Boolean result;
         try {
             Product2 product = [SELECT Picture__c FROM Product2 WHERE Id=:recordId];
             product.Picture__c = url;
             update product;
-            result = true;
+                result = true;
         } catch (Exception e) {
             result = false;
         }
         return result;
     }
-
+ 
     @AuraEnabled
     public static Boolean getImageUrlAndSaveAsDefaultImage(String photoId, String recordId) {
 

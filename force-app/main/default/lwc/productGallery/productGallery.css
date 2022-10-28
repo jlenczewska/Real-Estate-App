@@ -15,8 +15,7 @@
 img{
     height: 200px;
     min-width: 200px;
-    width: auto;
-    max-width: fit-content;
+    object-fit: cover;
 }
 
 .casedt{

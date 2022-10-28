@@ -7,7 +7,7 @@
                    <div>
                       <lightning-layout class='casedt'>
                          <template for:each={filesList} for:item="item">
-                            <lightning-layout-item size="3" class="slds-m-around_x-small photo" key={item.id}>
+                            <lightning-layout-item  class="slds-m-around_x-small photo" key={item.id}>
                                <lightning-tile data-id={item.value}>
                                  <lightning-layout-item class='imgBox' id={item.value.id} data-id={item.value.id} onclick={markPhoto}>
                                      <img data-id={item.value} class='' onclick={markPhoto} src={item.url} height='200px' width='200px' id={item.id}></img>

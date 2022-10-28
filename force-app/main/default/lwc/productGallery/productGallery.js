@@ -42,13 +42,6 @@ export default class ProductGallery extends LightningElement {
     setAsMainImage(){
         if(this.selected != null){
 
-        let elements = this.template.querySelectorAll('img');
-        elements.forEach( element=>
-         {
-           element.classList.remove('highlight');
-         }
-        );
-
         getImageUrlAndSaveAsDefaultImage({photoId: this.selectedElementId, recordId: this.recordId})
         .then(data => {
            
@@ -68,6 +61,13 @@ export default class ProductGallery extends LightningElement {
             });
             this.dispatchEvent(evt);
         }
+        
+        let elements = this.template.querySelectorAll('img');
+        elements.forEach( element=>
+         {
+           element.classList.remove('highlight');
+         }
+        );
           })
           .catch(error => {
             console.log(error)
