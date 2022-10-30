@@ -1,7 +1,6 @@
 public with sharing class RE_filePreviewAndDownloadController {
     @AuraEnabled(cacheable=true)
         public static Map<ID, String> getRelatedFilesByRecordId(String recordId) {
-            // Get record file IDs        
             List<ContentDocumentLink> files = [SELECT ContentDocumentId FROM ContentDocumentLink WHERE LinkedEntityId = :recordId];
             List<ID> fileIDs = new List<ID>();
             for (ContentDocumentLink docLink : files) {

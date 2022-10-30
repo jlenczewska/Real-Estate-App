@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <CustomLabels xmlns="http://soap.sforce.com/2006/04/metadata">
     <labels>
         <fullName>Add_Review</fullName>
@@ -56,14 +56,17 @@
         <fullName>HP_Adding_a_doctor_to_the_database_failed</fullName>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription>Adding a doctor to the database failed.</shortDescription>
+        <shortDescription
+    >Adding a doctor to the database failed.</shortDescription>
         <value>Adding a doctor to the database failed.</value>
     </labels>
     <labels>
-        <fullName>HP_An_error_occurred_Please_refresh_the_page_and_try_again</fullName>
+        <fullName
+    >HP_An_error_occurred_Please_refresh_the_page_and_try_again</fullName>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription>An error occurred. Please refresh the page and try again.</shortDescription>
+        <shortDescription
+    >An error occurred. Please refresh the page and try again.</shortDescription>
         <value>An error occurred. Please refresh the page and try again.</value>
     </labels>
     <labels>
@@ -77,21 +80,24 @@
         <fullName>HP_Are_you_sure_you_want_to_deactivate_the_user</fullName>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription>Are you sure you want to deactivate the user?</shortDescription>
+        <shortDescription
+    >Are you sure you want to deactivate the user?</shortDescription>
         <value>Are you sure you want to deactivate the user?</value>
     </labels>
     <labels>
         <fullName>HP_Are_you_sure_you_want_to_delete_the_doctor</fullName>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription>Are you sure you want to delete the doctor</shortDescription>
+        <shortDescription
+    >Are you sure you want to delete the doctor</shortDescription>
         <value>Are you sure you want to delete the doctor?</value>
     </labels>
     <labels>
         <fullName>HP_Are_you_sure_you_want_to_delete_the_hospital</fullName>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription>Are you sure you want to delete the hospital</shortDescription>
+        <shortDescription
+    >Are you sure you want to delete the hospital</shortDescription>
         <value>Are you sure you want to delete the hospital?</value>
     </labels>
     <labels>
@@ -162,7 +168,8 @@
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>Doctor with license num exisits</shortDescription>
-        <value>Doctor with the given license number already exists in the database</value>
+        <value
+    >Doctor with the given license number already exists in the database</value>
     </labels>
     <labels>
         <fullName>HP_Duplicate_value_found</fullName>
@@ -259,7 +266,8 @@
         <fullName>HP_Incorrect_data_in_the_license_number_field</fullName>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription>Incorrect data in the license number field</shortDescription>
+        <shortDescription
+    >Incorrect data in the license number field</shortDescription>
         <value>Incorrect data in the license number field</value>
     </labels>
     <labels>
@@ -407,7 +415,8 @@
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>Overlapping contract Error Message</shortDescription>
-        <value>A conflict was encountered with another contract ranging from {0} to {1} with contract ID {2}.</value>
+        <value
+    >A conflict was encountered with another contract ranging from {0} to {1} with contract ID {2}.</value>
     </labels>
     <labels>
         <fullName>HP_Phone</fullName>
@@ -539,7 +548,8 @@
         <fullName>HP_Successfully_added_to_the_database_parameters</fullName>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription>Successfully added to the database parameters</shortDescription>
+        <shortDescription
+    >Successfully added to the database parameters</shortDescription>
         <value>Successfully added to the database: {0} {1}</value>
     </labels>
     <labels>
@@ -578,18 +588,23 @@
         <value>Table with all users</value>
     </labels>
     <labels>
-        <fullName>HP_The_License_Number_must_be_less_than_10_characters_long</fullName>
+        <fullName
+    >HP_The_License_Number_must_be_less_than_10_characters_long</fullName>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription>The License Number must be less than 10 characters long</shortDescription>
+        <shortDescription
+    >The License Number must be less than 10 characters long</shortDescription>
         <value>The License Number must be less than 10 characters long</value>
     </labels>
     <labels>
-        <fullName>HP_The_length_of_the_license_number_cannot_exceed_18_characters</fullName>
+        <fullName
+    >HP_The_length_of_the_license_number_cannot_exceed_18_characters</fullName>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription>The length of the license number cannot exceed 18 characters</shortDescription>
-        <value>The length of the license number cannot exceed 18 characters</value>
+        <shortDescription
+    >The length of the license number cannot exceed 18 characters</shortDescription>
+        <value
+    >The length of the license number cannot exceed 18 characters</value>
     </labels>
     <labels>
         <fullName>HP_Total_Licenses</fullName>
@@ -757,7 +772,8 @@
         <fullName>RE_Choose_day_and_time_of_the_meeting</fullName>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription>RE_Choose day and time of the meeting</shortDescription>
+        <shortDescription
+    >RE_Choose day and time of the meeting</shortDescription>
         <value>Choose day and time of the meeting</value>
     </labels>
     <labels>
@@ -803,11 +819,54 @@
         <value>Summary</value>
     </labels>
     <labels>
-        <fullName>Reviews</fullName>
+        <fullName>RE_Set_As_Main_Photo</fullName>
         <categories>LWC Labels</categories>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription>Reviews</shortDescription>
-        <value>Reviews</value>
+        <shortDescription>RE_Set_As_Main_Photo</shortDescription>
+        <value>Set As Main Photo</value>
+    </labels>
+
+      <labels>
+        <fullName>RE_Preview</fullName>
+        <categories>LWC Labels</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>RE_Preview</shortDescription>
+        <value>Preview</value>
+    </labels>
+    <labels>
+        <fullName>RE_Main_photo_has_been_changed</fullName>
+        <categories>LWC Labels</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>RE_Main_photo_has_been_changed</shortDescription>
+        <value>Main Photo Has Been Changed</value>
+    </labels>
+    <labels>
+        <fullName>RE_Please_refresh_the_page</fullName>
+        <categories>LWC Labels</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>RE_Please_refresh_the_page</shortDescription>
+        <value
+    >Please Refresh The Page To See The Result. If You Don't Dee The Changes, Wait A Minute And Refresh The Page Again.</value>
+    </labels>
+    <labels>
+        <fullName>RE_Something_went_wrong1</fullName>
+        <categories>LWC Labels</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>RE_Something_went_wrong1</shortDescription>
+        <value>Something Went Wrong</value>
+    </labels>
+    <labels>
+        <fullName>RE_Main_Photo_Could_Not_Be_Changed</fullName>
+        <categories>LWC Labels</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>RE_Main_Photo_Could_Not_Be_Changed</shortDescription>
+        <value
+    >Main Photo Could Not Be Changed. Please Refresh The Page And Try Again.</value>
     </labels>
 </CustomLabels>
