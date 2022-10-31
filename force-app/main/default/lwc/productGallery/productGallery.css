@@ -1,22 +1,31 @@
 .photo{
     cursor: pointer;
+    width: 200px;
 }
 
 .highlight{
     filter: brightness(0.5);
 }
 
-.slds-tile{
-    width: 200px;
-    height: 200px;
-    overflow: hidden;
+.slds-tile__detail{
+    position: relative;
+    grid-row: span 2;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 img{
     height: 200px;
     min-width: 200px;
-    width: auto;
     max-width: fit-content;
+    display: block;
+    z-index: 999;
+    cursor: pointer;
+    object-fit: cover;
+    -webkit-transition-property: all;
+    -webkit-transition-duration: 0.3s;
+    -webkit-transition-timing-function: ease;
 }
 
 .casedt{
@@ -46,4 +55,8 @@ img{
 
 .standardButton{
     margin-top: 20px;
+}
+
+img:hover {
+    transform: scale(1.1);
 }
