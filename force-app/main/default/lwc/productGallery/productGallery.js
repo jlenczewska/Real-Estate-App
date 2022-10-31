@@ -13,6 +13,7 @@ import RE_Something_went_wrong1 from "@salesforce/label/c.RE_Something_went_wron
 export default class ProductGallery extends NavigationMixin(LightningElement) {
   selected;
   selectedElementId;
+  enableButtons = false;
   filesList = [];
   newFileWasUploaded = false;
   uploadedFilesUrl = [];
@@ -61,6 +62,7 @@ export default class ProductGallery extends NavigationMixin(LightningElement) {
   markPhoto(event) {
     event.stopPropagation();
     this.selectedElementId = event.target.dataset.id;
+    this.enableButtons = false;
     event.target.classList.toggle("highlight");
     this.unselect(event.target);
     this.selected = event.target;
@@ -70,11 +72,20 @@ export default class ProductGallery extends NavigationMixin(LightningElement) {
     if (this.selected && this.selected !== target) {
       this.selected.classList.remove("highlight");
       this.selected = null;
+      this.enableButtons = true;
+    }
+    if (!this.selected) {
+      this.enableButtons = true;
     }
   }
 
   previewHandler(event) {
-    console.log(event.target.dataset.id);
+    this.enableButtonsCheck();
+
+    if (!this.enableButtons) {
+      return;
+    }
+
     this[NavigationMixin.Navigate]({
       type: "standard__namedPage",
       attributes: {
@@ -86,37 +97,58 @@ export default class ProductGallery extends NavigationMixin(LightningElement) {
     });
   }
 
-  setAsMainImage() {
-    if (this.selected != null) {
-      getImageUrlAndSaveAsDefaultImage({
-        photoId: this.selectedElementId,
-        recordId: this.recordId
-      })
-        .then((data) => {
-          if (data) {
-            const evt = new ShowToastEvent({
-              title: this.label.RE_Main_Photo_Could_Not_Be_Changed,
-              message: this.label.RE_Please_refresh_the_page,
-              variant: "success"
-            });
-            this.dispatchEvent(evt);
-          } else {
-            const evt = new ShowToastEvent({
-              title: this.label.RE_Something_went_wrong,
-              message: "",
-              variant: "error"
-            });
-            this.dispatchEvent(evt);
-          }
+  enableButtonsCheck() {
+    let flag;
+    let elements = this.template.querySelectorAll("img");
 
-          let elements = this.template.querySelectorAll("img");
-          elements.forEach((element) => {
-            element.classList.remove("highlight");
-          });
-        })
-        .catch((error) => {
-          console.log(error);
-        });
+    elements.forEach((element) => {
+      if (element.classList.contains("highlight")) {
+        flag = true;
+      }
+    });
+
+    if (flag) {
+      this.enableButtons = true;
+    } else {
+      this.enableButtons = false;
     }
+  }
+
+  setAsMainImage() {
+    this.enableButtonsCheck();
+
+    if (!this.enableButtons) {
+      return;
+    }
+
+    getImageUrlAndSaveAsDefaultImage({
+      photoId: this.selectedElementId,
+      recordId: this.recordId
+    })
+      .then((data) => {
+        if (data) {
+          const evt = new ShowToastEvent({
+            title: this.label.RE_Main_Photo_Could_Not_Be_Changed,
+            message: this.label.RE_Please_refresh_the_page,
+            variant: "success"
+          });
+          this.dispatchEvent(evt);
+        } else {
+          const evt = new ShowToastEvent({
+            title: this.label.RE_Something_went_wrong,
+            message: "",
+            variant: "error"
+          });
+          this.dispatchEvent(evt);
+        }
+
+        let elements = this.template.querySelectorAll("img");
+        elements.forEach((element) => {
+          element.classList.remove("highlight");
+        });
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
 }
