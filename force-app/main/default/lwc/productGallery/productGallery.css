@@ -1,6 +1,8 @@
 .photo{
     cursor: pointer;
     width: 200px;
+    overflow: hidden;
+    height: 200px;
 }
 
 .highlight{
