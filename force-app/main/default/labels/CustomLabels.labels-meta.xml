@@ -1039,6 +1039,27 @@
         <value>Something went wrong
         </value>
     </labels>
+    <labels>
+        <fullName>RE_Premise_Name
+        </fullName>
+        <categories>LWC Labels</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>RE_Premise_Name</shortDescription>
+        <value>Premise Name
+        </value>
+    </labels>
+    <labels>
+        <fullName>RE_Price
+        </fullName>
+        <categories>LWC Labels</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>RE_Price</shortDescription>
+        <value>Price
+        </value>
+    </labels>
+
 
     
 </CustomLabels>

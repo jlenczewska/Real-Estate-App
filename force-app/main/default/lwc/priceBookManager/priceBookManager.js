@@ -31,13 +31,15 @@ import RE_The_date_can_only_contain_numbers from "@salesforce/label/c.RE_The_dat
 import RE_Pricebook_Pricebook_Has_Been_Successfully_Added_To_The_Database from "@salesforce/label/c.RE_Pricebook_Pricebook_Has_Been_Successfully_Added_To_The_Database";
 import RE_Something_Went_Wrong from "@salesforce/label/c.RE_Something_Went_Wrong";
 import RE_Review_The_Data_And_Try_Again from "@salesforce/label/c.RE_Review_The_Data_And_Try_Again";
+import RE_Premise_Name from "@salesforce/label/c.RE_Premise_Name";
+import RE_Price from "@salesforce/label/c.RE_Price";
 
 const FIELDS = ["Product2.RecordTypeId", "Product2.Name"];
 
 const columns = [
-  { label: "Premise Name", fieldName: "Name", editable: false },
+  { label: RE_Premise_Name, fieldName: "Name", editable: false },
   {
-    label: "Price",
+    label: RE_Price,
     fieldName: "UnitPrice",
     type: "currency",
     typeAttributes: { currencyCode: "USD" },
@@ -46,8 +48,8 @@ const columns = [
 ];
 
 const comboBoxOptions = [
-  { label: "Business Premise", value: "Business Premise" },
-  { label: "Apartment", value: "Apartment" }
+  { label: RE_Business_Premise, value: "Business Premise" },
+  { label: RE_Apartment, value: "Apartment" }
 ];
 
 export default class PriceBookManager extends LightningElement {
@@ -89,7 +91,9 @@ export default class PriceBookManager extends LightningElement {
     RE_The_date_can_only_contain_numbers,
     RE_Review_The_Data_And_Try_Again,
     RE_Something_Went_Wrong,
-    RE_Pricebook_Pricebook_Has_Been_Successfully_Added_To_The_Database
+    RE_Pricebook_Pricebook_Has_Been_Successfully_Added_To_The_Database,
+    RE_Premise_Name,
+    RE_Price
   };
 
   connectedCallback() {
