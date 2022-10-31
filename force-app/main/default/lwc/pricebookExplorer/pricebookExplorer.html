@@ -1,0 +1,43 @@
+<template>
+  <lightning-card>
+    <div class="inputsContainer">
+      <div class="inputsLeftContainer">
+        <div class="lgc-bg slds-p-horizontal_small">
+          <lightning-input
+            type="text"
+            label={label.RE_Pricebook_Name}
+            data-name="Pricebook_Name"
+          ></lightning-input>
+        </div>
+      </div>
+      <!--   
+        <div class="inputsRightContainer lgc-bg slds-p-horizontal_small">
+          <lightning-input
+            type="date"
+            label={label.RE_Start_Day}
+            data-name="Start_Day"
+            date-style="short"
+          ></lightning-input>
+          <lightning-input
+            type="date"
+            label={label.RE_End_Day}
+            data-name="End_Day"
+            date-style="short"
+          ></lightning-input>
+        </div> -->
+    </div>
+    <br />
+    <div class="dataContainer slds-p-horizontal_small">
+      <lightning-datatable
+        key-field="Id"
+        data={productsInfo}
+        show-row-number-column
+        row-number-offset="0"
+        columns={columns}
+        onsave={handleSaveDatatable}
+        draft-values={draftValues}
+      >
+      </lightning-datatable>
+    </div>
+  </lightning-card>
+</template>

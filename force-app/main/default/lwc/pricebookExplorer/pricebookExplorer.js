@@ -52,7 +52,7 @@ const comboBoxOptions = [
   { label: RE_Apartment, value: "Apartment" }
 ];
 
-export default class PriceBookManager extends LightningElement {
+export default class PricebookExplorer extends LightningElement {
   @api objectApiName;
   @api recordType;
   @api recodTypeValue = "";
