@@ -1,0 +1,49 @@
+.photo{
+    cursor: pointer;
+}
+
+.highlight{
+    filter: brightness(0.5);
+}
+
+.slds-tile{
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+}
+
+img{
+    height: 200px;
+    min-width: 200px;
+    width: auto;
+    max-width: fit-content;
+}
+
+.casedt{
+    justify-content: flex-start !important;
+    overflow: auto;
+}
+
+.casedt.slds-grid::-webkit-scrollbar-thumb {
+    background-color: #0176d3;
+    outline: none;
+}
+
+.casedt.slds-grid::-webkit-scrollbar-track {
+    background: #0176d30a;
+}
+
+.casedt.slds-grid::-webkit-scrollbar {
+    height: 14px;
+}
+
+.buttonsContainer{
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-left: 5px;
+}
+
+.standardButton{
+    margin-top: 20px;
+}

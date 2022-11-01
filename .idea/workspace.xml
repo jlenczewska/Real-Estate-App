@@ -1,0 +1,106 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="ef671483-68ee-43bf-af0f-dd406a560a44" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/objects/Opportunity/Opportunity.object-meta.xml" beforeDir="false" afterPath="$PROJECT_DIR$/force-app/main/default/objects/Opportunity/Opportunity.object-meta.xml" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FavoritesManager">
+    <favorites_list name="Real-Estate-App" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IgnoredFileRootStore">
+    <option name="generatedRoots">
+      <set>
+        <option value="C:\Users\julia.lenczewska\szkolenie\Real-Estate-App\.idea" />
+      </set>
+    </option>
+  </component>
+  <component name="IlluminatedCloudWorkspaceSettings">
+    <option name="moduleWorkspaceSettings">
+      <map>
+        <entry key="Real-Estate-App">
+          <value>
+            <ModuleWorkspaceSettings>
+              <option name="moduleContentsLastModified" value="1666615034005" />
+              <option name="serverMetadataLastPopulated" value="1666615034005" />
+            </ModuleWorkspaceSettings>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="ProjectId" id="2Ga7ZcMQAW35m9t57GS9FgHSR8W" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="settings.editor.selected.configurable" value="preferences.fileTypes" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="ef671483-68ee-43bf-af0f-dd406a560a44" name="Default Changelist" comment="" />
+      <created>1666614897860</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1666614897860</updated>
+    </task>
+    <task id="LOCAL-00001" summary="add metadata">
+      <created>1666620027137</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1666620027137</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
+    <servers />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="COLUMN_ORDER" />
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="add metadata" />
+    <option name="LAST_COMMIT_MESSAGE" value="add metadata" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="271" y="60" key="#Illuminated_Cloud" timestamp="1666629023666">
+      <screen x="0" y="0" width="1536" height="824" />
+    </state>
+    <state x="271" y="60" key="#Illuminated_Cloud/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1666629023666" />
+    <state x="2472" y="178" key="#Illuminated_Cloud/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1666615024041" />
+    <state x="2472" y="178" key="#Illuminated_Cloud_(Real-Estate-App)" timestamp="1666615031620">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="2472" y="178" key="#Illuminated_Cloud_(Real-Estate-App)/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1666615031620" />
+    <state x="2513" y="114" key="CommitChangelistDialog2" timestamp="1666620026661">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="2513" y="114" key="CommitChangelistDialog2/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1666620026661" />
+    <state x="2576" y="344" key="com.intellij.ide.util.TipDialog" timestamp="1666614909682">
+      <screen x="1920" y="0" width="1920" height="1040" />
+    </state>
+    <state x="2576" y="344" key="com.intellij.ide.util.TipDialog/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1666614909681" />
+  </component>
+</project>
