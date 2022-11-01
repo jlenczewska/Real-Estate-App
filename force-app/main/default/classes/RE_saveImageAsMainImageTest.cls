@@ -19,11 +19,11 @@ public class RE_saveImageAsMainImageTest {
       
         insert contentV;
 
-        Product2 picture = new Product2(
-             Name='Premise', Street__c='Nowacka 11', City__c='B',Picture__c='AAA',Country__c='Poland'
+        Product2 product = new Product2(
+             Name='Premise'
         );
  
-        insert picture;
+        insert product;
 
         Test.startTest();
         result = RE_saveImageAsMainImage.getImageUrlAndSaveAsDefaultImage(photoId, recordId);
