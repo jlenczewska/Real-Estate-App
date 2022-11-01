@@ -23,6 +23,7 @@ public class RE_filePreviewAndDownloadControllerTest {
        
        ContentDocumentLink ContentDL = new ContentDocumentLink();
        ContentDL.ContentDocumentId = testcontent.contentdocumentid;
+       ContentDL.LinkedEntityId = product.id;
        Insert ContentDL;
  
         Map<ID, String> resultMap;
