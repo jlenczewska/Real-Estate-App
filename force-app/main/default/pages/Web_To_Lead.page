@@ -130,9 +130,9 @@
 
       <h1 class="ribbon">Contact us</h1>
 
-      <input type="hidden" name="oid" value="00D7Q000008MVEQ" />
-      <input type="hidden" name="retURL" value="https://britenet-9a-dev-ed.develop.my.salesforce-sites.com/" />
-      <input type="hidden" name="recordType" id="recordType" value="0127Q000001fzue" />
+      <input type="hidden" name="oid" value="00D7S000000Xn6h" />
+      <input type="hidden" name="retURL" value="https://britenet28-dev-ed.my.salesforce-sites.com/" />
+      <input type="hidden" name="recordType" id="recordType" value="0127S0000004RuC" />
       <input type="hidden" id="lead_source" maxlength="80" name="lead_source" size="20" />
 
       <select id="lead_source" name="lead_source">
@@ -175,7 +175,7 @@
     (function () {
       document.getElementById("companyContainer").style.display = "none";
       document.getElementById("lead_source").value = "Web To Lead";
-      document.getElementById("recordType").value = '0127Q000001fzue';
+      document.getElementById("recordType").value = '0127S0000004RuC';
       document.getElementById("company").value = "-";
       document.getElementById("company").required = false;
     })();
@@ -186,12 +186,12 @@
       if (event.target.value == 'Business Premises') {
         document.getElementById("company").value = "";
         document.getElementById("companyContainer").style.display = "block";
-        document.getElementById("recordType").value = '0127Q000001fzuZ';
+        document.getElementById("recordType").value = '0127S0000004RuD';
         document.getElementById("company").required = true;
       }
       else if (event.target.value == 'Flats And Apartements') {
         document.getElementById("companyContainer").style.display = "none";
-        document.getElementById("recordType").value = '0127Q000001fzue';
+        document.getElementById("recordType").value = '0127S0000004RuC';
         document.getElementById("company").value = "-";
         document.getElementById("company").required = false;
       }
@@ -240,3 +240,4 @@
   </script>
 
 </apex:page>
+             
