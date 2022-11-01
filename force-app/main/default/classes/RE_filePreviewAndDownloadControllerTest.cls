@@ -32,6 +32,6 @@ public class RE_filePreviewAndDownloadControllerTest {
         resultMap = RE_filePreviewAndDownloadController.getRelatedFilesByRecordId(product.id);
         Test.stopTest();
 
-        System.assertEquals(resultMap.size(), 0);
+        System.assertEquals(resultMap.size(), 1);
     }
 }
