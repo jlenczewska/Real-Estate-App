@@ -14,18 +14,21 @@ public class RE_filePreviewAndDownloadControllerTest {
 
        insert product;
 
-        ContentDocumentLink cDocLink = new ContentDocumentLink();
-        cDocLink.ContentDocumentId = '0697Q000004TIrHQAW';
-        cDocLink.LinkedEntityId = product.id;
-        cDocLink.ShareType = 'I';
-        cDocLink.Visibility = 'AllUsers';
+       ContentVersion ContentDoc = new ContentVersion();
+       ContentDoc.Title = 'My Doc';
+       ContentDoc.ContentUrl= 'test.com';
+       Insert ContentDoc;
+
+       ContentVersion testContent = [SELECT id, ContentDocumentId FROM ContentVersion where Id = :cv.Id];
        
-        insert cDocLink;
+       ContentDocumentLink ContentDL = new ContentDocumentLink();
+       ContentDL.ContentDocumentId = testcontent.contentdocumentid;
+       Insert ContentDL;
  
         Map<ID, String> resultMap;
      
         Test.startTest();
-        resultMap = RE_filePreviewAndDownloadController.getRelatedFilesByRecordId('01t7Q000003t05fQAA');
+        resultMap = RE_filePreviewAndDownloadController.getRelatedFilesByRecordId(product.id);
         Test.stopTest();
 
         System.assertEquals(resultMap.size(), 0);
