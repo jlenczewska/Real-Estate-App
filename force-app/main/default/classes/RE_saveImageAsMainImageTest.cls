@@ -6,11 +6,11 @@ public class RE_saveImageAsMainImageTest {
         
         Boolean result;
 
-        String photoId = '0697Q000004TIr';
-        String recordId = '0697Q000004TIr';
+        String photoId = '0697Q000004TIrH';
+        String recordId = '0697Q000004TIrH';
 
         ContentVersion contentV = new ContentVersion();
-        contentV.ContentDocumentId = '0697Q000004TIr';
+        contentV.ContentDocumentId = '0697Q000004TIrH';
         contentV.Title='tytul';
         contentV.ContentLocation = 'S';
         contentV.PathOnClient = '.png';
