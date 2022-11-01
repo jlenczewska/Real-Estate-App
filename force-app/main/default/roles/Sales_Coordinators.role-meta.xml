@@ -4,5 +4,6 @@
     <contactAccessLevel>Edit</contactAccessLevel>
     <mayForecastManagerShare>false</mayForecastManagerShare>
     <name>Sales Coordinators</name>
+    <opportunityAccessLevel>Edit</opportunityAccessLevel>
     <parentRole>Sales_Management</parentRole>
 </Role>
