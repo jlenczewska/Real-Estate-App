@@ -9,15 +9,10 @@ public class RE_saveImageAsMainImageTest {
         String photoId = '0697Q000004TIrH';
         String recordId = '0697Q000004TIrH';
 
-        ContentVersion contentV = new ContentVersion();
-        contentV.ContentDocumentId = '0697Q000004TIrH';
-        contentV.Title='tytul';
-        contentV.ContentLocation = 'S';
-        contentV.PathOnClient = '.png';
-        contentV.IsMajorVersion = true;
-        contentV.VersionData = EncodingUtil.base64Decode('aaa');
-      
-        insert contentV;
+        ContentVersion ContentDoc = new ContentVersion();
+        ContentDoc.Title = 'My Doc';
+        ContentDoc.ContentUrl= 'test.com';
+        Insert ContentDoc;
 
         Product2 product = new Product2(
              Name='Premise'
