@@ -9,7 +9,7 @@ public class RE_filePreviewAndDownloadControllerTest {
 
 
         Product2 picture = new Product2(
-            Name='Premise', Street__c='Nowacka 11', City__c='B',Picture__c='AAA',RecordTypeId = '0127Q000001gDcWQAU',Country__c='Poland'
+            Name='Premise', Street__c='Nowacka 11', City__c='B',Picture__c='AAA',Country__c='Poland'
        );
 
        insert picture;
