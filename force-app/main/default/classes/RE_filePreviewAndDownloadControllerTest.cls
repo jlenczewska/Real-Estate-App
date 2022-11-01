@@ -19,7 +19,7 @@ public class RE_filePreviewAndDownloadControllerTest {
        ContentDoc.ContentUrl= 'test.com';
        Insert ContentDoc;
 
-       ContentVersion testContent = [SELECT id, ContentDocumentId FROM ContentVersion where Id = :cv.Id];
+       ContentVersion testContent = [SELECT id, ContentDocumentId FROM ContentVersion where Id = :ContentDoc.Id];
        
        ContentDocumentLink ContentDL = new ContentDocumentLink();
        ContentDL.ContentDocumentId = testcontent.contentdocumentid;
