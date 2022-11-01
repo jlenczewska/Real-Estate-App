@@ -9,7 +9,7 @@ public class RE_filePreviewAndDownloadControllerTest {
 
 
         Product2 product = new Product2(
-            Name='Premise'
+            Name='Premise', City__c='Poland', Country__c='Poland', Street__c='Poland'
        );
 
        insert product;
