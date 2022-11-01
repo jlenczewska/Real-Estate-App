@@ -1,0 +1,14 @@
+<template>
+  <div class="dataContainer slds-p-horizontal_small">
+    <lightning-datatable
+      key-field="Id"
+      data={productsInfo}
+      show-row-number-column
+      row-number-offset="0"
+      columns={columns}
+      onsave={handleSaveDatatable}
+      draft-values={draftValues}
+    >
+    </lightning-datatable>
+  </div>
+</template>

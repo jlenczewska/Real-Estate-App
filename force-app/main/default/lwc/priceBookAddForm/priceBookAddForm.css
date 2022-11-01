@@ -1,10 +1,5 @@
 .slds-card__header.slds-grid {
     display: none;
-    margin: 0;
-    padding: 0;
-}
-.slds-card .slds-tabs_default__item, .slds-tabs--default__item{
-    padding: 0 20px;
 }
 
 .inputsContainer{
@@ -28,4 +23,8 @@
 
 lightning-combobox.slds-form-element{
     width: 350px;
+}
+
+.slds-card__body{
+    margin-bottom: 0 !important;
 }

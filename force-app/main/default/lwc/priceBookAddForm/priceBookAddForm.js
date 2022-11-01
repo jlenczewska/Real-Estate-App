@@ -1,11 +1,9 @@
 import { LightningElement, api, wire, track } from "lwc";
-import { getObjectInfo } from "lightning/uiObjectInfoApi";
 import { ShowToastEvent } from "lightning/platformShowToastEvent";
 
 import getRecordsByRecordType from "@salesforce/apex/RE_pricebookManagerController.getRecordsByRecordType";
 import addPricebookToDatabase from "@salesforce/apex/RE_pricebookManagerController.addPricebookToDatabase";
 
-import PRODUCT_OBJECT from "@salesforce/schema/Product2";
 import RE_Description from "@salesforce/label/c.RE_Description";
 import RE_Pricebook_Name from "@salesforce/label/c.RE_Pricebook_Name";
 import RE_Start_Day from "@salesforce/label/c.RE_Start_Day";
@@ -15,8 +13,6 @@ import RE_Apartment from "@salesforce/label/c.RE_Apartment";
 import RE_Premise_Type from "@salesforce/label/c.RE_Premise_Type";
 import RE_Select_Premise_Type from "@salesforce/label/c.RE_Select_Premise_Type";
 import RE_Create_New_Pricebook from "@salesforce/label/c.RE_Create_New_Pricebook";
-import RE_Incorrect_price from "@salesforce/label/c.RE_Incorrect_price";
-import RE_Price_Is_Required from "@salesforce/label/c.RE_Price_Is_Required";
 import RE_Pricebook_Name_Is_Required from "@salesforce/label/c.RE_Pricebook_Name_Is_Required";
 import RE_Enter_Pricebook_Name from "@salesforce/label/c.RE_Enter_Pricebook_Name";
 import RE_Description_Is_Required from "@salesforce/label/c.RE_Description_Is_Required";
@@ -62,7 +58,6 @@ export default class PriceBookAddForm extends LightningElement {
 
   columns = columns;
   comboBoxOptions = comboBoxOptions;
-  draftValues = [];
   startDayInput = "";
   endDayInput = "";
 
@@ -76,8 +71,6 @@ export default class PriceBookAddForm extends LightningElement {
     RE_Premise_Type,
     RE_Select_Premise_Type,
     RE_Create_New_Pricebook,
-    RE_Incorrect_price,
-    RE_Price_Is_Required,
     RE_Pricebook_Name_Is_Required,
     RE_Enter_Pricebook_Name,
     RE_Description_Is_Required,
@@ -117,7 +110,6 @@ export default class PriceBookAddForm extends LightningElement {
 
   handleChangeComboBox(event) {
     this.recodTypeValue = event.detail.value;
-    this.template.querySelector("lightning-datatable").draftValues = [];
   }
 
   checkFormInputs() {
@@ -206,29 +198,10 @@ export default class PriceBookAddForm extends LightningElement {
     return false;
   }
 
-  checkPremisePrices(updatedFields) {
-    updatedFields.map((row) => {
-      if (row.UnitPrice < 0 || row.UnitPrice.trim().length < 1) {
-        incorrectData = true;
-        const evt = new ShowToastEvent({
-          title: this.label.RE_Incorrect_price,
-          message: this.label.RE_Price_Is_Required,
-          variant: "warning"
-        });
-        this.dispatchEvent(evt);
-        return true;
-      }
-    });
-
-    return false;
-  }
-
   handleSaveDatatable(event) {
-    const updatedFields = event.detail.draftValues;
     const incorrectDataInputs = this.checkFormInputs();
-    const incorrectDataPrices = this.checkPremisePrices(updatedFields);
 
-    if (incorrectDataInputs || incorrectDataPrices) {
+    if (incorrectDataInputs) {
       return;
     }
 
@@ -237,9 +210,8 @@ export default class PriceBookAddForm extends LightningElement {
       pbDesc: this.userInputs.description,
       pbStartDay: this.userInputs.startDate,
       pbEndDay: this.userInputs.endDate,
-      pricebookEntries: JSON.stringify(updatedFields)
+      pricebookEntries: JSON.stringify(event.detail)
     }).then((data) => {
-      console.log(data);
       if (data) {
         const evt = new ShowToastEvent({
           title:
@@ -250,7 +222,6 @@ export default class PriceBookAddForm extends LightningElement {
         });
         this.dispatchEvent(evt);
         this.recodTypeValue = "";
-        this.template.querySelector("lightning-datatable").draftValues = [];
         this.template.querySelector(
           'lightning-input[data-name="End_Day"]'
         ).value = "";

@@ -1059,6 +1059,26 @@
         <value>Price
         </value>
     </labels>
+    <labels>
+        <fullName>RE_Pricebook_Successfully_Updated
+        </fullName>
+        <categories>LWC Labels</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>RE_Pricebook_Successfully_Updated</shortDescription>
+        <value>Pricebook Has Been Successfully Updated
+        </value>
+    </labels>
+    <labels>
+        <fullName>RE_Search_Pricebook_By_Name
+        </fullName>
+        <categories>LWC Labels</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>RE_Search_Pricebook_By_Name</shortDescription>
+        <value>Search Pricebook By Name
+        </value>
+    </labels>
 
 
     

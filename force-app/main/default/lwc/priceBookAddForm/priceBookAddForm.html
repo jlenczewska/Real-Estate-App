@@ -43,20 +43,13 @@
         options={comboBoxOptions}
         onchange={handleChangeComboBox}
       ></lightning-combobox>
-      <br /><br />
+      <br />
     </div>
-
-    <div class="dataContainer slds-p-horizontal_small">
-      <lightning-datatable
-        key-field="Id"
-        data={productsInfo}
-        show-row-number-column
-        row-number-offset="0"
-        columns={columns}
-        onsave={handleSaveDatatable}
-        draft-values={draftValues}
-      >
-      </lightning-datatable>
-    </div>
+    <c-pricebook-datatable
+      products-info={productsInfo}
+      onhandlesavedatatable={handleSaveDatatable}
+      operation-type="addbook"
+    ></c-pricebook-datatable>
+    <br />
   </lightning-card>
 </template>
