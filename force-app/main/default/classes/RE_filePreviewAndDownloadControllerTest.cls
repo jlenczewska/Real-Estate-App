@@ -8,15 +8,15 @@ public class RE_filePreviewAndDownloadControllerTest {
         String recordId = '0697Q000004TIrHQAH';
 
 
-        Product2 picture = new Product2(
-            Name='Premise', Street__c='Nowacka 11', City__c='B',Picture__c='AAA',Country__c='Poland'
+        Product2 product = new Product2(
+            Name='Premise'
        );
 
-       insert picture;
+       insert product;
 
         ContentDocumentLink cDocLink = new ContentDocumentLink();
         cDocLink.ContentDocumentId = '0697Q000004TIrHQAW';
-        cDocLink.LinkedEntityId = picture.id;
+        cDocLink.LinkedEntityId = product.id;
         cDocLink.ShareType = 'I';
         cDocLink.Visibility = 'AllUsers';
        
