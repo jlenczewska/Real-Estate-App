@@ -1,4 +1,4 @@
-import { LightningElement, api, wire, track } from "lwc";
+import { LightningElement, api, track } from "lwc";
 import { ShowToastEvent } from "lightning/platformShowToastEvent";
 
 import getPricebooks from "@salesforce/apex/RE_pricebookExplorerController.getPricebooks";
@@ -38,6 +38,7 @@ export default class PricebookExplorer extends LightningElement {
   @api objectApiName;
   @api recordType;
   @api recodTypeValue = "";
+  @api editedPricebookName = "";
 
   @track productsInfo;
   @track userInputs = {};
@@ -89,7 +90,9 @@ export default class PricebookExplorer extends LightningElement {
         Id: item.Product2.Id,
         UnitPrice: item.UnitPrice
       }));
-
+      this.editedPricebookName = data[0].Pricebook2.Name;
+      console.log(event.target.dataset);
+      console.log(data[0].Pricebook2.Name);
       this.pricebookId = data[0].Pricebook2.Id;
     });
   }
@@ -118,11 +121,12 @@ export default class PricebookExplorer extends LightningElement {
       if (data) {
         const evt = new ShowToastEvent({
           title: this.label.RE_Pricebook_Successfully_Updated,
-          message: "",
+          message: this.editedPricebookName,
           variant: "success"
         });
         this.dispatchEvent(evt);
         this.pricebookInfo = [];
+        this.editedPricebookName = "";
       } else {
         const evt = new ShowToastEvent({
           title: this.label.RE_Something_Went_Wrong,

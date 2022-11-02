@@ -25,11 +25,16 @@
         </div>
       </div>
 
-      <c-pricebook-datatable
-        products-info={pricebookInfo}
-        onhandleupdatedatatable={handleUpdateDatatable}
-        operation-type="explorer"
-      ></c-pricebook-datatable>
+      <div>
+        <h1 style="font-weight: bold; font-size: 1.2rem; margin-left: 12px">
+          {editedPricebookName}
+        </h1>
+        <c-pricebook-datatable
+          products-info={pricebookInfo}
+          onhandleupdatedatatable={handleUpdateDatatable}
+          operation-type="explorer"
+        ></c-pricebook-datatable>
+      </div>
     </div>
   </lightning-card>
 </template>

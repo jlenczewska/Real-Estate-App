@@ -1079,7 +1079,24 @@
         <value>Search Pricebook By Name
         </value>
     </labels>
-
-
-    
+    <labels>
+        <fullName>RE_Add_Pricebook
+        </fullName>
+        <categories>LWC Labels</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>RE_Add_Pricebook</shortDescription>
+        <value>Add Pricebook
+        </value>
+    </labels>
+    <labels>
+        <fullName>RE_Explore_Pricebooks
+        </fullName>
+        <categories>LWC Labels</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>RE_Explore_Pricebooks</shortDescription>
+        <value>Explore Pricebooks
+        </value>
+    </labels>
 </CustomLabels>

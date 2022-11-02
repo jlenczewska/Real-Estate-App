@@ -217,7 +217,7 @@ export default class PriceBookAddForm extends LightningElement {
           title:
             this.label
               .RE_Pricebook_Pricebook_Has_Been_Successfully_Added_To_The_Database,
-          message: "",
+          message: this.userInputs.name,
           variant: "success"
         });
         this.dispatchEvent(evt);

@@ -37,11 +37,16 @@ public with sharing class RE_pricebookExplorerController {
         }
 
         for(PriceBookEntry entry: pricebookInfo){
-            entry.UnitPrice = pricebookEntities.get(entry.Product2Id);
+            entry.unitPrice = pricebookEntities.get(entry.Product2Id);
         }
-
-        update pricebookInfo;
-        return true;
+        
+        try{
+            Database.update(pricebookInfo,false);
+            return true;
+        }
+        catch(Exception e){
+            return false;
+        }
     }
 
     
@@ -49,5 +54,4 @@ public with sharing class RE_pricebookExplorerController {
         Decimal UnitPrice;
         String Id;
     }
-
 }
