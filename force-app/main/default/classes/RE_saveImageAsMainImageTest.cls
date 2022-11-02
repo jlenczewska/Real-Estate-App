@@ -6,24 +6,19 @@ public class RE_saveImageAsMainImageTest {
         
         Boolean result;
 
-        String photoId = '0697Q000004TIrHQAW';
-        String recordId = '0697Q000004TIrHQAW';
+        String photoId = '0697Q000004TIrH';
+        String recordId = '0697Q000004TIrH';
 
-        ContentVersion contentV = new ContentVersion();
-        contentV.ContentDocumentId = '0697Q000004TIrHQAW';
-        contentV.Title='tytul';
-        contentV.ContentLocation = 'S';
-        contentV.PathOnClient = '.png';
-        contentV.IsMajorVersion = true;
-        contentV.VersionData = EncodingUtil.base64Decode('aaa');
-      
-        insert contentV;
+        ContentVersion ContentDoc = new ContentVersion();
+        ContentDoc.Title = 'My Doc';
+        ContentDoc.ContentUrl= 'test.com';
+        Insert ContentDoc;
 
-        Product2 picture = new Product2(
-             Name='Premise', Street__c='Nowacka 11', City__c='B',Picture__c='AAA',RecordTypeId = '0697Q000004TIrHQAW',Country__c='Poland'
+        Product2 product = new Product2(
+            Name='Premise', City__c='Poland', Country__c='Poland', Street__c='Poland'
         );
  
-        insert picture;
+        insert product;
 
         Test.startTest();
         result = RE_saveImageAsMainImage.getImageUrlAndSaveAsDefaultImage(photoId, recordId);
