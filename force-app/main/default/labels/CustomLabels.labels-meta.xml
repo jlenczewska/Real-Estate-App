@@ -819,12 +819,55 @@
         <value>Summary</value>
     </labels>
     <labels>
-        <fullName>Reviews</fullName>
+        <fullName>RE_Set_As_Main_Photo</fullName>
         <categories>LWC Labels</categories>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription>Reviews</shortDescription>
-        <value>Reviews</value>
+        <shortDescription>RE_Set_As_Main_Photo</shortDescription>
+        <value>Set As Main Photo</value>
+    </labels>
+
+      <labels>
+        <fullName>RE_Preview</fullName>
+        <categories>LWC Labels</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>RE_Preview</shortDescription>
+        <value>Preview</value>
+    </labels>
+    <labels>
+        <fullName>RE_Main_photo_has_been_changed</fullName>
+        <categories>LWC Labels</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>RE_Main_photo_has_been_changed</shortDescription>
+        <value>Main Photo Has Been Changed</value>
+    </labels>
+    <labels>
+        <fullName>RE_Please_refresh_the_page</fullName>
+        <categories>LWC Labels</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>RE_Please_refresh_the_page</shortDescription>
+        <value
+    >Please Refresh The Page To See The Result. If You Don't Dee The Changes, Wait A Minute And Refresh The Page Again.</value>
+    </labels>
+    <labels>
+        <fullName>RE_Something_went_wrong1</fullName>
+        <categories>LWC Labels</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>RE_Something_went_wrong1</shortDescription>
+        <value>Something Went Wrong</value>
+    </labels>
+    <labels>
+        <fullName>RE_Main_Photo_Could_Not_Be_Changed</fullName>
+        <categories>LWC Labels</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>RE_Main_Photo_Could_Not_Be_Changed</shortDescription>
+        <value
+    >Main Photo Could Not Be Changed. Please Refresh The Page And Try Again.</value>
     </labels>
     <labels>
         <fullName>RE_Description</fullName>
