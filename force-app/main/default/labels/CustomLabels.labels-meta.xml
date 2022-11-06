@@ -1099,4 +1099,84 @@
         <value>Explore Pricebooks
         </value>
     </labels>
+    <labels>
+        <fullName>RE_IsActive
+        </fullName>
+        <categories>LWC Labels</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>RE_IsActive</shortDescription>
+        <value>Is Active
+        </value>
+    </labels>
+    <labels>
+        <fullName>RE_Save
+        </fullName>
+        <categories>LWC Labels</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>RE_Save</shortDescription>
+        <value>Save
+        </value>
+    </labels>
+    <labels>
+        <fullName>RE_Cancel
+        </fullName>
+        <categories>LWC Labels</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>RE_Cancel</shortDescription>
+        <value>Cancel
+        </value>
+    </labels>
+    <labels>
+        <fullName>RE_Edit_Pricebook
+        </fullName>
+        <categories>LWC Labels</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>RE_Edit_Pricebook</shortDescription>
+        <value>Edit Pricebook
+        </value>
+    </labels>
+    <labels>
+        <fullName>RE_Close
+        </fullName>
+        <categories>LWC Labels</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>RE_Close</shortDescription>
+        <value>Close
+        </value>
+    </labels>
+    <labels>
+        <fullName>RE_Add_Records
+        </fullName>
+        <categories>LWC Labels</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>RE_Add_Records</shortDescription>
+        <value>Add Records
+        </value>
+    </labels>
+    <labels>
+        <fullName>RE_Add_Records_To_Pricebook
+        </fullName>
+        <categories>LWC Labels</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>RE_Add_Records_To_Pricebook</shortDescription>
+        <value>Add Records To Pricebook
+        </value>
+    </labels>
+    <labels>
+        <fullName>RE_See_Details
+        </fullName>
+        <categories>LWC Labels</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>RE_See_Details</shortDescription>
+        <value>See Details
+        </value>
+    </labels>
 </CustomLabels>

@@ -1,14 +1,62 @@
-.container{
-    display: grid;
-    grid-template-columns: 1fr 3fr;
+.pricebookInfo{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 5px 0 12px;
+}
+
+.pricebookInfo_Date{
+    display: flex;
+    gap: 12px;
 }
 
 .resultsLeftContainer {
-    display: grid;
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: column;
     margin-left: 12px;
+    position: absolute;
+    top: 50px;
+    left: 0px;
+    background: #ffffff;
+    padding: 0 10px;
+    border: 3px solid #f3f3f3;
+    box-sizing: border-box;
+    z-index: 9999;
+    width: 273px;
+    max-height: 170px;
+    overflow: auto;
 }
 
 .inputsContainer{
     margin-top: -18px;
+    position: relative;
+    width: 100%;
+    display: flex;
+    align-items: center;
+    align-items: flex-end;
+    justify-content: space-between;
+    margin-bottom: 10px;
+}
+
+button{
+    color: black;
+}
+
+.inputsLeftContainer{
+    width: 273px;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: #0176d3;
+    outline: none;
+}
+
+::-webkit-scrollbar-track {
+    background: #0176d30a;
+}
+
+::-webkit-scrollbar {
+    width: 12px;
+    --slds-c-button-brand-color-background-hover: red;
+
 }

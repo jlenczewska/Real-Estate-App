@@ -1,0 +1,97 @@
+<template>
+  <lightning-button
+    variant="brand"
+    label={label.RE_See_Details}
+    title={label.RE_See_Details}
+    onclick={openModalEdit}
+    class="slds-m-left_x-small"
+    disabled={getButtonDisabled}
+  >
+  </lightning-button>
+
+  <template if:true={isModalOpenEdit}>
+    <section
+      role="dialog"
+      tabindex="-1"
+      aria-labelledby="modal-heading-01"
+      aria-modal="true"
+      aria-describedby="modal-content-id-1"
+      class="slds-modal slds-fade-in-open"
+    >
+      <div class="slds-modal__container">
+        <header class="slds-modal__header">
+          <button
+            class="slds-button slds-button_icon slds-modal__close slds-button_icon-inverse"
+            title="Close"
+            onclick={closeModalEdit}
+          >
+            <lightning-icon
+              icon-name="utility:close"
+              alternative-text="close"
+              variant="inverse"
+              size="small"
+            ></lightning-icon>
+            <span class="slds-assistive-text">{label.RE_Close}</span>
+          </button>
+          <h2
+            id="modal-heading-02"
+            class="slds-text-heading_medium slds-hyphenate"
+          >
+            {label.RE_See_Details}
+          </h2>
+        </header>
+        <div
+          class="slds-modal__content slds-p-around_medium"
+          id="modal-content-id-2"
+        >
+          <lightning-input
+            type="checkbox"
+            label={label.RE_IsActive}
+            data-name="IsActive"
+            checked={pricebookInfoDates.IsActive}
+            onchange={handleDataChange}
+            disabled={valuesDisabled}
+          ></lightning-input>
+          <lightning-input
+            type="date"
+            label={label.RE_Start_Day}
+            data-name="Start_Day"
+            date-style="short"
+            value={pricebookInfoDates.ValidFrom}
+            disabled={valuesDisabled}
+            onchange={handleDataChange}
+          ></lightning-input>
+          <lightning-input
+            type="date"
+            label={label.RE_End_Day}
+            data-name="End_Day"
+            date-style="short"
+            value={pricebookInfoDates.ValidTo}
+            disabled={valuesDisabled}
+            onchange={handleDataChange}
+          ></lightning-input>
+        </div>
+        <template if:true={editAvailable}>
+          <footer class="slds-modal__footer">
+            <button
+              class="slds-button slds-button_neutral"
+              onclick={closeModalEdit}
+              title={label.RE_Cancel}
+            >
+              {label.RE_Cancel}
+            </button>
+            <button
+              class="slds-button slds-button_brand"
+              onclick={submitDetailsEdit}
+              title={label.RE_Save}
+              disabled={checkDataChaged}
+            >
+              {label.RE_Save}
+            </button>
+          </footer>
+        </template>
+      </div>
+    </section>
+    <div class="slds-backdrop slds-backdrop_open"></div>
+  </template>
+</template>

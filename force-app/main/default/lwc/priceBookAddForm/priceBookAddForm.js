@@ -1,8 +1,8 @@
 import { LightningElement, api, wire, track } from "lwc";
 import { ShowToastEvent } from "lightning/platformShowToastEvent";
 
-import getRecordsByRecordType from "@salesforce/apex/RE_pricebookManagerController.getRecordsByRecordType";
-import addPricebookToDatabase from "@salesforce/apex/RE_pricebookManagerController.addPricebookToDatabase";
+import getRecordsByRecordType from "@salesforce/apex/RE_pricebookExplorerController.getRecordsByRecordType";
+import addPricebookToDatabase from "@salesforce/apex/RE_pricebookExplorerController.addPricebookToDatabase";
 
 import RE_Description from "@salesforce/label/c.RE_Description";
 import RE_Pricebook_Name from "@salesforce/label/c.RE_Pricebook_Name";
@@ -52,6 +52,7 @@ export default class PriceBookAddForm extends LightningElement {
   @api objectApiName;
   @api recordType;
   @api recodTypeValue = "";
+  @api editAvailable;
 
   @track productsInfo;
   @track userInputs = {};
@@ -211,37 +212,44 @@ export default class PriceBookAddForm extends LightningElement {
       pbStartDay: this.userInputs.startDate,
       pbEndDay: this.userInputs.endDate,
       pricebookEntries: JSON.stringify(event.detail)
-    }).then((data) => {
-      if (data) {
-        const evt = new ShowToastEvent({
-          title:
-            this.label
-              .RE_Pricebook_Pricebook_Has_Been_Successfully_Added_To_The_Database,
-          message: this.userInputs.name,
-          variant: "success"
-        });
-        this.dispatchEvent(evt);
-        this.recodTypeValue = "";
-        this.template.querySelector(
-          'lightning-input[data-name="End_Day"]'
-        ).value = "";
-        this.template.querySelector(
-          'lightning-input[data-name="Pricebook_Name"]'
-        ).value = "";
-        this.template.querySelector(
-          'lightning-input[data-name="Start_Day"]'
-        ).value = "";
-        this.template.querySelector(
-          'lightning-input[data-name="Description"]'
-        ).value = "";
-      } else {
-        const evt = new ShowToastEvent({
-          title: this.label.RE_Something_Went_Wrong,
-          message: this.label.RE_Review_The_Data_And_Try_Again,
-          variant: "info"
-        });
-        this.dispatchEvent(evt);
-      }
-    });
+    })
+      .then((data) => {
+        if (data) {
+          const evt = new ShowToastEvent({
+            title:
+              this.label
+                .RE_Pricebook_Pricebook_Has_Been_Successfully_Added_To_The_Database,
+            message: this.userInputs.name,
+            variant: "success"
+          });
+          this.dispatchEvent(evt);
+          this.recodTypeValue = "";
+          this.template.querySelector(
+            'lightning-input[data-name="End_Day"]'
+          ).value = "";
+          this.template.querySelector(
+            'lightning-input[data-name="Pricebook_Name"]'
+          ).value = "";
+          this.template.querySelector(
+            'lightning-input[data-name="Start_Day"]'
+          ).value = "";
+          this.template.querySelector(
+            'lightning-input[data-name="Description"]'
+          ).value = "";
+
+          const callParentEvent = new CustomEvent("closemodal");
+          this.dispatchEvent(callParentEvent);
+        } else {
+          const evt = new ShowToastEvent({
+            title: this.label.RE_Something_Went_Wrong,
+            message: this.label.RE_Review_The_Data_And_Try_Again,
+            variant: "info"
+          });
+          this.dispatchEvent(evt);
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
 }

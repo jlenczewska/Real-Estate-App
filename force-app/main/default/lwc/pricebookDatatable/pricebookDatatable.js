@@ -19,6 +19,17 @@ const columns = [
   }
 ];
 
+const columnsNotEditable = [
+  { label: RE_Premise_Name, fieldName: "Name", editable: false },
+  {
+    label: RE_Price,
+    fieldName: "UnitPrice",
+    type: "currency",
+    typeAttributes: { currencyCode: "USD" },
+    editable: false
+  }
+];
+
 const comboBoxOptions = [
   { label: RE_Business_Premise, value: "Business Premise" },
   { label: RE_Apartment, value: "Apartment" }
@@ -30,10 +41,11 @@ export default class PricebookDatatable extends LightningElement {
   @api recodTypeValue = "";
   @api productsInfo;
   @api operationType;
+  @api editAvailable;
 
   @track userInputs = {};
 
-  columns = columns;
+  columns;
   comboBoxOptions = comboBoxOptions;
   draftValues = [];
   startDayInput = "";
@@ -48,9 +60,12 @@ export default class PricebookDatatable extends LightningElement {
 
   renderedCallback() {
     this.template.querySelector("lightning-datatable").draftValues = [];
+    console.log(this.editAvailable);
+    this.columns = this.editAvailable ? columns : columnsNotEditable;
   }
 
   checkPremisePrices(updatedFields) {
+    let flag = false;
     updatedFields.map((row) => {
       if (row.UnitPrice <= 0 || row.UnitPrice.trim().length < 1) {
         const evt = new ShowToastEvent({
@@ -59,11 +74,15 @@ export default class PricebookDatatable extends LightningElement {
           variant: "warning"
         });
         this.dispatchEvent(evt);
+        flag = true;
         return true;
       }
     });
-
-    return false;
+    if (flag) {
+      return true;
+    } else {
+      return false;
+    }
   }
 
   handleSaveDatatable(event) {
@@ -81,6 +100,11 @@ export default class PricebookDatatable extends LightningElement {
       this.dispatchEvent(callParentEvent);
     } else if (this.operationType == "explorer") {
       const callParentEvent = new CustomEvent("handleupdatedatatable", {
+        detail: updatedFields
+      });
+      this.dispatchEvent(callParentEvent);
+    } else if (this.operationType == "addrecords") {
+      const callParentEvent = new CustomEvent("handleaddnewrecords", {
         detail: updatedFields
       });
       this.dispatchEvent(callParentEvent);

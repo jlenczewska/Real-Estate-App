@@ -3,53 +3,38 @@ import { ShowToastEvent } from "lightning/platformShowToastEvent";
 
 import getPricebooks from "@salesforce/apex/RE_pricebookExplorerController.getPricebooks";
 import getPricebookInfo from "@salesforce/apex/RE_pricebookExplorerController.getPricebookInfo";
+import getPricebookEntryInfo from "@salesforce/apex/RE_pricebookExplorerController.getPricebookEntryInfo";
+
 import updatePricebook from "@salesforce/apex/RE_pricebookExplorerController.updatePricebook";
 
 import RE_Pricebook_Successfully_Updated from "@salesforce/label/c.RE_Pricebook_Successfully_Updated";
 import RE_Pricebook_Name from "@salesforce/label/c.RE_Pricebook_Name";
 import RE_Search_Pricebook_By_Name from "@salesforce/label/c.RE_Search_Pricebook_By_Name";
-import RE_Business_Premise from "@salesforce/label/c.RE_Business_Premise";
-import RE_Apartment from "@salesforce/label/c.RE_Apartment";
+import RE_Close from "@salesforce/label/c.RE_Close";
+import RE_Start_Day from "@salesforce/label/c.RE_Start_Day";
+import RE_End_Day from "@salesforce/label/c.RE_End_Day";
 import RE_Something_Went_Wrong from "@salesforce/label/c.RE_Something_Went_Wrong";
 import RE_Review_The_Data_And_Try_Again from "@salesforce/label/c.RE_Review_The_Data_And_Try_Again";
 import RE_Premise_Name from "@salesforce/label/c.RE_Premise_Name";
 import RE_Price from "@salesforce/label/c.RE_Price";
-
-const columns = [
-  { label: RE_Premise_Name, fieldName: "Name", editable: false },
-  {
-    label: RE_Price,
-    fieldName: "UnitPrice",
-    type: "currency",
-    typeAttributes: { currencyCode: "USD" },
-    editable: true
-  }
-];
-
-const comboBoxOptions = [
-  { label: RE_Business_Premise, value: "Business Premise" },
-  { label: RE_Apartment, value: "Apartment" }
-];
+import RE_IsActive from "@salesforce/label/c.RE_IsActive";
+import RE_Cancel from "@salesforce/label/c.RE_Cancel";
+import RE_Save from "@salesforce/label/c.RE_Save";
+import RE_Edit_Pricebook from "@salesforce/label/c.RE_Edit_Pricebook";
+import RE_Add_Pricebook from "@salesforce/label/c.RE_Add_Pricebook";
 
 export default class PricebookExplorer extends LightningElement {
   pricebookResults;
-  pricebookId;
+  inputDateDisabled = false;
 
-  @api objectApiName;
-  @api recordType;
-  @api recodTypeValue = "";
   @api editedPricebookName = "";
-
-  @track productsInfo;
-  @track userInputs = {};
-  @track objectInfo;
-  @track pricebookInfo = [];
-
-  columns = columns;
-  comboBoxOptions = comboBoxOptions;
-  draftValues = [];
-  startDayInput = "";
-  endDayInput = "";
+  @api editAvailable;
+  @api pricebookId;
+  @api pricebookInfo = [];
+  @api pricebookInfoDates = {};
+  @track isModalOpen = false;
+  @track isModalOpenEdit = false;
+  @track areResultsOpen = false;
 
   label = {
     RE_Pricebook_Name,
@@ -58,8 +43,31 @@ export default class PricebookExplorer extends LightningElement {
     RE_Pricebook_Successfully_Updated,
     RE_Search_Pricebook_By_Name,
     RE_Premise_Name,
-    RE_Price
+    RE_Price,
+    RE_Start_Day,
+    RE_End_Day,
+    RE_IsActive,
+    RE_Save,
+    RE_Cancel,
+    RE_Edit_Pricebook,
+    RE_Add_Pricebook,
+    RE_Close
   };
+
+  openModal() {
+    this.isModalOpen = true;
+  }
+  closeModal() {
+    this.isModalOpen = false;
+  }
+
+  showResults() {
+    this.areResultsOpen = true;
+  }
+
+  hideResults() {
+    this.areResultsOpen = false;
+  }
 
   connectedCallback() {
     getPricebooks({
@@ -82,19 +90,72 @@ export default class PricebookExplorer extends LightningElement {
   }
 
   getPricebookData(event) {
+    getPricebookEntryInfo({
+      pricebookId: event.target.dataset.id
+    })
+      .then((data) => {
+        this.pricebookInfo = data.map((item) => ({
+          Name: item.Product2.Name,
+          Id: item.Product2.Id,
+          UnitPrice: item.UnitPrice
+        }));
+        this.editedPricebookName = data[0].Pricebook2.Name;
+        this.pricebookId = data[0].Pricebook2.Id;
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+
     getPricebookInfo({
       pricebookId: event.target.dataset.id
-    }).then((data) => {
-      this.pricebookInfo = data.map((item) => ({
-        Name: item.Product2.Name,
-        Id: item.Product2.Id,
-        UnitPrice: item.UnitPrice
-      }));
-      this.editedPricebookName = data[0].Pricebook2.Name;
-      console.log(event.target.dataset);
-      console.log(data[0].Pricebook2.Name);
-      this.pricebookId = data[0].Pricebook2.Id;
-    });
+    })
+      .then((data) => {
+        this.pricebookInfoDates = {
+          ValidFrom: data.ValidFrom__c,
+          ValidTo: data.ValidTo__c,
+          IsActive: data.IsActive,
+          Id: data.Id
+        };
+        this.inputDateDisabled = data.ValidFrom__c ? false : true;
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+
+  refreshData() {
+    getPricebookEntryInfo({
+      pricebookId: this.pricebookId
+    })
+      .then((data) => {
+        this.pricebookInfo = data.map((item) => ({
+          Name: item.Product2.Name,
+          Id: item.Product2.Id,
+          UnitPrice: item.UnitPrice
+        }));
+        this.editedPricebookName = data[0].Pricebook2.Name;
+        this.pricebookId = data[0].Pricebook2.Id;
+      })
+      .catch((error) => {
+        console.log(error);
+      });
+  }
+
+  refreshDataEdit() {
+    getPricebookInfo({
+      pricebookId: this.pricebookId
+    })
+      .then((data) => {
+        this.pricebookInfoDates = {
+          ValidFrom: data.ValidFrom__c,
+          ValidTo: data.ValidTo__c,
+          IsActive: data.IsActive,
+          Id: data.Id
+        };
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
 
   checkPremisePrices(updatedFields) {
@@ -117,24 +178,38 @@ export default class PricebookExplorer extends LightningElement {
     updatePricebook({
       pricebookId: this.pricebookId,
       pricebookEntries: JSON.stringify(event.detail)
-    }).then((data) => {
-      if (data) {
-        const evt = new ShowToastEvent({
-          title: this.label.RE_Pricebook_Successfully_Updated,
-          message: this.editedPricebookName,
-          variant: "success"
-        });
-        this.dispatchEvent(evt);
-        this.pricebookInfo = [];
-        this.editedPricebookName = "";
-      } else {
-        const evt = new ShowToastEvent({
-          title: this.label.RE_Something_Went_Wrong,
-          message: this.label.RE_Review_The_Data_And_Try_Again,
-          variant: "info"
-        });
-        this.dispatchEvent(evt);
-      }
-    });
+    })
+      .then((data) => {
+        if (data) {
+          const evt = new ShowToastEvent({
+            title: this.label.RE_Pricebook_Successfully_Updated,
+            message: this.editedPricebookName,
+            variant: "success"
+          });
+          this.dispatchEvent(evt);
+          this.pricebookInfo = [];
+          this.editedPricebookName;
+
+          getPricebookEntryInfo({
+            pricebookId: this.pricebookId
+          }).then((data) => {
+            this.pricebookInfo = data.map((item) => ({
+              Name: item.Product2.Name,
+              Id: item.Product2.Id,
+              UnitPrice: item.UnitPrice
+            }));
+          });
+        } else {
+          const evt = new ShowToastEvent({
+            title: this.label.RE_Something_Went_Wrong,
+            message: this.label.RE_Review_The_Data_And_Try_Again,
+            variant: "info"
+          });
+          this.dispatchEvent(evt);
+        }
+      })
+      .catch((error) => {
+        console.log(error);
+      });
   }
 }
