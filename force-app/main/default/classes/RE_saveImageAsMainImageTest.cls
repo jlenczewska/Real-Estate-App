@@ -12,10 +12,11 @@ public class RE_saveImageAsMainImageTest {
         ContentVersion ContentDoc = new ContentVersion();
         ContentDoc.Title = 'My Doc';
         ContentDoc.ContentUrl= 'test.com';
+        ContentDoc.ContentDocumentId = photoId;
         Insert ContentDoc;
 
         Product2 product = new Product2(
-            Name='Premise', City__c='Poland', Country__c='Poland', Street__c='Poland'
+            Name='Premise', City__c='Poland', Country__c='Poland', Street__c='Poland', Picture__c='abc'
         );
  
         insert product;
