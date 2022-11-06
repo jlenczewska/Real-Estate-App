@@ -27,7 +27,6 @@ public class RE_saveImageAsMainImageTest {
 
         List<ContentDocument> documents = [SELECT Id, Title, LatestPublishedVersionId FROM ContentDocument];
 
-        //create ContentDocumentLink  record
         ContentDocumentLink cdl = new ContentDocumentLink();
         cdl.LinkedEntityId = product.Id;
         cdl.ContentDocumentId = documents[0].Id;

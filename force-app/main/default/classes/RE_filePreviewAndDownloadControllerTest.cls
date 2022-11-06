@@ -14,8 +14,19 @@ public class RE_filePreviewAndDownloadControllerTest {
 
        insert picture;
 
+       ContentVersion contentVersion = new ContentVersion(
+        Title = 'a picture',
+        PathOnClient = 'Pic.jpg',
+        VersionData = Blob.valueOf('Test Content'),
+        IsMajorVersion = true
+        );
+        
+        insert contentVersion;
+
+        List<ContentDocument> documents = [SELECT Id, Title, LatestPublishedVersionId FROM ContentDocument];
+
         ContentDocumentLink cDocLink = new ContentDocumentLink();
-        cDocLink.ContentDocumentId = '0697Q000004TIrHQAW';
+        cDocLink.ContentDocumentId = documents[0].Id;
         cDocLink.LinkedEntityId = picture.id;
         cDocLink.ShareType = 'I';
         cDocLink.Visibility = 'AllUsers';
