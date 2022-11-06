@@ -1,30 +1,44 @@
 @isTest
 public class RE_saveImageAsMainImageTest {
 
+    public static final String PREMISE_NAME = 'Apartment';
+
     @isTest
     static void checkIfFunctionCreateCorrectUrl() {
         
         Boolean result;
 
-        String photoId = '0697Q000004TIrH';
-        String recordId = '0697Q000004TIrH';
-
-        ContentVersion ContentDoc = new ContentVersion();
-        ContentDoc.Title = 'My Doc';
-        ContentDoc.ContentUrl= 'test.com';
-        ContentDoc.ContentDocumentId = photoId;
-        Insert ContentDoc;
+        Id recordType = Schema.SObjectType.Product2.getRecordTypeInfosByName().get(PREMISE_NAME).getRecordTypeId();
 
         Product2 product = new Product2(
-            Name='Premise', City__c='Poland', Country__c='Poland', Street__c='Poland', Picture__c='abc'
+            Name='Premise', Street__c='Nowacka 11', City__c='B',Picture__c='AAA',RecordTypeId = recordType,Country__c='Poland'
+       );
+
+       insert product;
+
+       ContentVersion contentVersion = new ContentVersion(
+        Title = 'a picture',
+        PathOnClient = 'Pic.jpg',
+        VersionData = Blob.valueOf('Test Content'),
+        IsMajorVersion = true
         );
- 
-        insert product;
+        
+        insert contentVersion;
+
+        List<ContentDocument> documents = [SELECT Id, Title, LatestPublishedVersionId FROM ContentDocument];
+
+        //create ContentDocumentLink  record
+        ContentDocumentLink cdl = new ContentDocumentLink();
+        cdl.LinkedEntityId = product.Id;
+        cdl.ContentDocumentId = documents[0].Id;
+        cdl.ShareType = 'V';
+        cdl.Visibility = 'AllUsers';
+        insert cdl;
 
         Test.startTest();
-        result = RE_saveImageAsMainImage.getImageUrlAndSaveAsDefaultImage(photoId, recordId);
+        result = RE_saveImageAsMainImage.getImageUrlAndSaveAsDefaultImage(cdl.ContentDocumentId, product.id);
         Test.stopTest();
 
-        System.assertEquals(result, false);
+        System.assertEquals(result, true);
     }
 }

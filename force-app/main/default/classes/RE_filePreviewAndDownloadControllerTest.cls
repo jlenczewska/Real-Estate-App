@@ -1,15 +1,15 @@
 @isTest
 public class RE_filePreviewAndDownloadControllerTest {
 
+    public static final String PREMISE_NAME = 'Apartment';
+
     @isTest
     static void checkIfReturnsNotNullMap() {
      
-        String photoId = '0697Q000004TIrHQAB';
-        String recordId = '0697Q000004TIrHQAH';
-
+        Id recordType = Schema.SObjectType.Product2.getRecordTypeInfosByName().get(PREMISE_NAME).getRecordTypeId();
 
         Product2 picture = new Product2(
-            Name='Premise', Street__c='Nowacka 11', City__c='B',Picture__c='AAA',RecordTypeId = '0127Q000001gDcWQAU',Country__c='Poland'
+            Name='Premise', Street__c='Nowacka 11', City__c='B',Picture__c='AAA',RecordTypeId = recordType,Country__c='Poland'
        );
 
        insert picture;
@@ -20,17 +20,14 @@ public class RE_filePreviewAndDownloadControllerTest {
         cDocLink.ShareType = 'I';
         cDocLink.Visibility = 'AllUsers';
        
-      //AllUsers, InternalUsers, SharedUsers
         insert cDocLink;
-
-      
  
-        Map<ID, String> resultMap;
+        Map<ID, String> resultMap = new Map<ID, String>();
      
         Test.startTest();
-        resultMap = RE_filePreviewAndDownloadController.getRelatedFilesByRecordId('01t7Q000003t05fQAA');
+        resultMap = RE_filePreviewAndDownloadController.getRelatedFilesByRecordId(picture.id);
         Test.stopTest();
 
-        System.assertEquals(resultMap.size(), 0);
+        System.assertEquals(resultMap.size(), 1);
     }
 }
