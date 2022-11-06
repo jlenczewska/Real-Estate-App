@@ -8,30 +8,29 @@ public class RE_filePreviewAndDownloadControllerTest {
         String recordId = '0697Q000004TIrHQAH';
 
 
-        Product2 product = new Product2(
-            Name='Premise', City__c='Poland', Country__c='Poland', Street__c='Poland'
+        Product2 picture = new Product2(
+            Name='Premise', Street__c='Nowacka 11', City__c='B',Picture__c='AAA',RecordTypeId = '0127Q000001gDcWQAU',Country__c='Poland'
        );
 
-       insert product;
+       insert picture;
 
-       ContentVersion ContentDoc = new ContentVersion();
-       ContentDoc.Title = 'My Doc';
-       ContentDoc.ContentUrl= 'test.com';
-       Insert ContentDoc;
-
-       ContentVersion testContent = [SELECT id, ContentDocumentId FROM ContentVersion where Id = :ContentDoc.Id];
+        ContentDocumentLink cDocLink = new ContentDocumentLink();
+        cDocLink.ContentDocumentId = '0697Q000004TIrHQAW';
+        cDocLink.LinkedEntityId = picture.id;
+        cDocLink.ShareType = 'I';
+        cDocLink.Visibility = 'AllUsers';
        
-       ContentDocumentLink ContentDL = new ContentDocumentLink();
-       ContentDL.ContentDocumentId = testcontent.contentdocumentid;
-       ContentDL.LinkedEntityId = product.id;
-       Insert ContentDL;
+      //AllUsers, InternalUsers, SharedUsers
+        insert cDocLink;
+
+      
  
         Map<ID, String> resultMap;
      
         Test.startTest();
-        resultMap = RE_filePreviewAndDownloadController.getRelatedFilesByRecordId(product.id);
+        resultMap = RE_filePreviewAndDownloadController.getRelatedFilesByRecordId('01t7Q000003t05fQAA');
         Test.stopTest();
 
-        System.assertEquals(resultMap.size(), 1);
+        System.assertEquals(resultMap.size(), 0);
     }
 }
