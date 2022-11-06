@@ -1,0 +1,56 @@
+<template>
+  <lightning-card>
+    <div class="inputsContainer">
+      <div class="inputsLeftContainer">
+        <div class="lgc-bg slds-p-horizontal_small">
+          <lightning-input
+            type="text"
+            label={label.RE_Pricebook_Name}
+            data-name="Pricebook_Name"
+          ></lightning-input>
+        </div>
+        <div class="lgc-bg slds-p-horizontal_small">
+          <lightning-input
+            type="text"
+            label={label.RE_Description}
+            data-name="Description"
+          ></lightning-input>
+        </div>
+      </div>
+
+      <div class="inputsRightContainer lgc-bg slds-p-horizontal_small">
+        <lightning-input
+          type="date"
+          label={label.RE_Start_Day}
+          data-name="Start_Day"
+          date-style="short"
+        ></lightning-input>
+        <lightning-input
+          type="date"
+          label={label.RE_End_Day}
+          data-name="End_Day"
+          date-style="short"
+        ></lightning-input>
+      </div>
+    </div>
+    <br />
+    <div class="comboboxContainer">
+      <lightning-combobox
+        name={label.RE_Premise_Type}
+        label={label.RE_Premise_Type}
+        value={recodTypeValue}
+        placeholder={label.RE_Select_Premise_Type}
+        options={comboBoxOptions}
+        onchange={handleChangeComboBox}
+      ></lightning-combobox>
+      <br />
+    </div>
+    <c-pricebook-datatable
+      products-info={productsInfo}
+      onhandlesavedatatable={handleSaveDatatable}
+      operation-type="addbook"
+      edit-available={editAvailable}
+    ></c-pricebook-datatable>
+    <br />
+  </lightning-card>
+</template>

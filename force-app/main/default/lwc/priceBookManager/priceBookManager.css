@@ -1,0 +1,31 @@
+.slds-card__header.slds-grid {
+    display: none;
+    margin: 0;
+    padding: 0;
+}
+.slds-card .slds-tabs_default__item, .slds-tabs--default__item{
+    padding: 0 20px;
+}
+
+.inputsContainer{
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: row;
+}
+
+.inputsRightContainer, .inputsLeftContainer{
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+    width: 280px;
+}
+
+.comboboxContainer{
+    display: flex;
+    justify-content: center;
+    margin-bottom: 25px;
+}
+
+lightning-combobox.slds-form-element{
+    width: 350px;
+}

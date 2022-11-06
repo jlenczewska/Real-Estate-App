@@ -869,4 +869,357 @@
         <value
     >Main Photo Could Not Be Changed. Please Refresh The Page And Try Again.</value>
     </labels>
+    <labels>
+        <fullName>RE_Description</fullName>
+        <categories>LWC Labels</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>RE_Description</shortDescription>
+        <value>Description</value>
+    </labels>
+    <labels>
+        <fullName>RE_Pricebook_Name</fullName>
+        <categories>LWC Labels</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>RE_Pricebook_Name</shortDescription>
+        <value>Pricebook Name</value>
+    </labels>
+    <labels>
+        <fullName>RE_Start_Day</fullName>
+        <categories>LWC Labels</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>RE_Start_Day</shortDescription>
+        <value>Start Day</value>
+    </labels>
+    <labels>
+        <fullName>RE_End_Day</fullName>
+        <categories>LWC Labels</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>RE_End_Day</shortDescription>
+        <value>End Day</value>
+    </labels>
+    <labels>
+        <fullName>RE_Business_Premise</fullName>
+        <categories>LWC Labels</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>RE_Business_Premise</shortDescription>
+        <value>Business Premise</value>
+    </labels>
+    <labels>
+        <fullName>RE_Apartment</fullName>
+        <categories>LWC Labels</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>RE_Apartment</shortDescription>
+        <value>Apartment</value>
+    </labels>
+    <labels>
+        <fullName>RE_Premise_Type</fullName>
+        <categories>LWC Labels</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>RE_Premise_Type</shortDescription>
+        <value>Premise Type</value>
+    </labels>
+    <labels>
+        <fullName>RE_Select_Premise_Type</fullName>
+        <categories>LWC Labels</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>RE_Select_Premise_Type</shortDescription>
+        <value>Select Premise Type</value>
+    </labels>
+    <labels>
+        <fullName>RE_Create_New_Pricebook</fullName>
+        <categories>LWC Labels</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>RE_Create_New_Pricebook</shortDescription>
+        <value>Create New Pricebook</value>
+    </labels>
+    <labels>
+        <fullName>RE_Price_Is_Required</fullName>
+        <categories>LWC Labels</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>RE_Price_Is_Required</shortDescription>
+        <value>The price is required and cannot be negative.</value>
+    </labels>
+    <labels>
+        <fullName>RE_Incorrect_price</fullName>
+        <categories>LWC Labels</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>RE_Incorrect_price</shortDescription>
+        <value>Incorrect price</value>
+    </labels>
+  
+    <labels>
+        <fullName>RE_Pricebook_Name_Is_Required</fullName>
+        <categories>LWC Labels</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>RE_Pricebook_Name_Is_Required</shortDescription>
+        <value>Pricebook Name Is Required</value>
+    </labels>
+    <labels>
+        <fullName>RE_Enter_Pricebook_Name</fullName>
+        <categories>LWC Labels</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>RE_Enter_Pricebook_Name</shortDescription>
+        <value>Please Enter A Valid Pricebook Name</value>
+    </labels>
+    <labels>
+        <fullName>RE_Description_Is_Required</fullName>
+        <categories>LWC Labels</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>RE_Description_Is_Required</shortDescription>
+        <value>Description Is Required</value>
+    </labels>
+    <labels>
+        <fullName>RE_Enter_Description</fullName>
+        <categories>LWC Labels</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>RE_Enter_Description</shortDescription>
+        <value>Please Enter A Valid Description</value>
+    </labels>
+    <labels>
+        <fullName>RE_Start_Day_Is_Required</fullName>
+        <categories>LWC Labels</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>RE_Start_Day_Id_Required</shortDescription>
+        <value>Start Day Is Required</value>
+    </labels>
+    <labels>
+        <fullName>RE_Enter_Start_Day</fullName>
+        <categories>LWC Labels</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>RE_Enter_Start_Day</shortDescription>
+        <value>Please Enter A Valid Start Day</value>
+    </labels>
+    <labels>
+        <fullName>RE_End_Day_Is_Required</fullName>
+        <categories>LWC Labels</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>RE_End_Day_Id_Required</shortDescription>
+        <value>End Day Is Required</value>
+    </labels>
+    <labels>
+        <fullName>RE_Enter_End_Day</fullName>
+        <categories>LWC Labels</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>RE_Enter_End_Day</shortDescription>
+        <value>Please Enter A Valid End Day</value>
+    </labels>
+    <labels>
+        <fullName>RE_Invalid_Dates</fullName>
+        <categories>LWC Labels</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>RE_Invalid_Dates</shortDescription>
+        <value>End Date Is Invalid</value>
+    </labels>
+    <labels>
+        <fullName>RE_The_End_Date_Must_Be_Later_Than_The_Start_Date</fullName>
+        <categories>LWC Labels</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription
+    >RE_The_End_Date_Must_Be_Later_Than_The_Start_Date</shortDescription>
+        <value>The End Date Must Be Later Than The Start Date</value>
+    </labels>
+    <labels>
+        <fullName>RE_The_date_can_only_contain_numbers
+        </fullName>
+        <categories>LWC Labels</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription
+    >RE_The_date_can_only_contain_numbers</shortDescription>
+        <value>The date can only contain numbers
+        </value>
+    </labels>
+    <labels>
+        <fullName
+    >RE_Pricebook_Pricebook_Has_Been_Successfully_Added_To_The_Database
+        </fullName>
+        <categories>LWC Labels</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription
+    >RE_Pricebook_Pricebook_Has_Been_Successfully_Added_To_The_Database</shortDescription>
+        <value>Pricebook Has Been Successfully Added To The Database
+        </value>
+    </labels>
+    <labels>
+        <fullName>RE_Something_Went_Wrong
+        </fullName>
+        <categories>LWC Labels</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>RE_Something_Went_Wrong</shortDescription>
+        <value>Something went wrong
+        </value>
+    </labels>
+    <labels>
+        <fullName>RE_Review_The_Data_And_Try_Again
+        </fullName>
+        <categories>LWC Labels</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>RE_Review_The_Data_And_Try_Again</shortDescription>
+        <value>Something went wrong
+        </value>
+    </labels>
+    <labels>
+        <fullName>RE_Premise_Name
+        </fullName>
+        <categories>LWC Labels</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>RE_Premise_Name</shortDescription>
+        <value>Premise Name
+        </value>
+    </labels>
+    <labels>
+        <fullName>RE_Price
+        </fullName>
+        <categories>LWC Labels</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>RE_Price</shortDescription>
+        <value>Price
+        </value>
+    </labels>
+    <labels>
+        <fullName>RE_Pricebook_Successfully_Updated
+        </fullName>
+        <categories>LWC Labels</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>RE_Pricebook_Successfully_Updated</shortDescription>
+        <value>Pricebook Has Been Successfully Updated
+        </value>
+    </labels>
+    <labels>
+        <fullName>RE_Search_Pricebook_By_Name
+        </fullName>
+        <categories>LWC Labels</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>RE_Search_Pricebook_By_Name</shortDescription>
+        <value>Search Pricebook By Name
+        </value>
+    </labels>
+    <labels>
+        <fullName>RE_Add_Pricebook
+        </fullName>
+        <categories>LWC Labels</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>RE_Add_Pricebook</shortDescription>
+        <value>Add Pricebook
+        </value>
+    </labels>
+    <labels>
+        <fullName>RE_Explore_Pricebooks
+        </fullName>
+        <categories>LWC Labels</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>RE_Explore_Pricebooks</shortDescription>
+        <value>Explore Pricebooks
+        </value>
+    </labels>
+    <labels>
+        <fullName>RE_IsActive
+        </fullName>
+        <categories>LWC Labels</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>RE_IsActive</shortDescription>
+        <value>Is Active
+        </value>
+    </labels>
+    <labels>
+        <fullName>RE_Save
+        </fullName>
+        <categories>LWC Labels</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>RE_Save</shortDescription>
+        <value>Save
+        </value>
+    </labels>
+    <labels>
+        <fullName>RE_Cancel
+        </fullName>
+        <categories>LWC Labels</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>RE_Cancel</shortDescription>
+        <value>Cancel
+        </value>
+    </labels>
+    <labels>
+        <fullName>RE_Edit_Pricebook
+        </fullName>
+        <categories>LWC Labels</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>RE_Edit_Pricebook</shortDescription>
+        <value>Edit Pricebook
+        </value>
+    </labels>
+    <labels>
+        <fullName>RE_Close
+        </fullName>
+        <categories>LWC Labels</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>RE_Close</shortDescription>
+        <value>Close
+        </value>
+    </labels>
+    <labels>
+        <fullName>RE_Add_Records
+        </fullName>
+        <categories>LWC Labels</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>RE_Add_Records</shortDescription>
+        <value>Add Records
+        </value>
+    </labels>
+    <labels>
+        <fullName>RE_Add_Records_To_Pricebook
+        </fullName>
+        <categories>LWC Labels</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>RE_Add_Records_To_Pricebook</shortDescription>
+        <value>Add Records To Pricebook
+        </value>
+    </labels>
+    <labels>
+        <fullName>RE_See_Details
+        </fullName>
+        <categories>LWC Labels</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>RE_See_Details</shortDescription>
+        <value>See Details
+        </value>
+    </labels>
 </CustomLabels>
