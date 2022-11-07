@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version="1.0" encoding="UTF-8" ?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
     <actionCalls>
         <description>Scheduled Meeting Event</description>
@@ -27,7 +27,8 @@
         <inputParameters>
             <name>Location</name>
             <value>
-                <stringValue>{!Place_and_time_Address.street} {!Place_and_time_Address.city}   {!Place_and_time_Address.country} </stringValue>
+                <stringValue
+        >{!Place_and_time_Address.street} {!Place_and_time_Address.city}   {!Place_and_time_Address.country} </stringValue>
             </value>
         </inputParameters>
         <inputParameters>
@@ -140,7 +141,8 @@
     <formulas>
         <name>CheckIfAddressIsNotNull</name>
         <dataType>String</dataType>
-        <expression>IF(( LEN({!Place_and_time_Address.street})&gt;0 &amp;&amp; LEN({!Place_and_time_Address.city})&gt;0 &amp;&amp; LEN({!Place_and_time_Address.postalCode})&gt;0 &amp;&amp; LEN({!Place_and_time_Address.province})&gt;0 &amp;&amp; LEN({!Place_and_time_Address.country})&gt;0)
+        <expression
+    >IF(( LEN({!Place_and_time_Address.street})&gt;0 &amp;&amp; LEN({!Place_and_time_Address.city})&gt;0 &amp;&amp; LEN({!Place_and_time_Address.postalCode})&gt;0 &amp;&amp; LEN({!Place_and_time_Address.province})&gt;0 &amp;&amp; LEN({!Place_and_time_Address.country})&gt;0)
 , 
 ( {!Place_and_time_Address.street} + &apos; &apos;+ {!Place_and_time_Address.city} + &apos; &apos;+ {!Place_and_time_Address.postalCode} + &apos; &apos;+{!Place_and_time_Address.province} + &apos; &apos;+ {!Place_and_time_Address.country} ), &apos;-&apos;
 )</expression>
@@ -148,9 +150,11 @@
     <formulas>
         <name>CheckIfTimeExists</name>
         <dataType>String</dataType>
-        <expression>IF( LEN( TEXT({!Place_and_Time_Date}) ) &gt; 0 , TEXT( {!Place_and_Time_Date}) ,&apos;-&apos;)</expression>
+        <expression
+    >IF( LEN( TEXT({!Place_and_Time_Date}) ) &gt; 0 , TEXT( {!Place_and_Time_Date}) ,&apos;-&apos;)</expression>
     </formulas>
-    <interviewLabel>Add new event meeting scheduled {!$Flow.CurrentDateTime}</interviewLabel>
+    <interviewLabel
+  >Add new event meeting scheduled {!$Flow.CurrentDateTime}</interviewLabel>
     <label>Add new event meeting scheduled</label>
     <processMetadataValues>
         <name>BuilderType</name>
@@ -176,7 +180,8 @@
         <label>Get Account Details</label>
         <locationX>669</locationX>
         <locationY>926</locationY>
-        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <assignNullValuesIfNoRecordsFound
+    >false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>Scheduled_Meeting_Event</targetReference>
         </connector>
@@ -197,7 +202,8 @@
         <label>getCurrentLead</label>
         <locationX>669</locationX>
         <locationY>206</locationY>
-        <assignNullValuesIfNoRecordsFound>false</assignNullValuesIfNoRecordsFound>
+        <assignNullValuesIfNoRecordsFound
+    >false</assignNullValuesIfNoRecordsFound>
         <connector>
             <targetReference>setCurrentLead</targetReference>
         </connector>
@@ -257,12 +263,14 @@
                 <fieldType>Region</fieldType>
                 <fields>
                     <name>Meeting_parties_label</name>
-                    <fieldText>&lt;p&gt;&lt;strong style=&quot;font-size: 14px; background-color: rgb(255, 255, 255); color: rgb(0, 0, 0);&quot;&gt;{!$Label.RE_Meeting_Parties}&lt;/strong&gt;&lt;/p&gt;</fieldText>
+                    <fieldText
+          >&lt;p&gt;&lt;strong style=&quot;font-size: 14px; background-color: rgb(255, 255, 255); color: rgb(0, 0, 0);&quot;&gt;{!$Label.RE_Meeting_Parties}&lt;/strong&gt;&lt;/p&gt;</fieldText>
                     <fieldType>DisplayText</fieldType>
                 </fields>
                 <fields>
                     <name>meeting_parties_people</name>
-                    <fieldText>&lt;p&gt;{!currentLead.FirstName} {!currentLead.LastName} with &lt;span style=&quot;color: rgb(68, 68, 68); background-color: rgb(255, 255, 255);&quot;&gt;{!$User.FirstName} &lt;/span&gt;{!$User.LastName}&lt;/p&gt;</fieldText>
+                    <fieldText
+          >&lt;p&gt;{!currentLead.FirstName} {!currentLead.LastName} with &lt;span style=&quot;color: rgb(68, 68, 68); background-color: rgb(255, 255, 255);&quot;&gt;{!$User.FirstName} &lt;/span&gt;{!$User.LastName}&lt;/p&gt;</fieldText>
                     <fieldType>DisplayText</fieldType>
                 </fields>
                 <inputParameters>
@@ -274,7 +282,6 @@
                 <isRequired>false</isRequired>
             </fields>
             <isRequired>false</isRequired>
-            <regionContainerType>SectionWithoutHeader</regionContainerType>
         </fields>
         <fields>
             <name>General_Info_Section2</name>
@@ -301,7 +308,6 @@
                 <isRequired>false</isRequired>
             </fields>
             <isRequired>false</isRequired>
-            <regionContainerType>SectionWithoutHeader</regionContainerType>
         </fields>
         <showFooter>true</showFooter>
         <showHeader>true</showHeader>
@@ -320,7 +326,8 @@
         </connector>
         <fields>
             <name>Place_and_Time_label</name>
-            <fieldText>&lt;p&gt;&lt;strong style=&quot;font-size: 14px;&quot;&gt;{!$Label.RE_Place_and_Time}&lt;/strong&gt;&lt;/p&gt;</fieldText>
+            <fieldText
+      >&lt;p&gt;&lt;strong style=&quot;font-size: 14px;&quot;&gt;{!$Label.RE_Place_and_Time}&lt;/strong&gt;&lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
         </fields>
         <fields>
@@ -349,7 +356,8 @@
             <inputParameters>
                 <name>postalCode</name>
                 <value>
-                    <elementReference>$Organization.PostalCode</elementReference>
+                    <elementReference
+          >$Organization.PostalCode</elementReference>
                 </value>
             </inputParameters>
             <inputParameters>
@@ -364,7 +372,8 @@
                     <elementReference>$Organization.Street</elementReference>
                 </value>
             </inputParameters>
-            <inputsOnNextNavToAssocScrn>UseStoredValues</inputsOnNextNavToAssocScrn>
+            <inputsOnNextNavToAssocScrn
+      >UseStoredValues</inputsOnNextNavToAssocScrn>
             <isRequired>true</isRequired>
             <storeOutputAutomatically>true</storeOutputAutomatically>
         </fields>
@@ -385,7 +394,8 @@
         </connector>
         <fields>
             <name>Summary_title</name>
-            <fieldText>&lt;p&gt;&lt;strong style=&quot;font-size: 14px;&quot;&gt;{!$Label.RE_Summary}&lt;/strong&gt;&lt;/p&gt;</fieldText>
+            <fieldText
+      >&lt;p&gt;&lt;strong style=&quot;font-size: 14px;&quot;&gt;{!$Label.RE_Summary}&lt;/strong&gt;&lt;/p&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
         </fields>
         <fields>
@@ -396,22 +406,26 @@
                 <fieldType>Region</fieldType>
                 <fields>
                     <name>General_info_summary</name>
-                    <fieldText>&lt;p&gt;&lt;strong&gt;{!$Label.RE_Meeting_Parties}&lt;/strong&gt;: {!currentLead.FirstName} {!currentLead.LastName} with {!$User.FirstName} {!$User.LastName}&lt;/p&gt;</fieldText>
+                    <fieldText
+          >&lt;p&gt;&lt;strong&gt;{!$Label.RE_Meeting_Parties}&lt;/strong&gt;: {!currentLead.FirstName} {!currentLead.LastName} with {!$User.FirstName} {!$User.LastName}&lt;/p&gt;</fieldText>
                     <fieldType>DisplayText</fieldType>
                 </fields>
                 <fields>
                     <name>Summary_subject</name>
-                    <fieldText>&lt;p&gt;&lt;strong&gt;{!$Label.RE_Meeting_Subject}&lt;/strong&gt;: {!Meeting_subject_value}&lt;/p&gt;</fieldText>
+                    <fieldText
+          >&lt;p&gt;&lt;strong&gt;{!$Label.RE_Meeting_Subject}&lt;/strong&gt;: {!Meeting_subject_value}&lt;/p&gt;</fieldText>
                     <fieldType>DisplayText</fieldType>
                 </fields>
                 <fields>
                     <name>Summary_Place</name>
-                    <fieldText>&lt;p&gt;&lt;span class=&quot;ql-cursor&quot;&gt;﻿&lt;/span&gt;&lt;strong&gt;{!$Label.RE_Place}&lt;/strong&gt;: &lt;span style=&quot;color: rgb(68, 68, 68); background-color: rgb(255, 255, 255);&quot;&gt;{!CheckIfAddressIsNotNull}&lt;/span&gt;&lt;/p&gt;</fieldText>
+                    <fieldText
+          >&lt;p&gt;&lt;span class=&quot;ql-cursor&quot;&gt;﻿&lt;/span&gt;&lt;strong&gt;{!$Label.RE_Place}&lt;/strong&gt;: &lt;span style=&quot;color: rgb(68, 68, 68); background-color: rgb(255, 255, 255);&quot;&gt;{!CheckIfAddressIsNotNull}&lt;/span&gt;&lt;/p&gt;</fieldText>
                     <fieldType>DisplayText</fieldType>
                 </fields>
                 <fields>
                     <name>Summary_Time</name>
-                    <fieldText>&lt;p&gt;&lt;span class=&quot;ql-cursor&quot;&gt;﻿&lt;/span&gt;&lt;strong&gt;{!$Label.RE_Date_And_Time}&lt;/strong&gt;: &lt;span style=&quot;color: rgb(68, 68, 68); background-color: rgb(255, 255, 255);&quot;&gt;{!CheckIfTimeExists}&lt;/span&gt;&lt;/p&gt;</fieldText>
+                    <fieldText
+          >&lt;p&gt;&lt;span class=&quot;ql-cursor&quot;&gt;﻿&lt;/span&gt;&lt;strong&gt;{!$Label.RE_Date_And_Time}&lt;/strong&gt;: &lt;span style=&quot;color: rgb(68, 68, 68); background-color: rgb(255, 255, 255);&quot;&gt;{!CheckIfTimeExists}&lt;/span&gt;&lt;/p&gt;</fieldText>
                     <fieldType>DisplayText</fieldType>
                 </fields>
                 <fields>
@@ -433,7 +447,6 @@
                 <isRequired>false</isRequired>
             </fields>
             <isRequired>false</isRequired>
-            <regionContainerType>SectionWithoutHeader</regionContainerType>
         </fields>
         <showFooter>true</showFooter>
         <showHeader>false</showHeader>
@@ -449,7 +462,8 @@
     <textTemplates>
         <name>body</name>
         <isViewedAsPlainText>true</isViewedAsPlainText>
-        <text>&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot; &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;
+        <text
+    >&lt;!DOCTYPE html PUBLIC &quot;-//W3C//DTD XHTML 1.0 Transitional//EN&quot; &quot;http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd&quot;&gt;
 &lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;
 &lt;head&gt;
 &lt;meta http-equiv=&quot;Content-type&quot; content=&quot;text/html; charset=utf-8&quot; /&gt;
