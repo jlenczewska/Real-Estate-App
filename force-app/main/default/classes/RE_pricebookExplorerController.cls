@@ -44,7 +44,6 @@ public with sharing class RE_pricebookExplorerController {
             return pricebooksList;
         }
         catch(Exception e){
-            System.debug(e);
             return null;
         }
     }
@@ -56,7 +55,6 @@ public with sharing class RE_pricebookExplorerController {
             return [SELECT Id, Name, Product2Id,Product2.Name, PriceBook2Id, PriceBook2.Name, UnitPrice FROM PriceBookEntry WHERE PriceBook2Id=:pricebookId];
         }
         catch(Exception e){
-            System.debug(e);
             return null;
         }
     }
@@ -71,7 +69,6 @@ public with sharing class RE_pricebookExplorerController {
             return pricebookInfo;
         }
         catch(Exception e){
-            System.debug(e);
             return null;
         }
     }
@@ -101,7 +98,6 @@ public with sharing class RE_pricebookExplorerController {
             return true;
         }
         catch(Exception e){
-            System.debug(e);
             return false;
         }
     }
@@ -120,7 +116,6 @@ public with sharing class RE_pricebookExplorerController {
             return true;
         }
         catch(Exception e){
-            System.debug(e);
             return false;
         }
     }
@@ -165,7 +160,6 @@ public with sharing class RE_pricebookExplorerController {
             return JSON.serialize(productListResults);
         }
         catch(Exception e){
-            System.debug(e);
             return null;
         }
     }
@@ -199,7 +193,6 @@ public with sharing class RE_pricebookExplorerController {
             return true;
         }
         catch(Exception e){
-            System.debug(e);
             return false;
         }
     }

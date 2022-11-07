@@ -9,6 +9,7 @@ import RE_Main_Photo_Could_Not_Be_Changed from "@salesforce/label/c.RE_Main_phot
 import RE_Please_refresh_the_page from "@salesforce/label/c.RE_Please_refresh_the_page";
 import RE_Set_As_Main_Photo from "@salesforce/label/c.RE_Set_As_Main_Photo";
 import RE_Something_went_wrong1 from "@salesforce/label/c.RE_Something_went_wrong1";
+import RE_Error_Occured from "@salesforce/label/c.RE_Error_Occured";
 
 export default class ProductGallery extends NavigationMixin(LightningElement) {
   selected;
@@ -29,7 +30,8 @@ export default class ProductGallery extends NavigationMixin(LightningElement) {
     RE_Preview,
     RE_Please_refresh_the_page,
     RE_Something_went_wrong1,
-    RE_Main_Photo_Could_Not_Be_Changed
+    RE_Main_Photo_Could_Not_Be_Changed,
+    RE_Error_Occured
   };
 
   handleUploadFinished(event) {
@@ -55,7 +57,12 @@ export default class ProductGallery extends NavigationMixin(LightningElement) {
       }));
     }
     if (error) {
-      console.log(error);
+      const evt = new ShowToastEvent({
+        title: RE_Error_Occured,
+        message: error["body"]["message"],
+        variant: "error"
+      });
+      this.dispatchEvent(evt);
     }
   }
 
@@ -79,7 +86,7 @@ export default class ProductGallery extends NavigationMixin(LightningElement) {
     }
   }
 
-  previewHandler(event) {
+  previewHandler() {
     this.enableButtonsCheck();
 
     if (!this.enableButtons) {
@@ -148,7 +155,12 @@ export default class ProductGallery extends NavigationMixin(LightningElement) {
         });
       })
       .catch((error) => {
-        console.log(error);
+        const evt = new ShowToastEvent({
+          title: RE_Error_Occured,
+          message: error["body"]["message"],
+          variant: "error"
+        });
+        this.dispatchEvent(evt);
       });
   }
 }

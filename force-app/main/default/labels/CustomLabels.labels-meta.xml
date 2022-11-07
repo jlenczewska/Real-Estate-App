@@ -1222,4 +1222,14 @@
         <value>See Details
         </value>
     </labels>
+    <labels>
+        <fullName>RE_Error_Occured
+        </fullName>
+        <categories>LWC Labels</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>RE_Error_Occured</shortDescription>
+        <value>Error Occured
+        </value>
+    </labels>
 </CustomLabels>

@@ -29,8 +29,7 @@ import RE_Something_Went_Wrong from "@salesforce/label/c.RE_Something_Went_Wrong
 import RE_Review_The_Data_And_Try_Again from "@salesforce/label/c.RE_Review_The_Data_And_Try_Again";
 import RE_Premise_Name from "@salesforce/label/c.RE_Premise_Name";
 import RE_Price from "@salesforce/label/c.RE_Price";
-
-const FIELDS = ["Product2.RecordTypeId", "Product2.Name"];
+import RE_Error_Occured from "@salesforce/label/c.RE_Error_Occured";
 
 const columns = [
   { label: RE_Premise_Name, fieldName: "Name", editable: false },
@@ -87,7 +86,8 @@ export default class PriceBookAddForm extends LightningElement {
     RE_Something_Went_Wrong,
     RE_Pricebook_Pricebook_Has_Been_Successfully_Added_To_The_Database,
     RE_Premise_Name,
-    RE_Price
+    RE_Price,
+    RE_Error_Occured
   };
 
   connectedCallback() {
@@ -103,9 +103,13 @@ export default class PriceBookAddForm extends LightningElement {
   wiredResult({ data, error }) {
     if (data) {
       this.productsInfo = data;
-    }
-    if (error) {
-      console.log(error);
+    } else if (error) {
+      const evt = new ShowToastEvent({
+        title: RE_Error_Occured,
+        message: error["body"]["message"],
+        variant: "error"
+      });
+      this.dispatchEvent(evt);
     }
   }
 
@@ -239,17 +243,15 @@ export default class PriceBookAddForm extends LightningElement {
 
           const callParentEvent = new CustomEvent("closemodal");
           this.dispatchEvent(callParentEvent);
-        } else {
-          const evt = new ShowToastEvent({
-            title: this.label.RE_Something_Went_Wrong,
-            message: this.label.RE_Review_The_Data_And_Try_Again,
-            variant: "info"
-          });
-          this.dispatchEvent(evt);
         }
       })
       .catch((error) => {
-        console.log(error);
+        const evt = new ShowToastEvent({
+          title: RE_Error_Occured,
+          message: error["body"]["message"],
+          variant: "error"
+        });
+        this.dispatchEvent(evt);
       });
   }
 }

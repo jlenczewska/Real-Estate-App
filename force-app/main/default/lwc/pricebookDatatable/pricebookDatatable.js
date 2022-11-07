@@ -60,12 +60,10 @@ export default class PricebookDatatable extends LightningElement {
 
   renderedCallback() {
     this.template.querySelector("lightning-datatable").draftValues = [];
-    console.log(this.editAvailable);
     this.columns = this.editAvailable ? columns : columnsNotEditable;
   }
 
   checkPremisePrices(updatedFields) {
-    let flag = false;
     updatedFields.map((row) => {
       if (row.UnitPrice <= 0 || row.UnitPrice.trim().length < 1) {
         const evt = new ShowToastEvent({
@@ -74,15 +72,10 @@ export default class PricebookDatatable extends LightningElement {
           variant: "warning"
         });
         this.dispatchEvent(evt);
-        flag = true;
         return true;
       }
     });
-    if (flag) {
-      return true;
-    } else {
-      return false;
-    }
+    return false;
   }
 
   handleSaveDatatable(event) {

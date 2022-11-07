@@ -1,4 +1,4 @@
-import { LightningElement, api, track } from "lwc";
+import { LightningElement, api } from "lwc";
 import { ShowToastEvent } from "lightning/platformShowToastEvent";
 
 import updatePricebookDateActive from "@salesforce/apex/RE_pricebookExplorerController.updatePricebookDateActive";
@@ -15,6 +15,7 @@ import RE_Save from "@salesforce/label/c.RE_Save";
 import RE_Invalid_Dates from "@salesforce/label/c.RE_Invalid_Dates";
 import RE_The_End_Date_Must_Be_Later_Than_The_Start_Date from "@salesforce/label/c.RE_The_End_Date_Must_Be_Later_Than_The_Start_Date";
 import RE_Review_The_Data_And_Try_Again from "@salesforce/label/c.RE_Review_The_Data_And_Try_Again";
+import RE_Error_Occured from "@salesforce/label/c.RE_Error_Occured";
 
 export default class PricebookEdit extends LightningElement {
   @api buttonDisabled;
@@ -36,7 +37,8 @@ export default class PricebookEdit extends LightningElement {
     RE_Invalid_Dates,
     RE_The_End_Date_Must_Be_Later_Than_The_Start_Date,
     RE_Review_The_Data_And_Try_Again,
-    RE_Something_Went_Wrong
+    RE_Something_Went_Wrong,
+    RE_Error_Occured
   };
 
   connectedCallback() {
@@ -126,7 +128,12 @@ export default class PricebookEdit extends LightningElement {
         }
       })
       .catch((error) => {
-        console.log(error);
+        const evt = new ShowToastEvent({
+          title: RE_Error_Occured,
+          message: error["body"]["message"],
+          variant: "error"
+        });
+        this.dispatchEvent(evt);
       });
   }
 }

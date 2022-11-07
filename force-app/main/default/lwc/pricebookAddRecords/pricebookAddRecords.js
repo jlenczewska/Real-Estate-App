@@ -15,6 +15,7 @@ import RE_The_End_Date_Must_Be_Later_Than_The_Start_Date from "@salesforce/label
 import RE_Review_The_Data_And_Try_Again from "@salesforce/label/c.RE_Review_The_Data_And_Try_Again";
 import RE_Add_Records from "@salesforce/label/c.RE_Add_Records";
 import RE_Add_Records_To_Pricebook from "@salesforce/label/c.RE_Add_Records_To_Pricebook";
+import RE_Error_Occured from "@salesforce/label/c.RE_Error_Occured";
 
 export default class PricebookAddRecords extends LightningElement {
   @api buttonDisabled;
@@ -37,7 +38,8 @@ export default class PricebookAddRecords extends LightningElement {
     RE_Review_The_Data_And_Try_Again,
     RE_Something_Went_Wrong,
     RE_Add_Records,
-    RE_Add_Records_To_Pricebook
+    RE_Add_Records_To_Pricebook,
+    RE_Error_Occured
   };
 
   connectedCallback() {
@@ -54,19 +56,22 @@ export default class PricebookAddRecords extends LightningElement {
       currentRecords: JSON.stringify(this.productsInfo),
       pricebookId: this.pricebookId
     })
-      .then((data, error) => {
+      .then((data) => {
         if (data) {
           this.missingProducts = JSON.parse(data).map((item) => ({
             UnitPrice: item.UnitPrice,
             Name: item.Name,
             Id: item.Id
           }));
-        } else {
-          console.log(error);
         }
       })
       .catch((error) => {
-        console.log(error);
+        const evt = new ShowToastEvent({
+          title: RE_Error_Occured,
+          message: error["body"]["message"],
+          variant: "error"
+        });
+        this.dispatchEvent(evt);
       });
   }
 
@@ -104,7 +109,12 @@ export default class PricebookAddRecords extends LightningElement {
         }
       })
       .catch((error) => {
-        console.log(error);
+        const evt = new ShowToastEvent({
+          title: RE_Error_Occured,
+          message: error["body"]["message"],
+          variant: "error"
+        });
+        this.dispatchEvent(evt);
       });
   }
 

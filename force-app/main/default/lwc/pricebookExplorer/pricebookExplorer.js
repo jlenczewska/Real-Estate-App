@@ -4,7 +4,6 @@ import { ShowToastEvent } from "lightning/platformShowToastEvent";
 import getPricebooks from "@salesforce/apex/RE_pricebookExplorerController.getPricebooks";
 import getPricebookInfo from "@salesforce/apex/RE_pricebookExplorerController.getPricebookInfo";
 import getPricebookEntryInfo from "@salesforce/apex/RE_pricebookExplorerController.getPricebookEntryInfo";
-
 import updatePricebook from "@salesforce/apex/RE_pricebookExplorerController.updatePricebook";
 
 import RE_Pricebook_Successfully_Updated from "@salesforce/label/c.RE_Pricebook_Successfully_Updated";
@@ -22,6 +21,7 @@ import RE_Cancel from "@salesforce/label/c.RE_Cancel";
 import RE_Save from "@salesforce/label/c.RE_Save";
 import RE_Edit_Pricebook from "@salesforce/label/c.RE_Edit_Pricebook";
 import RE_Add_Pricebook from "@salesforce/label/c.RE_Add_Pricebook";
+import RE_Error_Occured from "@salesforce/label/c.RE_Error_Occured";
 
 export default class PricebookExplorer extends LightningElement {
   pricebookResults;
@@ -51,7 +51,8 @@ export default class PricebookExplorer extends LightningElement {
     RE_Cancel,
     RE_Edit_Pricebook,
     RE_Add_Pricebook,
-    RE_Close
+    RE_Close,
+    RE_Error_Occured
   };
 
   openModal() {
@@ -72,9 +73,18 @@ export default class PricebookExplorer extends LightningElement {
   connectedCallback() {
     getPricebooks({
       searchPhrase: ""
-    }).then((data) => {
-      this.pricebookResults = data;
-    });
+    })
+      .then((data) => {
+        this.pricebookResults = data;
+      })
+      .catch((error) => {
+        const evt = new ShowToastEvent({
+          title: RE_Error_Occured,
+          message: error["body"]["message"],
+          variant: "error"
+        });
+        this.dispatchEvent(evt);
+      });
   }
 
   handleInputChange() {
@@ -84,9 +94,18 @@ export default class PricebookExplorer extends LightningElement {
 
     getPricebooks({
       searchPhrase: searchPhrase
-    }).then((data) => {
-      this.pricebookResults = data;
-    });
+    })
+      .then((data) => {
+        this.pricebookResults = data;
+      })
+      .catch((error) => {
+        const evt = new ShowToastEvent({
+          title: RE_Error_Occured,
+          message: error["body"]["message"],
+          variant: "error"
+        });
+        this.dispatchEvent(evt);
+      });
   }
 
   getPricebookData(event) {
@@ -103,7 +122,12 @@ export default class PricebookExplorer extends LightningElement {
         this.pricebookId = data[0].Pricebook2.Id;
       })
       .catch((error) => {
-        console.log(error);
+        const evt = new ShowToastEvent({
+          title: RE_Error_Occured,
+          message: error["body"]["message"],
+          variant: "error"
+        });
+        this.dispatchEvent(evt);
       });
 
     getPricebookInfo({
@@ -119,7 +143,12 @@ export default class PricebookExplorer extends LightningElement {
         this.inputDateDisabled = data.ValidFrom__c ? false : true;
       })
       .catch((error) => {
-        console.log(error);
+        const evt = new ShowToastEvent({
+          title: RE_Error_Occured,
+          message: error["body"]["message"],
+          variant: "error"
+        });
+        this.dispatchEvent(evt);
       });
   }
 
@@ -137,7 +166,12 @@ export default class PricebookExplorer extends LightningElement {
         this.pricebookId = data[0].Pricebook2.Id;
       })
       .catch((error) => {
-        console.log(error);
+        const evt = new ShowToastEvent({
+          title: RE_Error_Occured,
+          message: error["body"]["message"],
+          variant: "error"
+        });
+        this.dispatchEvent(evt);
       });
   }
 
@@ -154,7 +188,12 @@ export default class PricebookExplorer extends LightningElement {
         };
       })
       .catch((error) => {
-        console.log(error);
+        const evt = new ShowToastEvent({
+          title: RE_Error_Occured,
+          message: error["body"]["message"],
+          variant: "error"
+        });
+        this.dispatchEvent(evt);
       });
   }
 
@@ -192,24 +231,31 @@ export default class PricebookExplorer extends LightningElement {
 
           getPricebookEntryInfo({
             pricebookId: this.pricebookId
-          }).then((data) => {
-            this.pricebookInfo = data.map((item) => ({
-              Name: item.Product2.Name,
-              Id: item.Product2.Id,
-              UnitPrice: item.UnitPrice
-            }));
-          });
-        } else {
-          const evt = new ShowToastEvent({
-            title: this.label.RE_Something_Went_Wrong,
-            message: this.label.RE_Review_The_Data_And_Try_Again,
-            variant: "info"
-          });
-          this.dispatchEvent(evt);
+          })
+            .then((data) => {
+              this.pricebookInfo = data.map((item) => ({
+                Name: item.Product2.Name,
+                Id: item.Product2.Id,
+                UnitPrice: item.UnitPrice
+              }));
+            })
+            .catch((error) => {
+              const evt = new ShowToastEvent({
+                title: RE_Error_Occured,
+                message: error["body"]["message"],
+                variant: "error"
+              });
+              this.dispatchEvent(evt);
+            });
         }
       })
       .catch((error) => {
-        console.log(error);
+        const evt = new ShowToastEvent({
+          title: RE_Error_Occured,
+          message: error["body"]["message"],
+          variant: "error"
+        });
+        this.dispatchEvent(evt);
       });
   }
 }
