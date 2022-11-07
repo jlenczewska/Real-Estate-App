@@ -215,6 +215,8 @@ public with sharing class RE_pricebookExplorerController {
             return productListResults;
         }
 
+        try {
+
         RecordType recordTypeInfo = [SELECT Name, Id FROM RecordType WHERE Name =: premiseName];
         List<Product2> productList = [SELECT Id, RecordTypeId, Name FROM Product2 WHERE RecordTypeId =: recordTypeInfo.Id];
 
@@ -232,6 +234,11 @@ public with sharing class RE_pricebookExplorerController {
         }
        }
         return productListResults;
+        }
+        catch (Exception e) {
+            System.debug(e);
+            return null;
+        }
     }
 
 public static Pricebook2 createPricebook(String pbName, String pbDesc, Date pbStartDay, Date pbEndDay){
@@ -249,6 +256,7 @@ public static Pricebook2 createPricebook(String pbName, String pbDesc, Date pbSt
     }
 
     catch (Exception e) {
+        System.debug(e);
         return null;
     }
 }   
@@ -274,6 +282,7 @@ public static Pricebook2 createPricebook(String pbName, String pbDesc, Date pbSt
             return true;
         }
         catch(Exception e){
+            System.debug(e);
             return false;
         }
     }
