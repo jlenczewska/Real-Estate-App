@@ -117,7 +117,7 @@
         </scheduledPaths>
         <triggerType>RecordAfterSave</triggerType>
     </start>
-    <status>Active</status>
+    <status>Obsolete</status>
     <textTemplates>
         <name>Body1</name>
         <isViewedAsPlainText>true</isViewedAsPlainText>
