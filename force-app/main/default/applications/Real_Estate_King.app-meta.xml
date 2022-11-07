@@ -2,7 +2,7 @@
 <CustomApplication xmlns="http://soap.sforce.com/2006/04/metadata">
     <brand>
         <headerColor>#0070D2</headerColor>
-        <logo>ef409c36c2c20dd33b56b1da009aaf2b</logo>
+        <logo>pobraneremovebgpreview1</logo>
         <logoVersion>1</logoVersion>
         <shouldOverrideOrgTheme>false</shouldOverrideOrgTheme>
     </brand>
@@ -10,8 +10,12 @@
     <formFactors>Large</formFactors>
     <isNavAutoTempTabsDisabled>false</isNavAutoTempTabsDisabled>
     <isNavPersonalizationDisabled>false</isNavPersonalizationDisabled>
+    <isNavTabPersistenceDisabled>false</isNavTabPersistenceDisabled>
     <label>Real Estate King</label>
     <navType>Standard</navType>
+    <tabs>standard-Product2</tabs>
+    <tabs>Real_Estate</tabs>
+    <tabs>PriceBook_Manager</tabs>
     <uiType>Lightning</uiType>
     <utilityBar>Real_Estate_King_UtilityBar</utilityBar>
 </CustomApplication>
