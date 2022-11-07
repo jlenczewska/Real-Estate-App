@@ -40,5 +40,5 @@
         <members>*</members>
         <name>Flow</name>
     </types>
-    <version>54.0</version>
+    <version>56.0</version>
 </Package>
