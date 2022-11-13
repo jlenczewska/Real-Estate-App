@@ -1,0 +1,26 @@
+<template>
+  <lightning-layout>
+    <lightning-layout-item>
+      <lightning-button
+        label={label.RE_Previous_Page}
+        icon-name="utility:chevronleft"
+        onclick={previousHandler}
+        disabled={disablePrevious}
+      ></lightning-button>
+    </lightning-layout-item>
+    <lightning-layout-item flexibility="grow">
+      <p class="slds-text-align_center" style="margin: 5px 10px">
+        {currentPage} {label.RE_Page} / {totalPage}
+      </p>
+    </lightning-layout-item>
+    <lightning-layout-item>
+      <lightning-button
+        label={label.RE_Next_Page}
+        icon-name="utility:chevronright"
+        icon-position="right"
+        onclick={nextHandler}
+        disabled={disableNext}
+      ></lightning-button>
+    </lightning-layout-item>
+  </lightning-layout>
+</template>

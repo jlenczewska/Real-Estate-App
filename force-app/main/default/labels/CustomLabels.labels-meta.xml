@@ -1232,4 +1232,166 @@
         <value>Error Occured
         </value>
     </labels>
+    <labels>
+        <fullName>RE_Search
+        </fullName>
+        <categories>LWC Labels</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>RE_Search</shortDescription>
+        <value>Search
+        </value>
+    </labels>
+    <labels>
+        <fullName>RE_Rooms
+        </fullName>
+        <categories>LWC Labels</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>RE_Rooms</shortDescription>
+        <value>Rooms
+        </value>
+    </labels>
+    <labels>
+        <fullName>RE_Page
+        </fullName>
+        <categories>LWC Labels</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>RE_Page</shortDescription>
+        <value>Page
+        </value>
+    </labels>
+    
+    <labels>
+        <fullName>RE_Area
+        </fullName>
+        <categories>LWC Labels</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>RE_Area</shortDescription>
+        <value>Area
+        </value>
+    </labels>
+    <labels>
+        <fullName>RE_From
+        </fullName>
+        <categories>LWC Labels</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>RE_From</shortDescription>
+        <value>From
+        </value>
+    </labels>
+    <labels>
+        <fullName>RE_To
+        </fullName>
+        <categories>LWC Labels</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>RE_To</shortDescription>
+        <value>To
+        </value>
+    </labels>
+    <labels>
+        <fullName>RE_Year
+        </fullName>
+        <categories>LWC Labels</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>RE_Year</shortDescription>
+        <value>Year
+        </value>
+    </labels>
+    <labels>
+        <fullName>RE_Number_Of_Rooms
+        </fullName>
+        <categories>LWC Labels</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>RE_Number_Of_Rooms</shortDescription>
+        <value>Number Of Rooms
+        </value>
+    </labels>
+    <labels>
+        <fullName>RE_Parking_Spaces
+        </fullName>
+        <categories>LWC Labels</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>RE_Parking_Spaces</shortDescription>
+        <value>Parking spaces
+        </value>
+    </labels>
+    <labels>
+        <fullName>RE_Additional_Options
+        </fullName>
+        <categories>LWC Labels</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>RE_Additional_Options</shortDescription>
+        <value>Additional Options
+        </value>
+    </labels>
+    <labels>
+        <fullName>RE_Search_City_Country
+        </fullName>
+        <categories>LWC Labels</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>RE_Search_City_Country</shortDescription>
+        <value>Search By City+Country
+        </value>
+    </labels>
+    <labels>
+        <fullName>RE_must_be_positive
+        </fullName>
+        <categories>LWC Labels</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>RE_must_be_positive</shortDescription>
+        <value> Must Be A Positive Value
+        </value>
+    </labels>
+    <labels>
+        <fullName>RE_Previous_Page
+        </fullName>
+        <categories>LWC Labels</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>RE_Previous_Page</shortDescription>
+        <value>Previous Page
+        </value>
+    </labels>
+
+    <labels>
+        <fullName>RE_Next_Page
+        </fullName>
+        <categories>LWC Labels</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>RE_Next_Page</shortDescription>
+        <value>Next Page
+        </value>
+    </labels>
+    <labels>
+        <fullName>RE_The_Lower_Value_Must_Be_Smaller
+        </fullName>
+        <categories>LWC Labels</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>RE_The_Lower_Value_Must_Be_Smaller</shortDescription>
+        <value>The Lower Value Of The Field Must Be Smaller In Field
+        </value>
+    </labels>
+    <labels>
+        <fullName>RE_Clear
+        </fullName>
+        <categories>LWC Labels</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>RE_Clear</shortDescription>
+        <value>Clear
+        </value>
+    </labels>
 </CustomLabels>

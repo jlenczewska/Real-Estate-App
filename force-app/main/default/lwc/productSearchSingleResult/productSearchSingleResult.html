@@ -1,0 +1,29 @@
+<template>
+  <div class="productCardContainer" onclick={redirectToProductPag}>
+    <img src={product.Picture__c} class="mainPhoto" />
+
+    <div class="row1">
+      <template if:true={roleIsB2B}>
+        <span class="spanBefore">
+          {product.Parking_space__c} Parking spaces</span
+        >
+      </template>
+      <template if:true={roleIsB2C}>
+        <span class="spanBefore">
+          {product.Number_of_rooms__c} {label.RE_Rooms}</span
+        >
+      </template>
+      <template if:true={roleIsB2C}>
+        <span class="spanBefore"> {product.Year_of_construction__c}</span>
+      </template>
+      <span class="spanBefore"> {product.Area__c}m<sup>2</sup></span>
+    </div>
+
+    <div class="row2"><span class="price">${product.UnitPrice} </span></div>
+
+    <div class="row3">
+      {product.Street__c}, {product.City__c} {product.Country__c}
+    </div>
+    <div class="row4"></div>
+  </div>
+</template>
