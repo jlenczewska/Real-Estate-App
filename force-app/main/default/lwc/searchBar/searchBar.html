@@ -1,0 +1,128 @@
+<template>
+  <lightning-card>
+    <div class="searchContainer">
+      <lightning-input
+        type="search"
+        placeholder={label.RE_Search_City_Country}
+        data-name="Product_Phrase_Formula"
+        onchange={handleFormFilterChange}
+        value={phraseFormula}
+      ></lightning-input>
+
+      <div class="filtersContainer">
+        <lightning-button-menu alternative-text="Filters" label="Filters">
+          <form id="form1">
+            <div class="filter_horizontal">
+              <lightning-input
+                type="number"
+                placeholder={label.RE_From}
+                label={label.RE_Area}
+                data-name="Filters_Area_From"
+                name="Filters_Area_From"
+                onchange={handleFormFilterChange}
+                value={filtersValues.Filters_Area_From}
+              ></lightning-input>
+              <lightning-input
+                type="number"
+                placeholder={label.RE_To}
+                label="&#8203;"
+                data-name="Filters_Area_To"
+                name="Filters_Area_To"
+                onchange={handleFormFilterChange}
+                value={filtersValues.Filters_Area_To}
+              ></lightning-input>
+            </div>
+
+            <div class="filter_horizontal" if:true={roleIsB2C}>
+              <lightning-input
+                type="number"
+                label={label.RE_Year}
+                placeholder={label.RE_From}
+                data-name="Filters_Year_From"
+                name="Filters_Year_From"
+                onchange={handleFormFilterChange}
+                value={filtersValues.Filters_Year_From}
+              ></lightning-input>
+              <lightning-input
+                type="number"
+                placeholder={label.RE_To}
+                label="&#8203;"
+                data-name="Filters_Year_To"
+                name="Filters_Year_To"
+                onchange={handleFormFilterChange}
+                value={filtersValues.Filters_Year_To}
+              ></lightning-input>
+            </div>
+
+            <div class="filter_horizontal" if:true={roleIsB2C}>
+              <lightning-input
+                type="number"
+                placeholder={label.RE_From}
+                label={label.RE_Number_Of_Rooms}
+                data-name="Filters_Rooms_From"
+                name="Filters_Rooms_From"
+                onchange={handleFormFilterChange}
+                value={filtersValues.Filters_Rooms_From}
+              ></lightning-input>
+              <lightning-input
+                type="number"
+                placeholder={label.RE_To}
+                label="&#8203;"
+                data-name="Filters_Rooms_To"
+                name="Filters_Rooms_To"
+                onchange={handleFormFilterChange}
+                value={filtersValues.Filters_Rooms_To}
+              ></lightning-input>
+            </div>
+
+            <div class="filter_horizontal" if:true={roleIsB2B}>
+              <lightning-input
+                type="number"
+                placeholder={label.RE_From}
+                label={label.RE_Parking_Spaces}
+                data-name="Filters_Parking_From"
+                name="Filters_Parking_From"
+                onchange={handleFormFilterChange}
+                value={filtersValues.Filters_Parking_From}
+              ></lightning-input>
+              <lightning-input
+                type="number"
+                placeholder={label.RE_To}
+                label="&#8203;"
+                data-name="Filters_Parking_To"
+                name="Filters_Parking_To"
+                onchange={handleFormFilterChange}
+                value={filtersValues.Filters_Parking_To}
+              ></lightning-input>
+            </div>
+
+            <lightning-checkbox-group
+              data-name="Filters_Checkbox_Group"
+              name="Filters_Checkbox_Group"
+              label={label.RE_Additional_Options}
+              value={valueCheckboxGroup}
+              options={optionsCheckboxGroup}
+              onchange={handleFormFilterChange}
+            ></lightning-checkbox-group>
+          </form>
+        </lightning-button-menu>
+      </div>
+
+      <lightning-button
+        variant="brand"
+        label={label.RE_Search}
+        title={label.RE_Search}
+        onclick={handleSubmitSearch}
+        class="slds-m-left_x-small"
+      ></lightning-button>
+
+      <lightning-button
+        variant="brand"
+        label={label.RE_Clear}
+        title={label.RE_Clear}
+        onclick={handleClearFilters}
+        class="slds-m-left_x-small"
+      ></lightning-button>
+    </div>
+  </lightning-card>
+</template>
