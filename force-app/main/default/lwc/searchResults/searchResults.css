@@ -1,0 +1,33 @@
+lightning-input.slds-form-element {
+    width: 30%;
+}
+
+.filtersContainer lightning-input.slds-form-element {
+    width: 45% !important;
+}
+
+.filter_horizontal {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+lightning-checkbox-group.slds-form-element {
+    padding: 5px 10px;
+    width: 250px;
+}
+
+.resultsContainer {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    gap: 2vw;
+    padding: 0 1.5vw;
+}
+
+.searchContainer {
+    display: flex;
+    align-items: flex-end;
+    justify-content: center;
+    gap: 20px;
+    margin-bottom: 25px;
+}

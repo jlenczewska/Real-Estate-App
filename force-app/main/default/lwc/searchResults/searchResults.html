@@ -1,0 +1,25 @@
+<template>
+  <lightning-card>
+    <div class="resultsContainer">
+      <template for:each={visibleFoundProducts} for:item="product">
+        <c-product-search-single-result
+          key={product.Id}
+          product={product}
+          role-is-b-2-c={roleIsB2C}
+          role-is-b-2-b={roleIsB2B}
+        ></c-product-search-single-result>
+      </template>
+    </div>
+
+    <div
+      slot="footer"
+      class="slds-var-m-vertical_medium"
+      style="display: flex; justify-content: center"
+    >
+      <c-search-pagination
+        records={foundProducts}
+        onupdate={updateProductHandler}
+      ></c-search-pagination>
+    </div>
+  </lightning-card>
+</template>
