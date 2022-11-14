@@ -78,7 +78,7 @@ export default class SearchEngineProduct extends LightningElement {
           for (let i = 0; i < prices.length; i++) {
             for (let j = 0; j < data.length; j++) {
               if (data[j].Id == prices[i].Product2Id) {
-                data[j]["UnitPrice"] = prices[i].expr0;
+                data[j]["UnitPrice"] = prices[i].UnitPrice;
               }
             }
           }
@@ -125,7 +125,7 @@ export default class SearchEngineProduct extends LightningElement {
           for (let i = 0; i < prices.length; i++) {
             for (let j = 0; j < data.length; j++) {
               if (data[j].Id == prices[i].Product2Id) {
-                data[j]["UnitPrice"] = prices[i].expr0;
+                data[j]["UnitPrice"] = prices[i].UnitPrice;
               }
             }
           }
