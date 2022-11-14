@@ -47,11 +47,7 @@ export default class PricebookEdit extends LightningElement {
   }
 
   get getButtonDisabled() {
-    return this.pricebookInfoDates.ValidFrom ? false : true;
-  }
-
-  get valuesDisabled() {
-    return this.editAvailable ? false : true;
+    return this.pricebookInfoDates.ValidFrom ? false : false;
   }
 
   openModalEdit() {
@@ -86,12 +82,13 @@ export default class PricebookEdit extends LightningElement {
   }
 
   submitDetailsEdit() {
+    console.log('im in function');
     const incorrectDataDates = this.checkPremiseDates();
 
     if (incorrectDataDates) {
       return;
     }
-
+    console.log('im in function2');
     updatePricebookDateActive({
       pricebookId: this.pricebookInfoDates.Id,
       startDay: this.template.querySelector(
@@ -99,13 +96,11 @@ export default class PricebookEdit extends LightningElement {
       ).value,
       endDate: this.template.querySelector(
         'lightning-input[data-name="End_Day"]'
-      ).value,
-      isActive: this.template.querySelector(
-        'lightning-input[data-name="IsActive"]'
-      ).checked
+      ).value
     })
       .then((data) => {
         if (data) {
+          console.log('im in function3');
           const evt = new ShowToastEvent({
             title: this.label.RE_Pricebook_Successfully_Updated,
             message: this.editedPricebookName,
@@ -118,16 +113,10 @@ export default class PricebookEdit extends LightningElement {
           this.dispatchEvent(callParentEvent);
 
           this.closeModalEdit();
-        } else {
-          const evt = new ShowToastEvent({
-            title: this.label.RE_Something_Went_Wrong,
-            message: this.label.RE_Review_The_Data_And_Try_Again,
-            variant: "info"
-          });
-          this.dispatchEvent(evt);
-        }
+        } 
       })
       .catch((error) => {
+        console.log(error);
         const evt = new ShowToastEvent({
           title: RE_Error_Occured,
           message: error["body"]["message"],

@@ -201,25 +201,6 @@ export default class SearchBar extends LightningElement {
     }
   }
 
-  handleClearFilters() {
-    this.template
-      .querySelectorAll("div.filter_horizontal lightning-input")
-      .forEach((element) => {
-        element.value = "";
-      });
-
-    this.valueCheckboxGroup = [];
-
-    this.template.querySelector(
-      'lightning-input[data-name="Product_Phrase_Formula"]'
-    ).value = "";
-
-    for (const prop of Object.getOwnPropertyNames(this.filtersValues)) {
-      delete this.filtersValues[prop];
-    }
-    this.handleSubmitSearch();
-  }
-
   handleSubmitSearch() {
     this.isLoaded = false;
 
