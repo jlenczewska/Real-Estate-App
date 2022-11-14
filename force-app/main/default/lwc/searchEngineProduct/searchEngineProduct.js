@@ -33,16 +33,15 @@ const optionsCheckboxB2C = [
 ];
 
 export default class SearchEngineProduct extends LightningElement {
-  visibleFoundProducts;
   valueCheckboxGroup = [];
   filtersValues = {};
   areResultsOpen = false;
   roleIsB2C = false;
   roleIsB2B = false;
   phraseFormula = "";
+  foundProducts;
 
   @api isLoaded = false;
-  @track foundProducts;
 
   label = {
     RE_Error_Occured,
@@ -63,7 +62,6 @@ export default class SearchEngineProduct extends LightningElement {
 
   connectedCallback() {
     checkUserPremissions().then((data) => {
-      this.foundProducts = data;
       if (data == "Business premise") {
         this.roleIsB2B = true;
       } else if (data == "Apartment") {
@@ -115,161 +113,12 @@ export default class SearchEngineProduct extends LightningElement {
     this.areResultsOpen = false;
   }
 
-  updateProductHandler(event) {
-    this.visibleFoundProducts = [...event.detail.records];
-  }
-
-  checkIfInputsAreCorrect() {
-    if (
-      Number(this.filtersValues.Filters_Area_From) >
-      Number(this.filtersValues.Filters_Area_To)
-    ) {
-      const evt = new ShowToastEvent({
-        title: RE_Error_Occured,
-        message: RE_The_Lower_Value_Must_Be_Smaller + " " + this.label.RE_Area,
-        variant: "warning"
-      });
-      this.dispatchEvent(evt);
-      return true;
-    }
-
-    if (
-      Number(this.filtersValues.Filters_Year_From) >
-      Number(this.filtersValues.Filters_Year_To)
-    ) {
-      const evt = new ShowToastEvent({
-        title: RE_Error_Occured,
-        message: RE_The_Lower_Value_Must_Be_Smaller + " " + this.label.RE_Year,
-        variant: "warning"
-      });
-      this.dispatchEvent(evt);
-      return true;
-    }
-    if (
-      Number(this.filtersValues.Filters_Rooms_From) >
-      Number(this.filtersValues.Filters_Rooms_To)
-    ) {
-      const evt = new ShowToastEvent({
-        title: RE_Error_Occured,
-        message: RE_The_Lower_Value_Must_Be_Smaller + " " + this.label.RE_Rooms,
-        variant: "warning"
-      });
-      this.dispatchEvent(evt);
-      return true;
-    }
-    if (
-      Number(this.filtersValues.Filters_Parking_From) >
-      Number(this.filtersValues.Filters_Parking_To)
-    ) {
-      const evt = new ShowToastEvent({
-        title: RE_Error_Occured,
-        message:
-          RE_The_Lower_Value_Must_Be_Smaller +
-          " " +
-          this.label.RE_Parking_Spaces,
-        variant: "warning"
-      });
-      this.dispatchEvent(evt);
-      return true;
-    }
-
-    if (
-      this.filtersValues.Filters_Area_From < 0 ||
-      this.filtersValues.Filters_Area_To < 0
-    ) {
-      const evt = new ShowToastEvent({
-        title: RE_Error_Occured,
-        message: this.label.RE_Area + " " + this.label.RE_must_be_positive,
-        variant: "warning"
-      });
-      this.dispatchEvent(evt);
-      return true;
-    }
-
-    if (
-      this.filtersValues.Filters_Year_From < 0 ||
-      this.filtersValues.Filters_Year_To < 0
-    ) {
-      const evt = new ShowToastEvent({
-        title: RE_Error_Occured,
-        message: this.label.RE_Year + " " + this.label.RE_must_be_positive,
-        variant: "warning"
-      });
-      this.dispatchEvent(evt);
-      return true;
-    }
-
-    if (
-      this.filtersValues.Filters_Rooms_From < 0 ||
-      this.filtersValues.Filters_Rooms_To < 0
-    ) {
-      const evt = new ShowToastEvent({
-        title: RE_Error_Occured,
-        message:
-          this.label.RE_Number_Of_Rooms + " " + this.label.RE_must_be_positive,
-        variant: "warning"
-      });
-      this.dispatchEvent(evt);
-      return true;
-    }
-
-    if (
-      this.filtersValues.Filters_Parking_From < 0 ||
-      this.filtersValues.Filters_Parking_To < 0
-    ) {
-      const evt = new ShowToastEvent({
-        title: RE_Error_Occured,
-        message:
-          this.label.RE_Parking_Spaces + " " + this.label.RE_must_be_positive,
-        variant: "warning"
-      });
-      this.dispatchEvent(evt);
-      return true;
-    }
-  }
-
-  handleClearFilters() {
-    this.template
-      .querySelectorAll("div.filter_horizontal lightning-input")
-      .forEach((element) => {
-        element.value = "";
-      });
-
-    this.valueCheckboxGroup = [];
-
-    this.template.querySelector(
-      'lightning-input[data-name="Product_Phrase_Formula"]'
-    ).value = "";
-
-    for (const prop of Object.getOwnPropertyNames(this.filtersValues)) {
-      delete this.filtersValues[prop];
-    }
-    this.handleSubmitSearch();
-  }
-
-  handleSubmitSearch() {
+  sendfilterstoparent(event) {
     this.isLoaded = false;
 
-    let searchPhrase = this.template.querySelector(
-      'lightning-input[data-name="Product_Phrase_Formula"]'
-    ).value;
-
-    this.phraseFormula = searchPhrase;
-
-    if (this.checkIfInputsAreCorrect()) {
-      this.isLoaded = true;
-      return;
-    }
-
-    if (Object.keys(this.filtersValues).length) {
-      if ("Filters_Checkbox_Group" in this.filtersValues) {
-        this.setValuesToForm();
-      }
-    }
-
     searchProductByFilters({
-      searchPhrase: searchPhrase,
-      filtersInfo: JSON.stringify(this.filtersValues)
+      searchPhrase: event.detail.searchPhrase,
+      filtersInfo: JSON.stringify(event.detail.filtersInfo)
     })
       .then((data) => {
         getProductsPrice().then((prices) => {
@@ -294,19 +143,5 @@ export default class SearchEngineProduct extends LightningElement {
         this.isLoaded = true;
         this.dispatchEvent(evt);
       });
-  }
-
-  handleFormFilterChange(event) {
-    if (event.target.dataset.name != "Product_Phrase_Formula") {
-      this.filtersValues[event.target.name] = event.detail.value;
-    }
-  }
-
-  setValuesToForm() {
-    this.valueCheckboxGroup = [];
-
-    this.filtersValues.Filters_Checkbox_Group.forEach((e) => {
-      this.valueCheckboxGroup.push(e);
-    });
   }
 }
