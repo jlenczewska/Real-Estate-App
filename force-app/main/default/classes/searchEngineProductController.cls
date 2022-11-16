@@ -5,12 +5,6 @@ public with sharing class searchEngineProductController {
   public static final String PREMISE_TYPE_BUSINESS = 'Business premise';
   public static final String PREMISE_TYPE_APARTMENT = 'Apartment';
 
-  private static AuraHandledException newMessageException(String message) {
-    AuraHandledException e = new AuraHandledException(message);
-    e.setMessage(message);
-    return e;
-  }
-
   @AuraEnabled
   public static String checkUserPremissions() {
     String typeOfUser;
@@ -123,6 +117,12 @@ public with sharing class searchEngineProductController {
     }
   }
 
+  private static AuraHandledException newMessageException(String message) {
+    AuraHandledException e = new AuraHandledException(message);
+    e.setMessage(message);
+    return e;
+  }
+  
   private static String addCondition(FilterParametersWrapper filtersMap) {
     String generatedString = '';
     Map < String, String > checkboxesMap = new Map < String, String > ();
