@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="UTF-8"?>
 <CustomLabels xmlns="http://soap.sforce.com/2006/04/metadata">
     <labels>
         <fullName>Add_Review</fullName>
@@ -56,17 +56,14 @@
         <fullName>HP_Adding_a_doctor_to_the_database_failed</fullName>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription
-    >Adding a doctor to the database failed.</shortDescription>
+        <shortDescription>Adding a doctor to the database failed.</shortDescription>
         <value>Adding a doctor to the database failed.</value>
     </labels>
     <labels>
-        <fullName
-    >HP_An_error_occurred_Please_refresh_the_page_and_try_again</fullName>
+        <fullName>HP_An_error_occurred_Please_refresh_the_page_and_try_again</fullName>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription
-    >An error occurred. Please refresh the page and try again.</shortDescription>
+        <shortDescription>An error occurred. Please refresh the page and try again.</shortDescription>
         <value>An error occurred. Please refresh the page and try again.</value>
     </labels>
     <labels>
@@ -80,24 +77,21 @@
         <fullName>HP_Are_you_sure_you_want_to_deactivate_the_user</fullName>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription
-    >Are you sure you want to deactivate the user?</shortDescription>
+        <shortDescription>Are you sure you want to deactivate the user?</shortDescription>
         <value>Are you sure you want to deactivate the user?</value>
     </labels>
     <labels>
         <fullName>HP_Are_you_sure_you_want_to_delete_the_doctor</fullName>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription
-    >Are you sure you want to delete the doctor</shortDescription>
+        <shortDescription>Are you sure you want to delete the doctor</shortDescription>
         <value>Are you sure you want to delete the doctor?</value>
     </labels>
     <labels>
         <fullName>HP_Are_you_sure_you_want_to_delete_the_hospital</fullName>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription
-    >Are you sure you want to delete the hospital</shortDescription>
+        <shortDescription>Are you sure you want to delete the hospital</shortDescription>
         <value>Are you sure you want to delete the hospital?</value>
     </labels>
     <labels>
@@ -168,8 +162,7 @@
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>Doctor with license num exisits</shortDescription>
-        <value
-    >Doctor with the given license number already exists in the database</value>
+        <value>Doctor with the given license number already exists in the database</value>
     </labels>
     <labels>
         <fullName>HP_Duplicate_value_found</fullName>
@@ -266,8 +259,7 @@
         <fullName>HP_Incorrect_data_in_the_license_number_field</fullName>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription
-    >Incorrect data in the license number field</shortDescription>
+        <shortDescription>Incorrect data in the license number field</shortDescription>
         <value>Incorrect data in the license number field</value>
     </labels>
     <labels>
@@ -415,8 +407,7 @@
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>Overlapping contract Error Message</shortDescription>
-        <value
-    >A conflict was encountered with another contract ranging from {0} to {1} with contract ID {2}.</value>
+        <value>A conflict was encountered with another contract ranging from {0} to {1} with contract ID {2}.</value>
     </labels>
     <labels>
         <fullName>HP_Phone</fullName>
@@ -548,8 +539,7 @@
         <fullName>HP_Successfully_added_to_the_database_parameters</fullName>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription
-    >Successfully added to the database parameters</shortDescription>
+        <shortDescription>Successfully added to the database parameters</shortDescription>
         <value>Successfully added to the database: {0} {1}</value>
     </labels>
     <labels>
@@ -588,23 +578,18 @@
         <value>Table with all users</value>
     </labels>
     <labels>
-        <fullName
-    >HP_The_License_Number_must_be_less_than_10_characters_long</fullName>
+        <fullName>HP_The_License_Number_must_be_less_than_10_characters_long</fullName>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription
-    >The License Number must be less than 10 characters long</shortDescription>
+        <shortDescription>The License Number must be less than 10 characters long</shortDescription>
         <value>The License Number must be less than 10 characters long</value>
     </labels>
     <labels>
-        <fullName
-    >HP_The_length_of_the_license_number_cannot_exceed_18_characters</fullName>
+        <fullName>HP_The_length_of_the_license_number_cannot_exceed_18_characters</fullName>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription
-    >The length of the license number cannot exceed 18 characters</shortDescription>
-        <value
-    >The length of the license number cannot exceed 18 characters</value>
+        <shortDescription>The length of the license number cannot exceed 18 characters</shortDescription>
+        <value>The length of the license number cannot exceed 18 characters</value>
     </labels>
     <labels>
         <fullName>HP_Total_Licenses</fullName>
@@ -772,8 +757,7 @@
         <fullName>RE_Choose_day_and_time_of_the_meeting</fullName>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription
-    >RE_Choose day and time of the meeting</shortDescription>
+        <shortDescription>RE_Choose day and time of the meeting</shortDescription>
         <value>Choose day and time of the meeting</value>
     </labels>
     <labels>
@@ -826,8 +810,7 @@
         <shortDescription>RE_Set_As_Main_Photo</shortDescription>
         <value>Set As Main Photo</value>
     </labels>
-
-      <labels>
+    <labels>
         <fullName>RE_Preview</fullName>
         <categories>LWC Labels</categories>
         <language>en_US</language>
@@ -849,8 +832,7 @@
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>RE_Please_refresh_the_page</shortDescription>
-        <value
-    >Please Refresh The Page To See The Result. If You Don't Dee The Changes, Wait A Minute And Refresh The Page Again.</value>
+        <value>Please Refresh The Page To See The Result. If You Don&apos;t Dee The Changes, Wait A Minute And Refresh The Page Again.</value>
     </labels>
     <labels>
         <fullName>RE_Something_went_wrong1</fullName>
@@ -866,8 +848,7 @@
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>RE_Main_Photo_Could_Not_Be_Changed</shortDescription>
-        <value
-    >Main Photo Could Not Be Changed. Please Refresh The Page And Try Again.</value>
+        <value>Main Photo Could Not Be Changed. Please Refresh The Page And Try Again.</value>
     </labels>
     <labels>
         <fullName>RE_Description</fullName>
@@ -957,7 +938,6 @@
         <shortDescription>RE_Incorrect_price</shortDescription>
         <value>Incorrect price</value>
     </labels>
-  
     <labels>
         <fullName>RE_Pricebook_Name_Is_Required</fullName>
         <categories>LWC Labels</categories>
@@ -1035,363 +1015,317 @@
         <categories>LWC Labels</categories>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription
-    >RE_The_End_Date_Must_Be_Later_Than_The_Start_Date</shortDescription>
+        <shortDescription>RE_The_End_Date_Must_Be_Later_Than_The_Start_Date</shortDescription>
         <value>The End Date Must Be Later Than The Start Date</value>
     </labels>
     <labels>
-        <fullName>RE_The_date_can_only_contain_numbers
-        </fullName>
+        <fullName>RE_The_date_can_only_contain_numbers</fullName>
         <categories>LWC Labels</categories>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription
-    >RE_The_date_can_only_contain_numbers</shortDescription>
-        <value>The date can only contain numbers
-        </value>
+        <shortDescription>RE_The_date_can_only_contain_numbers</shortDescription>
+        <value>The date can only contain numbers</value>
     </labels>
     <labels>
-        <fullName
-    >RE_Pricebook_Pricebook_Has_Been_Successfully_Added_To_The_Database
-        </fullName>
+        <fullName>RE_Pricebook_Pricebook_Has_Been_Successfully_Added_To_The_Database</fullName>
         <categories>LWC Labels</categories>
         <language>en_US</language>
         <protected>true</protected>
-        <shortDescription
-    >RE_Pricebook_Pricebook_Has_Been_Successfully_Added_To_The_Database</shortDescription>
-        <value>Pricebook Has Been Successfully Added To The Database
-        </value>
+        <shortDescription>RE_Pricebook_Pricebook_Has_Been_Successfully_Added_To_The_Database</shortDescription>
+        <value>Pricebook Has Been Successfully Added To The Database</value>
     </labels>
     <labels>
-        <fullName>RE_Something_Went_Wrong
-        </fullName>
+        <fullName>RE_Something_Went_Wrong</fullName>
         <categories>LWC Labels</categories>
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>RE_Something_Went_Wrong</shortDescription>
-        <value>Something went wrong
-        </value>
+        <value>Something went wrong</value>
     </labels>
     <labels>
-        <fullName>RE_Review_The_Data_And_Try_Again
-        </fullName>
+        <fullName>RE_Review_The_Data_And_Try_Again</fullName>
         <categories>LWC Labels</categories>
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>RE_Review_The_Data_And_Try_Again</shortDescription>
-        <value>Something went wrong
-        </value>
+        <value>Something went wrong</value>
     </labels>
     <labels>
-        <fullName>RE_Premise_Name
-        </fullName>
+        <fullName>RE_Premise_Name</fullName>
         <categories>LWC Labels</categories>
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>RE_Premise_Name</shortDescription>
-        <value>Premise Name
-        </value>
+        <value>Premise Name</value>
     </labels>
     <labels>
-        <fullName>RE_Price
-        </fullName>
+        <fullName>RE_Price</fullName>
         <categories>LWC Labels</categories>
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>RE_Price</shortDescription>
-        <value>Price
-        </value>
+        <value>Price</value>
     </labels>
     <labels>
-        <fullName>RE_Pricebook_Successfully_Updated
-        </fullName>
+        <fullName>RE_Pricebook_Successfully_Updated</fullName>
         <categories>LWC Labels</categories>
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>RE_Pricebook_Successfully_Updated</shortDescription>
-        <value>Pricebook Has Been Successfully Updated
-        </value>
+        <value>Pricebook Has Been Successfully Updated</value>
     </labels>
     <labels>
-        <fullName>RE_Search_Pricebook_By_Name
-        </fullName>
+        <fullName>RE_Search_Pricebook_By_Name</fullName>
         <categories>LWC Labels</categories>
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>RE_Search_Pricebook_By_Name</shortDescription>
-        <value>Search Pricebook By Name
-        </value>
+        <value>Search Pricebook By Name</value>
     </labels>
     <labels>
-        <fullName>RE_Add_Pricebook
-        </fullName>
+        <fullName>RE_Add_Pricebook</fullName>
         <categories>LWC Labels</categories>
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>RE_Add_Pricebook</shortDescription>
-        <value>Add Pricebook
-        </value>
+        <value>Add Pricebook</value>
     </labels>
     <labels>
-        <fullName>RE_Explore_Pricebooks
-        </fullName>
+        <fullName>RE_Explore_Pricebooks</fullName>
         <categories>LWC Labels</categories>
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>RE_Explore_Pricebooks</shortDescription>
-        <value>Explore Pricebooks
-        </value>
+        <value>Explore Pricebooks</value>
     </labels>
     <labels>
-        <fullName>RE_IsActive
-        </fullName>
+        <fullName>RE_IsActive</fullName>
         <categories>LWC Labels</categories>
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>RE_IsActive</shortDescription>
-        <value>Is Active
-        </value>
+        <value>Is Active</value>
     </labels>
     <labels>
-        <fullName>RE_Save
-        </fullName>
+        <fullName>RE_Save</fullName>
         <categories>LWC Labels</categories>
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>RE_Save</shortDescription>
-        <value>Save
-        </value>
+        <value>Save</value>
     </labels>
     <labels>
-        <fullName>RE_Cancel
-        </fullName>
+        <fullName>RE_Cancel</fullName>
         <categories>LWC Labels</categories>
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>RE_Cancel</shortDescription>
-        <value>Cancel
-        </value>
+        <value>Cancel</value>
     </labels>
     <labels>
-        <fullName>RE_Edit_Pricebook
-        </fullName>
+        <fullName>RE_Edit_Pricebook</fullName>
         <categories>LWC Labels</categories>
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>RE_Edit_Pricebook</shortDescription>
-        <value>Edit Pricebook
-        </value>
+        <value>Edit Pricebook</value>
     </labels>
     <labels>
-        <fullName>RE_Close
-        </fullName>
+        <fullName>RE_Close</fullName>
         <categories>LWC Labels</categories>
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>RE_Close</shortDescription>
-        <value>Close
-        </value>
+        <value>Close</value>
     </labels>
     <labels>
-        <fullName>RE_Add_Records
-        </fullName>
+        <fullName>RE_Add_Records</fullName>
         <categories>LWC Labels</categories>
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>RE_Add_Records</shortDescription>
-        <value>Add Records
-        </value>
+        <value>Add Records</value>
     </labels>
     <labels>
-        <fullName>RE_Add_Records_To_Pricebook
-        </fullName>
+        <fullName>RE_Add_Records_To_Pricebook</fullName>
         <categories>LWC Labels</categories>
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>RE_Add_Records_To_Pricebook</shortDescription>
-        <value>Add Records To Pricebook
-        </value>
+        <value>Add Records To Pricebook</value>
     </labels>
     <labels>
-        <fullName>RE_See_Details
-        </fullName>
+        <fullName>RE_See_Details</fullName>
         <categories>LWC Labels</categories>
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>RE_See_Details</shortDescription>
-        <value>See Details
-        </value>
+        <value>See Details</value>
     </labels>
     <labels>
-        <fullName>RE_Error_Occured
-        </fullName>
+        <fullName>RE_Error_Occured</fullName>
         <categories>LWC Labels</categories>
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>RE_Error_Occured</shortDescription>
-        <value>Error Occured
-        </value>
+        <value>Error Occured</value>
     </labels>
     <labels>
-        <fullName>RE_Search
-        </fullName>
+        <fullName>RE_Search</fullName>
         <categories>LWC Labels</categories>
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>RE_Search</shortDescription>
-        <value>Search
-        </value>
+        <value>Search</value>
     </labels>
     <labels>
-        <fullName>RE_Rooms
-        </fullName>
+        <fullName>RE_Rooms</fullName>
         <categories>LWC Labels</categories>
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>RE_Rooms</shortDescription>
-        <value>Rooms
-        </value>
+        <value>Rooms</value>
     </labels>
     <labels>
-        <fullName>RE_Page
-        </fullName>
+        <fullName>RE_Page</fullName>
         <categories>LWC Labels</categories>
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>RE_Page</shortDescription>
-        <value>Page
-        </value>
+        <value>Page</value>
     </labels>
-    
     <labels>
-        <fullName>RE_Area
-        </fullName>
+        <fullName>RE_Area</fullName>
         <categories>LWC Labels</categories>
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>RE_Area</shortDescription>
-        <value>Area
-        </value>
+        <value>Area</value>
     </labels>
     <labels>
-        <fullName>RE_From
-        </fullName>
+        <fullName>RE_From</fullName>
         <categories>LWC Labels</categories>
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>RE_From</shortDescription>
-        <value>From
-        </value>
+        <value>From</value>
     </labels>
     <labels>
-        <fullName>RE_To
-        </fullName>
+        <fullName>RE_To</fullName>
         <categories>LWC Labels</categories>
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>RE_To</shortDescription>
-        <value>To
-        </value>
+        <value>To</value>
     </labels>
     <labels>
-        <fullName>RE_Year
-        </fullName>
+        <fullName>RE_Year</fullName>
         <categories>LWC Labels</categories>
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>RE_Year</shortDescription>
-        <value>Year
-        </value>
+        <value>Year</value>
     </labels>
     <labels>
-        <fullName>RE_Number_Of_Rooms
-        </fullName>
+        <fullName>RE_Number_Of_Rooms</fullName>
         <categories>LWC Labels</categories>
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>RE_Number_Of_Rooms</shortDescription>
-        <value>Number Of Rooms
-        </value>
+        <value>Number Of Rooms</value>
     </labels>
     <labels>
-        <fullName>RE_Parking_Spaces
-        </fullName>
+        <fullName>RE_Parking_Spaces</fullName>
         <categories>LWC Labels</categories>
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>RE_Parking_Spaces</shortDescription>
-        <value>Parking spaces
-        </value>
+        <value>Parking spaces</value>
     </labels>
     <labels>
-        <fullName>RE_Additional_Options
-        </fullName>
+        <fullName>RE_Additional_Options</fullName>
         <categories>LWC Labels</categories>
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>RE_Additional_Options</shortDescription>
-        <value>Additional Options
-        </value>
+        <value>Additional Options</value>
     </labels>
     <labels>
-        <fullName>RE_Search_City_Country
-        </fullName>
+        <fullName>RE_Search_City_Country</fullName>
         <categories>LWC Labels</categories>
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>RE_Search_City_Country</shortDescription>
-        <value>Search By City+Country
-        </value>
+        <value>Search By City+Country</value>
     </labels>
     <labels>
-        <fullName>RE_must_be_positive
-        </fullName>
+        <fullName>RE_must_be_positive</fullName>
         <categories>LWC Labels</categories>
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>RE_must_be_positive</shortDescription>
-        <value> Must Be A Positive Value
-        </value>
+        <value>Must Be A Positive Value</value>
     </labels>
     <labels>
-        <fullName>RE_Previous_Page
-        </fullName>
+        <fullName>RE_Previous_Page</fullName>
         <categories>LWC Labels</categories>
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>RE_Previous_Page</shortDescription>
-        <value>Previous Page
-        </value>
+        <value>Previous Page</value>
     </labels>
-
     <labels>
-        <fullName>RE_Next_Page
-        </fullName>
+        <fullName>RE_Next_Page</fullName>
         <categories>LWC Labels</categories>
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>RE_Next_Page</shortDescription>
-        <value>Next Page
-        </value>
+        <value>Next Page</value>
     </labels>
     <labels>
-        <fullName>RE_The_Lower_Value_Must_Be_Smaller
-        </fullName>
+        <fullName>RE_The_Lower_Value_Must_Be_Smaller</fullName>
         <categories>LWC Labels</categories>
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>RE_The_Lower_Value_Must_Be_Smaller</shortDescription>
-        <value>The Lower Value Of The Field Must Be Smaller In Field
-        </value>
+        <value>The Lower Value Of The Field Must Be Smaller In Field</value>
     </labels>
     <labels>
-        <fullName>RE_Clear
-        </fullName>
+        <fullName>RE_Clear</fullName>
         <categories>LWC Labels</categories>
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>RE_Clear</shortDescription>
-        <value>Clear
-        </value>
+        <value>Clear</value>
+    </labels>
+    <labels>
+        <fullName>QuoteTemplateId</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>QuoteTemplateId</shortDescription>
+        <value>00X7Q000002Xa5D</value>
+    </labels>
+    <labels>
+        <fullName>QuotePDFTemplateId</fullName>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>QuotePDFTemplateId</shortDescription>
+        <value>0EH7Q000006LgiX</value>
+    </labels>
+    <labels>
+        <fullName>RE_Dates_Overlap</fullName>
+        <categories>LWC Labels</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>RE_Dates_Overlap</shortDescription>
+        <value>There is already a pricebook of the given type with which the given dates overlap: {0}, from: {1} to {2}</value>
+    </labels>
+    <labels>
+        <fullName>Reviews</fullName>
+        <categories>LWC Labels</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>Reviews</shortDescription>
+        <value>Reviews</value>
     </labels>
 </CustomLabels>
