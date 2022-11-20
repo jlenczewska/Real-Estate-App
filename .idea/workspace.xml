@@ -2,7 +2,32 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="ef671483-68ee-43bf-af0f-dd406a560a44" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/force-app/main/default/objects/Opportunity/Opportunity.object-meta.xml" beforeDir="false" afterPath="$PROJECT_DIR$/force-app/main/default/objects/Opportunity/Opportunity.object-meta.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/Real-Estate-App.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/Real-Estate-App.iml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/classes/addProductsToQuoteLineItemHelper.cls" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/classes/addProductsToQuoteLineItemHelper.cls-meta.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/classes/generateQuotePdfDocument.cls" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/classes/generateQuotePdfDocument.cls-meta.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/classes/generateQuotePdfDocumentTest.cls" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/classes/generateQuotePdfDocumentTest.cls-meta.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/classes/searchEngineProductController.cls" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/classes/searchEngineProductController.cls-meta.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/classes/searchEngineProductControllerTest.cls" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/classes/searchEngineProductControllerTest.cls-meta.xml" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/labels/CustomLabels.labels-meta.xml" beforeDir="false" afterPath="$PROJECT_DIR$/force-app/main/default/labels/CustomLabels.labels-meta.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/lwc/productSearchSingleResult/productSearchSingleResult.css" beforeDir="false" afterPath="$PROJECT_DIR$/force-app/main/default/lwc/productSearchSingleResult/productSearchSingleResult.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/lwc/productSearchSingleResult/productSearchSingleResult.html" beforeDir="false" afterPath="$PROJECT_DIR$/force-app/main/default/lwc/productSearchSingleResult/productSearchSingleResult.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/lwc/productSearchSingleResult/productSearchSingleResult.js" beforeDir="false" afterPath="$PROJECT_DIR$/force-app/main/default/lwc/productSearchSingleResult/productSearchSingleResult.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/lwc/searchBar/searchBar.css" beforeDir="false" afterPath="$PROJECT_DIR$/force-app/main/default/lwc/searchBar/searchBar.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/lwc/searchBar/searchBar.html" beforeDir="false" afterPath="$PROJECT_DIR$/force-app/main/default/lwc/searchBar/searchBar.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/lwc/searchBar/searchBar.js" beforeDir="false" afterPath="$PROJECT_DIR$/force-app/main/default/lwc/searchBar/searchBar.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/lwc/searchEngineProduct/searchEngineProduct.js" beforeDir="false" afterPath="$PROJECT_DIR$/force-app/main/default/lwc/searchEngineProduct/searchEngineProduct.js" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/lwc/searchEngineProduct/searchEngineProduct.js-meta.xml" beforeDir="false" afterPath="$PROJECT_DIR$/force-app/main/default/lwc/searchEngineProduct/searchEngineProduct.js-meta.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/lwc/searchPagination/searchPagination.html" beforeDir="false" afterPath="$PROJECT_DIR$/force-app/main/default/lwc/searchPagination/searchPagination.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/lwc/searchResults/searchResults.css" beforeDir="false" afterPath="$PROJECT_DIR$/force-app/main/default/lwc/searchResults/searchResults.css" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/lwc/searchResults/searchResults.html" beforeDir="false" afterPath="$PROJECT_DIR$/force-app/main/default/lwc/searchResults/searchResults.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/triggers/addProductsToQuoteLineItem.trigger" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/force-app/main/default/triggers/addProductsToQuoteLineItem.trigger-meta.xml" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -34,6 +59,20 @@
           </value>
         </entry>
       </map>
+    </option>
+    <option name="projectWorkspaceSettings">
+      <ProjectWorkspaceSettings>
+        <option name="logViewerSettings">
+          <LogViewerSettings>
+            <option name="splitterProportion" value="0.31123388" />
+          </LogViewerSettings>
+        </option>
+        <option name="soqlQuerySettings">
+          <SoqlQuerySettings>
+            <option name="documentText" value="SELECT Id, Name, DistributionPublicUrl, ContentDownloadUrl from ContentDistribution" />
+          </SoqlQuerySettings>
+        </option>
+      </ProjectWorkspaceSettings>
     </option>
   </component>
   <component name="ProjectId" id="2Ga7ZcMQAW35m9t57GS9FgHSR8W" />
@@ -85,10 +124,10 @@
     <option name="LAST_COMMIT_MESSAGE" value="add metadata" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="271" y="60" key="#Illuminated_Cloud" timestamp="1666629023666">
+    <state x="296" y="49" key="#Illuminated_Cloud" timestamp="1668703510438">
       <screen x="0" y="0" width="1536" height="824" />
     </state>
-    <state x="271" y="60" key="#Illuminated_Cloud/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1666629023666" />
+    <state x="296" y="49" key="#Illuminated_Cloud/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1668703510438" />
     <state x="2472" y="178" key="#Illuminated_Cloud/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1666615024041" />
     <state x="2472" y="178" key="#Illuminated_Cloud_(Real-Estate-App)" timestamp="1666615031620">
       <screen x="1920" y="0" width="1920" height="1040" />
@@ -98,9 +137,10 @@
       <screen x="1920" y="0" width="1920" height="1040" />
     </state>
     <state x="2513" y="114" key="CommitChangelistDialog2/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1666620026661" />
-    <state x="2576" y="344" key="com.intellij.ide.util.TipDialog" timestamp="1666614909682">
-      <screen x="1920" y="0" width="1920" height="1040" />
+    <state x="525" y="273" key="com.intellij.ide.util.TipDialog" timestamp="1668954400936">
+      <screen x="0" y="0" width="1536" height="824" />
     </state>
+    <state x="525" y="273" key="com.intellij.ide.util.TipDialog/0.0.1536.824/1920.0.1920.1040@0.0.1536.824" timestamp="1668954400936" />
     <state x="2576" y="344" key="com.intellij.ide.util.TipDialog/0.0.1536.824/1920.0.1920.1040@1920.0.1920.1040" timestamp="1666614909681" />
   </component>
 </project>

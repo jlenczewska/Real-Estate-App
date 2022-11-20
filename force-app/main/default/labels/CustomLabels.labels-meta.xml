@@ -1232,7 +1232,7 @@
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>RE_Number_Of_Rooms</shortDescription>
-        <value>Number Of Rooms</value>
+        <value>NO. Rooms</value>
     </labels>
     <labels>
         <fullName>RE_Parking_Spaces</fullName>
@@ -1256,7 +1256,7 @@
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>RE_Search_City_Country</shortDescription>
-        <value>Search By City+Country</value>
+        <value>Search By City, Country</value>
     </labels>
     <labels>
         <fullName>RE_must_be_positive</fullName>
@@ -1297,20 +1297,6 @@
         <protected>true</protected>
         <shortDescription>RE_Clear</shortDescription>
         <value>Clear</value>
-    </labels>
-    <labels>
-        <fullName>QuoteTemplateId</fullName>
-        <language>en_US</language>
-        <protected>true</protected>
-        <shortDescription>QuoteTemplateId</shortDescription>
-        <value>00X7Q000002Xa5D</value>
-    </labels>
-    <labels>
-        <fullName>QuotePDFTemplateId</fullName>
-        <language>en_US</language>
-        <protected>true</protected>
-        <shortDescription>QuotePDFTemplateId</shortDescription>
-        <value>0EH7Q000006LgiX</value>
     </labels>
     <labels>
         <fullName>RE_Dates_Overlap</fullName>

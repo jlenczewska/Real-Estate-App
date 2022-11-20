@@ -20,8 +20,8 @@ lightning-checkbox-group.slds-form-element {
     display: flex;
     flex-wrap: wrap;
     justify-content: flex-start;
-    gap: 2vw;
-    padding: 0 1.5vw;
+    gap: 2.5%;
+    padding: 0 2%;
 }
 
 .searchContainer {
