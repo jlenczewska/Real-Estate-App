@@ -1,9 +1,9 @@
 import { LightningElement, track, api } from "lwc";
 import { ShowToastEvent } from "lightning/platformShowToastEvent";
 
-import searchProductByFilters from "@salesforce/apex/searchEngineProductController.searchProductByFilters";
-import getProductsPrice from "@salesforce/apex/searchEngineProductController.getProductsPrice";
-import checkUserPremissions from "@salesforce/apex/searchEngineProductController.checkUserPremissions";
+import searchProductByFilters from "@salesforce/apex/RE_searchEngineProductController.searchProductByFilters";
+import getProductsPrice from "@salesforce/apex/RE_searchEngineProductController.getProductsPrice";
+import checkUserPremissions from "@salesforce/apex/RE_searchEngineProductController.checkUserPremissions";
 
 import RE_Error_Occured from "@salesforce/label/c.RE_Error_Occured";
 import RE_Search from "@salesforce/label/c.RE_Search";

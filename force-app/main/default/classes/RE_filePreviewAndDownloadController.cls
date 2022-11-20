@@ -18,7 +18,6 @@ public with sharing class RE_filePreviewAndDownloadController {
                 return mapIdTitle;
             }
             catch(Exception e){
-                System.debug(e);
                 return null;
             }
             
