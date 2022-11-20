@@ -131,12 +131,12 @@ public with sharing class RE_pricebookExplorerControllerTest {
         Id recordType = Schema.SObjectType.Product2.getRecordTypeInfosByName().get(PREMISE_NAME).getRecordTypeId();
 
         Product2 product1 = new Product2(
-             Name='Premise1', Street__c='Nowacka 11', City__c='B',Picture__c='AAA',Country__c='Poland', RecordTypeId=recordType
+             Name='Premise1', Street__c='Nowacka 11', City__c='B',Picture__c='AAA',Country__c='Poland', RecordTypeId=recordType, Area__c=300
         );
         insert product1;
 
         Product2 product2 = new Product2(
-            Name='Premise2', Street__c='Nowacka 11', City__c='B',Picture__c='AAA',Country__c='Poland', RecordTypeId=recordType
+            Name='Premise2', Street__c='Nowacka 11', City__c='B',Picture__c='AAA',Country__c='Poland', RecordTypeId=recordType, Area__c=300
         );
         insert product2;
 
@@ -179,12 +179,12 @@ public with sharing class RE_pricebookExplorerControllerTest {
         Id recordType = Schema.SObjectType.Product2.getRecordTypeInfosByName().get(PREMISE_NAME).getRecordTypeId();
 
         Product2 product1 = new Product2(
-             Name='Premise1', Street__c='Nowacka 11', City__c='B',Picture__c='AAA',Country__c='Poland', RecordTypeId=recordType
+             Name='Premise1', Street__c='Nowacka 11', City__c='B',Picture__c='AAA',Country__c='Poland', RecordTypeId=recordType,Area__c=300
         );
         insert product1;
 
         Product2 product2 = new Product2(
-            Name='Premise2', Street__c='Nowacka 11', City__c='B',Picture__c='AAA',Country__c='Poland', RecordTypeId=recordType
+            Name='Premise2', Street__c='Nowacka 11', City__c='B',Picture__c='AAA',Country__c='Poland', RecordTypeId=recordType, Area__c=300
         );
         insert product2;
 
@@ -226,7 +226,7 @@ public with sharing class RE_pricebookExplorerControllerTest {
         Id recordType = Schema.SObjectType.Product2.getRecordTypeInfosByName().get(PREMISE_NAME).getRecordTypeId();
 
         Product2 product = new Product2(
-             Name='Premise', Street__c='Nowacka 11', City__c='B',Picture__c='AAA',Country__c='Poland', RecordTypeId=recordType
+             Name='Premise', Street__c='Nowacka 11', City__c='B',Picture__c='AAA',Country__c='Poland', RecordTypeId=recordType, Area__c=300
         );
 
         insert product;
