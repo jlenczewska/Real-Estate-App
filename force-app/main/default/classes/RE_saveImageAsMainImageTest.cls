@@ -11,7 +11,7 @@ public class RE_saveImageAsMainImageTest {
         Id recordType = Schema.SObjectType.Product2.getRecordTypeInfosByName().get(PREMISE_NAME).getRecordTypeId();
 
         Product2 product = new Product2(
-            Name='Premise', Street__c='Nowacka 11', City__c='B',Picture__c='AAA',RecordTypeId = recordType,Country__c='Poland'
+            Name='Premise', Street__c='Nowacka 11', City__c='B',Picture__c='AAA',RecordTypeId = recordType,Country__c='Poland', Area__c=300
        );
 
        insert product;
