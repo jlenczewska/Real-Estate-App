@@ -18,7 +18,6 @@
     will-change: box-shadow,opacity;
     -webkit-text-decoration: none;
     text-decoration: none;
-    width: 22vw;
     margin-bottom: 0.5rem;
 }
 
@@ -83,4 +82,3 @@ lightning-button button{
     font-weight: 500;
     margin-top: -10px;
  }
- 

@@ -2,6 +2,10 @@ lightning-input.slds-form-element {
     width: 30%;
 }
 
+.filtersContainer{
+    margin-top: 7px;
+}
+
 .filtersContainer lightning-input.slds-form-element {
     width: 45% !important;
 }
