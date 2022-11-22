@@ -6,7 +6,7 @@ public with sharing class RE_pricebookExplorerControllerTest {
     public static final String PREMISE_NAME = 'Apartment';
 
     @isTest
-    static void checkIfUserShouldEditPricebooks() {
+    static void shouldfUserEditPricebooks() {
       
         Boolean userShouldEditPricebooks = false;
         String uniqueUserName = 'standarduser' + DateTime.now().getTime() + '@testorg.com';
@@ -26,7 +26,7 @@ public with sharing class RE_pricebookExplorerControllerTest {
     }
 
     @isTest
-    static void checkIfFunctionGetCorrectPricebooks() {
+    static void shouldFunctionGetCorrectPricebooks() {
         List<Pricebook2> pricebooksList;
         
         List<Pricebook2> pricebooks = Test.loadData(Pricebook2.sObjectType, SAMPLE_PRICEBOOK);
@@ -39,7 +39,7 @@ public with sharing class RE_pricebookExplorerControllerTest {
     }
 
     @isTest
-    static void checkIfFunctionGetCorrectEntries() {
+    static void shouldFunctionGetCorrectEntries() {
         List<PriceBookEntry> pricebooksEntryList;
        
         List<Pricebook2> pricebooks = Test.loadData(Pricebook2.sObjectType, SAMPLE_PRICEBOOK);
@@ -292,4 +292,40 @@ public with sharing class RE_pricebookExplorerControllerTest {
 
         System.assertEquals(result, true);
     }
+
+    @isTest
+    static void shouldUpdatePricebookDateActive() {
+
+        Boolean result;
+        List<PriceBookEntry> pricebookInfo = new List<PriceBookEntry>();
+
+        String pbName ='Pricebook1';
+        String pbDesc ='Pricebook1';
+        Date pbStartDay = Date.newInstance(2016, 12, 9);
+        Date pbEndDay = Date.newInstance(2016, 12, 11);
+        Pricebook2 pricebook = RE_pricebookExplorerController.createPricebook(pbName,pbDesc, pbStartDay, pbEndDay);
+       
+        List<Product2> products = Test.loadData(Product2.sObjectType, 'sample_Product2');
+        Product2 product = (Product2)products[0];
+
+        insert new PriceBookEntry(Product2Id=product.Id, Pricebook2Id=Test.getStandardPricebookId(), UnitPrice=0);
+
+        PriceBookEntry pricebookEntry = new PriceBookEntry();
+        pricebookEntry.Product2Id = product.id;
+        pricebookEntry.PriceBook2Id = pricebook.id;
+        pricebookEntry.IsActive=true;
+        pricebookEntry.UnitPrice=100.0;
+        pricebookEntry.UseStandardPrice=false;
+
+        insert pricebookEntry;
+
+        pricebookInfo.add(pricebookEntry);
+
+        Test.startTest();
+        result = RE_pricebookExplorerController.addPricebookToDatabase(pbName, pbDesc, pbStartDay, pbEndDay, JSON.serialize(pricebookInfo));
+        Test.stopTest();
+
+        System.assertEquals(result, true);
+    }
+    
 }

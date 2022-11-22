@@ -1,4 +1,4 @@
-import { LightningElement, track, api } from "lwc";
+import { LightningElement, api } from "lwc";
 import { ShowToastEvent } from "lightning/platformShowToastEvent";
 
 import searchProductByFilters from "@salesforce/apex/RE_searchEngineProductController.searchProductByFilters";

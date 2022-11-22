@@ -1,0 +1,104 @@
+<template>
+  <template if:false={isLoaded} class="slds-is-relative">
+    <lightning-spinner alternative-text="Loading..." variant="brand">
+    </lightning-spinner>
+  </template>
+
+  <template if:true={isLoaded}>
+    <template if:false={displaySummary}>
+      <div class="addAppointmentContainer">
+        <lightning-layout>
+          <lightning-layout-item
+            size="5"
+            style="
+              border-right: 1px solid
+                var(--text-color-level3, rgba(26, 26, 26, 0.1));
+              padding-right: 20px;
+            "
+          >
+            <div class="addAppointment_left">
+              <h2>{label.RE_Arrange_A_Tour_Of_The_Apartment}</h2>
+              <p>
+                {label.RE_Agent}: {agentInfo.FirstName} {agentInfo.LastName}
+              </p>
+              <p>{label.RE_Time}: 30 {label.RE_Minutes}</p>
+            </div>
+          </lightning-layout-item>
+          <lightning-layout-item size="6" style="margin-left: 20px">
+            <lightning-input
+              type="date"
+              min={todaysDate}
+              name="input1"
+              label={label.RE_Date}
+              onchange={handleDateChange}
+              value={selectedDate}
+            ></lightning-input>
+            <br />
+            <lightning-combobox
+              name="progress"
+              label={label.RE_Time}
+              value={value}
+              placeholder={label.RE_Select_Time}
+              options={getHours}
+              onchange={handleChange}
+            ></lightning-combobox>
+            <br />
+            <lightning-input
+              type="text"
+              data-id="description"
+              label={label.RE_Do_you_want_to_add_something}
+            ></lightning-input>
+            <br />
+            <template if:true={enableSubmit}>
+              <lightning-button
+                label={label.RE_Schedule_Event}
+                title="Non-primary action"
+                onclick={handleSubmit}
+                class="slds-m-left_x-small"
+              ></lightning-button>
+            </template>
+          </lightning-layout-item>
+        </lightning-layout>
+      </div>
+    </template>
+
+    <template if:true={displaySummary}>
+      <div class="summaryContainer">
+        <lightning-layout>
+          <lightning-layout-item
+            size="4"
+            style="
+              border-right: 1px solid
+                var(--text-color-level3, rgba(26, 26, 26, 0.1));
+            "
+          >
+            <div class="summary_left">
+              <h2>{label.RE_Summary}</h2>
+              <p>
+                {label.RE_Agent}: {agentInfo.FirstName} {agentInfo.LastName}
+              </p>
+              <p style="padding-bottom: 20px;">{label.RE_Date_And_Time}: {value}, {selectedDate}</p>
+            </div>
+          </lightning-layout-item>
+          <lightning-layout-item size="8" style="margin-left: 20px">
+            <div class="summary_right">
+              <h3>{label.RE_Booked_Apartment}</h3>
+              <img src={productData.DisplayUrl}  alt="" />
+              <p>
+                {productData.Street__c} {productData.City__c},
+                {productData.Country__c}
+              </p>
+            </div>
+          </lightning-layout-item>
+        </lightning-layout>
+
+        <lightning-button
+          label={label.RE_Back_To_Apartment_Page}
+          title="Apartment Page"
+          onclick={handlePreviousPage}
+          class="slds-m-left_x-small"
+        ></lightning-button>
+      </div>
+    </template>
+  </template>
+</template>
