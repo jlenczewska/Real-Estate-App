@@ -1,0 +1,78 @@
+.summaryContainer{
+    width: 95%;
+    border: 1px solid var(--text-color-level3,rgba(26,26,26,0.1));
+    border-radius: 8px;
+    box-shadow: 0 1px 8px 0 rgb(0 0 0 / 8%);
+    padding: 30px;
+    margin: auto;
+    margin-top: 2rem;
+}
+
+.addAppointmentContainer{
+    width: 95%;
+    border: 1px solid var(--text-color-level3,rgba(26,26,26,0.1));
+    border-radius: 8px;
+    box-shadow: 0 1px 8px 0 rgb(0 0 0 / 8%);
+    padding: 30px;
+    margin: auto;
+    margin-top: 2rem;
+}
+
+.addAppointmentContainer h1, .summaryContainer h1{
+    margin: 0;
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 32px;
+    margin-bottom: 10px;
+}
+
+.summaryContainer p, .addAppointmentContainer p{
+    font-weight: bold;
+    color: #737373;
+}
+
+.summaryContainer h2, .addAppointmentContainer h2{
+    margin: 0;
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 32px;
+    padding-bottom: 20px;
+    position: relative;
+    margin-left: 25px;
+}
+
+.summaryContainer h3{
+    font-weight: 700;
+    font-size: 20px;
+    line-height: 32px;
+    padding-bottom: 10px;
+    position: relative;
+}
+
+.addAppointmentContainer h2::before, .summaryContainer h2::before {
+    content: '';
+    position: absolute;
+    background-color: rgb(130, 71, 245);
+    width: 22px;
+    min-width: 22px;
+    height: 22px;
+    border-radius: 50%;
+    top: 5px;
+    left: -30px;
+}
+
+.summary_right img{
+    height: 200px;
+    min-width: 100%;
+    max-width: -webkit-fill-available;
+    max-width: -webkit-fill-available;
+    z-index: 999;
+    cursor: pointer;
+    object-fit: cover;
+    margin: 10px 0;
+    padding-right: 10px;
+}
+
+lightning-button{
+    margin: 0
+}

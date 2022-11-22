@@ -1,45 +1,44 @@
 <template>
-    <lightning-card title="Product Gallery" icon-name="standard:photo">
+
+   <template if:false={isLoaded} class="slds-is-relative">
+      <lightning-spinner alternative-text="Loading..." variant="brand">
+      </lightning-spinner>
+    </template>
+
+    <template if:true={isLoaded}>
+   
        <lightning-layout multiple-rows="true">
           <lightning-layout-item class="slds-p-around_xx-small" size="12">
              <lightning-layout>
                 <lightning-layout-item class="slds-p-around_xx-small" size='12'>
                    <div>
+
+                  <div class="mainPhoto">
+                     <img  class='bigPhoto'
+                     src={mainPhoto} alt="" style="background: url(https://britenet28-dev-ed.file.force.com/servlet/servlet.ImageServer?id=0157Q000001Q5Hu&oid=00D7Q000008MVEQ&lastMod=1666097114000);
+                     background-repeat: no-repeat;background-position: center;"
+                     ></img>
+                  </div>
+
                       <lightning-layout class='casedt'>
                          <template for:each={filesList} for:item="item">
                             <lightning-layout-item size="3" class="slds-m-around_x-small photo" key={item.id}>
                                <lightning-tile data-id={item.value} style="height: 200px; overflow: hidden;">
                                  <lightning-layout-item class='imgBox' id={item.value.id} data-id={item.value.id} onclick={markPhoto}>
-                                     <img data-id={item.value} class='' onclick={markPhoto} src={item.url} height='200px' width='200px' id={item.id}></img>
-                                    </lightning-layout-item>
+                                     <img data-id={item.url} class='smallPhoto' onclick={markPhoto} src={item.url} height='150px' width='150px' id={item.id}></img>
+                                 </lightning-layout-item>
                                     <br>
                                  
                                </lightning-tile>
                             </lightning-layout-item>
                          </template>
                       </lightning-layout>
-                      <div class="buttonsContainer">
-                        <lightning-button label={label.RE_Set_As_Main_Photo} class='standardButton'
-                        variant="brand"
-                        onclick={setAsMainImage}
-                        ></lightning-button>
-                        <lightning-button label={label.RE_Preview} class='standardButton'
-                        variant="brand"
-                        onclick={previewHandler}
-                        ></lightning-button>
-                        <lightning-file-upload 
-                        name="fileUploader"
-                        accept={acceptedFormats}
-                        record-id={recordId}
-                        onuploadfinished={handleUploadFinished}
-                        multiple>
-                     </lightning-file-upload>
                   </div>
-                   </div>
                 </lightning-layout-item>
              </lightning-layout>
           </lightning-layout-item>
        </lightning-layout>
-    </lightning-card>
+   
+   </template>
 </template>
 

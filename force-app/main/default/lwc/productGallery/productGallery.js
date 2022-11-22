@@ -1,6 +1,6 @@
-import { LightningElement, wire, track, api } from "lwc";
+import { LightningElement, wire, api } from "lwc";
 import getRelatedFilesByRecordId from "@salesforce/apex/RE_filePreviewAndDownloadController.getRelatedFilesByRecordId";
-import getImageUrlAndSaveAsDefaultImage from "@salesforce/apex/RE_saveImageAsMainImage.getImageUrlAndSaveAsDefaultImage";
+
 import { ShowToastEvent } from "lightning/platformShowToastEvent";
 import { NavigationMixin } from "lightning/navigation";
 
@@ -18,8 +18,10 @@ export default class ProductGallery extends NavigationMixin(LightningElement) {
   filesList = [];
   newFileWasUploaded = false;
   uploadedFilesUrl = [];
+  @api mainPhoto='a'
 
   @api recordId;
+  @api isLoaded = false;
 
   get acceptedFormats() {
     return [".jpg", ".png"];
@@ -34,19 +36,6 @@ export default class ProductGallery extends NavigationMixin(LightningElement) {
     RE_Error_Occured
   };
 
-  handleUploadFinished(event) {
-    const uploadedFiles = event.detail.files;
-    if (uploadedFiles && uploadedFiles.length > 0) {
-      this.newFileWasUploaded = true;
-      uploadedFiles.forEach((element) => {
-        this.uploadedFilesUrl.push({
-          id:
-            "/sfc/servlet.shepherd/version/download/" + element.contentVersionId
-        });
-      });
-    }
-  }
-
   @wire(getRelatedFilesByRecordId, { recordId: "$recordId" })
   wiredResult({ data, error }) {
     if (data) {
@@ -55,6 +44,8 @@ export default class ProductGallery extends NavigationMixin(LightningElement) {
         value: item,
         url: `/sfc/servlet.shepherd/document/download/${item}`
       }));
+      this.isLoaded = true;
+      this.mainPhoto = this.filesList[0].url
     }
     if (error) {
       const evt = new ShowToastEvent({
@@ -62,6 +53,7 @@ export default class ProductGallery extends NavigationMixin(LightningElement) {
         message: error["body"]["message"],
         variant: "error"
       });
+      this.isLoaded = true;
       this.dispatchEvent(evt);
     }
   }
@@ -69,98 +61,6 @@ export default class ProductGallery extends NavigationMixin(LightningElement) {
   markPhoto(event) {
     event.stopPropagation();
     this.selectedElementId = event.target.dataset.id;
-    this.enableButtons = false;
-    event.target.classList.toggle("highlight");
-    this.unselect(event.target);
-    this.selected = event.target;
-  }
-
-  unselect(target) {
-    if (this.selected && this.selected !== target) {
-      this.selected.classList.remove("highlight");
-      this.selected = null;
-      this.enableButtons = true;
-    }
-    if (!this.selected) {
-      this.enableButtons = true;
-    }
-  }
-
-  previewHandler() {
-    this.enableButtonsCheck();
-
-    if (!this.enableButtons) {
-      return;
-    }
-
-    this[NavigationMixin.Navigate]({
-      type: "standard__namedPage",
-      attributes: {
-        pageName: "filePreview"
-      },
-      state: {
-        selectedRecordId: this.selectedElementId
-      }
-    });
-  }
-
-  enableButtonsCheck() {
-    let flag;
-    let elements = this.template.querySelectorAll("img");
-
-    elements.forEach((element) => {
-      if (element.classList.contains("highlight")) {
-        flag = true;
-      }
-    });
-
-    if (flag) {
-      this.enableButtons = true;
-    } else {
-      this.enableButtons = false;
-    }
-  }
-
-  setAsMainImage() {
-    this.enableButtonsCheck();
-
-    if (!this.enableButtons) {
-      return;
-    }
-
-    getImageUrlAndSaveAsDefaultImage({
-      photoId: this.selectedElementId,
-      recordId: this.recordId
-    })
-      .then((data) => {
-        if (data) {
-          const evt = new ShowToastEvent({
-            title: this.label.RE_Main_Photo_Could_Not_Be_Changed,
-            message: this.label.RE_Please_refresh_the_page,
-            variant: "success"
-          });
-          this.dispatchEvent(evt);
-        } else {
-          const evt = new ShowToastEvent({
-            title: this.label.RE_Something_went_wrong,
-            message: "",
-            variant: "error"
-          });
-          this.dispatchEvent(evt);
-        }
-
-        let elements = this.template.querySelectorAll("img");
-        elements.forEach((element) => {
-          element.classList.remove("highlight");
-        });
-      })
-      .catch((error) => {
-        const evt = new ShowToastEvent({
-          title: RE_Error_Occured,
-          message: error["body"]["message"],
-          variant: "error"
-        });
-        this.dispatchEvent(evt);
-      });
+    this.mainPhoto = this.selectedElementId
   }
 }

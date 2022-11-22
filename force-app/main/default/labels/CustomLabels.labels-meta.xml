@@ -1314,4 +1314,103 @@
         <shortDescription>Reviews</shortDescription>
         <value>Reviews</value>
     </labels>
+    <labels>
+        <fullName>RE_Arrange_A_Tour_Of_The_Apartment
+        </fullName>
+        <categories>LWC Labels</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>RE_Arrange_A_Tour_Of_The_Apartment</shortDescription>
+        <value>Arrange A Tour Of The Apartment</value>
+    </labels>
+    <labels>
+        <fullName>RE_Agent
+        </fullName>
+        <categories>LWC Labels</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>RE_Agent</shortDescription>
+        <value>Agent</value>
+    </labels>
+    <labels>
+        <fullName>RE_Time
+        </fullName>
+        <categories>LWC Labels</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>RE_Time</shortDescription>
+        <value>Time</value>
+    </labels>
+    <labels>
+        <fullName>RE_Minutes
+        </fullName>
+        <categories>LWC Labels</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>RE_Minutes</shortDescription>
+        <value>Minutes</value>
+    </labels>
+    <labels>
+        <fullName>RE_Booked_Apartment
+        </fullName>
+        <categories>LWC Labels</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>RE_Booked_Apartment</shortDescription>
+        <value>Booked Apartment</value>
+    </labels>
+    <labels>
+        <fullName>RE_Schedule_Event
+        </fullName>
+        <categories>LWC Labels</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>RE_Schedule_Event</shortDescription>
+        <value>Schedule Event</value>
+    </labels>
+    <labels>
+        <fullName>RE_Back_To_Apartment_Page
+        </fullName>
+        <categories>LWC Labels</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>RE_Back_To_Apartment_Page</shortDescription>
+        <value>Back To Apartment Page</value>
+    </labels>
+    <labels>
+        <fullName>RE_Do_you_want_to_add_something
+        </fullName>
+        <categories>LWC Labels</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>RE_Do_you_want_to_add_something</shortDescription>
+        <value>Do you want to add something?</value>
+    </labels>
+    <labels>
+        <fullName>RE_Select_Time
+        </fullName>
+        <categories>LWC Labels</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>RE_Select_Time</shortDescription>
+        <value>Select Time</value>
+    </labels>
+    <labels>
+        <fullName>RE_Date
+        </fullName>
+        <categories>LWC Labels</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>RE_Date</shortDescription>
+        <value>Date</value>
+    </labels>
+    <labels>
+        <fullName>RE_meeting_with_client
+        </fullName>
+        <categories>LWC Labels</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>RE_meeting_with_client</shortDescription>
+        <value>Meeting With Client</value>
+    </labels>
 </CustomLabels>

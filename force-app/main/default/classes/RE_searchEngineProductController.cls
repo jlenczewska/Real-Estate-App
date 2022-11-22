@@ -1,4 +1,4 @@
-public without sharing class RE_searchEngineProductController {
+public with sharing class RE_searchEngineProductController {
     public static final String ROLE_SALES_REPRESENTANTS_B2B = 'B2B Sales Representants';
     public static final String ROLE_SALES_REPRESENTANTS_B2C = 'B2C Sales Representants';
     public static final String PROFILE_SYSTEM_ADMIN = 'System Administrator';
