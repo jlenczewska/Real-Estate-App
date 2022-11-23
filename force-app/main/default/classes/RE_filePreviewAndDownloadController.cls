@@ -5,7 +5,6 @@ public with sharing class RE_filePreviewAndDownloadController {
     @AuraEnabled
     public static Boolean editShouldBeAvailable() {
       Id profileId = UserInfo.getProfileId();
-      System.debug(profileId);
       if (profileId != null) {
         String profileName = [SELECT Id, Name FROM Profile WHERE Id = :profileId].Name;
         return profileName == PROFILE_COMMUNITY_USER ? false: true;
