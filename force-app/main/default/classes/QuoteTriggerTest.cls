@@ -1,6 +1,5 @@
 @isTest 
 public with sharing class QuoteTriggerTest {
-   
     @isTest 
     static void TestInsertQuote() {
         
@@ -18,7 +17,7 @@ public with sharing class QuoteTriggerTest {
         StageName = 'Customer Won',
         Amount = 3000,
         CloseDate = System.today());
-        insert opp;
+        insert opp; 
 
         PricebookEntry pbEntry = new PricebookEntry(
             Pricebook2Id = pricebookId,
