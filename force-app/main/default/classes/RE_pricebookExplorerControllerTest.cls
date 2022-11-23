@@ -220,7 +220,7 @@ public with sharing class RE_pricebookExplorerControllerTest {
         List<PriceBookEntry> pricebookInfo;
         Boolean result;
 
-        List<Pricebook2> pricebooks = Test.loadData(Pricebook2.sObjectType, 'sample_Pricebook2');
+        List<Pricebook2> pricebooks = Test.loadData(Pricebook2.sObjectType, SAMPLE_PRICEBOOK);
         Pricebook2 pricebook = (Pricebook2)pricebooks[0];
 
         Id recordType = Schema.SObjectType.Product2.getRecordTypeInfosByName().get(PREMISE_NAME).getRecordTypeId();
@@ -299,11 +299,8 @@ public with sharing class RE_pricebookExplorerControllerTest {
         Boolean result;
         List<PriceBookEntry> pricebookInfo = new List<PriceBookEntry>();
 
-        String pbName ='Pricebook1';
-        String pbDesc ='Pricebook1';
-        Date pbStartDay = Date.newInstance(2016, 12, 9);
-        Date pbEndDay = Date.newInstance(2016, 12, 11);
-        Pricebook2 pricebook = RE_pricebookExplorerController.createPricebook(pbName,pbDesc, pbStartDay, pbEndDay);
+        List<Pricebook2> pricebooks = Test.loadData(Pricebook2.sObjectType, SAMPLE_PRICEBOOK);
+        Pricebook2 pricebook = (Pricebook2)pricebooks[0];
        
         List<Product2> products = Test.loadData(Product2.sObjectType, 'sample_Product2');
         Product2 product = (Product2)products[0];
@@ -322,7 +319,7 @@ public with sharing class RE_pricebookExplorerControllerTest {
         pricebookInfo.add(pricebookEntry);
 
         Test.startTest();
-        result = RE_pricebookExplorerController.addPricebookToDatabase(pbName, pbDesc, pbStartDay, pbEndDay, JSON.serialize(pricebookInfo));
+        result = RE_pricebookExplorerController.updatePricebookDateActive(pricebook.id, Date.newInstance(2010, 12, 9), Date.newInstance(2010, 12, 12));
         Test.stopTest();
 
         System.assertEquals(result, true);
