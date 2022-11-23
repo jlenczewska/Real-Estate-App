@@ -32,7 +32,7 @@ public with sharing class RE_searchEngineProductControllerTest {
     @isTest
     static void shouldReturnFilteredProducts() {
         List<Product2> foundProductsByFilters = new List<Product2>();
-        String stringifiedFilters = '{"Filters_Checkbox_Group":["Swimming Pool","Balcony"]}';
+        String stringifiedFilters = '{"Filters_Area_From":"1","Filters_Area_To":"111","Filters_Year_From":"2","Filters_Year_To":"222","Filters_Rooms_From":"3","Filters_Rooms_To":"333","Filters_Checkbox_Group":["Swimming Pool","Balcony","Elevator"]}';
 
         Id recordType = Schema.SObjectType.Product2.getRecordTypeInfosByName().get(PREMISE_NAME).getRecordTypeId();
 
@@ -80,7 +80,6 @@ public with sharing class RE_searchEngineProductControllerTest {
 
         List<Pricebook2> pricebooks = Test.loadData(Pricebook2.sObjectType, SAMPLE_PRICEBOOK);
         Pricebook2 pricebook = (Pricebook2) pricebooks[0];
-        System.debug(pricebook);
 
         Id pricebookId = Test.getStandardPricebookId();
         
@@ -89,9 +88,6 @@ public with sharing class RE_searchEngineProductControllerTest {
         Test.startTest();
         productsPrices = RE_searchEngineProductController.getProductsPrice();
         Test.stopTest();
-
-        System.debug(productsPrices);
-        System.debug(productsPrices[0]);
 
         System.assertNotEquals(1, 0);
     }
