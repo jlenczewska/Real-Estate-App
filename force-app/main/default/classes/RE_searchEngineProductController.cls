@@ -37,9 +37,7 @@ public with sharing class RE_searchEngineProductController {
     @AuraEnabled
     public static List<Product2> searchProductByFilters(String searchPhrase, String filtersInfo) {
         List<Product2> productsList;
-
         String queryPhrase = '%' + String.escapeSingleQuotes(searchPhrase.trim()) + '%';
-
         Set<Id> pricebooksIds = new Set<Id>();
 
         List<Pricebook2> pricebooksIdsList = [SELECT Id FROM pricebook2 WHERE isactive = TRUE];
