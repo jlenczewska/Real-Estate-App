@@ -9,8 +9,8 @@ public with sharing class QuoteTriggerTest {
 
         Id pricebookId = Test.getStandardPricebookId();
 
-        RecordType recordType = [ select Id, Name, DeveloperName from RecordType where SObjectType = 'Account' and IsPersonType = true limit 1 ];
-        Account acc = new Account(LastName='Schmoe',RecordTypeId = recordType.id);
+        RecordType recordType = [ select Id, Name, DeveloperName from RecordType where DeveloperName = 'PersonAccount'];
+        Account acc = new Account(Name='Schmoe',RecordTypeId = recordType.id);
         insert acc;
 
         Opportunity opp = new Opportunity(Name ='00New mAWS Deal',
