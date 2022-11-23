@@ -324,5 +324,62 @@ public with sharing class RE_pricebookExplorerControllerTest {
 
         System.assertEquals(result, true);
     }
-    
+    @isTest
+    static void shouldNotUpdatePricebookDateActive() {
+
+        Boolean result;
+        List<PriceBookEntry> pricebookInfo = new List<PriceBookEntry>();
+
+        // List<Pricebook2> pricebooks = Test.loadData(Pricebook2.sObjectType, SAMPLE_PRICEBOOK);
+        // Pricebook2 pricebook = (Pricebook2)pricebooks[0];
+       
+        Pricebook2 pricebook = new Pricebook2(
+            Name='Pricebook1', 
+            ValidFrom__c = Date.newInstance(2022, 10, 10),
+            ValidTo__c = Date.newInstance(2022, 12, 12)
+        );
+
+        insert pricebook;
+
+        Pricebook2 pricebook2 = new Pricebook2(
+            Name='Pricebook1', 
+            ValidFrom__c = Date.newInstance(2022, 11, 10),
+            ValidTo__c = Date.newInstance(2022, 12, 10)
+        );
+
+        insert pricebook2;
+
+        List<Product2> products = Test.loadData(Product2.sObjectType, 'sample_Product2');
+        Product2 product = (Product2)products[0];
+
+        insert new PriceBookEntry(Product2Id=product.Id, Pricebook2Id=Test.getStandardPricebookId(), UnitPrice=0);
+
+        PriceBookEntry pricebookEntry = new PriceBookEntry();
+        pricebookEntry.Product2Id = product.id;
+        pricebookEntry.PriceBook2Id = pricebook.id;
+        pricebookEntry.IsActive=true;
+        pricebookEntry.UnitPrice=100.0;
+        pricebookEntry.UseStandardPrice=false;
+
+        insert pricebookEntry;
+
+        PriceBookEntry pricebookEntry2 = new PriceBookEntry();
+        pricebookEntry2.Product2Id = product.id;
+        pricebookEntry2.PriceBook2Id = pricebook2.id;
+        pricebookEntry2.IsActive=true;
+        pricebookEntry2.UnitPrice=100.0;
+        pricebookEntry2.UseStandardPrice=false;
+
+        insert pricebookEntry2;
+
+        pricebookInfo.add(pricebookEntry);
+
+        Test.startTest();
+        try{
+            result = RE_pricebookExplorerController.updatePricebookDateActive(pricebook.id, Date.newInstance(2022, 12, 9), Date.newInstance(2022, 12, 12));
+        } catch (Exception ex) {
+            System.Assert(ex.getMessage().contains('There is already a pricebook'));
+        }  
+        Test.stopTest();
+    }
 }
