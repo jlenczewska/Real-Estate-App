@@ -46,7 +46,6 @@ public with sharing class RE_ApartmentJourneyEventsControllerTest {
 
     @isTest
     static void shouldAddNewEvent() {
-
         Boolean result;
         Id recordType = Schema.SObjectType.Product2.getRecordTypeInfosByName().get(PREMISE_NAME).getRecordTypeId();
 
@@ -76,17 +75,33 @@ public with sharing class RE_ApartmentJourneyEventsControllerTest {
         eventWrapper.meetingTime = '9:30-10:00';
         eventWrapper.meetingDate = '2022-11-24';
         eventWrapper.description = SAMPLE_TEXT;
-        // Event event = new Event();
-        // event.OwnerId=u.Id;
-        // event.StartDateTime=datetime.now();
-        // event.EndDateTime=datetime.now();
-        // insert event;
 
         Test.startTest();
         result = RE_ApartmentJourneyEventsController.addNewEvent(JSON.serialize(eventWrapper));
         Test.stopTest();
 
         System.assertEquals(result, true);
+    }
+
+    @isTest
+    static void shouldGetProductData() {
+        Product2 result;
+        Id recordType = Schema.SObjectType.Product2.getRecordTypeInfosByName().get(PREMISE_NAME).getRecordTypeId();
+        Product2 product = new Product2();
+        product.Name = SAMPLE_TEXT;
+        product.RecordTypeId = recordType;
+        product.City__c = SAMPLE_TEXT;
+        product.Country__c = SAMPLE_TEXT;
+        product.Street__c = SAMPLE_TEXT;
+        product.Number_of_rooms__c = 3;
+        product.Area__c = 100;
+        insert product;
+
+        Test.startTest();
+        result = RE_ApartmentJourneyController.getProductData(product.id);
+        Test.stopTest();
+
+        System.assertEquals(result.id, product.id);
     }
 
     private class EventArgumentsWrapper {
