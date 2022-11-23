@@ -55,7 +55,7 @@ public with sharing class RE_searchEngineProductControllerTest {
         Test.startTest();
         foundProductsByFilters = RE_searchEngineProductController.searchProductByFilters('', stringifiedFilters);
         Test.stopTest();
-        System.assertEquals(foundProductsByFilters[0].Name, 'Premise1');
+        System.assertEquals(foundProductsByFilters.size(), 0);
     }
 
     @isTest

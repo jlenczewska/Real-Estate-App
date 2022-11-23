@@ -75,12 +75,9 @@ public with sharing class RE_searchEngineProductController {
                     cityCountry__c LIKE :queryPhrase
                     AND RecordTypeId = :Schema.SObjectType.Product2.getRecordTypeInfosByName().get(checkUserPremissions()).getRecordTypeId()
             ];
-
             return productsList;
         }
-
         String query = generateQuery(filtersMap, queryPhrase);
-
         try {
             return Database.query(query);
         } catch (Exception e) {
