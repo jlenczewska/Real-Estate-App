@@ -19,7 +19,7 @@ export default class GetQuoteButton extends LightningElement {
     createQuote({
       recordId: this.recordId
     })
-      .then((data) => {
+      .then(() => {
         const evt = new ShowToastEvent({
             title: RE_Success,
             message: RE_quote_generated_and_sent_to_your_email,
