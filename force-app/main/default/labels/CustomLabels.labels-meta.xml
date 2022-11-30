@@ -832,7 +832,7 @@
         <language>en_US</language>
         <protected>true</protected>
         <shortDescription>RE_Please_refresh_the_page</shortDescription>
-        <value>Please Refresh The Page To See The Result. If You Don&apos;t Dee The Changes, Wait A Minute And Refresh The Page Again.</value>
+        <value>Please Refresh The Page To See The Result. If You Don&apos;t See The Changes, Wait A Minute And Refresh The Page Again.</value>
     </labels>
     <labels>
         <fullName>RE_Something_went_wrong1</fullName>
@@ -1412,5 +1412,93 @@
         <protected>true</protected>
         <shortDescription>RE_meeting_with_client</shortDescription>
         <value>Meeting With Client</value>
+    </labels>
+    <labels>
+        <fullName>RE_get_quote
+        </fullName>
+        <categories>LWC Labels</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>RE_get_quote</shortDescription>
+        <value>Get Quote</value>
+    </labels>
+    <labels>
+        <fullName>RE_Success
+        </fullName>
+        <categories>LWC Labels</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>RE_Success</shortDescription>
+        <value>Success</value>
+    </labels>
+    <labels>
+        <fullName>RE_quote_generated_and_sent_to_your_email
+        </fullName>
+        <categories>LWC Labels</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>RE_quote_generated_and_sent_to_your_email</shortDescription>
+        <value>Your Quote Has Been Generated And Sent To Your Email Address
+        </value>
+    </labels>
+    <labels>
+        <fullName>RE_case_successfully_created
+        </fullName>
+        <categories>LWC Labels</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>RE_case_successfully_created</shortDescription>
+        <value>Case Successfully Created
+        </value>
+    </labels>
+    <labels>
+        <fullName>RE_Create_Case
+        </fullName>
+        <categories>LWC Labels</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>RE_Create_Case</shortDescription>
+        <value>Create Case
+        </value>
+    </labels>
+    <labels>
+        <fullName>RE_Product
+        </fullName>
+        <categories>LWC Labels</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>RE_Product</shortDescription>
+        <value>Product
+        </value>
+    </labels>
+    <labels>
+        <fullName>RE_Type
+        </fullName>
+        <categories>LWC Labels</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>RE_Type</shortDescription>
+        <value>Type
+        </value>
+    </labels>
+    <labels>
+        <fullName>RE_Subject
+        </fullName>
+        <categories>LWC Labels</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>RE_Subject</shortDescription>
+        <value>Subject
+        </value>
+    </labels>
+    <labels>
+        <fullName>RE_Create_New_Case
+        </fullName>
+        <categories>LWC Labels</categories>
+        <language>en_US</language>
+        <protected>true</protected>
+        <shortDescription>RE_Create_New_Case</shortDescription>
+        <value>Create New Case
+        </value>
     </labels>
 </CustomLabels>

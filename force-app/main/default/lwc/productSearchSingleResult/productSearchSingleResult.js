@@ -25,7 +25,7 @@ export default class ProductSearchSingleResult extends NavigationMixin(
         actionName: "view"
       }
     }).then((url) => {
-      window.open(url, "_blank");
+      window.open(url, "_self");
     });
   }
 }

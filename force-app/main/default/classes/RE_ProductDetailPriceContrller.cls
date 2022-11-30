@@ -2,7 +2,6 @@ public with sharing class RE_ProductDetailPriceContrller {
     @auraenabled(cacheable=true)
     public static Decimal getProductPrice(String recordId) {
         List<PricebookEntry> pricebookEntryList = new List<PricebookEntry>();
-
         Set<Id> pricebooksIds = new Set<Id>();
         List<Decimal> prices = new List<Decimal>();
 

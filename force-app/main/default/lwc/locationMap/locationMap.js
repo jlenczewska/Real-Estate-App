@@ -16,7 +16,6 @@ export default class LocationMap extends LightningElement {
     @wire(getRecord, { recordId: '$recordId', fields: FIELDS })
     wiredProduct({error, data}){
         if(data){
-           
             this.mapMarkers = [
                 {
                     location: {

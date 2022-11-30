@@ -158,8 +158,6 @@ export default class ApartmentJourneyReservation extends LightningElement {
       recordId: this.currentPageReference.state.apartment
     })
       .then((data) => {
-console.log(data)
-
         for (let record of data) {
           if (this.selectedDate == record.StartDateTime.split("T")[0]) {
             for (let h of this.allHours) {

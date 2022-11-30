@@ -18,8 +18,8 @@ export default class ProductGallery extends NavigationMixin(LightningElement) {
   filesList = [];
   newFileWasUploaded = false;
   uploadedFilesUrl = [];
-  @api mainPhoto='a'
 
+  @api mainPhoto='/'
   @api recordId;
   @api isLoaded = false;
 
@@ -61,6 +61,6 @@ export default class ProductGallery extends NavigationMixin(LightningElement) {
   markPhoto(event) {
     event.stopPropagation();
     this.selectedElementId = event.target.dataset.id;
-    this.mainPhoto = this.selectedElementId
+    this.mainPhoto = this.selectedElementId;
   }
 }

@@ -82,13 +82,11 @@ export default class PricebookEdit extends LightningElement {
   }
 
   submitDetailsEdit() {
-    console.log('im in function');
     const incorrectDataDates = this.checkPremiseDates();
 
     if (incorrectDataDates) {
       return;
     }
-    console.log('im in function2');
     updatePricebookDateActive({
       pricebookId: this.pricebookInfoDates.Id,
       startDay: this.template.querySelector(
@@ -100,7 +98,6 @@ export default class PricebookEdit extends LightningElement {
     })
       .then((data) => {
         if (data) {
-          console.log('im in function3');
           const evt = new ShowToastEvent({
             title: this.label.RE_Pricebook_Successfully_Updated,
             message: this.editedPricebookName,
@@ -116,7 +113,6 @@ export default class PricebookEdit extends LightningElement {
         } 
       })
       .catch((error) => {
-        console.log(error);
         const evt = new ShowToastEvent({
           title: RE_Error_Occured,
           message: error["body"]["message"],

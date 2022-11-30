@@ -92,6 +92,7 @@ public with sharing class RE_searchEngineProductController {
         List<PricebookEntry> pricebookEntryStandardList = new List<PricebookEntry>();
         Set<Id> pricebooksIds = new Set<Id>();
         Set<Id> entriesWithNonStandardPriceIds = new Set<Id>();
+        Set<Id> entriesWithStandardPriceIds = new Set<Id>();
         List<Product2> allProducts = new List<Product2>();
 
         try {
@@ -101,27 +102,24 @@ public with sharing class RE_searchEngineProductController {
             for (Pricebook2 pb : pricebooksId) {
                 pricebooksIds.add(pb.Id);
             }
-
+            
             if (pricebooksId.size() > 0) {
                 pricebookEntryList = [SELECT Product2ID, UnitPrice FROM PricebookEntry WHERE Pricebook2Id IN :pricebooksIds];
             }
-
+            
             for (PricebookEntry pbentry : pricebookEntryList) {
                 entriesWithNonStandardPriceIds.add(pbentry.Product2ID);
             }
-
             for (Product2 product : allProducts) {
                 if (!entriesWithNonStandardPriceIds.contains(product.Id)) {
-                    entriesWithNonStandardPriceIds.add(product.Id);
+                    entriesWithStandardPriceIds.add(product.Id);
                 }
             }
-
-            pricebookEntryStandardList = [SELECT Product2ID, UnitPrice FROM PricebookEntry WHERE Product2ID IN :entriesWithNonStandardPriceIds];
+            pricebookEntryStandardList = [SELECT Product2ID, UnitPrice FROM PricebookEntry WHERE Product2ID IN :entriesWithStandardPriceIds AND Pricebook2.IsStandard = true];
 
             List<PricebookEntry> result = new List<PricebookEntry>();
             result.addAll(pricebookEntryList);
             result.addAll(pricebookEntryStandardList);
-
             return result;
         } catch (Exception e) {
             throw newMessageException(e.getMessage());

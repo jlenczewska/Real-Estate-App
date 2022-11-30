@@ -11,7 +11,6 @@ export default class ApartmentJourneyReservationButton extends NavigationMixin(L
       };
 
     handleClick(){
-        console.log('clicked')
         this[NavigationMixin.Navigate]({
             type: 'comm__namedPage',
             attributes: {

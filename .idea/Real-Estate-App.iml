@@ -13,9 +13,51 @@
   </component>
   <component name="NewModuleRootManager" inherit-compiler-output="true">
     <exclude-output />
-    <content url="file://$MODULE_DIR$" />
+    <content url="file://$MODULE_DIR$">
+      <sourceFolder url="file://$MODULE_DIR$/node_modules/has/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/node_modules/@lwc/compiler/node_modules/@babel/core/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/node_modules/@lwc/jest-preset/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/node_modules/@lwc/jest-resolver/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/node_modules/@lwc/jest-serializer/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/node_modules/@lwc/jest-transformer/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/node_modules/@lwc/babel-plugin-component/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/node_modules/rxjs/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/node_modules/@bcoe/v8-coverage/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/node_modules/debug/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/node_modules/@babel/core/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/node_modules/@babel/generator/node_modules/@jridgewell/gen-mapping/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/node_modules/nwsapi/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/node_modules/swiper/angular/angular/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/node_modules/swiper/angular/esm2020/angular/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/node_modules/wait-on/node_modules/rxjs/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/node_modules/@sinonjs/fake-timers/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/node_modules/agent-base/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/node_modules/agent-base/dist/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/node_modules/chevrotain/lib/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/node_modules/chevrotain/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/node_modules/chevrotain/lib_esm/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/node_modules/chevrotain/diagrams/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/node_modules/flat-cache/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/node_modules/sisteransi/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/node_modules/sprintf-js/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/node_modules/@jridgewell/set-array/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/node_modules/@jridgewell/sourcemap-codec/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/node_modules/@salesforce/sfdx-lwc-jest/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/node_modules/@salesforce/eslint-config-lwc/node_modules/@babel/core/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/node_modules/estree-walker/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/node_modules/human-signals/build/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/node_modules/@humanwhocodes/object-schema/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/node_modules/@humanwhocodes/module-importer/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/node_modules/tsconfig-paths/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/node_modules/istanbul-reports/lib/html-spa/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/node_modules/eslint-module-utils/node_modules/debug/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/node_modules/eslint-plugin-import/node_modules/debug/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/node_modules/prettier-plugin-apex/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/node_modules/istanbul-lib-instrument/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/node_modules/eslint-import-resolver-node/node_modules/debug/src" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/node_modules/babel-preset-current-node-syntax/src" isTestSource="false" />
+    </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
   </component>
 </module>
-

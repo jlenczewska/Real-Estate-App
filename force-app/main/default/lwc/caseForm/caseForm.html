@@ -1,0 +1,64 @@
+<template>
+  <div class="caseFormContainer">
+    <div class="caseFormContainer__left"></div>
+    <div class="caseFormContainer__right">
+
+      <h2>{label.RE_Create_New_Case}</h2>
+      <lightning-record-edit-form
+        object-api-name="Case"
+        onsuccess={handleSuccess}
+      >
+        <lightning-messages> </lightning-messages>
+        <div class="formInputField">
+          <p>{label.RE_Subject}</p>
+          <lightning-input-field field-name="Subject" variant="label-hidden">
+          </lightning-input-field>
+        </div>
+        <div class="formInputField">
+          <p>{label.RE_Description}</p>
+          <lightning-input-field
+            field-name="Description"
+            variant="label-hidden"
+          >
+          </lightning-input-field>
+        </div>
+        <div class="formInputField">
+          <p>{label.RE_Type}</p>
+          <lightning-input-field
+            field-name="Type"
+            dafault="Renovations"
+            required
+            variant="label-hidden"
+          >
+          </lightning-input-field>
+        </div>
+        <div class="formInputField">
+          <p>{label.RE_Product}</p>
+          <lightning-input-field field-name="ProductId" variant="label-hidden">
+          </lightning-input-field>
+        </div>
+        <lightning-input-field
+          field-name="Status"
+          class="slds-hide"
+          dafault="New"
+          variant="label-hidden"
+        >
+        </lightning-input-field>
+        <lightning-input-field
+          field-name="Origin"
+          class="slds-hide"
+          dafault="Web"
+          variant="label-hidden"
+        >
+        </lightning-input-field>
+        <br />
+        <lightning-button 
+          class="slds-m-top_small button"
+          type="submit"
+          label={label.RE_Create_Case}
+        >
+        </lightning-button>
+      </lightning-record-edit-form>
+    </div>
+  </div>
+</template>
